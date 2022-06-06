@@ -1,0 +1,7 @@
+:global(:root) {
+  --sd-divider-margin: 0.5rem 0;
+}
+
+.main {
+  margin: var(--sd-divider-margin)
+}

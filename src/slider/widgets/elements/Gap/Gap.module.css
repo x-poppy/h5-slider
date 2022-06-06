@@ -1,0 +1,38 @@
+.main {
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.main:global(.size__xs) {
+  height: 0.25rem;
+}
+
+.main:global(.size__sm) {
+  height: 0.5rem;
+}
+
+.main:global(.size__md) {
+  height: 1rem;
+}
+
+.main:global(.size__lg) {
+  height: 3rem;
+}
+
+.main:global(.size__xl) {
+  height: 5rem;
+}
+
+.main:global(.size__xxl) {
+  height: 10rem;
+}
+
+.main:global(.size__xxxl) {
+  height: 20rem;
+}
+
+
+
+
+

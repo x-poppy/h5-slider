@@ -1,0 +1,21 @@
+:global(:root) {
+  --sd-container-padding: 1rem;
+  --sd-container-background: #F4F8FC;
+  --sd-container-border-radius: 0.5rem;
+  --sd-container-box-shadow: 0 2px 8px 0 rgb(25 25 25 / 20%);
+}
+
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--sd-container-background);
+  padding: var(--sd-container-padding);
+}
+
+.withRound {
+  border-radius: var(--sd-container-border-radius);
+}
+
+.withShadow {
+  box-shadow: var(--sd-container-box-shadow)
+}

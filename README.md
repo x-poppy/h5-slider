@@ -1,44 +1,123 @@
-# Getting Started with Create React App
+# Exercise H5
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Components
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+### Link
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+| Name      | Description      | Type               | Acceptable Value                                           | Default Value |
+| --------- | ---------------- | ------------------ | ---------------------------------------------------------- | ------------- |
+| type      | type of text     | `string`           | `danger` `secondary` `light` `primary` `success` `warning` |               |
+| size      | size of the text | `string`           | `xs` `sm` `md` `lg` `xl` `xxl`                             | `md`          |
+| ellipsis  | show ellipsis    | `boolean` `number` |                                                            | `false`       |
+| disabled  | disabled         | `boolean`          |                                                            | `false`       |
+| delete    | delete style     |                    |                                                            | false         |
+| underline | underline style  |                    |                                                            | false         |
+| center    | center style     |                    |                                                            | false         |
+| strong    | strong style     |                    |                                                            | false         |
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Examples**
 
-### `npm test`
+```json
+{
+  "type": "Link",
+  "props": {
+    "type": "danger",
+    "size": "md",
+    "delete": true
+  },
+  "children": "Children seem to have fun doing just about anything… even reading!"
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Title
 
-### `npm run build`
+| Name      | Description        | Type               | Acceptable Value                                           | Default Value |
+| --------- | ------------------ | ------------------ | ---------------------------------------------------------- | ------------- |
+| type      | type of text       | `string`           | `danger` `secondary` `light` `primary` `success` `warning` |               |
+| size      | size of the text   | `string`           | `xs` `sm` `md` `lg` `xl` `xxl`                             | `md`          |
+| ellipsis  | show ellipsis      | `boolean` `number` |                                                            | `false`       |
+| disabled  | disabled           | `boolean`          |                                                            | `false`       |
+| delete    | delete style       |                    |                                                            | false         |
+| underline | underline style    |                    |                                                            | false         |
+| center    | center style       |                    |                                                            | false         |
+| strong    | strong style       |                    |                                                            | false         |
+| level     | level of the title | `number`           |                                                            | 4             |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Examples**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```json
+{
+  "type": "Title",
+  "props": {
+    "type": "secondary",
+    "size": "md",
+    "delete": true,
+    "level": 3
+  },
+  "children": "Why Learn English with Children’s Books?"
+}
+```
+### Text
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Name      | Description      | Type               | Acceptable Value                                           | Default Value |
+| --------- | ---------------- | ------------------ | ---------------------------------------------------------- | ------------- |
+| type      | type of text     | `string`           | `danger` `secondary` `light` `primary` `success` `warning` |               |
+| size      | size of the text | `string`           | `xs` `sm` `md` `lg` `xl` `xxl`                             | `md`          |
+| ellipsis  | show ellipsis    | `boolean` `number` |                                                            | `false`       |
+| disabled  | disabled         | `boolean`          |                                                            | `false`       |
+| delete    | delete style     |                    |                                                            | false         |
+| underline | underline style  |                    |                                                            | false         |
+| center    | center style     |                    |                                                            | false         |
+| strong    | strong style     |                    |                                                            | false         |
 
-### `npm run eject`
+**Examples**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```json
+{
+  "type": "Text",
+  "props": {
+    "type": "danger",
+    "size": "md",
+    "delete": true
+  },
+  "children": "Children seem to have fun doing just about anything… even reading!"
+}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Layouts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### FlexBox
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Name      | Description              | Type     | Acceptable Value                                             | Default Value |
+| --------- | ------------------------ | -------- | ------------------------------------------------------------ | ------------- |
+| gap       | gap of content           | `string` | `xs` `sm` `md` `lg` `xl` `xxl`                               | `md`          |
+| size      | size of the text         | `string` | `xs` `sm` `md` `lg` `xl` `xxl`                               | `md`          |
+| direction | direction for the layout | `string` | `horizontal` `vertical`                                      | `horizontal`  |
+| align     | disabled                 | `string` | `start` `end` `center` `baseline`                            | `start`       |
+| justify   | delete style             | `string` | `start` `end` `center` `between` `around` `evenly` `stretch` | `start`       |
 
+**Examples**
+
+```json
+{
+  "type": "Link",
+  "props": {
+    "type": "danger",
+    "size": "md",
+    "delete": true
+  },
+  "children": "Children seem to have fun doing just about anything… even reading!"
+}
+```
+
+
+### Stage
+
+#### props
+
++ children
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

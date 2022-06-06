@@ -1,0 +1,84 @@
+version: 0.0.1
+title: "8 Great Books for Learning English at Home"
+components:
+  CommonHeader:
+    - type: Sticky
+      props:
+        offsetTop: $offsetTop
+      children:
+        - type: Container
+          children:
+            - type: Title
+              props:
+                size: md
+                level: 1
+              children: $title
+            - type: SlideIndicator
+slider: 
+  type: Slider
+  children:
+    - type: Slide
+      props: 
+      children:
+        - type: #CommonHeader
+          props:
+            offsetTop: 50
+            title: 8 Great Books for Learning English at Home
+        - type: Text
+          props: 
+            size: md
+          children: Although there are many ways to learn English, the best place to begin is with a few high-quality textbooks.
+        - type: Gap
+        - type: Text
+          props:
+            size: md
+          children: "I also find that my students who are the fastest English learners are partial autodidacts: they do extra self-study at home, and they spend their study time learning from books – not movies or games."
+        - type: Text
+          props: 
+            size: md
+          children: "With that in mind, here are 8 books that I typically recommend to students who want to do extra self-study. I’ve organized the list into three categories:"
+        - type: ActionBar
+        - type: Text
+          props:
+            width: "100%"
+            type: secondary
+            size: sm
+            center: true
+          children: "© XXXXXXXXX 版权所有."
+    
+    - type: Slide
+      props: 
+      children:
+        - type: Sticky
+          props:
+            offsetTop: 50
+          children:
+            type: Container
+            children:
+              - type: Title
+                props:
+                  size: md
+                  level: 1
+                children: 8 Great Books for Learning English at Home
+              - type: SlideIndicator
+        - type: Text
+          props: 
+            size: md
+          children: Although there are many ways to learn English, the best place to begin is with a few high-quality textbooks.
+        - type: Gap
+        - type: Text
+          props:
+            size: md
+          children: "I also find that my students who are the fastest English learners are partial autodidacts: they do extra self-study at home, and they spend their study time learning from books – not movies or games."
+        - type: Text
+          props: 
+            size: md
+          children: "With that in mind, here are 8 books that I typically recommend to students who want to do extra self-study. I’ve organized the list into three categories:"
+        - type: ActionBar
+        - type: Text
+          props:
+            width: "100%"
+            type: secondary
+            size: sm
+            center: true
+          children: "© XXXXXXXXX 版权所有."

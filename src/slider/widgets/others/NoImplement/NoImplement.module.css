@@ -1,0 +1,21 @@
+:global(:root) {
+  --sd-no-implement-font-color: #bababa;
+  --sd-no-implement-background: #e5e5e5;
+}
+
+.main {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  padding: 2rem;
+  color: var(--sd-no-implement-font-color);
+  background: var(--sd-no-implement-background)
+}
+
+.desc {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 55%;
+}

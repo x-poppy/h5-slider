@@ -1,0 +1,31 @@
+:global(:root) {
+  --sd-slider-background: #EAF2F9;
+}
+
+:global(:root) {
+  --rv-font-size-xs: 0.75rem;
+  --rv-font-size-sm: 0.8rem;
+  --rv-font-size-md: 1rem;
+  --rv-font-size-lg: 2rem;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: var(--sd-slider-background);
+}
+
+.overlaps {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  overflow: visible;
+}
+
+.swiper {
+  height: 100%;
+}

@@ -1,0 +1,713 @@
+version: 0.0.1
+title: "Slide Components Example"
+definitions:
+  Components:
+    # -------------------------------------------
+    ComponentSlide:
+      type: Slide
+      definitions:
+        slideTitle: "Slide 标题"
+        slideSubTitle: "Slide 子标题"
+        entryEffect: null
+        $children: "填充内容"
+      props:
+        entryEffect:
+          type: Group
+          children: ${entryEffect} 
+      children:
+        type: Padding
+        children:
+          - type: SlideIndicator
+          - type: Title
+            props:
+              level: 1
+            children: ${slideTitle}
+          - type: Divider
+            props:
+              color: gray
+          - type: Text
+            props:
+              type: secondary
+            children: ${slideSubTitle}
+          - type: Group
+            children: ${$children}
+          - type: Gap
+            props:
+            size: xxl
+          - type: ActionBar
+    # -------------------------------------------
+
+    # -------------------------------------------
+    ComponentPropBlock:
+        type: Group
+        definitions:
+          propTitle: "属性标题"
+          propSubTitle: "属性标题子标题"
+          propUsage: "属性使用说明"
+          $children: "属性示例Demo"
+        children:
+          - type: Gap
+          - type: Title
+            props:
+              level: 2
+            children: ${propTitle}
+          - type: Divider
+          - type: Text
+            props:
+              type: secondary
+            children: ${propSubTitle}
+          - type: Gap  
+          - type: Title
+            props:
+              type: secondary
+              level: 4
+              size: sm
+            children: "usage"
+          - type: Block
+            props:
+              background: "#f6f8fa"
+            children:
+              - type: Text
+                props:
+                  type: secondary
+                children: ${propUsage}  
+          - type: Title
+            props:
+              type: secondary
+              level: 4
+              size: sm
+            children: "demo"
+          - type: Block
+            props:
+              background: "#f6f8fa"
+            children: ${$children}
+  LocaleMessages:
+    PreviousSlide: Previous
+    NextSlide: Next
+    SubmitSlide: Submit
+  Permissions:
+    PreviousSlide: true
+    SubmitSlide: false  
+    
+type: Slider
+props:
+children:
+  # ActionBar
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: ActionBar
+      slideSubTitle: '控制条, 一般用于Slide导航'
+      propUsage: "-"
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "-"
+          propSubTitle: "-"
+          propUsage: "-"
+        children:
+          type: ActionBar
+          props:
+            preSlideEffect:
+              type: DelayEffect
+              props:
+                delay: 10000
+            nextSlideEffect:
+              type: DelayEffect 
+              props:
+                delay: 10000 
+  
+  # AudioPlayer
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: AudioPlayer
+      slideSubTitle: '声音播放器'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "src"
+          propSubTitle: "文件地址"
+          propUsage: "src: \"xxxxxxx\""
+        children:
+          - type: AudioPlayer
+            props:
+              src: "https://www.w3schools.com/tags/horse.mp3"
+              type: "audio/mpeg"
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "type"
+          propSubTitle: "文件格式, audio/mpeg audio/ogg audio/wav"
+          propUsage: "type: audio/mpeg"
+        children:
+          - type: AudioPlayer
+            props:
+              src: "https://www.w3schools.com/tags/horse.mp3"
+              type: "audio/mpeg"
+  
+  # Block
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Block
+      slideSubTitle: '区块组件'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "round"
+            propSubTitle: "控制区块是否具有圆角默认开启"
+            propUsage: "round: true"
+        children:
+          - type: Block
+            props:
+              round: true
+              background: red
+            children: "round: true"
+          - type: Gap
+          - type: Block
+            props:
+              round: false
+              background: green
+            children: "round: false"    
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "background"
+            propSubTitle: "区块的背景色"
+            propUsage: "background: green"
+        children:
+          - type: Block
+            props:
+              background: "linear-gradient(#e66465, #9198e5)"
+            children: "XXX"
+          - type: Gap  
+          - type: Block
+            props:
+              background: "linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)"
+            children: "XXX" 
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "shadow"
+            propSubTitle: "是否显示阴影"
+            propUsage: "shadow: true"
+        children:
+          - type: Gap  
+          - type: Block
+            props:
+             shadow: true
+            children: "shadow: true"   
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "padding"
+            propSubTitle: "区块内边距"
+            propUsage: "padding 3rem"
+        children:
+          - type: Gap
+          - type: Block
+            props:
+             padding: "3rem"
+             shadow: true
+            children: "padding 3rem"
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "children"
+          propSubTitle: "区块可以包含其他的组件"
+          propUsage: "在children中放入其他组件"
+        children:
+          - type: Block
+            props:
+            padding: "1rem"
+            shadow: true
+            children:
+              type: Block
+              props:
+                padding: "1rem"
+                shadow: true
+              children: "XXXXXX"             
+  
+  # Divider
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Divider
+      slideSubTitle: '分割线'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "color"
+            propSubTitle: "分割线颜色"
+            propUsage: "color: black"
+        children:
+          - type: Divider
+          - type: Gap
+          - type: Divider
+            color: black
+            children: "color: black"
+          - type: Gap
+          - type: Divider
+            props:
+              color: red
+            children: "color: red"
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "contentPosition"
+            propSubTitle: "文字位置 'left' | 'center' | 'right'"
+            propUsage: "contentPosition: center"
+        children:
+          - type: Divider
+            props:
+              color: gray
+              contentPosition: left
+            children: "contentPosition: left"
+          - type: Gap
+          - type: Divider
+            color: black
+            contentPosition: center
+            children: "contentPosition: center"
+          - type: Gap
+          - type: Divider
+            props:
+              color: red
+              contentPosition: right
+            children: "contentPosition right"
+
+  # Image
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Image
+      slideSubTitle: '图片'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "src"
+          propSubTitle: "文件地址"
+          propUsage: "src: \"xxxxxxx\""
+        children:
+          - type: Image
+            props:
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "fit"
+          propSubTitle: "填充类型 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'"
+          propUsage: "fit: contain"
+        children:
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              fit: contain
+          - type: Text
+            props:
+              center: true
+              width: 100%
+            children: "fit: contain" 
+          - type: Gap  
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              fit: cover
+          - type: Text
+            props:
+              center: true
+              width: 100%
+            children: "fit: cover" 
+          - type: Gap      
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              fit: fill
+          - type: Text
+            props:
+              center: true
+              width: 100%
+            children: "fit: fill" 
+          - type: Gap      
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              fit: none
+          - type: Text
+            props:
+              center: true
+              width: 100%
+            children: "fit: none" 
+          - type: Gap       
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              fit: scale-down
+          - type: Text
+            props:
+              center: true
+              width: 100%
+            children: "scale-down" 
+          - type: Gap
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "round"
+          propSubTitle: "是否圆形"
+          propUsage: "round: true"
+        children:
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              round: true
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "round"
+          propSubTitle: "圆形弧度"
+          propUsage: "radius: 10rem, 仅在round下有效"
+        children:
+          - type: Image
+            props:
+              width: 10rem
+              height: 10rem
+              src: "https://www.w3schools.com/html/pic_trulli.jpg"
+              round: true
+              radius: 10rem
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "Load Error"
+          propSubTitle: "加载异常"
+          propUsage: "-"
+        children:
+          - type: Image
+            props:
+              height: 10rem
+              src: "https://xxxx"
+
+  # Sticky
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Sticky
+      slideSubTitle: 'Sticky可以在滚动时将组件固定在顶部或者底部'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "position"
+          propSubTitle: "位置 'top' | 'bottom'"
+          propUsage: "position: top"
+        children:
+          - type: Sticky
+            props: 
+              position: top
+              offsetTop: 4rem
+            children:
+              - type: Block
+                props:
+                  padding: "1rem"
+                  shadow: true
+                children: "Top Sticky 001"
+          - type: Gap      
+          - type: Sticky
+            props: 
+              position: top
+            children:
+              - type: Block
+                props:
+                  padding: "1rem"
+                  shadow: true
+                children: "Top Sticky 002"
+          - type: Gap        
+          - type: Text
+            children: "尝试滚动到页面底部, 上面的2个色块并不会消失"      
+      - type: Gap
+        props: 
+          size: xxxl
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "position"
+          propSubTitle: "固定位置 'top' | 'bottom'"
+          propUsage: "position: top"
+        children:
+          - type: Sticky
+            props: 
+              position: bottom
+            children:
+              - type: Block
+                props:
+                  padding: "1rem"
+                  shadow: true
+                children: "Bottom Sticky 001"
+          - type: Gap      
+          - type: Sticky
+            props: 
+              position: bottom
+              offsetBottom: 4rem
+            children:
+              - type: Block
+                props:
+                  padding: "1rem"
+                  shadow: true
+                children: "Bottom Sticky 002"
+          - type: Gap        
+          - type: Text
+            children: "尝试滚动到页面顶部,下面的2个色块的并不会消失"      
+      - type: Gap
+        props: 
+          size: xxxl
+  
+  # Slide                
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Slide
+      slideSubTitle: 'Slide 表示一页'
+      entryEffect:
+        type: AlertEffect
+        props:
+          message: "Welcome to XXX~"
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "entryEffect"
+          propSubTitle: "进入触发相应的效果"
+          propUsage: "entryEffect: AlertEffect"
+        children:
+          - type: Text
+            children: "-"
+
+
+  # Title/Text/Link
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Title/Text/Link
+      slideSubTitle: '文本展示 标题/文本/连接 其中 Title 有 level 属性，其他属性保持一致' 
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "level"
+          propSubTitle: "通过设置 'level'属性来设置标题级数,支持1-5级标题 (仅限Title使用)"
+          propUsage: "level: 2"
+        children:
+          - type: Title
+            props:
+              level: 2
+            children: Test 二级测试标题
+          - type: Title
+            props:
+              level: 3
+            children: Test 三级测试标题
+          - type: Title
+            props:
+              level: 4
+            children: Test 四级测试标题
+          - type: Title
+            props:
+              level: 5
+            children: Test 五级测试标题
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "type"
+          propSubTitle: "文本类型. danger secondary light primary success warning"
+          propUsage: "type: danger"
+        children:
+          - type: Title
+            props:
+              type: danger
+            children: 文本 Text Hello 文本 Text Hello
+          - type: Title
+            props:
+              type: secondary
+            children: 文本 Text Hello 文本 Text Hello
+          - type: Title
+            props:
+              type: light
+            children: 文本 Text Hello 文本 Text Hello
+          - type: Title
+            props:
+              type: primary
+            children: 文本 Text Hello 文本 Text Hello
+          - type: Title
+            props:
+              type: success
+            children: 文本 Text Hello 文本 Text Hello
+          - type: Title
+            props:
+              type: warning
+            children: 文本 Text Hello 文本 Text Hello
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "size"
+          propSubTitle: "文本大小, xs sm md lg xl xxl"  
+          propUsage: "size: xs"
+        children:
+          - type: Title
+            props:
+              size: xs
+            children: 文本 Text Hello 文本 Text Hello  
+          - type: Title
+            props:
+              size: sm
+            children: 文本 Text Hello 文本 Text Hello  
+          - type: Title
+            props:
+              size: md
+            children: 文本 Text Hello 文本 Text Hello  
+          - type: Title
+            props:
+              size: lg
+            children: 文本 Text Hello 文本 Text Hello  
+          - type: Title
+            props:
+              size: xl
+            children: 文本 Text Hello 文本 Text Hello  
+          - type: Title
+            props:
+              size: xxl
+            children: 文本 Text Hello 文本 Text Hello        
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "disabled"
+          propSubTitle: "禁用文本" 
+          propUsage: "disabled: true"
+        children:
+          - type: Title
+            props:
+              disabled: true
+            children: 文本 Text Hello 文本 Text Hello  
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "ellipsis"
+          propSubTitle: "文本显示省略号, 数字可以控制行数" 
+          propUsage: "ellipsis: 2"
+        children: 
+          - type: Title
+            props:
+              ellipsis: 2
+            children: "文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello"  
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "delete"
+          propSubTitle: "文本显示删除线" 
+          propUsage: "delete: true"
+        children:
+          - type: Title
+            props:
+              delete: true
+            children: "文本 Text Hello 文本 Text Hello"  
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "underline"
+          propSubTitle: "文本显示下划线" 
+          propUsage: "center: true"
+        children:
+          - type: Title
+            props:
+              underline: true
+            children: "文本 Text Hello 文本 Text Hello" 
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "center"
+          propSubTitle: "文本居中显示,一般需要配合with来控制, 例如: with: 100%"
+          propUsage: "center: true"
+        children:
+          - type: Title
+            props:
+              width: 100%
+              center: true
+            children: "文本 Text Hello"    
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "strong"
+          propSubTitle: "加粗文本"
+          propUsage: "strong: true"
+        children:
+          - type: Title
+            props:
+              strong: true
+            children: "strong: true"
+
+  # VideoPlayer
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: VideoPlayer
+      slideSubTitle: '视频播放器'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "src"
+          propSubTitle: "文件地址"
+          propUsage: "src: \"xxxxxxx\""
+        children:
+          - type: VideoPlayer
+            props:
+              src: "https://www.w3schools.com/html/mov_bbb.mp4"
+              type: "audio/mpeg"
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "type"
+          propSubTitle: "文件格式, 'video/mp4' | 'video/ogg' | 'video/webm'"
+          propUsage: "type: video/mp4"
+        children:
+          - type: VideoPlayer
+            props:
+              src: "https://www.w3schools.com/html/mov_bbb.mp4"
+  
+
+  # ClickListener                
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: ClickListener
+      slideSubTitle: 'ClickListener, 当被包裹的元素被点击时触发的事件'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "effect"
+          propSubTitle: "触发相应的效果"
+          propUsage: "effect: AlertEffect"
+        children:
+          - type: ClickListener
+            props: 
+              clickEffect:
+                type: AlertEffect
+                props:
+                  message: "${event.eventName} ${title} This element is clicked~"
+            children:
+              type: Image
+              props:
+                width: 10rem
+                height: 10rem
+                src: "https://www.w3schools.com/html/pic_trulli.jpg"
+                round: true
+                radius: 10rem
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "effect"
+          propSubTitle: "触发组合效果"
+          propUsage: "effect: GroupEffect"
+        children:
+          - type: ClickListener
+            props: 
+              clickEffect:
+                type: GroupEffect
+                children: 
+                  - type: AlertEffect
+                    props:
+                      message: "This element is clicked 1~"
+                  - type: AlertEffect
+                    props:
+                      message: "This element is clicked 2~"  
+            children:
+              type: Image
+              props:
+                width: 10rem
+                height: 10rem
+                src: "https://www.w3schools.com/html/pic_trulli.jpg"
+                round: true
+                radius: 10rem          

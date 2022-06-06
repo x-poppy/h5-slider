@@ -1,0 +1,20 @@
+:global(:root) {
+  --sd-checkbox-margin: 0.5rem 0rem;
+  --sd-checkbox-padding: 0.5rem 1rem;
+  --sd-checkbox-background: #ffffff;
+  --sd-checkbox-border-radius: 0.25rem;
+  --sd-checkbox-box-shadow: 0 2px 13px 0 rgb(25 25 25 / 6%);
+}
+
+.main {
+  width: 100%;
+  background: var(--sd-checkbox-background);
+  padding: var(--sd-checkbox-padding);
+  margin: var(--sd-checkbox-margin);
+  box-shadow: var(--sd-checkbox-box-shadow);
+  border-radius: var(--sd-checkbox-border-radius);
+}
+
+.main > [role=checkbox] {
+  pointer-events: none;
+}

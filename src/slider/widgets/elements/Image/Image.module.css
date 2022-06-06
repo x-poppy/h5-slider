@@ -1,0 +1,10 @@
+.main {
+  height: unset;
+}
+
+.main > img {
+  pointer-events: none;
+  pointer-events: none;
+}
+
+

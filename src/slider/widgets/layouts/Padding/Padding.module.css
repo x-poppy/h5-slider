@@ -1,0 +1,30 @@
+.main {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.main:global(.size__xs) {
+  padding: 0 0.25rem;
+}
+
+.main:global(.size__sm) {
+  padding: 0 0.5rem;
+}
+
+.main:global(.size__md) {
+  padding: 0 1rem;
+}
+
+.main:global(.size__lg) {
+  padding: 0 3rem;
+}
+
+.main:global(.size__xl) {
+  padding: 0 5rem;
+}
+
+.main:global(.size__xxl) {
+  padding: 0 10rem;
+}
+
