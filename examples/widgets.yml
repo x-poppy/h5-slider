@@ -250,7 +250,7 @@ children:
           - type: NavigationButton
             props:
               searchMatcher: ["schema"]
-              href: "./?scheme=examples%2Fwidgets.yml"
+              href: "./?schema=examples%2Fwidgets.yml"
 
   # Divider
   - type: ${Components.ComponentSlide}
