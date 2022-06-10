@@ -1,5 +1,5 @@
 import { Dialog } from "react-vant";
-import { getNavigationURL } from "./url";
+import { getNavigationURL, isRelativeURL } from "./url";
 
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
@@ -10,6 +10,9 @@ interface NavigateToOpts {
 }
 
 export function isCors(href: string) {
+  if (isRelativeURL(href)) {
+    return false;
+  }
   const currentDomain = window.location.origin;
   if (href.startsWith(currentDomain)) {
     return false;

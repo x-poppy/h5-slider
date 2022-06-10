@@ -1,6 +1,6 @@
 import { filterObjectByKeys } from "./object";
 
-function isRelativeURL(url: string) {
+export function isRelativeURL(url: string) {
   if (url && url.startsWith('http')) {
     return false;
   }
@@ -24,6 +24,7 @@ function appendSearchParamsToUrl(url: string, query?: Record<string, any>) {
 }
 
 const SearchParamKeyWorlds = [
+  "schema",
   "mock",
   "activeIndex",
   "debug"
@@ -31,7 +32,6 @@ const SearchParamKeyWorlds = [
 
 export function getSearQueryObject(matcher?: string | string[]) {
   const searchParams = new URLSearchParams(window.location.search);
-
   const query = Object.fromEntries(searchParams);
   const filteredQuery: Record<string, any> = {};
   for (const [key, val] of Object.entries(query)) {
