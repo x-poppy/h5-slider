@@ -31,13 +31,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "_test": "react-scripts test",
+    "build": "PUBLIC_URL=./ react-scripts build",
+    "test": "react-scripts test",
     "lint": "eslint src --ext .ts,.tsx",
     "format": "prettier src --write",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "gh-page:deploy": "gh-pages -d build"
+    "gh-page:deploy": "npm run build && gh-pages -d build"
   },
   "browserslist": {
     "production": [

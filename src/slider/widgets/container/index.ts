@@ -1,14 +1,12 @@
-import { registerWidget } from "../../utils/widgetFactory";
+import { registerWidget } from '../../utils/widgetFactory';
 
 import Block from './Block';
 import FlexBox from './FlexBox';
-import Padding from "./Padding";
-import Slide from '../core/Slide';
+import Padding from './Padding';
 
-registerWidget(Block);
-registerWidget(FlexBox);
-registerWidget(Slide);
-registerWidget(Padding);
+registerWidget(Block, 'Block');
+registerWidget(FlexBox, 'FlexBox');
+registerWidget(Padding, 'Padding');
 
 
 

@@ -3,13 +3,16 @@ import { registerWidget } from "../../utils/widgetFactory";
 import AlertEffect from './AlertEffect';
 import DelayEffect from "./DelayEffect";
 import GroupEffect from "./GroupEffect";
-import SubmitStoreEffect from "./SubmitStoreEffect";
 import NavigationEffect from "./NavigationEffect";
+import SubmitStoreEffect from "./SubmitStoreEffect";
+import SwitchEffect from "./SwitchEffect";
 
-registerWidget(AlertEffect);
-registerWidget(GroupEffect);
-registerWidget(DelayEffect);
-registerWidget(SubmitStoreEffect);
-registerWidget(NavigationEffect);
+registerWidget(AlertEffect, 'AlertEffect');
+registerWidget(DelayEffect, 'DelayEffect');
+registerWidget(GroupEffect, 'GroupEffect');
+registerWidget(NavigationEffect, 'NavigationEffect');
+registerWidget(SubmitStoreEffect, 'SubmitStoreEffect');
+registerWidget(SwitchEffect, 'SwitchEffect');
+
 
 
