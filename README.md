@@ -1,4 +1,4 @@
-# Exercise H5
+# h5-slider
 
 ## Components
 
