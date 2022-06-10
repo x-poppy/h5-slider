@@ -1,5 +1,12 @@
 import { filterObjectByKeys } from "./object";
 
+function isRelativeURL(url: string) {
+  if (url && url.startsWith('http')) {
+    return false;
+  }
+  return true;
+}
+
 function appendSearchParamsToUrl(url: string, query?: Record<string, any>) {
   if (!url) {
     return url;
@@ -9,7 +16,7 @@ function appendSearchParamsToUrl(url: string, query?: Record<string, any>) {
     return url;
   }
 
-  const urlObj = new URL(url);
+  const urlObj = new URL(url, isRelativeURL(url) ? (window.location.origin + window.location.pathname) : undefined);
   for (const [key, val] of Object.entries(query)) {
     urlObj.searchParams.append(key, encodeURIComponent(val));
   }
