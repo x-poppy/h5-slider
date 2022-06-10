@@ -1,28 +1,37 @@
-import { cloneElement, ReactNode, useCallback, useState } from "react";
-import { SlideEffectEvent, SliderEffectReactElement } from "../types/UI";
-import { useSliderContext } from "../utils/SliderContext";
+import React, { cloneElement, ReactElement, useCallback, useState } from "react";
+import { SliderEffectElement } from "../types/Element";
+import { useNavigation } from "./useNavigation";
+import { useVariableScopes } from "./useVariableScopes";
 
-export function useEffectElement(effectElement?: SliderEffectReactElement | null) {
-  const [activeEffectElement, setActiveEffectElement] = useState<ReactNode>(null);
-  const sliderContext =  useSliderContext();
-  const openEffect = useCallback(
+type OpenEffectFunction = (evt: SlideEffectEvent)=> Promise<any>
+
+export function useEffectElement(effectElement?: SliderEffectElement | null): [ReactElement | null, OpenEffectFunction, boolean] {
+  const isValid =  React.isValidElement(effectElement);
+  const [activeEffectElement, setActiveEffectElement] = useState<ReactElement | null>(isValid ? effectElement : null);
+  const navigation = useNavigation();
+  const variableScopes = useVariableScopes();
+  
+  const openEffectHandel: OpenEffectFunction = useCallback(
     async (evt: SlideEffectEvent) => {
-      if (!effectElement || activeEffectElement) {
+      if (!effectElement) {
         return;
       }
       return new Promise((resolve, reject) => {
-        sliderContext.variableScopeManager.pushScope({
-          event: evt
+        variableScopes.pushScope({
+          navigation: {
+            activeIndex: navigation.activeIndex,
+            totalCount: navigation.totalCount,
+          },
+          event: evt,
         });
-        const clonedEffectElement = cloneElement<SliderEffectReactElement>(effectElement, {
+        const clonedEffectElement = cloneElement<SliderEffectElement>(effectElement, {
           event: evt,
           onEffectComplete: (err: any, data: any) => {
-            setActiveEffectElement(null);
             if (err) {
-              sliderContext.variableScopeManager.popScope();
+              variableScopes.popScope();
               reject(err);
             } else {
-              sliderContext.variableScopeManager.popScope();
+              variableScopes.popScope();
               resolve(data ?? undefined);
             }
           },
@@ -30,11 +39,12 @@ export function useEffectElement(effectElement?: SliderEffectReactElement | null
         setActiveEffectElement(clonedEffectElement);
       })
     },
-    [activeEffectElement, effectElement, sliderContext.variableScopeManager],
-  )
-
-  return {
-    openEffect,
-    activeEffect: activeEffectElement,
-  }
+    // eslint-disable-next-line 
+    [],
+  );
+  return [
+    activeEffectElement,
+    openEffectHandel,
+    isValid,
+  ]
 }

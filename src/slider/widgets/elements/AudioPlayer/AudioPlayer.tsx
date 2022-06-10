@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 import styles from './AudioPlayer.module.css';
 
 export interface AudioPlayerProps extends SliderWidgetProps {

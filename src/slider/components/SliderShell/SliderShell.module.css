@@ -1,0 +1,13 @@
+:global(:root) {
+  --rv-font-size-xs: 0.75rem;
+  --rv-font-size-sm: 0.8rem;
+  --rv-font-size-md: 1rem;
+  --rv-font-size-lg: 2rem;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}

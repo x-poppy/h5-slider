@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Divider as OriginDivider } from 'react-vant';
 import { DividerContentPosition } from 'react-vant/es/divider/PropsType';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 import styles from './Divider.module.css'
 

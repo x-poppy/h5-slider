@@ -1,14 +1,15 @@
 import React, { ReactNode, useMemo, useRef } from 'react';
 import { useInViewport } from 'react-vant/es/hooks';
-import { useSlideNavigationEffect } from '../../../hooks/useSlideNavigationEffect';
 import { useEffectElement } from '../../../hooks/useEffectElement';
-import { SliderWidgetProps, SliderEffectReactElement } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 import styles from './Slide.module.css';
 import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
+import { useNavigationItem } from '../../../hooks/useNavigationItem';
+import { SliderEffectElement } from '../../../types/Element';
 
 export interface SlideProps extends SliderWidgetProps {
-  entryEffect?: SliderEffectReactElement;
+  entryEffect?: SliderEffectElement;
   background?: string;
   children?: ReactNode;
 }
@@ -20,17 +21,21 @@ const EventNames = {
 function Slide(props: SlideProps) {
   const ref = useRef<HTMLDivElement>();
   const inViewPort = useInViewport(ref);
-  const { activeEffect: activeEntryEffect, openEffect:openEntryEffect } = useEffectElement(props.entryEffect);
-  const { isActiveSlide, activeIndex } =  useSlideNavigationEffect();
+
+  const [activeEntryEffect, openEntryEffect, isValidEntryEffect] = useEffectElement(props.entryEffect);
+  const navigationItem = useNavigationItem();
 
   useAsyncEffect(async () => {
     await openEntryEffect({
       eventName: EventNames.OnEntrySlide,
       detail: {
-        activeIndex
+        activeIndex: navigationItem.index
       }
     });
-  }, [ isActiveSlide ], false);
+  }, [navigationItem.active], {
+    isThrowErr: false,
+    valid: navigationItem.active && isValidEntryEffect
+  });
 
   const renderContent = useMemo(() => {
     if (!inViewPort) {

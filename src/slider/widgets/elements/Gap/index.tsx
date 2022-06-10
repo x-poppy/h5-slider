@@ -1,2 +1,2 @@
-export { default } from './Gap';
 export * from "./Gap";
+export { default } from './Gap';

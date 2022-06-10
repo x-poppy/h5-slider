@@ -1,2 +1,2 @@
-export { default } from "./GroupEffect";
 export * from "./GroupEffect";
+export { default } from "./GroupEffect";

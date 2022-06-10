@@ -1,9 +1,10 @@
 import React, { Children, cloneElement, ReactNode, useCallback } from 'react';
 import { useEffectElement } from '../../../hooks/useEffectElement';
-import { SliderWidgetProps, SliderEffectReactElement } from '../../../types/UI';
+import { SliderEffectElement } from '../../../types/Element';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 export interface ClickListenerProps extends SliderWidgetProps {
-  clickEffect?: SliderEffectReactElement;
+  clickEffect?: SliderEffectElement;
   children?: ReactNode;
 }
 
@@ -12,7 +13,7 @@ const EventNames = {
 }
 
 function ClickListener(props: ClickListenerProps) {
-  const { activeEffect, openEffect } = useEffectElement(props.clickEffect);
+  const [ activeEffect, openEffect] = useEffectElement(props.clickEffect);
 
   const onClickHandle = useCallback(() => {
     if (!props.children) {

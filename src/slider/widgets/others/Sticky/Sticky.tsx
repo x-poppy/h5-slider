@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Sticky as OriginSticky, StickyPosition } from 'react-vant';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 export interface StickyProps extends SliderWidgetProps {
   position?: StickyPosition;

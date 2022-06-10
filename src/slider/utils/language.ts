@@ -3,14 +3,32 @@ export function isZHLanguage() {
 }
 
 export enum LocaleMessageKey {
+  CommonCloseText = "CommonCloseText",
+  CommonConfirmText = "CommonConfirmText",
+  CommonCancelText = "CommonCancelText",
   PageErrorDesc = "PageErrorDesc",
   Refresh = "Refresh",
   PreviousSlide = "PreviousSlide",
   NextSlide = "NextSlide",
-  SubmitSlide = "SubmitSlide"
+  SubmitSlide = "SubmitSlide",
+  NavigationAlertTitle = "NavigationAlertTitle",
+  NavigationAlertMessage = "NavigationAlertMessage",
+  ErrorAlertMessage = "ErrorAlertMessage",
 }
 
 const localeMessages = {
+  [LocaleMessageKey.CommonCloseText]: {
+    zh: '关闭',
+    en: 'Close'
+  },
+  [LocaleMessageKey.CommonConfirmText]: {
+    zh: '确认',
+    en: 'Confirm'
+  },
+  [LocaleMessageKey.CommonCancelText]: {
+    zh: '取消',
+    en: 'Cancel'
+  },
   [LocaleMessageKey.PageErrorDesc]: {
     zh: '页面异常, 请您稍后再试！',
     en: 'Page Error! Please Try Again Later!'
@@ -30,10 +48,22 @@ const localeMessages = {
   [LocaleMessageKey.SubmitSlide]: {
     zh: '完成',
     en: 'Submit'
-  }
+  },
+  [LocaleMessageKey.NavigationAlertTitle]: {
+    zh: '提醒',
+    en: 'Warning'
+  },
+  [LocaleMessageKey.NavigationAlertMessage]: {
+    zh: '即将离开当前页面, 请注意信息安全!',
+    en: 'Your\'re ready to leave current page, please pay attention to information security!'
+  },
+  [LocaleMessageKey.ErrorAlertMessage]: {
+    zh: '抱歉, 出错啦～. 请您稍后再试一次',
+    en: 'Ops~, Something went wrong. You can try it again later.'
+  },
 }
 
-export function getLocaleMessage(messageKey: LocaleMessageKey) {
+export function getMessage(messageKey: LocaleMessageKey) {
   const message = localeMessages[messageKey];
   if (!message) {
     return "";
@@ -47,13 +77,13 @@ export function getLocaleMessage(messageKey: LocaleMessageKey) {
 }
 
 export interface I18nMessageBundle {
-  getLocaleMessage(messageKey: LocaleMessageKey | string): string;
+  getMessage(messageKey: LocaleMessageKey | string): string;
 }
 
-export function createMessageBundle(messages: Record<string, any>): I18nMessageBundle {
+export function createI18nMessageBundle(messages: Record<string, any>): I18nMessageBundle {
   return {
-    getLocaleMessage(messageKey: LocaleMessageKey | string): string {
-      return messages[messageKey] ?? getLocaleMessage(messageKey as any);
+    getMessage(messageKey: LocaleMessageKey | string): string {
+      return messages[messageKey] ?? getMessage(messageKey as any);
     }
   }
 }

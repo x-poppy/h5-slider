@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
-import { WidgetSchema } from "../types/SliderSchema";
-import { isComponentSchema, isPlainValue, isReactElement } from "./typeDetect";
+import { WidgetSchema } from "../types/Schema";
+import { isWidgetSchema, isDebuggerValue, isPlainValue, isReactElement } from "./typeDetect";
 import { getRandomString } from "./random";
 import { getReferenceExpressValue, isReferenceExpress } from "./express";
 
-type WidgetFactory = Function;
+type WidgetFactory = CallableFunction;
 
 const widgetsMap: Map<string, WidgetFactory> = new Map();
 
@@ -77,7 +77,7 @@ export function createWidgetFromSchema(
         return childrenItem;
       } else if (isReactElement(childrenItem)) {
         return childrenItem;
-      } else if (isComponentSchema(childrenItem)) {
+      } else if (isWidgetSchema(childrenItem)) {
         return createWidgetFromSchema(childrenItem, {
           sharedProps,
           refScopes,
@@ -87,26 +87,9 @@ export function createWidgetFromSchema(
     });
   } else if (isReactElement(childrenValue)) {
     childrenElement = childrenValue;
-  } else if (isComponentSchema(childrenValue)) {
+  } else if (isWidgetSchema(childrenValue)) {
     childrenElement = createWidgetFromSchema(childrenValue as any, {
       refScopes,
-      sharedProps,
-    }, schema);
-  }
-
-  // self
-  const type = schema.type;
-  if (isReferenceExpress(type)) {
-    const refComponentSchema = getReferenceExpressValue(type, refScopes);
-    if (!isComponentSchema(refComponentSchema)) {
-      throw Error(`Component(${type}) Reference Error`);
-    }
-    return createWidgetFromSchema(refComponentSchema, {
-      refScopes: {
-        ...refScopes,
-        ...schema.props,
-        $children: childrenElement // RefType has a special props '$' for injection
-      },
       sharedProps,
     }, schema);
   }
@@ -116,16 +99,38 @@ export function createWidgetFromSchema(
     for (const [key, val] of Object.entries(schema.props)) {
       // deconstruct the ref
       let propValue = val;
-      if (isReferenceExpress(propValue)) {
+      if (isDebuggerValue(key)) {
+        console.debug("slider widget factory debugger");
+      } else if (isReferenceExpress(propValue)) {
         propValue = getReferenceExpressValue(val, refScopes);
-      } else if (isComponentSchema(propValue)) {
+      } else if (isWidgetSchema(propValue)) {
         propValue = createWidgetFromSchema(propValue, {
-          refScopes,
+          refScopes: {
+            ...refScopes,
+            ...schemaProps,
+          },
           sharedProps,
         }, schema);
       }
       schemaProps[key] = propValue;
     }
+  }
+
+  // self
+  const type = schema.type;
+  if (isReferenceExpress(type)) {
+    const refComponentSchema = getReferenceExpressValue(type, refScopes);
+    if (!isWidgetSchema(refComponentSchema)) {
+      throw Error(`Component(${type}) Reference Error`);
+    }
+    return createWidgetFromSchema(refComponentSchema, {
+      refScopes: {
+        ...refScopes,
+        ...schemaProps,
+        $children: childrenElement // RefType has a special props '$' for injection
+      },
+      sharedProps,
+    }, schema);
   }
 
   return createReactElement(

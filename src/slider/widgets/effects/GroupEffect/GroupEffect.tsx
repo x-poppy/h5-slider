@@ -1,61 +1,51 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import { SliderEffectProps } from '../../../types/UI';
-
+import React, { ReactElement, useRef, useState } from 'react';
+import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
+import { SliderEffectProps } from '../../../types/Widget';
 interface GroupEffectProps extends SliderEffectProps {
-  mode?: 'queue' | 'parallel'
   children: ReactElement[]
 }
 
 function GroupEffect(props: GroupEffectProps) {
-  const isValidChildren = Array.isArray(props.children) && props.children.length > 0;
-  const [activeEffectElements, setActiveEffectElements] = useState<ReactElement[]>([]);
+  const totalCount = Array.isArray(props.children) ? props.children.length : 0;
+  const activeIndexRef = useRef(0);
+  const [activeEffectElement, setActiveEffectElement] = useState<ReactElement | null>(null);
 
-  const effectElementsRef = useRef<ReactElement[]>(props.children.reverse());
-  const mode = props.mode ?? 'queue';
-  const isQueueMode = mode === 'queue';
-
-  useEffect(() => {
-    if (!isValidChildren) {
+  useAsyncEffect(async () => {
+    if (totalCount === 0) {
+      props.onEffectComplete();
       return;
     }
 
     const onEffectComplete = (err: any, data: any) => {
-      if (effectElementsRef.current.length > 0) {
+      if (activeIndexRef.current < totalCount - 1) {
         if (err) {
+          setActiveEffectElement(null);
           props.onEffectComplete?.(err);
-          setActiveEffectElements([]);
         } else {
+          activeIndexRef.current = activeIndexRef.current + 1;
           nextEffectElement();
         }
       } else {
-        props.onEffectComplete?.(err, data);
-        setActiveEffectElements([]);
+        props.onEffectComplete?.(false, data);
+        setActiveEffectElement(null);
       }
     }
 
     const nextEffectElement = () => {
-      if (effectElementsRef.current.length < 1) {
-        return;
-      }
-
-      const nextEffectElement = effectElementsRef.current.pop() as any;
-      const nextClonedEffectElement = React.cloneElement(nextEffectElement, {
+      const nextClonedEffectElement = React.cloneElement(props.children[activeIndexRef.current], {
         onEffectComplete
       });
-      setActiveEffectElements([...activeEffectElements, nextClonedEffectElement]);
+      setActiveEffectElement(nextClonedEffectElement);
     }
 
-    if (isQueueMode) {
-      nextEffectElement();
-    } else {
-      props.children.forEach(() => {
-        nextEffectElement();
-      })
-    }    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    activeIndexRef.current = 0;
+    nextEffectElement();
+  }, [props.event], {
+    isThrowErr: false,
+    valid: !!props.event
+  });
 
-  return null;
+  return activeEffectElement;
 }
 
 export default GroupEffect;

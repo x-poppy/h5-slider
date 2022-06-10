@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 import styles from './Gap.module.css';
 

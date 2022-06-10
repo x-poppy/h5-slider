@@ -1,2 +1,2 @@
-export { default } from "./AlertEffect";
 export * from "./AlertEffect";
+export { default } from "./AlertEffect";

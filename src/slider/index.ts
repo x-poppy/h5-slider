@@ -1,6 +1,5 @@
 import './widgets';
 
-export { default } from "./widgets/core/Slider";
-export * from "./widgets/core/Slider";
+export { default } from "./components/SliderShell";
 
 export { createWidgetFromSchema } from './utils/widgetFactory';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image as OriginImage, ImageFit } from 'react-vant';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 import styles from './Image.module.css'
 

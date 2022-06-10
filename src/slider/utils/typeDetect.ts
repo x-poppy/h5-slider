@@ -10,11 +10,15 @@ export function isPlainValue(val: any) {
   return typeof val === 'string' || val === 'number'  || val === null || val === undefined;
 }
 
-export function isPlainObject(val: any) {
-  return typeof val === 'object' && Object.getPrototypeOf(val) === Object.prototype
+export function isDebuggerValue(val: any) {
+  return val === 'debugger';
 }
 
-export function isComponentSchema(val: any) {
+export function isPlainObject(val: any) {
+  return val !== null && typeof val === 'object' && Object.getPrototypeOf(val) === Object.prototype
+}
+
+export function isWidgetSchema(val: any) {
   if (isPlainObject(val) && 'type' in val && typeof val.type === 'string') {
     return true;
   }

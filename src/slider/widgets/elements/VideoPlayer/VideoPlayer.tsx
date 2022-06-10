@@ -1,5 +1,5 @@
 import React from 'react';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
 
 import styles from './VideoPlayer.module.css';
 

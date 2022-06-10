@@ -1,6 +1,6 @@
 import './core';
 import './elements';
-import './layouts';
+import './container';
 import './effects';
+import './inputs';
 import './others';
-

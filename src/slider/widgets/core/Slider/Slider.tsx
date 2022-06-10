@@ -1,78 +1,99 @@
-import React, { ReactElement, useMemo } from 'react';
-import { Swiper } from 'react-vant';
-import { SliderContextProvider } from '../../../utils/SliderContext';
+import React, { ReactElement, useState } from 'react';
 
-import styles from './Slider.module.css';
-import { SliderWidgetProps, SliderEffectReactElement } from '../../../types/UI';
-import { NavigationItemContextProvider } from '../../../utils/NavigationItemContext';
-import { isCloseTo } from '../../../utils/math';
-import { useSliderTitleEffect } from '../../../hooks/useSliderTitleEffect';
+import { SliderWidgetProps } from '../../../types/Widget';
 import { useSwiperState } from '../../../hooks/useSwiperState';
 import { useEffectElement } from '../../../hooks/useEffectElement';
+import { I18nMessageBundleProvider } from '../../../hooks/useI18nMessageBundle';
+import { NavigationProvider } from '../../../hooks/useNavigation';
+import { PermissionProvider } from '../../../hooks/usePermission';
+import { StoreProvider } from '../../../hooks/useStore';
+import { VariableScopesProvider } from '../../../hooks/useVariableScopes';
 
+import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
+import { useLoadingIndicator } from '../../../components/LoadingIndicator';
+import { useScriptContext } from '../../../hooks/useScriptContext';
+import { StoreValueType } from '../../../utils/storage';
+import SliderOverlapLayer from './components/SliderOverlapLayer';
+import { SliderSchemaProvider } from '../../../hooks/userSliderSchema';
+import SliderContentLayer from './components/SliderContentLayer';
+
+import styles from './Slider.module.css';
+import { SliderEffectElement } from '../../../types/Element';
+
+const EventNames = {
+  Ready: 'ready'
+}
 export interface SliderProps extends SliderWidgetProps {
-  slideIndex?: number;
-  slideCacheSize?: number;
-  initialEffect?: SliderEffectReactElement;
+  background?: string;
+  initialIndex?: number;
+  storeData?: Record<string, StoreValueType>
+  vertical?: boolean;
+  cacheSize?: number;
+  initialEffect?: SliderEffectElement;
   children?: ReactElement[];
 }
 
 // https://swiperjs.com/swiper-api
 function Slider(props: SliderProps) {
   // initial props
-  const slideElements = props.children;
-  const slideCacheSize = props.slideCacheSize ?? 2;
-  const slideTotalCount = slideElements?.length ?? 0;
-  const sliderSchema = props.$$schema;
-  const slideIndex = (props.slideIndex ?? 0) > slideTotalCount - 1 ? slideTotalCount - 1: (props.slideIndex ?? 0);
-  const hasAnySlides = slideTotalCount > 0;
+  const slideElements = props.children ?? [];
 
-  useSliderTitleEffect(sliderSchema);
-  const swiperState = useSwiperState(slideIndex);
+  const loadingIndicator = useLoadingIndicator();
+  const scriptContext = useScriptContext();
+  const [isReady, setIsReady] = useState(!props.initialEffect);
+  
+  const [activeInitialEffect, openInitialEffect] = useEffectElement(props.initialEffect);
+  const swiperState = useSwiperState(props.initialIndex ?? 0, slideElements.length, props.cacheSize);
+  const hasSlides = swiperState.totalCount > 0;
 
-  useEffectElement(props.initialEffect)
-
-  const renderSideElements = useMemo(() => {
-    if (!hasAnySlides) {
-      return null;
+  useAsyncEffect(async() => {
+    if (!props.initialEffect) {
+      scriptContext.emit(new Event(EventNames.Ready))
+      return;
     }
-    return (
-      <Swiper
-        ref={swiperState.swiperRef}
-        initialSwipe={slideIndex}
-        className={styles.swiper}
-        loop={false}
-        touchable={false}
-        indicator={false}
-        onChange={swiperState.onActiveIndexChange}
-      >
-        {slideElements!.map((slideElement, slideIndex) => {
-          return (
-            <Swiper.Item key={slideIndex}>
-              <NavigationItemContextProvider index={slideIndex}>
-                { isCloseTo(slideIndex, swiperState.activeIndex, slideCacheSize) ? slideElement : null }
-              </NavigationItemContextProvider>
-            </Swiper.Item>
-          );
-        })}
-      </Swiper>
-    );
-  }, [hasAnySlides, slideCacheSize, slideElements, slideIndex, swiperState.activeIndex, swiperState.onActiveIndexChange, swiperState.swiperRef])
+    loadingIndicator.start();
+    try {
+      await openInitialEffect({
+        eventName: EventNames.Ready
+      });
+      loadingIndicator.end();
+      setIsReady(true);
+      scriptContext.emit(new Event(EventNames.Ready))
+    } catch(err) {
+      loadingIndicator.end();
+    }
+  }, [], {
+    isThrowErr: true
+  });
 
   return (
-    <SliderContextProvider
-      preSlide={swiperState.swipePrev}
-      nextSlide={swiperState.swipeNext}
-      gotoSlide={swiperState.swipeTo}
-      activeIndex={swiperState.activeIndex} 
-      totalCount={slideTotalCount} 
-      sliderSchema={sliderSchema}
-    >
-      <div className={styles.main}>
-      { renderSideElements }
-      <div className={styles.overlaps}>{props.initialEffect}</div>
+    <div className={styles.main} style={{background: props.background}}>
+      <SliderSchemaProvider sliderSchema={props.$$schema}>
+        <I18nMessageBundleProvider>
+          <NavigationProvider swiperState={swiperState}>
+            <PermissionProvider>
+              <StoreProvider data={props.storeData}>
+                <VariableScopesProvider>
+                  { (isReady  && hasSlides) &&
+                    <SliderContentLayer
+                      swiperRef={swiperState.swiperRef}
+                      slideElements={slideElements}
+                      vertical={props.vertical}
+                      onActiveIndexChange={swiperState.onActiveIndexChange}
+                    /> 
+                  }
+                  { hasSlides &&
+                    <SliderOverlapLayer>
+                      { activeInitialEffect }
+                    </SliderOverlapLayer>
+                  }
+                </VariableScopesProvider>
+              </StoreProvider>
+            </PermissionProvider>
+          </NavigationProvider>
+        </I18nMessageBundleProvider>
+      </SliderSchemaProvider>
     </div>
-    </SliderContextProvider>
   );
 }
 

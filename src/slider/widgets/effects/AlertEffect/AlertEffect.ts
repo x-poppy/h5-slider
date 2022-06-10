@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
 import { Dialog } from "react-vant";
 import { useAsyncEffect } from "../../../hooks/useAsyncEffect";
-import { SliderEffectProps } from "../../../types/UI";
-import { useSliderContext } from "../../../utils/SliderContext";
-import styles from "./AlertEffect.module.css";
+import { useVariableScopes } from "../../../hooks/useVariableScopes";
+import { SliderEffectProps } from "../../../types/Widget";
+
+import fixStyles from "../../../utils/alertStyleFix.module.css";
 
 export interface AlertEffectProps extends SliderEffectProps {
   title?: string | React.ReactNode;
@@ -15,21 +16,24 @@ export interface AlertEffectProps extends SliderEffectProps {
 }
 
 function AlertEffect(props: AlertEffectProps) {
-  const { variableScopeManager } = useSliderContext();
-
+  const variableScopes = useVariableScopes();
   const replacedProps = useMemo(() => {
-    return variableScopeManager.getExpressValues([
+    return variableScopes.getExpressValues([
       'title', 'message', 'overlay', 'theme', 'confirmButtonText', 'confirmButtonColor'
     ], props)
-  }, [props, variableScopeManager]);
+  }, [props, variableScopes]);
 
   useAsyncEffect(async () => {
     await Dialog.alert({
       ...replacedProps,
-      className: styles.main,
+      className: fixStyles.main,
     });
     props.onEffectComplete?.();
-  }, [props.event, props.onEffectComplete]);
+  }, [props.event], {
+    isThrowErr: false,
+    valid: !!props.event
+  });
+
   return null;
 }
 

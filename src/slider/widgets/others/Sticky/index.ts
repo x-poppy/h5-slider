@@ -1,2 +1,2 @@
-export { default } from "./Sticky";
 export * from "./Sticky";
+export { default } from "./Sticky";

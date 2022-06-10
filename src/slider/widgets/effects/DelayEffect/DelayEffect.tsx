@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
-import { SliderEffectProps } from '../../../types/UI';
+import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
+import { SliderEffectProps } from '../../../types/Widget';
 
 interface DelayEffectProps extends SliderEffectProps {
   delay?: number;
 }
 
 function DelayEffect(props: DelayEffectProps) {
-  useEffect(() => {
+  useAsyncEffect(async () => {
     setTimeout(() => {
       props.onEffectComplete();
     }, props.delay ?? 1000);
-  }, [props])
+  }, [props.event], {
+    isThrowErr: false,
+    valid: !!props.event
+  });
   
   return null;
 }

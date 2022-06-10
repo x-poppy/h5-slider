@@ -2,14 +2,13 @@ import React from 'react';
 import { Progress } from 'react-vant';
 import styles from './SlideIndicator.module.css';
 
-import { useSliderContext } from '../../../utils/SliderContext';
-import { SliderWidgetProps } from '../../../types/UI';
+import { SliderWidgetProps } from '../../../types/Widget';
+import { useNavigation } from '../../../hooks/useNavigation';
 
 const format = (rate: number) => Math.min(Math.max(rate, 0), 100);
 
 function SlideIndicator(props: SliderWidgetProps) {
-  const stageAPI = useSliderContext();
-  const navigation = stageAPI.navigation;
+  const navigation = useNavigation();
   const activeIndex = navigation.activeIndex + 1;
   const totalCount = navigation.totalCount;
 

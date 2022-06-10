@@ -1,2 +1,2 @@
-export { default } from "./SlideIndicator";
 export * from "./SlideIndicator";
+export { default } from "./SlideIndicator";

@@ -1,0 +1,9 @@
+.main {
+  height: 100%;
+  background-color: #eaeaea;
+  --rv-empty-image-size: 6rem;
+}
+
+.refreshBtn {
+  min-width:6rem;
+}
