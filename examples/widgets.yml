@@ -5,6 +5,9 @@ info:
   description: "xxxxxx"
   contentBackground: "#FFF"
 script: "./test.js"
+security:
+  knownHosts:
+    - http://www.baidu.com
 definitions:
   Components:
     # -------------------------------------------
@@ -18,7 +21,7 @@ definitions:
         preButtonEnable: true
         nextButtonEnable: true
       props:
-        entryEffect: ${entryEffect} 
+        entryEffect: ${entryEffect}
       children:
         type: Padding
         children:
@@ -99,8 +102,7 @@ definitions:
 
 type: Slider
 props:
-  slideCacheSize: 0
-  initialEffect: null
+  cacheSize: 1
 children:
   # ActionBar
   - type: ${Components.ComponentSlide}
@@ -235,22 +237,58 @@ children:
                 shadow: true
               children: "XXXXXX"             
   
-  # NavigationButton
+  # ClickListener                
   - type: ${Components.ComponentSlide}
     props:
-      slideTitle: NavigationButton
-      slideSubTitle: 导航按钮
+      slideTitle: ClickListener
+      slideSubTitle: 'ClickListener, 当被包裹的元素被点击时触发的事件'
     children:
       - type: ${Components.ComponentPropBlock}
         props:
-          propTitle: "href"
-          propSubTitle: "跳转地址"
-          propUsage: "href: \"http://www.baidu.com\""
+          propTitle: "effect"
+          propSubTitle: "触发相应的效果"
+          propUsage: "effect: AlertEffect"
         children:
-          - type: NavigationButton
-            props:
-              searchMatcher: ["schema"]
-              href: "./?schema=examples%2Fwidgets.yml"
+          - type: ClickListener
+            props: 
+              clickEffect:
+                type: AlertEffect
+                props:
+                  message: "${event.eventName} ${title} This element is clicked~"
+            children:
+              type: Image
+              props:
+                width: 10rem
+                height: 10rem
+                src: "./examples/assets/pic_trulli.jpeg"
+                round: true
+                radius: 10rem
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "effect"
+          propSubTitle: "触发组合效果"
+          propUsage: "effect: GroupEffect"
+        children:
+          - type: ClickListener
+            props: 
+              clickEffect:
+                type: GroupEffect
+                children: 
+                  - type: AlertEffect
+                    props:
+                      message: "This element is clicked 1~"
+                  - type: AlertEffect
+                    props:
+                      message: "This element is clicked 2~"  
+            children:
+              type: Image
+              props:
+                width: 10rem
+                height: 10rem
+                src: "./examples/assets/pic_trulli.jpeg"
+                round: true
+                radius: 10rem
 
   # Divider
   - type: ${Components.ComponentSlide}
@@ -296,6 +334,51 @@ children:
               color: red
               contentPosition: right
             children: "contentPosition right"
+
+  # Module
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Module
+      slideSubTitle: '模块'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "contentPosition"
+          propSubTitle: "文字位置 'left' | 'center' | 'right'"
+          propUsage: "contentPosition: center"
+        children:
+          - type: Module
+            props:
+              url: './examples/slide-001.yml'  
+
+  # NavigationButton
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: NavigationButton
+      slideSubTitle: 导航按钮
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "href"
+          propSubTitle: "跳转地址"
+          propUsage: "href: \"http://www.baidu.com\""
+        children:
+          - type: NavigationButton
+            props:
+              searchMatcher: ["schema"]
+              href: "./?schema=examples%2Fwidgets.yml"
+            children: "点击跳转"  
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "href"
+          propSubTitle: "跳转地址"
+          propUsage: "href: \"http://www.baidu.com\""
+        children:
+          - type: NavigationButton
+            props:
+              searchMatcher: ["schema"]
+              href: "http://www.baidu.com"
+            children: "点击跳转(跨域跳转需要确认)"         
 
   # Image
   - type: ${Components.ComponentSlide}
@@ -408,86 +491,13 @@ children:
             props:
               height: 10rem
               src: "https://xxxx"
-  # RichText
-  - type: ${Components.ComponentSlide}
-    props:
-      slideTitle: RichText
-      slideSubTitle: '富文本'
-    children:
-      - type: RichText
-        children: '<section style="background-image: url(&quot;https://xiumi-1302869205.cos.ap-shanghai.myqcloud.com/mat/i/fvId/e4691e03f9ccb81f357b27241f1cd743_sz-2028.png?x-oss-process=style/xmwebp&quot;); background-position: -33.1579% 167.669%; background-repeat: repeat; background-size: 50.3916%; background-attachment: scroll; box-sizing: border-box; text-align: justify;" class="ng-scope">
-    <section class="V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">
-            <img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="http://dl.xiumi.us/xmi/ua/3G95h/i/6396ad3ecfb9dcba04e2c304d98b55fd-sz_16391.jpg"/>
- &nbsp;
-        </section>
-    </section>
-    <section style="margin: 0px; position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section style="font-size: 12px; color: rgb(201, 165, 203); text-align: center; letter-spacing: 2px; line-height: 2; padding: 0px; box-sizing: border-box;">
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                THE WIND BLOWS LONG SUMMER DAYS
-            </p>
-        </section>
-    </section>
-    <section style="margin: 5px 0px 0px; transform: translate3d(2px, 0px, 0px); -webkit-transform: translate3d(2px, 0px, 0px); -moz-transform: translate3d(2px, 0px, 0px); -o-transform: translate3d(2px, 0px, 0px); position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section style="font-size: 23px; color: rgb(255, 255, 255); letter-spacing: 5px; text-align: right; text-shadow: rgb(151, 181, 70) 1px -1px, rgb(151, 181, 70) 1px 1px, rgb(151, 181, 70) -1px 1px, rgb(151, 181, 70) -1px -1px, rgb(151, 181, 70) 1px 0px, rgb(151, 181, 70) 0px 1px, rgb(151, 181, 70) -1px 0px, rgb(151, 181, 70) 0px -1px; line-height: 1.3; padding: 0px; box-sizing: border-box;">
-            <p style="text-align: center; margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <span style="font-size: 40px; text-shadow: rgb(201, 165, 203) 1px -1px, rgb(201, 165, 203) 1px 1px, rgb(201, 165, 203) -1px 1px, rgb(201, 165, 203) -1px -1px, rgb(201, 165, 203) 1px 0px, rgb(201, 165, 203) 0px 1px, rgb(201, 165, 203) -1px 0px, rgb(201, 165, 203) 0px -1px; box-sizing: border-box;"><strong style="box-sizing: border-box;">风吹夏日长</strong></span><strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><br style="box-sizing: border-box;"/></em></strong>
-            </p>
-        </section>
-    </section>
-    <section style="margin: 0px; position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section style="font-size: 12px; color: rgb(201, 165, 203); text-align: center; letter-spacing: 10px; line-height: 2; padding: 0px; box-sizing: border-box;">
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                岁/月/长/衣/裳/薄
-            </p>
-        </section>
-    </section>
-    <section class="V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">
-            <img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="http://dl.xiumi.us/xmi/ua/3G95h/i/67fb70d26cec71c0103ebb40a63657a6-sz_712392.jpg"/>
- &nbsp;
-        </section>
-    </section>
-    <section style="transform: translate3d(1px, 0px, 0px); -webkit-transform: translate3d(1px, 0px, 0px); -moz-transform: translate3d(1px, 0px, 0px); -o-transform: translate3d(1px, 0px, 0px); margin: 10px 0% 0px; position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section style="font-size: 14px; color: rgb(103, 118, 116); line-height: 1.8; letter-spacing: 1px; padding: 0px 20px; text-align: left; box-sizing: border-box;">
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">排版：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">有人的怡宝</span></em>
-            </p>
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">图片：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">秀米</span></em>
-            </p>
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">文字：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">自编，使用请替换</span></em>
-            </p>
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">字体：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">默认字体</span></em>
-            </p>
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">封面：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">秀米生成长图的截图（</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">封面中文为思源黑体，</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">英文字体为Liberation Sans字体</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">）</span></em>
-            </p>
-            <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">
-                <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">贴图：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">分割线为秀米贴图，其余</span></em><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">自绘，</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">可商用,</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">禁二次销售</span></em>
-            </p>
-        </section>
-    </section>
-    <section class="V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">
-        <section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">
-            <img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="http://dl.xiumi.us/xmi/ua/3G95h/i/abde0843c94d51d38de37227174917ac-sz_8454.jpg"/>
- &nbsp;
-        </section>
-    </section>
-</section>
-<p>
-    <br/>
-</p>'
 
-  # Option
+ # Option
   - type: ${Components.ComponentSlide}
     props:
       slideTitle: Option
       slideSubTitle: '单选'
-      nextButtonEnable: test-002
+      nextButtonEnable: ${test-002}
     children:
       - type: ${Components.ComponentPropBlock}
         props:
@@ -503,7 +513,6 @@ children:
               props:
                 name: "test-001:1"
               children: "XXXXXXX"
-
       - type: ${Components.ComponentPropBlock}
         props:
           propTitle: "选项"
@@ -545,6 +554,93 @@ children:
                   width: 6rem
                   height: 6rem
                   src: "./examples/assets/img_chania.jpeg"      
+
+  # QRCode
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: QRCode
+      slideSubTitle: '二维码'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "childrem"
+          propSubTitle: "内容"
+          propUsage: "childrem: 'xxxxx'"
+        children:
+          - type: QRCode
+            props:
+              size: 256
+            children: "https://xxxx"
+
+  # Rate
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Rate
+      slideSubTitle: '评分'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "gutter"
+          propSubTitle: "图标间距,默认单位为px"
+          propUsage: "gutter: 6px"
+        children:
+          - type: Rate
+            props:
+              gutter: 10px
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "color"
+          propSubTitle: "选中时的颜色"
+          propUsage: "color: red"
+        children:
+          - type: Rate
+            props:
+              color: red
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "voidColor"
+          propSubTitle: "选中时的颜色"
+          propUsage: "voidColor: black"
+        children:
+          - type: Rate
+            props:
+              color: red   
+              voidColor: black
+
+  # RichText
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: RichText
+      slideSubTitle: '富文本'
+    children:
+      - type: RichText
+        children: '<section style="background-image: url(&quot;https://xiumi-1302869205.cos.ap-shanghai.myqcloud.com/mat/i/fvId/e4691e03f9ccb81f357b27241f1cd743_sz-2028.png?x-oss-process=style/xmwebp&quot;); background-position: -33.1579% 167.669%; background-repeat: repeat; background-size: 50.3916%; background-attachment: scroll; box-sizing: border-box; text-align: justify;" class="ng-scope">          <section class="V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">                  <img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="http://dl.xiumi.us/xmi/ua/3G95h/i/6396ad3ecfb9dcba04e2c304d98b55fd-sz_16391.jpg"/>                &nbsp;              </section>          </section>          <section style="margin: 0px; position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section style="font-size: 12px; color: rgb(201, 165, 203); text-align: center; letter-spacing: 2px; line-height: 2; padding: 0px; box-sizing: border-box;">                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      THE WIND BLOWS LONG SUMMER DAYS                  </p>              </section>          </section>          <section style="margin: 5px 0px 0px; transform: translate3d(2px, 0px, 0px); -webkit-transform: translate3d(2px, 0px, 0px); -moz-transform: translate3d(2px, 0px, 0px); -o-transform: translate3d(2px, 0px, 0px); position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section style="font-size: 23px; color: rgb(255, 255, 255); letter-spacing: 5px; text-align: right; text-shadow: rgb(151, 181, 70) 1px -1px, rgb(151, 181, 70) 1px 1px, rgb(151, 181, 70) -1px 1px, rgb(151, 181, 70) -1px -1px, rgb(151, 181, 70) 1px 0px, rgb(151, 181, 70) 0px 1px, rgb(151, 181, 70) -1px 0px, rgb(151, 181, 70) 0px -1px; line-height: 1.3; padding: 0px; box-sizing: border-box;">                  <p style="text-align: center; margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <span style="font-size: 40px; text-shadow: rgb(201, 165, 203) 1px -1px, rgb(201, 165, 203) 1px 1px, rgb(201, 165, 203) -1px 1px, rgb(201, 165, 203) -1px -1px, rgb(201, 165, 203) 1px 0px, rgb(201, 165, 203) 0px 1px, rgb(201, 165, 203) -1px 0px, rgb(201, 165, 203) 0px -1px; box-sizing: border-box;"><strong style="box-sizing: border-box;">风吹夏日长</strong></span><strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><br style="box-sizing: border-box;"/></em></strong>                  </p>              </section>          </section>          <section style="margin: 0px; position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section style="font-size: 12px; color: rgb(201, 165, 203); text-align: center; letter-spacing: 10px; line-height: 2; padding: 0px; box-sizing: border-box;">                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      岁/月/长/衣/裳/薄                  </p>              </section>          </section>          <section class="V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">                  <img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="http://dl.xiumi.us/xmi/ua/3G95h/i/67fb70d26cec71c0103ebb40a63657a6-sz_712392.jpg"/>      &nbsp;              </section>          </section>          <section style="transform: translate3d(1px, 0px, 0px); -webkit-transform: translate3d(1px, 0px, 0px); -moz-transform: translate3d(1px, 0px, 0px); -o-transform: translate3d(1px, 0px, 0px); margin: 10px 0% 0px; position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section style="font-size: 14px; color: rgb(103, 118, 116); line-height: 1.8; letter-spacing: 1px; padding: 0px 20px; text-align: left; box-sizing: border-box;">                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">排版：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">有人的怡宝</span></em>                  </p>                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">图片：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">秀米</span></em>                  </p>                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">文字：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">自编，使用请替换</span></em>                  </p>                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">字体：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">默认字体</span></em>                  </p>                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">封面：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">秀米生成长图的截图（</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">封面中文为思源黑体，</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">英文字体为Liberation Sans字体</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">）</span></em>                  </p>                  <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; box-sizing: border-box;">                      <strong style="box-sizing: border-box;"><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">贴图：</span></em></strong><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">分割线为秀米贴图，其余</span></em><em style="box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">自绘，</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">可商用,</span></em><em style="letter-spacing: 1.8px; box-sizing: border-box;"><span style="font-size: 12px; box-sizing: border-box;">禁二次销售</span></em>                  </p>              </section>          </section>          <section class="V5" style="position: static; box-sizing: border-box;" powered-by="xiumi.us">              <section class="" style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static; box-sizing: border-box;">                  <img style="max-width: 100%; vertical-align: middle; box-sizing: border-box;" class="" src="http://dl.xiumi.us/xmi/ua/3G95h/i/abde0843c94d51d38de37227174917ac-sz_8454.jpg"/>      &nbsp;              </section>          </section>      </section>      <p>          <br/>      </p>'
+  
+  # ShowableGroup
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: ShowableGroup
+      slideSubTitle: '控制Group内容的是否显示'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "show"
+          propSubTitle: "点击按钮后会显示内容"
+          propUsage: "show: true"
+        children:
+          - type: Switch
+            props:
+              name: 'ShowableGroup-Switch'
+          - type: ShowableGroup
+            props:
+              show: ${ShowableGroup-Switch}
+            children:
+              type: Block
+              children:
+                type: QRCode
+                props:
+                  size: 256
+                children: "https://xxxx"  
 
   # Sticky
   - type: ${Components.ComponentSlide}
@@ -622,7 +718,7 @@ children:
   - type: ${Components.ComponentSlide}
     props:
       slideTitle: Slide
-      slideSubTitle: 'Slide 表示一1页'
+      slideSubTitle: 'Slide 表示一页'
       # debugger: true
       entryEffect:
         type: AlertEffect
@@ -639,7 +735,32 @@ children:
           - type: Text
             children: "-"
 
-
+  # Switch
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Switch
+      slideSubTitle: '开关组建'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "size"
+          propSubTitle: "	开关尺寸"
+          propUsage: "size: 2rem"
+        children:
+          - type: Switch
+            props:
+              size: 2rem
+              inactiveColor: green
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "activeColor"
+          propSubTitle: "打开时的背景色"
+          propUsage: "activeColor: #FFCCCC"
+        children:
+          - type: Switch
+            props:
+              activeColor: red        
+  
   # Title/Text/Link
   - type: ${Components.ComponentSlide}
     props:
@@ -797,6 +918,21 @@ children:
             props:
               strong: true
             children: "strong: true"
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "link"
+          propSubTitle: "连接"
+          propUsage: "strong: true"
+        children:
+          - type: Link
+            props:
+              strong: true
+              href: "http://www.baidu.com"
+              clickEffect:
+                type: AlertEffect
+                props:
+                  message: "${event.eventName} ${title} This element is clicked~"
+            children: "Link Link Link"      
 
   # VideoPlayer
   - type: ${Components.ComponentSlide}
@@ -823,63 +959,23 @@ children:
           - type: VideoPlayer
             props:
               src: "./examples/assets/mov_bbb.mp4"
-  
 
-  # ClickListener                
+  # The End
   - type: ${Components.ComponentSlide}
     props:
-      slideTitle: ClickListener
-      slideSubTitle: 'ClickListener, 当被包裹的元素被点击时触发的事件'
+      slideTitle: The End
+      slideSubTitle: '-'
     children:
       - type: ${Components.ComponentPropBlock}
         props:
-          propTitle: "effect"
-          propSubTitle: "触发相应的效果"
-          propUsage: "effect: AlertEffect"
+          propTitle: "点击提交按钮"
+          propSubTitle: "-"
+          propUsage: "-"
         children:
-          - type: ClickListener
-            props: 
-              clickEffect:
-                type: AlertEffect
-                props:
-                  message: "${event.eventName} ${title} This element is clicked~"
-            children:
-              type: Image
-              props:
-                width: 10rem
-                height: 10rem
-                src: "./examples/assets/pic_trulli.jpeg"
-                round: true
-                radius: 10rem
-
-      - type: ${Components.ComponentPropBlock}
-        props:
-          propTitle: "effect"
-          propSubTitle: "触发组合效果"
-          propUsage: "effect: GroupEffect"
-        children:
-          - type: ClickListener
-            props: 
-              clickEffect:
-                type: GroupEffect
-                children: 
-                  - type: AlertEffect
-                    props:
-                      message: "This element is clicked 1~"
-                  - type: AlertEffect
-                    props:
-                      message: "This element is clicked 2~"  
-            children:
-              type: Image
-              props:
-                width: 10rem
-                height: 10rem
-                src: "./examples/assets/pic_trulli.jpeg"
-                round: true
-                radius: 10rem
           - type: ActionBar
             props:
               submitEffect:
                 type: SubmitStoreEffect
                 props:
                   url: "./test"
+                  searchMatcher: ["userId","exerciseId"]
