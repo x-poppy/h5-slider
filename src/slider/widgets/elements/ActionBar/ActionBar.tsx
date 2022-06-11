@@ -12,14 +12,18 @@ import { useStore } from '../../../hooks/useStore';
 import { SliderEffectElement } from '../../../types/Element';
 
 import styles from './ActionBar.module.css';
+import { getReferenceVariableValue } from '../../../utils/express';
 
 interface ActionBarProps extends SliderWidgetProps {
   preSlideEffect?: SliderEffectElement;
   nextSlideEffect?: SliderEffectElement;
   submitEffect?: SliderEffectElement;
 
+  // bind
   nextButtonEnable?: boolean | string | string[];
+  // bind
   preButtonEnable?: boolean | string | string[];
+  // bind
   submitButtonEnable?: boolean | string | string[];
 
   preButtonText?: string,
@@ -62,58 +66,21 @@ const EventNames = {
 }
 
 function ActionBar(props: ActionBarProps) {
-
   const i18nMessageBundle = useI18nMessageBundle();
   const permission = usePermission();
   const navigation = useNavigation();
   const store = useStore();
 
   const nextButtonStoreEnable = useMemo(() => {
-    if (typeof props.nextButtonEnable === 'boolean') {
-      return props.nextButtonEnable;
-    }
-    
-    if (typeof props.nextButtonEnable === 'string') {
-      return !!store.get(props.nextButtonEnable);
-    }
-    
-    if (Array.isArray(props.nextButtonEnable)) {
-      return props.nextButtonEnable.some((item) => !!store.get(item));
-    }
-
-    return true;
+    return getReferenceVariableValue(props.nextButtonEnable, true, (key: string) => store.get(key) ?? false);
   }, [props.nextButtonEnable, store]);
 
   const preButtonStoreEnable = useMemo(() => {
-    if (typeof props.preButtonEnable === 'boolean') {
-      return props.preButtonEnable;
-    } 
-    
-    if (typeof props.preButtonEnable === 'string') {
-      return !!store.get(props.preButtonEnable);
-    }
-    
-    if (Array.isArray(props.preButtonEnable)) {
-      return props.preButtonEnable.some((item) => !!store.get(item));
-    }
-
-    return true;
+    return getReferenceVariableValue(props.preButtonEnable, true, (key: string) => store.get(key) ?? false);
   }, [props.preButtonEnable, store]);
 
   const submitButtonStoreEnable = useMemo(() => {
-    if (typeof props.submitButtonEnable === 'boolean') {
-      return props.submitButtonEnable;
-    }
-    
-    if (typeof props.submitButtonEnable === 'string') {
-      return !!store.get(props.submitButtonEnable);
-    }
-    
-    if (Array.isArray(props.submitButtonEnable)) {
-      return props.submitButtonEnable.some((item) => !!store.get(item));
-    }
-
-    return true;
+    return getReferenceVariableValue(props.submitButtonEnable, true, (key: string) => store.get(key) ?? false);
   }, [props.submitButtonEnable, store]);
 
   const [activePreSlideEffect, openPreSlideEffect, isValidPreSlideEffect] = useEffectElement(props.preSlideEffect);
@@ -128,9 +95,9 @@ function ActionBar(props: ActionBarProps) {
   const hasSubmitPermission = permission.getPermission(PermissionKey.SubmitSlide, true);
 
   const isShowPreBtn = hasPreSlidePermission;
-  const isPreBtnEnabled = navigation.activeIndex > 0 && preButtonStoreEnable;
-  const isNexBtnEnabled = navigation.totalCount > 0 && nextButtonStoreEnable;
-  const isSubmitMode = navigation.totalCount > 0 && navigation.activeIndex === navigation.totalCount - 1;
+  const isPreBtnEnabled = !isPreBtnLoading && navigation.activeIndex > 0 && preButtonStoreEnable;
+  const isNexBtnEnabled = !isNextBtnLoading && nextButtonStoreEnable;
+  const isSubmitMode = !isSubmitBtnLoading && navigation.activeIndex === navigation.totalCount - 1;
   const isSubmitBtnEnable = hasSubmitPermission && submitButtonStoreEnable;
 
   const preButtonText = props.preButtonText ?? i18nMessageBundle.getMessage(LocaleMessageKey.PreviousSlide);

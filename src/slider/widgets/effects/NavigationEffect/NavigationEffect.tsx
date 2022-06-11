@@ -15,9 +15,10 @@ function NavigationEffect(props: NavigationEffectProps) {
     navigateTo(getRandomValueFromArray(props.href), {
       searchMatcher: props.searchMatcher,
       i18nMessageBundle,
+      knownHosts: props.$$schema.security?.knownHosts
     });
   }, [props.event], {
-    isThrowErr: false,
+    popupError: true,
     valid: !!props.event
   });
 }

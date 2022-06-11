@@ -1,45 +1,46 @@
 import { useEffect, useState } from "react";
-import { Dialog } from 'react-vant';
+import { Dialog } from "react-vant";
 import { callback } from "../utils/callback";
-import { LocaleMessageKey } from "../utils/language";
 import { useI18nMessageBundle } from "./useI18nMessageBundle";
 
 import fixStyles from "../utils/alertStyleFix.module.css";
+import { LocaleMessageKey } from "../utils/language";
+
 interface UseAsyncEffectOpts {
-  isThrowErr?: boolean;
+  // false is only use for slider initialEffect, and is's en
+  popupError?: boolean;
   valid?: boolean;
 }
 
 export function useAsyncEffect(effectCallback?: CallableFunction, deps?: any[], opts?:UseAsyncEffectOpts) {
   const i18nMessageBundle = useI18nMessageBundle();
-  
-  const isThrowErr = opts?.isThrowErr ?? false; 
+  const ignoreError = opts?.popupError === undefined;
+  const isPopupError = opts?.popupError ?? false;
   const valid = opts?.valid ?? true;
 
   deps ??= [];
   const [error, throwError] = useState<any>(null);
-  if (error) {
-    if (isThrowErr) {
-      throw error;
-    }
+  if (error && !ignoreError && !isPopupError) {
+    throw error;
   }
 
   useEffect(() => {
-    if (isThrowErr) {
-      return;
-    }
-
     if (!error) {
       return;
     }
-
-    throwError(null);// clear the error
+    if (ignoreError) {
+      return;
+    }
+    if (!isPopupError) {
+      return;
+    }
+    
     Dialog.alert({
       message: i18nMessageBundle.getMessage(LocaleMessageKey.ErrorAlertMessage),
       confirmButtonText:  i18nMessageBundle.getMessage(LocaleMessageKey.CommonCloseText),
       className: fixStyles.main,
     });
-  }, [error, i18nMessageBundle, isThrowErr]);
+  }, [error, i18nMessageBundle, ignoreError, isPopupError])
 
   useEffect(() => {
     if (!effectCallback) {

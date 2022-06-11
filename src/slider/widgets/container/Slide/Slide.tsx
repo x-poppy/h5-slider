@@ -33,7 +33,6 @@ function Slide(props: SlideProps) {
       }
     });
   }, [navigationItem.active], {
-    isThrowErr: false,
     valid: navigationItem.active && isValidEntryEffect
   });
 

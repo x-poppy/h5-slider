@@ -41,7 +41,7 @@ function GroupEffect(props: GroupEffectProps) {
     activeIndexRef.current = 0;
     nextEffectElement();
   }, [props.event], {
-    isThrowErr: false,
+    popupError: true,
     valid: !!props.event
   });
 

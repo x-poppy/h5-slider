@@ -1,4 +1,5 @@
-import { filterObjectByKeys } from "./object";
+import { filterObjectByMatcher } from "./object";
+import { trimPrefix } from "./string";
 import { isPlainValue } from "./typeDetect";
 
 export type StoreValueType = string | number | boolean | null;
@@ -13,14 +14,16 @@ export interface Storage {
 }
 
 interface CreateStorageOpts {
+  prefix?: string;
   onUpdate?: () => void;
 }
 
 export function createStorage(data: Record<string, StoreValueType>, opts?: CreateStorageOpts): Storage {
   const transformedData = Object.keys(data ?? {}).reduce((map, key) => {
-    const val = data[key];
+    const trimPrefixKey = trimPrefix(key, opts?.prefix);
+    const val = data[trimPrefixKey];
     if (isPlainValue(val)) {
-      map[key] = val;
+      map[trimPrefixKey] = val;
     }
     return map;
   }, {} as any);
@@ -32,18 +35,34 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
       opts?.onUpdate?.();
     },
     delete(key: string) {
-      store.delete(key);
+      if (!key) {
+        return;
+      }
+      const trimPrefixKey = trimPrefix(key, opts?.prefix);
+      store.delete(trimPrefixKey);
       opts?.onUpdate?.();
     },
     get(key: string): StoreValueType | undefined {
-      return store.get(key);
+      if (!key) {
+        return undefined;
+      }
+      const trimPrefixKey = trimPrefix(key, opts?.prefix);
+      return store.get(trimPrefixKey);
     },
     has(key: string): boolean {
-      return store.has(key);
+      if (!key) {
+        return false;
+      }
+      const trimPrefixKey = trimPrefix(key, opts?.prefix);
+      return store.has(trimPrefixKey);
     },
     set(key: string, val: StoreValueType) {
-      const changed = store.get(key) !== val;
-      store.set(key, val);
+      if (!key) {
+        return;
+      }
+      const trimPrefixKey = trimPrefix(key, opts?.prefix);
+      const changed = store.get(trimPrefixKey) !== val;
+      store.set(key, trimPrefixKey);
       changed && opts?.onUpdate?.();
     },
     get size() {
@@ -64,5 +83,5 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
 
 export function getStoreData(store: Storage,  matcher?: string | string[]) {
   const jsonData = store.toJSON();
-  return filterObjectByKeys(jsonData, matcher);
+  return filterObjectByMatcher(jsonData, matcher, false);
 }

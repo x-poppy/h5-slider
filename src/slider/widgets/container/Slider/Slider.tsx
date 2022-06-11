@@ -42,12 +42,12 @@ function Slider(props: SliderProps) {
   const scriptContext = useScriptContext();
   const [isReady, setIsReady] = useState(!props.initialEffect);
   
-  const [activeInitialEffect, openInitialEffect] = useEffectElement(props.initialEffect);
+  const [activeInitialEffect, openInitialEffect, isValidInitialEffect] = useEffectElement(props.initialEffect);
   const swiperState = useSwiperState(props.initialIndex ?? 0, slideElements.length, props.cacheSize);
   const hasSlides = swiperState.totalCount > 0;
 
   useAsyncEffect(async() => {
-    if (!props.initialEffect) {
+    if (!isValidInitialEffect) {
       scriptContext.emit(new Event(EventNames.Ready))
       return;
     }
@@ -61,9 +61,10 @@ function Slider(props: SliderProps) {
       scriptContext.emit(new Event(EventNames.Ready))
     } catch(err) {
       loadingIndicator.end();
+      throw err;
     }
   }, [], {
-    isThrowErr: true
+    popupError: false
   });
 
   return (

@@ -1,13 +1,72 @@
 import {getProperty, hasProperty} from 'dot-prop';
+import { getRandomValueFromArray } from './random';
 
 const referenceExpressReg = /\${[^}{]*?}/g;
 
-export function isReferenceExpress(val: any) {
+export function isReferenceVariable(val: any) {
   if (typeof val === 'string') {
     if (val.startsWith('${') && val.endsWith('}')) {
       return true;
     }
+  }
+  return false;
+}
 
+export function getNameReferenceVariable(val: any) {
+  if (!isReferenceVariable(val)) {
+    return null;
+  }
+  const results = (val as string).slice(2, -1);
+
+  if (results.length === 0) {
+    return null;
+  }
+  return results;
+}
+
+export function getReferenceVariableValue(
+  value: any, 
+  defaultValue: any, 
+  reader?: (key: string) => any): any {
+  if (value === undefined || value === null) {
+    return defaultValue;
+  } else if (isReferenceVariable(value)) {
+    const variableNme = getNameReferenceVariable(value);
+    if (!variableNme || !reader) {
+      return defaultValue;
+    }
+    return reader(variableNme) ?? defaultValue;
+  }
+
+  if (typeof defaultValue === 'boolean') {
+    if (typeof value === 'boolean') {
+      return value;
+    } else if (Array.isArray(value)) {
+      return value.some((item) => {
+        return Boolean(getReferenceVariableValue(item, defaultValue, reader));
+      })
+    } else {
+      return !!value;
+    }
+  } else if (defaultValue === 'string') {
+    if (Array.isArray(value)) {
+      const results = value.map((item) => getReferenceVariableValue(item, defaultValue, reader));
+      return getRandomValueFromArray(results);
+    } else {
+      return value + '';
+    }
+  } else if(typeof defaultValue !== typeof value) {
+    return defaultValue;
+  } else {
+    return value; 
+  }
+}
+
+export function isReferenceExpress(val: any) {
+  if (typeof val === 'string') {
+    if (isReferenceVariable(val)) {
+      return true;
+    }
     const results = val.match(referenceExpressReg);
     if (!results) {
       return false;
@@ -27,19 +86,20 @@ export function getReferenceExpressValue(val: any, scopeRefs?: Record<string, an
       return val;
     }
 
-    const isFullReference = val.startsWith('${') && val.endsWith('}');
-    if (isFullReference) {
-      const referenceVarName = val.slice(2, -1);
-      if (referenceVarName.length > 0 && hasProperty(scopeRefs, referenceVarName)) {
-        return getProperty(scopeRefs, referenceVarName);
+    if (isReferenceVariable(val)) {
+      const variableName = getNameReferenceVariable(val);
+      if (variableName && hasProperty(scopeRefs, variableName)) {
+        return getProperty(scopeRefs, variableName);
       }
       return val;
     }
 
     return val.replaceAll(referenceExpressReg, (matchStr) => {
-      const referenceVarName = matchStr.slice(2, -1);
-      if (referenceVarName.length > 0 && hasProperty(scopeRefs, referenceVarName)) {
-        return getProperty(scopeRefs, referenceVarName);
+      if (isReferenceVariable(matchStr)) {
+        const variableName = getNameReferenceVariable(matchStr);
+        if (variableName && hasProperty(scopeRefs, variableName)) {
+          return getProperty(scopeRefs, variableName);
+        }
       }
       return matchStr;
     });

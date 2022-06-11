@@ -15,3 +15,7 @@ export interface SliderEffectProps extends SliderWidgetProps {
   event: SlideEffectEvent;
   onEffectComplete: OnEffectCompleteFunction;
 }
+
+export interface SliderStorableWidgetProps extends SliderWidgetProps {
+  name: string
+}

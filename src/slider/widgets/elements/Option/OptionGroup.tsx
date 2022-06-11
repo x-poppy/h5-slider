@@ -2,8 +2,10 @@ import React, { ReactNode, useCallback, useContext, useMemo, useState } from 're
 import { Space } from 'react-vant';
 import { useStore } from '../../../hooks/useStore';
 import { SliderWidgetProps } from '../../../types/Widget';
+import { getReferenceVariableValue } from '../../../utils/express';
 import { shuffle } from '../../../utils/math';
 import { noop } from '../../../utils/noop';
+import { converStringToBooleanMap, covertBooleanMapToString } from '../../../utils/object';
 
 import styles from './OptionGroup.module.css'
 
@@ -33,30 +35,21 @@ export function OptionGroup(props: OptionGroupProps) {
 
   const store = useStore();
   const defaultSelectedValues = useMemo(() => {
-    const valueStr = store.get<string>(props.name ?? "") ?? undefined;
-    if (typeof valueStr === 'string') {
-      return valueStr.split(',').reduce<Record<string, boolean>>((map, key: string) => {
-        key = key.trim();
-        if (key) {
-          map[key] = true;
-        }
-        return map;
-      }, {});
-    }
-    return [];
-  }, [props.name, store]);
+    const value = getReferenceVariableValue(props.name, "", (key: string) => store.get(key)) as string;
+    return converStringToBooleanMap(value, ',');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.name]);
 
   const [selectedValues, setSelectedValues] = useState(defaultSelectedValues as Record<string, boolean>);
 
   const selectOptionHandle = useCallback(
     (name: string, selected: boolean) => {
-      const targetSelectedValues:Record<string, boolean> = {
+      const values = {
         ...(multiple && selectedValues),
         [name]: selected,
       };
-      setSelectedValues(targetSelectedValues);
-      const valueStr = Object.keys(targetSelectedValues).filter(key => !!targetSelectedValues[key]).join(",");
-      store.set(props.name, valueStr);      
+      setSelectedValues(values);
+      store.set(props.name, covertBooleanMapToString(values, ',')); 
     },
     [multiple, props.name, selectedValues, store],
   )
@@ -69,15 +62,7 @@ export function OptionGroup(props: OptionGroupProps) {
   }, [selectOptionHandle, selectedValues]);
 
   const randomChildren = useMemo(() => {
-    if (!props.random) {
-      return props.children;
-    }
-
-    if (!Array.isArray(props.children)) {
-      return props.children;
-    }
-
-    return shuffle(props.children);
+    return (props.random && Array.isArray(props.children)) ? shuffle(props.children) : props.children;
   }, [props.children, props.random]);
 
   return (

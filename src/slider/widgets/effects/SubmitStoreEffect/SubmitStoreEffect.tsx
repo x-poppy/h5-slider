@@ -33,7 +33,7 @@ function SubmitStoreEffect(props: HttpRequestEffectProps) {
       throw err;
     }
   }, [props.event], {
-    isThrowErr: false,
+    popupError: true,
     valid: !!props.event
   });
   

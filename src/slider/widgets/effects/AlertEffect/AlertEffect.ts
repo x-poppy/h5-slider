@@ -17,20 +17,23 @@ export interface AlertEffectProps extends SliderEffectProps {
 
 function AlertEffect(props: AlertEffectProps) {
   const variableScopes = useVariableScopes();
-  const replacedProps = useMemo(() => {
-    return variableScopes.getExpressValues([
-      'title', 'message', 'overlay', 'theme', 'confirmButtonText', 'confirmButtonColor'
-    ], props)
-  }, [props, variableScopes]);
 
   useAsyncEffect(async () => {
+    const replacedProps = variableScopes.getExpressValues([
+      'title',
+      'message',
+      'overlay', 
+      'theme', 
+      'confirmButtonText', 
+      'confirmButtonColor'
+    ], props);
+
     await Dialog.alert({
       ...replacedProps,
       className: fixStyles.main,
     });
     props.onEffectComplete?.();
   }, [props.event], {
-    isThrowErr: false,
     valid: !!props.event
   });
 

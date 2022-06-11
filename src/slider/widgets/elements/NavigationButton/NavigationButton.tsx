@@ -1,11 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Button, ButtonSize, ButtonType } from 'react-vant';
 import { ShareO } from '@react-vant/icons';
 
 import { SliderWidgetProps } from '../../../types/Widget';
 import { getNavigationURL } from '../../../utils/url';
 import { navigateTo } from '../../../utils/navigateTo';
-import { getRandomValueFromArray } from '../../../utils/random';
+import { getReferenceVariableValue } from '../../../utils/express';
+import { useStore } from '../../../hooks/useStore';
 
 export interface NavigationButtonProps extends SliderWidgetProps {
   type?: ButtonType,
@@ -21,17 +22,23 @@ export interface NavigationButtonProps extends SliderWidgetProps {
 }
 
 function NavigationButton(props: NavigationButtonProps) {
+  const store = useStore();
+  const href = useMemo(() => {
+    return getReferenceVariableValue(props.href, '', (key: string) => store.get(key));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.href]);
+
   const onClickHandle = useCallback(async () => {
-    const href = getRandomValueFromArray(props.href);
       const navigateURL = getNavigationURL(href, props.searchMatcher);
       if (!navigateURL) {
         return;
       }
-      
       navigateTo(navigateURL, {
-        searchMatcher: props.searchMatcher
+        searchMatcher: props.searchMatcher,
+        knownHosts: props.$$schema.security?.knownHosts
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [props.href, props.searchMatcher],
   )
   return (

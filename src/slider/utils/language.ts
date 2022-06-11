@@ -1,5 +1,12 @@
+
+let isZhLanguage: null | boolean = null ;
 export function isZHLanguage() {
-  return navigator.language.toLowerCase().startsWith('zh');
+  if (isZhLanguage === null) {
+    const serchParams = new URLSearchParams(window.location.search);
+    const language = (serchParams.get('language') ?? navigator.language ?? 'en');
+    isZhLanguage = language.toLowerCase().startsWith('zh');
+  }
+  return isZhLanguage;
 }
 
 export enum LocaleMessageKey {
@@ -58,7 +65,7 @@ const localeMessages = {
     en: 'Your\'re ready to leave current page, please pay attention to information security!'
   },
   [LocaleMessageKey.ErrorAlertMessage]: {
-    zh: '抱歉, 出错啦～. 请您稍后再试一次',
+    zh: '抱歉, 出错啦～ 请您稍后再试一次',
     en: 'Ops~, Something went wrong. You can try it again later.'
   },
 }

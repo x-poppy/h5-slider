@@ -11,7 +11,6 @@ function DelayEffect(props: DelayEffectProps) {
       props.onEffectComplete();
     }, props.delay ?? 1000);
   }, [props.event], {
-    isThrowErr: false,
     valid: !!props.event
   });
   

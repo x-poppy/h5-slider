@@ -13,16 +13,19 @@ const EventNames = {
 }
 
 function ClickListener(props: ClickListenerProps) {
-  const [ activeEffect, openEffect] = useEffectElement(props.clickEffect);
+  const [ activeClickEffect, openClickEffect, isValidClickEffect] = useEffectElement(props.clickEffect);
 
   const onClickHandle = useCallback(() => {
+    if (!isValidClickEffect) {
+      return;
+    }
     if (!props.children) {
       return;
     }
-    openEffect({
+    openClickEffect({
       eventName: EventNames.OnClick
     });
-  }, [openEffect, props.children])
+  }, [openClickEffect, props.children])
 
   if (!props.children) {
     return null;
@@ -35,7 +38,7 @@ function ClickListener(props: ClickListenerProps) {
         onClick: onClickHandle
       })
     }
-    { activeEffect }
+    { activeClickEffect }
   </>
   )
 }

@@ -5,6 +5,8 @@
     "@typescript-eslint"
   ],
   "extends": [
+    "react-app",
+    "react-app/jest",
     "prettier",
     "eslint:recommended",
     "plugin:react/recommended",

@@ -73,7 +73,7 @@ function SliderLoader() {
     }
   // eslint-disable-next-line 
   }, [], {
-    isThrowErr: true
+    popupError: false
   });
   
   return sliderElement;

@@ -7,6 +7,7 @@ import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
 interface NavigateToOpts {
   searchMatcher?: string | string[],
   i18nMessageBundle?: I18nMessageBundle
+  knownHosts?: string[];
 }
 
 export function isCors(href: string) {
@@ -27,6 +28,17 @@ export async function navigateTo(href: string, opts?: NavigateToOpts) {
 
   const transformedHref = getNavigationURL(href, opts?.searchMatcher);
   if (!isCors(transformedHref)) {
+    window.location.href = transformedHref;
+    return;
+  }
+
+  let isKnowHost = false;
+  if (Array.isArray(opts?.knownHosts)) {
+    isKnowHost = opts!.knownHosts.some(host => {
+      return transformedHref.startsWith(host);
+    })
+  }
+  if (isKnowHost) {
     window.location.href = transformedHref;
     return;
   }

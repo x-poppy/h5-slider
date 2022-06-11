@@ -32,10 +32,15 @@ export interface SchemaStore {
   responseDataPath?: string;
 }
 
+export interface SchemaSecurity{
+  knownHosts?: string[]
+}
+
 export interface SliderSchema extends WidgetSchema<'Slider', 'Slide'> {
   version: string;
   info?: SchemaInfo;
   script?: string;
   store?: SchemaStore;
+  security?: SchemaSecurity;
 }
 

@@ -5,11 +5,7 @@ export interface GroupProps {
 }
 
 function Group(props: GroupProps) {
-  return (
-    <>
-      { props.children }
-    </>
-  );
+  return props.children;
 }
 
 export default Group;
