@@ -62,7 +62,7 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
       }
       const trimPrefixKey = trimPrefix(key, opts?.prefix);
       const changed = store.get(trimPrefixKey) !== val;
-      store.set(key, trimPrefixKey);
+      store.set(trimPrefixKey, val);
       changed && opts?.onUpdate?.();
     },
     get size() {
@@ -83,5 +83,5 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
 
 export function getStoreData(store: Storage,  matcher?: string | string[]) {
   const jsonData = store.toJSON();
-  return filterObjectByMatcher(jsonData, matcher, false);
+  return filterObjectByMatcher(jsonData, matcher, false) as Record<string, StoreValueType>;
 }

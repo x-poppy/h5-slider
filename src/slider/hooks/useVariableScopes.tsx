@@ -11,7 +11,7 @@ interface VariableScopesProviderProps {
 export function VariableScopesProvider(props: VariableScopesProviderProps) {
   const sliderSchema = useSliderSchema();
   const definitions = sliderSchema?.definitions;
-
+  
   const inst = useMemo(() => {
     return createVariableScopes({
       ...definitions,

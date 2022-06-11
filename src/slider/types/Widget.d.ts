@@ -5,6 +5,7 @@ export type SpaceType = '0.5rem' | '1rem' | '1.5rem' | '2rem';
 export interface SliderWidgetProps {
   $$schema: SliderSchema;
   $schema: WidgetSchema;
+  name: string;
 
   onClick?: (evt: React.MouseEvent<any>) => void;
 }

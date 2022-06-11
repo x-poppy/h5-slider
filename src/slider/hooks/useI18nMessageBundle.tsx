@@ -10,7 +10,6 @@ interface I18nMessageBundleProviderProps {
 
 export function I18nMessageBundleProvider(props: I18nMessageBundleProviderProps) {
   const sliderSchema = useSliderSchema();
-
   const definitions = sliderSchema?.definitions;
   const localeMessages = definitions?.LocaleMessages;
 

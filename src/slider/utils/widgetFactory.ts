@@ -51,7 +51,7 @@ export function createWidgetFromSchema(
   };
   // isTopLevel
   if (isTopLevel) {
-    sharedProps.$$schema = schema;
+    sharedProps.$$schema = sharedProps.$$schema ?? schema;
   }
 
   const refScopes: Record<string, any> = {
@@ -111,6 +111,20 @@ export function createWidgetFromSchema(
           },
           sharedProps,
         }, schema);
+      } else if (Array.isArray(propValue)) {
+        propValue = propValue.map((item) => {
+          if (isPlainValue(item)) {
+            return item;
+          } else if (isReactElement(item)) {
+            return item;
+          } else if (isWidgetSchema(item)) {
+            return createWidgetFromSchema(item, {
+              sharedProps,
+              refScopes,
+            }, schema);
+          }
+          return item;
+        });
       }
       schemaProps[key] = propValue;
     }
@@ -135,6 +149,7 @@ export function createWidgetFromSchema(
 
   return createReactElement(
     type, {
+      name: getRandomString(),
       ...schemaProps,
       ...localProps,
       ...sharedProps,

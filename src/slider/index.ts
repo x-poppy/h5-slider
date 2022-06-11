@@ -1,5 +1,5 @@
-import './widgets';
+import './components';
 
-export { default } from "./components/SliderShell";
+export { default } from "./baseComponents/SliderShell";
 
 export { createWidgetFromSchema } from './utils/widgetFactory';

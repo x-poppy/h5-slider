@@ -3,6 +3,13 @@ import { createStorage, StoreValueType, Storage } from '../utils/storage';
 
 const StoreContext = React.createContext(createStorage({}));
 
+export const StoreKeyNames = {
+  ActiveIndex: 'activeIndex',
+  TotalCount: 'totalCount',
+  StartTimeStamp: 'startTimeStamp',
+  EndTimeStamp: 'endTimeStamp',
+};
+
 interface StoreProviderProps {
   data?: Record<string, StoreValueType> | null
   children?: ReactNode;

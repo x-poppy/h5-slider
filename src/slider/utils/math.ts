@@ -16,3 +16,15 @@ export function shuffle(value: any[]) {
 
   return value.sort(() => Math.random() - 0.5);
 }
+
+export function limitNumer(val: number, min: number, max: number): number {
+  if (val > max) {
+    val = max;
+  }
+
+  if (val < min) {
+    val = min;
+  }
+
+  return val;
+}

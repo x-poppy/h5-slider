@@ -102,8 +102,7 @@ definitions:
 
 type: Slider
 props:
-  cacheSize: 0
-  initialEffect: null
+  cacheSize: 1
 children:
   # ActionBar
   - type: ${Components.ComponentSlide}
@@ -290,12 +289,6 @@ children:
                 src: "./examples/assets/pic_trulli.jpeg"
                 round: true
                 radius: 10rem
-          - type: ActionBar
-            props:
-              submitEffect:
-                type: SubmitStoreEffect
-                props:
-                  url: "./test"
 
   # Divider
   - type: ${Components.ComponentSlide}
@@ -341,6 +334,22 @@ children:
               color: red
               contentPosition: right
             children: "contentPosition right"
+
+  # Module
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Module
+      slideSubTitle: '模块'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "contentPosition"
+          propSubTitle: "文字位置 'left' | 'center' | 'right'"
+          propUsage: "contentPosition: center"
+        children:
+          - type: Module
+            props:
+              url: './examples/slide-001.yml'  
 
   # NavigationButton
   - type: ${Components.ComponentSlide}
@@ -563,6 +572,41 @@ children:
               size: 256
             children: "https://xxxx"
 
+  # Rate
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Rate
+      slideSubTitle: '评分'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "gutter"
+          propSubTitle: "图标间距,默认单位为px"
+          propUsage: "gutter: 6px"
+        children:
+          - type: Rate
+            props:
+              gutter: 10px
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "color"
+          propSubTitle: "选中时的颜色"
+          propUsage: "color: red"
+        children:
+          - type: Rate
+            props:
+              color: red
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "voidColor"
+          propSubTitle: "选中时的颜色"
+          propUsage: "voidColor: black"
+        children:
+          - type: Rate
+            props:
+              color: red   
+              voidColor: black
+
   # RichText
   - type: ${Components.ComponentSlide}
     props:
@@ -584,23 +628,19 @@ children:
           propSubTitle: "点击按钮后会显示内容"
           propUsage: "show: true"
         children:
-          - type: Button
+          - type: Switch
             props:
-              clickEffect:
-                type: UpdateStoreEffect
-                props: 
-                  name: 'ShowableGroup-0001'
-                  value: 1
-            children: "点击后显示内容"
-
+              name: 'ShowableGroup-Switch'
           - type: ShowableGroup
             props:
-              show: 'ShowableGroup-0001'
+              show: ${ShowableGroup-Switch}
             children:
-              type: QRCode
-              props:
-                size: 256
-              children: "https://xxxx"  
+              type: Block
+              children:
+                type: QRCode
+                props:
+                  size: 256
+                children: "https://xxxx"  
 
   # Sticky
   - type: ${Components.ComponentSlide}
@@ -678,7 +718,7 @@ children:
   - type: ${Components.ComponentSlide}
     props:
       slideTitle: Slide
-      slideSubTitle: 'Slide 表示一1页'
+      slideSubTitle: 'Slide 表示一页'
       # debugger: true
       entryEffect:
         type: AlertEffect
@@ -695,6 +735,32 @@ children:
           - type: Text
             children: "-"
 
+  # Switch
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Switch
+      slideSubTitle: '开关组建'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "size"
+          propSubTitle: "	开关尺寸"
+          propUsage: "size: 2rem"
+        children:
+          - type: Switch
+            props:
+              size: 2rem
+              inactiveColor: green
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "activeColor"
+          propSubTitle: "打开时的背景色"
+          propUsage: "activeColor: #FFCCCC"
+        children:
+          - type: Switch
+            props:
+              activeColor: red        
+  
   # Title/Text/Link
   - type: ${Components.ComponentSlide}
     props:
@@ -893,3 +959,23 @@ children:
           - type: VideoPlayer
             props:
               src: "./examples/assets/mov_bbb.mp4"
+
+  # The End
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: The End
+      slideSubTitle: '-'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "点击提交按钮"
+          propSubTitle: "-"
+          propUsage: "-"
+        children:
+          - type: ActionBar
+            props:
+              submitEffect:
+                type: SubmitStoreEffect
+                props:
+                  url: "./test"
+                  searchMatcher: ["userId","exerciseId"]

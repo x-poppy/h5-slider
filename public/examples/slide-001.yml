@@ -1,0 +1,12 @@
+version: 0.0.1
+type: Block
+props:
+  background: "#f6f8fa"
+children:
+  - type: Text
+    props:
+      type: secondary
+    children: "这是一个远程加载的组件"
+  - type: Switch
+    props:
+      activeColor: red   
