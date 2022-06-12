@@ -16,6 +16,7 @@ function NavigationEffect(props: NavigationEffectProps) {
       searchMatcher: props.searchMatcher,
       i18nMessageBundle,
       knownHosts: props.$$schema.security?.knownHosts,
+      baseURL: props.$$schema.info?.baseURL,
       onClose: () => {
         props.onEffectComplete();
       }
