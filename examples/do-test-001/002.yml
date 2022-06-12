@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:002'
+    questionImgUrl: './assets/02.jpeg'
+    questionText: '我感到早晨心情最好'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从来没有这种感觉"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时会..."
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "经常是这样的"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "我每天早上都是如此" 

@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:001'
+    questionImgUrl: './assets/01.jpeg'
+    questionText: '我感到情绪沮丧，郁闷，情绪低落'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从来没有，几乎没有"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时会出现，但是很快就没事了"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "常出现，已经影响了我的生活"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "持续出现，苦恼不堪。" 

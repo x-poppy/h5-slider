@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:003'
+    questionImgUrl: './assets/03.jpeg'
+    questionText: '我要哭或想哭'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从无或偶尔有这种感觉"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时候会这样"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "经常莫名的难过,想哭"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "总是这样，情绪低落"

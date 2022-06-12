@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:0010'
+    questionImgUrl: './assets/10.jpeg'
+    questionText: '我无故感到疲乏'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从未有过"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时会疲乏"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "经常感到疲劳"
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "D"
+        optionText: "持续性的疲乏"

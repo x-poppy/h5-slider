@@ -102,7 +102,18 @@ definitions:
 
 type: Slider
 props:
-  cacheSize: 1
+  widgets:
+    - type: FloatingBall
+      children:
+      - type: Button
+        props:
+          round: true
+          type: primary
+          clickEffect:
+            type: NavigationEffect
+            props:
+              href: "../../?schema=examples%2Findex%2Findex.yml"
+        children: 返回
 children:
   # ActionBar
   - type: ${Components.ComponentSlide}
@@ -142,7 +153,7 @@ children:
         children:
           - type: AudioPlayer
             props:
-              src: "./examples/assets/horse.mp3"
+              src: "./assets/horse.mp3"
               type: "audio/mpeg"
       - type: ${Components.ComponentPropBlock}
         props:
@@ -152,7 +163,7 @@ children:
         children:
           - type: AudioPlayer
             props:
-              src: "./examples/assets/horse.mp3"
+              src: "./assets/horse.mp3"
               type: "audio/mpeg"
   
   # Block
@@ -237,6 +248,132 @@ children:
                 shadow: true
               children: "XXXXXX"             
   
+  # CircleProgress
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: CircleProgress
+      slideSubTitle: '圆形进度条'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "rate"
+          propSubTitle: "当前进度	"
+          propUsage: "rate: 30"
+        children:
+          - type: CircleProgress
+            props:
+              defaultRate: 10
+              rate: 30
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "size"
+          propSubTitle: "圆环直径	"
+          propUsage: "size: 200px"
+        children:
+          - type: CircleProgress
+            props:
+              rate: 20
+              text: '20%' 
+              size: 200px 
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "color"
+          propSubTitle: "进度条颜色	"
+          propUsage: "color: #FFCCFF"
+        children:
+          - type: CircleProgress
+            props:
+              defaultRate: 30
+              rate: 60
+              color: '#FFCCFF'
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "layerColor"
+          propSubTitle: "轨道颜色"
+          propUsage: "color: #000"
+        children:
+          - type: CircleProgress
+            props:
+              rate: 40
+              color: '#FFCCFF'
+              layerColor: 'black'
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "fill"
+          propSubTitle: "填充颜色"
+          propUsage: "fill: #CCC"
+        children:
+          - type: CircleProgress
+            props:
+              rate: 80
+              color: '#FFCCFF'
+              layerColor: 'black'
+              fill: '#CCC'
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "speed"
+          propSubTitle: "动画速度（单位为 rate/s)"
+          propUsage: "speed: 10"
+        children:
+          - type: CircleProgress
+            props:
+              rate: 100
+              speed: 10   
+              text: '10%' 
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "text"
+          propSubTitle: "文本"
+          propUsage: "text: 文本"
+        children:
+          - type: CircleProgress
+            props:
+              text: '文本'
+              rate: 100
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "strokeWidth"
+          propSubTitle: "进度条宽度	"
+          propUsage: "strokeWidth: 60"
+        children:
+          - type: CircleProgress
+            props:
+              strokeWidth: 60 
+              rate: 100
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "strokeLinecap"
+          propSubTitle: "进度条端点的形状，可选值为 round square butt"
+          propUsage: "strokeLinecap: square"
+        children:
+          - type: CircleProgress
+            props:
+              strokeLinecap: butt
+              rate: 95
+
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "clockwise"
+          propSubTitle: "是否顺时针增加"
+          propUsage: "clockwise: false"
+        children:
+          - type: CircleProgress
+            props:
+              clockwise: false
+              rate: 100
+              speed: 10
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "startPosition"
+          propSubTitle: "进度起始位置，可选值为 left、right、bottom"
+          propUsage: "startPosition: bottom"
+        children:
+          - type: CircleProgress
+            props:
+              startPosition: bottom
+              rate: 100
+              speed: 10
+        
   # ClickListener                
   - type: ${Components.ComponentSlide}
     props:
@@ -260,7 +397,7 @@ children:
               props:
                 width: 10rem
                 height: 10rem
-                src: "./examples/assets/pic_trulli.jpeg"
+                src: "./assets/pic_trulli.jpeg"
                 round: true
                 radius: 10rem
 
@@ -286,7 +423,7 @@ children:
               props:
                 width: 10rem
                 height: 10rem
-                src: "./examples/assets/pic_trulli.jpeg"
+                src: "./assets/pic_trulli.jpeg"
                 round: true
                 radius: 10rem
 
@@ -335,6 +472,30 @@ children:
               contentPosition: right
             children: "contentPosition right"
 
+  # Float
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: Float
+      slideSubTitle: '漂浮'
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+            propTitle: "left"
+            propSubTitle: "左边位置"
+            propUsage: "left: 20%"
+        children:
+          type: Float
+          props:
+            left: 20px
+            top: 80px
+          children: 
+            - type: Block
+              props:
+                background: "#f6f8fa"
+              children:
+                type: Button
+                children: XXXXXX  
+
   # Module
   - type: ${Components.ComponentSlide}
     props:
@@ -349,7 +510,7 @@ children:
         children:
           - type: Module
             props:
-              url: './examples/slide-001.yml'  
+              url: './slide-001.yml'  
 
   # NavigationButton
   - type: ${Components.ComponentSlide}
@@ -380,6 +541,23 @@ children:
               href: "http://www.baidu.com"
             children: "点击跳转(跨域跳转需要确认)"         
 
+  # IFrame
+  - type: ${Components.ComponentSlide}
+    props:
+      slideTitle: IFrame
+      slideSubTitle: IFrame
+    children:
+      - type: ${Components.ComponentPropBlock}
+        props:
+          propTitle: "href"
+          propSubTitle: "地址"
+          propUsage: "href: \"http://www.baidu.com\""
+        children:
+          - type: IFrame
+            props: 
+              src: 'https://c.xiumi.us/stage/v5/5aV92/378019867'
+              height: 100vh
+
   # Image
   - type: ${Components.ComponentSlide}
     props:
@@ -394,7 +572,7 @@ children:
         children:
           - type: Image
             props:
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
 
       - type: ${Components.ComponentPropBlock}
         props:
@@ -405,7 +583,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: contain
           - type: Text
             props:
@@ -416,7 +594,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: cover
           - type: Text
             props:
@@ -427,7 +605,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: fill
           - type: Text
             props:
@@ -438,7 +616,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: none
           - type: Text
             props:
@@ -449,7 +627,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: scale-down
           - type: Text
             props:
@@ -466,7 +644,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               round: true
       - type: ${Components.ComponentPropBlock}
         props:
@@ -478,7 +656,7 @@ children:
             props:
               width: 10rem
               height: 10rem
-              src: "./examples/assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               round: true
               radius: 10rem
       - type: ${Components.ComponentPropBlock}
@@ -492,7 +670,7 @@ children:
               height: 10rem
               src: "https://xxxx"
 
- # Option
+  # Option
   - type: ${Components.ComponentSlide}
     props:
       slideTitle: Option
@@ -534,7 +712,7 @@ children:
                 props:
                   width: 6rem
                   height: 6rem
-                  src: "./examples/assets/pic_trulli.jpeg"
+                  src: "./assets/pic_trulli.jpeg"
             - type: Option
               props:
                 name: "test-002:2"
@@ -543,7 +721,7 @@ children:
                 props:
                   width: 6rem
                   height: 6rem
-                  src: "./examples/assets/img_girl.jpeg"
+                  src: "./assets/img_girl.jpeg"
 
             - type: Option
               props:
@@ -553,7 +731,7 @@ children:
                 props:
                   width: 6rem
                   height: 6rem
-                  src: "./examples/assets/img_chania.jpeg"      
+                  src: "./assets/img_chania.jpeg"      
 
   # QRCode
   - type: ${Components.ComponentSlide}
@@ -948,7 +1126,7 @@ children:
         children:
           - type: VideoPlayer
             props:
-              src: "./examples/assets/mov_bbb.mp4"
+              src: "./assets/flower.mp4"
               type: "audio/mpeg"
       - type: ${Components.ComponentPropBlock}
         props:
@@ -958,7 +1136,7 @@ children:
         children:
           - type: VideoPlayer
             props:
-              src: "./examples/assets/mov_bbb.mp4"
+              src: "./assets/flower.mp4"
 
   # The End
   - type: ${Components.ComponentSlide}
