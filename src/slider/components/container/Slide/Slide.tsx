@@ -1,15 +1,18 @@
 import React, { ReactNode, useMemo, useRef } from 'react';
 import { useInViewport } from 'react-vant/es/hooks';
 import { useEffectElement } from '../../../hooks/useEffectElement';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 
-import styles from './Slide.module.css';
 import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
 import { useSlideIndex } from '../../../hooks/useSlideIndex';
 import { SliderEffectElement } from '../../../types/Element';
 import { useNavigation } from '../../../hooks/useNavigation';
 
-export interface SlideProps extends SliderWidgetProps {
+import styles from './Slide.module.css';
+import OverlapLayer from '../../../baseComponents/OverlapLayer';
+import { OverlapLayerRefProvider } from '../../../hooks/useOverlapLayerRef';
+
+export interface SlideProps extends SliderComponentProps {
   entryEffect?: SliderEffectElement;
   background?: string;
   children?: ReactNode;
@@ -48,8 +51,12 @@ function Slide(props: SlideProps) {
 
   return (
     <div ref={ref as any} onClick={props.onClick} style={{background: props.background}} className={styles.main}>
-      { renderContent }
-      { activeEntryEffect }
+      <OverlapLayerRefProvider>
+        { renderContent }
+        <OverlapLayer>
+          { activeEntryEffect }
+        </OverlapLayer>
+      </OverlapLayerRefProvider>
     </div>
   );
 }

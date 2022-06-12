@@ -1,22 +1,23 @@
 import React, { ReactNode } from "react";
-import { WidgetSchema } from "../types/Schema";
-import { isWidgetSchema, isDebuggerValue, isPlainValue, isReactElement } from "./typeDetect";
+import { ComponentSchema } from "../types/Schema";
+import { isComponentSchema, isDebuggerValue, isPlainValue, isReactElement } from "./typeDetect";
 import { getRandomString } from "./random";
 import { getReferenceExpressValue, isReferenceExpress } from "./express";
+import { find } from "./schema";
 
-type WidgetFactory = CallableFunction;
+type ComponentFactory = CallableFunction;
 
-const widgetsMap: Map<string, WidgetFactory> = new Map();
+const registeredComponentsMap: Map<string, ComponentFactory> = new Map();
 
-export function registerWidget(widgetFactory: WidgetFactory, name?: string) {
-  widgetsMap.set(name ?? widgetFactory.name , widgetFactory);
+export function registerComponent(factory: ComponentFactory, name?: string) {
+  registeredComponentsMap.set(name ?? factory.name , factory);
 }
 
 function createReactElement(name: string, props: any, children: any) {
-  let ElementFactor = widgetsMap.get(name);
+  let ElementFactor = registeredComponentsMap.get(name);
   if (!ElementFactor) {
     console.warn(`Can't find the '${name}' and back to the 'NoImplement Component'`);
-    ElementFactor = widgetsMap.get('NoImplement') as any;
+    ElementFactor = registeredComponentsMap.get('NoImplement') as any;
     props = {
       ...props,
       componentName: name
@@ -26,14 +27,22 @@ function createReactElement(name: string, props: any, children: any) {
   return React.createElement(ElementFactor as any, props, children);
 }
 
-export function createWidgetFromSchema(
-  schema: WidgetSchema,
+// export function findUsedComponentNamesFromSchema(schema: ComponentSchema): string[] {
+//   const results = find(schema, (componentSchema: ComponentSchema) => {
+
+//   });
+
+//   return results;
+// }
+
+export function createComponentFromSchema(
+  schema: ComponentSchema,
   opts?: {
     refScopes?: Record<string, any>,
     localProps?: Record<string, any>,
     sharedProps?: Record<string, any>
   }, 
-  parentSchema?: WidgetSchema
+  parentSchema?: ComponentSchema
 ): ReactNode {
   // check the schema
   const isTopLevel = !parentSchema;
@@ -77,8 +86,8 @@ export function createWidgetFromSchema(
         return childrenItem;
       } else if (isReactElement(childrenItem)) {
         return childrenItem;
-      } else if (isWidgetSchema(childrenItem)) {
-        return createWidgetFromSchema(childrenItem, {
+      } else if (isComponentSchema(childrenItem)) {
+        return createComponentFromSchema(childrenItem, {
           sharedProps,
           refScopes,
         }, schema);
@@ -87,8 +96,8 @@ export function createWidgetFromSchema(
     });
   } else if (isReactElement(childrenValue)) {
     childrenElement = childrenValue;
-  } else if (isWidgetSchema(childrenValue)) {
-    childrenElement = createWidgetFromSchema(childrenValue as any, {
+  } else if (isComponentSchema(childrenValue)) {
+    childrenElement = createComponentFromSchema(childrenValue as any, {
       refScopes,
       sharedProps,
     }, schema);
@@ -100,11 +109,11 @@ export function createWidgetFromSchema(
       // deconstruct the ref
       let propValue = val;
       if (isDebuggerValue(key)) {
-        console.debug("slider widget factory debugger");
+        console.debug("slider component factory debugger");
       } else if (isReferenceExpress(propValue)) {
         propValue = getReferenceExpressValue(val, refScopes);
-      } else if (isWidgetSchema(propValue)) {
-        propValue = createWidgetFromSchema(propValue, {
+      } else if (isComponentSchema(propValue)) {
+        propValue = createComponentFromSchema(propValue, {
           refScopes: {
             ...refScopes,
             ...schemaProps,
@@ -117,8 +126,8 @@ export function createWidgetFromSchema(
             return item;
           } else if (isReactElement(item)) {
             return item;
-          } else if (isWidgetSchema(item)) {
-            return createWidgetFromSchema(item, {
+          } else if (isComponentSchema(item)) {
+            return createComponentFromSchema(item, {
               sharedProps,
               refScopes,
             }, schema);
@@ -134,10 +143,10 @@ export function createWidgetFromSchema(
   const type = schema.type;
   if (isReferenceExpress(type)) {
     const refComponentSchema = getReferenceExpressValue(type, refScopes);
-    if (!isWidgetSchema(refComponentSchema)) {
+    if (!isComponentSchema(refComponentSchema)) {
       throw Error(`Component(${type}) Reference Error`);
     }
-    return createWidgetFromSchema(refComponentSchema, {
+    return createComponentFromSchema(refComponentSchema, {
       refScopes: {
         ...refScopes,
         ...schemaProps,

@@ -1,5 +1,5 @@
 import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
-import { SliderEffectProps } from '../../../types/Widget';
+import { SliderEffectProps } from '../../../types/Component';
 
 interface DelayEffectProps extends SliderEffectProps {
   delay?: number;

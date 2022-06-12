@@ -1,14 +1,14 @@
-interface WidgetSchema<T1 extends string = string, T2 extends string = string> {
-  type: T1,
-  props?: Record<string, any>,
+interface ComponentSchema {
+  type: string,
   definitions?: SchemaDefinition
-  children: WidgetSchema<T2> | SliderMetadata<T2>[] | string | number | null | undefined
+  props?: Record<string, any>,
+  children?: ComponentSchema | ComponentSchema[] | string | number | null | undefined
 }
 
 export interface SchemaDefinition {
   LocaleMessages?: Record<string, string | number | null | undefined>
   Permissions?: Record<string>
-  [key: string]: SchemaDefinition | WidgetSchema | null | string | number | undefined
+  [key: string]: SchemaDefinition | ComponentSchema | null | string | number | undefined
 }
 
 export interface SchemaInfo {
@@ -24,6 +24,7 @@ export interface SchemaInfo {
   appleTouchIcon?: string;
   background?: string;
   contentBackground?: string;
+  baseURL?: string;
 }
 
 export interface SchemaStore {
@@ -36,11 +37,16 @@ export interface SchemaSecurity{
   knownHosts?: string[]
 }
 
-export interface SliderSchema extends WidgetSchema<'Slider', 'Slide'> {
+export interface SlideSchema extends ComponentSchema {
+  title?: string;
+}
+
+export interface SliderSchema extends ComponentSchema {
   version: string;
   info?: SchemaInfo;
   script?: string;
   store?: SchemaStore;
   security?: SchemaSecurity;
+  children: SlideSchema[]
 }
 

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { SliderSchema } from "../types/Schema";
+import { getURL } from "../utils/url";
 
-export function useSliderHTMLEffect(sliderSchema: SliderSchema | null) {
+export function useSliderHTMLEffect(schema: SliderSchema | null) {
   useEffect(() => {
-    const info = sliderSchema?.info;
+    const info = schema?.info;
     if (!info) {
       return;
     }
@@ -18,7 +19,8 @@ export function useSliderHTMLEffect(sliderSchema: SliderSchema | null) {
 
     const iconElement = document.head.querySelector("link[rel='icon']");
     if (iconElement) {
-      iconElement.setAttribute("href", info.favicon ?? "./favicon.ico");
+      const faviconURL = (info.favicon && getURL(info.favicon, schema.info?.baseURL)) ?? "./favicon.ico";
+      iconElement.setAttribute("href", faviconURL);
     }
 
     if (info.description) {
@@ -70,5 +72,5 @@ export function useSliderHTMLEffect(sliderSchema: SliderSchema | null) {
       }
     }
     
-  }, [sliderSchema])
+  }, [schema])
 }

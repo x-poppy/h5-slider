@@ -1,11 +1,10 @@
 import React, { ReactNode, useCallback } from 'react';
 import { Checkbox } from 'react-vant';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { useOptionGroup } from './OptionGroup';
 
-export interface OptionProps extends SliderWidgetProps {
+export interface OptionProps extends SliderComponentProps {
   shape?: 'square' | 'round'
-  name: string;
   checkedColor?: string;
   children: ReactNode;
 }
@@ -16,9 +15,6 @@ function Option(props: OptionProps) {
   const checked = props.name ? (optionGroup.values[props.name] ?? false) : false;
 
   const onClickHandel = useCallback(() => {
-    if (!props.name) {
-      return;
-    }
     optionGroup.selectOption(props.name, !checked);
   }, [checked, optionGroup, props.name]);
   

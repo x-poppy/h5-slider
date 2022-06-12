@@ -1,10 +1,13 @@
 import yaml from 'js-yaml';
 import { SliderSchema } from '../types/Schema';
+import { getBaseURL, getURL } from './url';
 
-export async function loadSchema(url: string) {
+export async function loadSchema(url: string, baseURL?: string) {
   if (!url) {
     throw new Error("Invalid Url");
   }
+
+  url = getURL(url, baseURL);
 
   const response = await window.fetch(url);
   const responseText = await response.text();
@@ -17,5 +20,14 @@ export async function loadSchema(url: string) {
     data = JSON.stringify(responseText);
   }
 
-  return data as SliderSchema;
+  const schema = data as SliderSchema;
+  const hasBaseURL = !!(schema?.info?.baseURL);
+  if (!hasBaseURL) {
+    if (!schema.info) {
+      schema.info = {};
+    }
+    schema.info.baseURL = getBaseURL(url);
+  }
+
+  return schema;
 }

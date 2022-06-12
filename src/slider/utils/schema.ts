@@ -1,19 +1,19 @@
-import { WidgetSchema } from "../types/Schema";
-import { isWidgetSchema } from "./typeDetect";
+import { ComponentSchema } from "../types/Schema";
+import { isComponentSchema } from "./typeDetect";
 
-type TravelSchemaTestFunction = (schema: WidgetSchema) => boolean;
+type TravelSchemaTestFunction = (schema: ComponentSchema) => boolean;
 
-function travelSchema(schema: WidgetSchema, callback: TravelSchemaTestFunction): WidgetSchema[] {
+function travelSchema(schema: ComponentSchema, callback: TravelSchemaTestFunction): ComponentSchema[] {
   const results = [];
   const children = schema.children; 
   const childrenFindResults = [];
-  if (isWidgetSchema(children)) {
-    const childFindResults = travelSchema(children as WidgetSchema, callback);
+  if (isComponentSchema(children)) {
+    const childFindResults = travelSchema(children as ComponentSchema, callback);
     childrenFindResults.push(...childFindResults);
   } else if (Array.isArray(children)) {
     children.forEach(item => {
-      if (isWidgetSchema(children)) {
-        const childFindResults = travelSchema(item as WidgetSchema, callback);
+      if (isComponentSchema(children)) {
+        const childFindResults = travelSchema(item as ComponentSchema, callback);
         childrenFindResults.push(...childFindResults);
       }
     })
@@ -24,15 +24,15 @@ function travelSchema(schema: WidgetSchema, callback: TravelSchemaTestFunction):
   const propsFindResults = [];
   if (props) {
     for (const [, val] of Object.entries(props)) {
-      if (isWidgetSchema(val)) {
-        const propFindResults = travelSchema(val as WidgetSchema, callback);
+      if (isComponentSchema(val)) {
+        const propFindResults = travelSchema(val as ComponentSchema, callback);
         propsFindResults.push(...propFindResults);
       }
     }
   }
   results.push(...propsFindResults);
 
-  if (isWidgetSchema(schema)) {
+  if (isComponentSchema(schema)) {
     if (callback(schema)) {
       results.push(schema);
     }
@@ -42,7 +42,7 @@ function travelSchema(schema: WidgetSchema, callback: TravelSchemaTestFunction):
 }
 
 
-export function findByProperty(schema: WidgetSchema, propertyName: string, propertyVal: any) {
+export function findByProperty(schema: ComponentSchema, propertyName: string, propertyVal: any) {
   const results = travelSchema(schema, () => {
     return schema.props?.[propertyName] === propertyVal;
   });
@@ -50,7 +50,7 @@ export function findByProperty(schema: WidgetSchema, propertyName: string, prope
   return results;
 }
 
-export function findByType(schema: WidgetSchema, type: string) {
+export function findByType(schema: ComponentSchema, type: string) {
   const results = travelSchema(schema, () => {
     return schema.type === type;
   });
@@ -58,7 +58,7 @@ export function findByType(schema: WidgetSchema, type: string) {
   return results;
 }
 
-export function find(schema: WidgetSchema, callback: TravelSchemaTestFunction) {
+export function find(schema: ComponentSchema, callback: TravelSchemaTestFunction) {
   const results = travelSchema(schema, callback);
   return results;
 }

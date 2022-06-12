@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Button, ButtonSize, ButtonType } from 'react-vant';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { LocaleMessageKey } from '../../../utils/language';
 import { PermissionKey } from '../../../utils/permission';
 
@@ -14,7 +14,7 @@ import { SliderEffectElement } from '../../../types/Element';
 import styles from './ActionBar.module.css';
 import { getReferenceVariableValue } from '../../../utils/express';
 
-interface ActionBarProps extends SliderWidgetProps {
+interface ActionBarProps extends SliderComponentProps {
   preSlideEffect?: SliderEffectElement;
   nextSlideEffect?: SliderEffectElement;
   submitEffect?: SliderEffectElement;

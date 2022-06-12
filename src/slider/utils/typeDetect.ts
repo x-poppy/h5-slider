@@ -18,7 +18,7 @@ export function isPlainObject(val: any) {
   return val !== null && typeof val === 'object' && Object.getPrototypeOf(val) === Object.prototype
 }
 
-export function isWidgetSchema(val: any) {
+export function isComponentSchema(val: any) {
   if (isPlainObject(val) && 'type' in val && typeof val.type === 'string') {
     return true;
   }

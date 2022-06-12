@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode, useRef } from 'react';
 
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { I18nMessageBundleProvider } from '../../../hooks/useI18nMessageBundle';
 import { NavigationProvider } from '../../../hooks/useNavigation';
 import { PermissionProvider } from '../../../hooks/usePermission';
@@ -8,13 +8,14 @@ import { StoreProvider } from '../../../hooks/useStore';
 import { VariableScopesProvider } from '../../../hooks/useVariableScopes';
 
 import { StoreValueType } from '../../../utils/storage';
-import SliderOverlapLayer from './components/SliderOverlapLayer';
 import { SliderSchemaProvider } from '../../../hooks/userSliderSchema';
-import SliderContentLayer from './components/SliderContentLayer';
+import SliderContentLayer from './SliderContentLayer';
 
 import styles from './Slider.module.css';
 import { SwiperInstance } from 'react-vant';
-export interface SliderProps extends SliderWidgetProps {
+import OverlapLayer from '../../../baseComponents/OverlapLayer';
+import { OverlapLayerRefProvider } from '../../../hooks/useOverlapLayerRef';
+export interface SliderProps extends SliderComponentProps {
   background?: string;
   initialIndex: number;
   storeData?: Record<string, StoreValueType>
@@ -30,7 +31,6 @@ function Slider(props: SliderProps) {
   const slideElements = Array.isArray(props.children) ? props.children : [];
   const totalCount = slideElements.length;
   const swiperRef = useRef<SwiperInstance>(null);
-
   return (
     <div className={styles.main} style={{background: props.background}}>
       <SliderSchemaProvider sliderSchema={props.$$schema}>
@@ -50,9 +50,11 @@ function Slider(props: SliderProps) {
                       vertical={props.vertical}
                     />
                   }
-                  <SliderOverlapLayer>
-                    { props.widgets }
-                  </SliderOverlapLayer>
+                  <OverlapLayerRefProvider>
+                    <OverlapLayer>
+                      { props.widgets }
+                    </OverlapLayer>
+                  </OverlapLayerRefProvider>
                 </VariableScopesProvider>
               </StoreProvider>
             </PermissionProvider>

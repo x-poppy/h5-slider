@@ -1,9 +1,9 @@
 import React from 'react';
 import { Typography } from 'react-vant';
 import { TypographySize, TypographyTitleLevel, TypographyType } from 'react-vant/es/typography/PropsType';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 
-export interface TitleProps extends SliderWidgetProps {
+export interface TitleProps extends SliderComponentProps {
   width?: string | number
   type?: TypographyType;
   size?: TypographySize;

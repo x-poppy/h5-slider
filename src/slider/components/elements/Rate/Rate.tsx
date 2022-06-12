@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Rate as OriginRate } from 'react-vant';
 import { useStore } from '../../../hooks/useStore';
-import { SliderStorableWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 
-export interface RateProps extends SliderStorableWidgetProps {
+export interface RateProps extends SliderComponentProps {
   size?: number | string;
   gutter?: number | string;
   color?: string;

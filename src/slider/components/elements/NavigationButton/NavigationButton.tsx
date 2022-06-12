@@ -2,13 +2,13 @@ import React, { useCallback, useMemo } from 'react';
 import { Button, ButtonSize, ButtonType } from 'react-vant';
 import { ShareO } from '@react-vant/icons';
 
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { getNavigationURL } from '../../../utils/url';
 import { navigateTo } from '../../../utils/navigateTo';
 import { getReferenceVariableValue } from '../../../utils/express';
 import { useStore } from '../../../hooks/useStore';
 
-export interface NavigationButtonProps extends SliderWidgetProps {
+export interface NavigationButtonProps extends SliderComponentProps {
   type?: ButtonType,
   size?: ButtonSize,
   color?: string,
@@ -35,7 +35,8 @@ function NavigationButton(props: NavigationButtonProps) {
       }
       navigateTo(navigateURL, {
         searchMatcher: props.searchMatcher,
-        knownHosts: props.$$schema.security?.knownHosts
+        knownHosts: props.$$schema.security?.knownHosts,
+        baseURL: props.$$schema.info?.baseURL,
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

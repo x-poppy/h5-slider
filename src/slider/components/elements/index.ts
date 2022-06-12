@@ -1,9 +1,7 @@
-import { registerWidget } from "../../utils/widgetFactory";
+import { registerComponent } from "../../utils/componentFactory";
 
-import ActionBar from './ActionBar';
 import AudioPlayer from './AudioPlayer';
 import Button from "./Button";
-import ClickListener from "../container/ClickListener";
 import Divider from "./Divider";
 import Gap from "./Gap";
 import Image from './Image';
@@ -13,35 +11,33 @@ import NoImplement from "./NoImplement";
 import Option, { OptionGroup } from "./Option";
 import QRCode from "./QRCode";
 import RichText from "./RichText";
-import SlideIndicator from "./SlideIndicator";
 import Sticky from "./Sticky";
 import Text from './Text';
 import Title from './Title';
 import VideoPlayer from "./VideoPlayer";
 import Switch from "./Switch";
 import Rate from "./Rate";
+import CircleProgress from "./CircleProgress";
 
-registerWidget(ActionBar, 'ActionBar');
-registerWidget(AudioPlayer, 'AudioPlayer');
-registerWidget(Button, 'Button');
-registerWidget(ClickListener, 'ClickListener');
-registerWidget(Divider, 'Divider');
-registerWidget(Gap, 'Gap');
-registerWidget(Image, 'Image');
-registerWidget(Link, 'Link');
-registerWidget(NavigationButton, 'NavigationButton');
-registerWidget(NoImplement, 'NoImplement');
-registerWidget(Option, 'Option');
-registerWidget(OptionGroup, 'OptionGroup');
-registerWidget(QRCode, 'QRCode');
-registerWidget(Rate, 'Rate');
-registerWidget(RichText, 'RichText');
-registerWidget(SlideIndicator, 'SlideIndicator');
-registerWidget(Sticky, 'Sticky');
-registerWidget(Switch, 'Switch');
-registerWidget(Text, 'Text');
-registerWidget(Title, 'Title');
-registerWidget(VideoPlayer, 'VideoPlayer');
+registerComponent(AudioPlayer, 'AudioPlayer');
+registerComponent(Button, 'Button');
+registerComponent(CircleProgress, 'CircleProgress');
+registerComponent(Divider, 'Divider');
+registerComponent(Gap, 'Gap');
+registerComponent(Image, 'Image');
+registerComponent(Link, 'Link');
+registerComponent(NavigationButton, 'NavigationButton');
+registerComponent(NoImplement, 'NoImplement');
+registerComponent(Option, 'Option');
+registerComponent(OptionGroup, 'OptionGroup');
+registerComponent(QRCode, 'QRCode');
+registerComponent(Rate, 'Rate');
+registerComponent(RichText, 'RichText');
+registerComponent(Sticky, 'Sticky');
+registerComponent(Switch, 'Switch');
+registerComponent(Text, 'Text');
+registerComponent(Title, 'Title');
+registerComponent(VideoPlayer, 'VideoPlayer');
 
 
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { Progress } from 'react-vant';
 import styles from './SlideIndicator.module.css';
 
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { useNavigation } from '../../../hooks/useNavigation';
 
 const format = (rate: number) => Math.min(Math.max(rate, 0), 100);
 
-export interface SlideIndicatorProps extends SliderWidgetProps {
+export interface SlideIndicatorProps extends SliderComponentProps {
   strokeWidth?: number;
   color?: string;
   trackColor?: string;

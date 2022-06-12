@@ -1,4 +1,4 @@
-import { registerWidget } from "../../utils/widgetFactory";
+import { registerComponent } from "../../utils/componentFactory";
 
 import AlertEffect from './AlertEffect';
 import DelayEffect from "./DelayEffect";
@@ -9,13 +9,13 @@ import SwitchEffect from "./ConditionEffect";
 import UpdateStoreEffect from "./UpdateStoreEffect";
 import ConditionEffect from "./ConditionEffect";
 
-registerWidget(AlertEffect, 'AlertEffect');
-registerWidget(ConditionEffect, 'ConditionEffect');
-registerWidget(DelayEffect, 'DelayEffect');
-registerWidget(QueueEffect, 'GroupEffect');
-registerWidget(NavigationEffect, 'NavigationEffect');
-registerWidget(SubmitStoreEffect, 'SubmitStoreEffect');
-registerWidget(SwitchEffect, 'SwitchEffect');
-registerWidget(UpdateStoreEffect, 'UpdateStoreEffect');
+registerComponent(AlertEffect, 'AlertEffect');
+registerComponent(ConditionEffect, 'ConditionEffect');
+registerComponent(DelayEffect, 'DelayEffect');
+registerComponent(QueueEffect, 'GroupEffect');
+registerComponent(NavigationEffect, 'NavigationEffect');
+registerComponent(SubmitStoreEffect, 'SubmitStoreEffect');
+registerComponent(SwitchEffect, 'SwitchEffect');
+registerComponent(UpdateStoreEffect, 'UpdateStoreEffect');
 
 

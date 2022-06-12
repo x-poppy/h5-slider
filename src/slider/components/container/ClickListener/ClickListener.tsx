@@ -1,9 +1,9 @@
 import React, { Children, cloneElement, ReactNode, useCallback } from 'react';
 import { useEffectElement } from '../../../hooks/useEffectElement';
 import { SliderEffectElement } from '../../../types/Element';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 
-export interface ClickListenerProps extends SliderWidgetProps {
+export interface ClickListenerProps extends SliderComponentProps {
   clickEffect?: SliderEffectElement;
   children?: ReactNode;
 }

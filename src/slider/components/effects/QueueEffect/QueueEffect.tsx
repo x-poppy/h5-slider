@@ -1,6 +1,6 @@
 import React, { ReactElement, useRef, useState } from 'react';
 import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
-import { SliderEffectProps } from '../../../types/Widget';
+import { SliderEffectProps } from '../../../types/Component';
 
 interface GroupEffectProps extends SliderEffectProps {
   children: ReactElement[]

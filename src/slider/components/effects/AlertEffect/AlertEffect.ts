@@ -2,7 +2,7 @@ import React from "react";
 import { Dialog } from "react-vant";
 import { useAsyncEffect } from "../../../hooks/useAsyncEffect";
 import { useVariableScopes } from "../../../hooks/useVariableScopes";
-import { SliderEffectProps } from "../../../types/Widget";
+import { SliderEffectProps } from "../../../types/Component";
 
 import fixStyles from "../../../utils/alertStyleFix.module.css";
 

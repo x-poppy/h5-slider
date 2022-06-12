@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames'
-import { SliderWidgetProps, SpaceType } from '../../../types/Widget';
+import { SliderComponentProps, SpaceType } from '../../../types/Component';
 
 import styles from './Block.module.css';
 
-export interface BlockProps extends SliderWidgetProps {
+export interface BlockProps extends SliderComponentProps {
   round?: boolean;
   shadow?: boolean;
   children: ReactNode;

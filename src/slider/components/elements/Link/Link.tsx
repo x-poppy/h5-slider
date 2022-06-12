@@ -4,9 +4,9 @@ import { TypographySize, TypographyType } from 'react-vant/es/typography/PropsTy
 import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
 import { useEffectElement } from '../../../hooks/useEffectElement';
 import { SliderEffectElement } from '../../../types/Element';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 
-export interface LinkProps extends SliderWidgetProps {
+export interface LinkProps extends SliderComponentProps {
   width?: string | number
   type?: TypographyType;
   size?: TypographySize;

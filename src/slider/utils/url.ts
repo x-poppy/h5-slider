@@ -7,6 +7,27 @@ export function isRelativeURL(url: string) {
   return true;
 }
 
+export function getURL(url: string, baseURL?: string) {
+  if (!isRelativeURL(url)) {
+    return url;
+  }
+
+  if (!baseURL) {
+    baseURL = window.location.origin + window.location.pathname;
+  }
+
+  return new URL(url, baseURL).href;
+}
+
+export function getBaseURL(url: string) {
+  let targetURL = url;
+  if (isRelativeURL(url)) {
+    targetURL = getURL(url);
+  }
+  const urlObj = new URL(targetURL);
+  return urlObj.origin + urlObj.pathname;
+}
+
 function appendSearchParamsToUrl(url: string, query?: Record<string, any>) {
   if (!url) {
     return url;

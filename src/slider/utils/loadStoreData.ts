@@ -3,7 +3,7 @@ import {getProperty, hasProperty} from 'dot-prop';
 import { SliderSchema } from '../types/Schema';
 import { getRandomValueFromArray } from './random';
 import { StoreValueType } from './storage';
-import { getSearQueryObject } from './url';
+import { getSearQueryObject, getURL } from './url';
 
 export interface StoreResponseData {
   data?: Record<string, StoreValueType>
@@ -22,6 +22,7 @@ export async function loadStoreData(httpClient: AxiosInstance, schema: SliderSch
   }
 
   url = getRandomValueFromArray(url);
+  url = getURL(url, schema.info?.baseURL);
   const response = await httpClient.get(url, {
     params: getSearQueryObject(storeInfo?.searchMatcher),
   })

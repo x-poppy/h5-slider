@@ -6,10 +6,10 @@ import { useStore } from '../../../hooks/useStore';
 import { useVariableScopes } from '../../../hooks/useVariableScopes';
 import { SliderEffectElement } from '../../../types/Element';
 
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 
-export interface ButtonProps extends SliderWidgetProps {
+export interface ButtonProps extends SliderComponentProps {
   type?: ButtonType,
   size?: ButtonSize,
   color?: string,

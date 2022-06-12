@@ -5,11 +5,11 @@ import { useInitialConfig } from "../../hooks/useInitialConfig";
 import { useScriptContext } from "../../hooks/useScriptContext";
 import { StoreKeyNames } from "../../hooks/useStore";
 import { loadSchema } from "../../utils/loadSchema";
-import { loadSliderScript } from "../../utils/loadScript";
+import { loadSliderScript } from "../../utils/loadSliderScript";
 import { loadStoreData } from "../../utils/loadStoreData";
 import { find, findByProperty, findByType } from "../../utils/schema";
-import { isWidgetSchema } from "../../utils/typeDetect";
-import { createWidgetFromSchema } from "../../utils/widgetFactory";
+import { isComponentSchema } from "../../utils/typeDetect";
+import { createComponentFromSchema } from "../../utils/componentFactory";
 import { useLoadingIndicator } from "../LoadingIndicator";
 
 const EventNames = {
@@ -45,7 +45,8 @@ function SliderLoader() {
       // this may modify in the scripts.
       scriptContext.emit(storeDataLoadedEvt);
       const transformedStoreData = storeDataLoadedEvt.detail ?? {};
-      const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? ~~(initialConfig.activeIndex ?? 0);
+      const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
+        (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
       transformedStoreData[StoreKeyNames.StartTimeStamp] = transformedStoreData[StoreKeyNames.StartTimeStamp] ?? Date.now();
 
       const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {
@@ -59,8 +60,8 @@ function SliderLoader() {
         }
       });
       scriptContext.emit(schemaInitialEvt);
-      const transformedSchema = isWidgetSchema(schemaInitialEvt.detail.schema) ? schemaInitialEvt.detail.schema : schema;
-      const element = createWidgetFromSchema(transformedSchema, {
+      const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? schemaInitialEvt.detail.schema : schema;
+      const element = createComponentFromSchema(transformedSchema, {
         localProps: {
           initialIndex: initialIndex,
           storeData: transformedStoreData

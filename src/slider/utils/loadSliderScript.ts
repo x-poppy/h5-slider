@@ -1,4 +1,5 @@
 import { SliderSchema } from "../types/Schema";
+import { getURL } from "./url";
 
 const ScriptParamsNames = Object.keys(window).filter(key=>key !== 'window');
 const ScriptParamsNamesStr = ScriptParamsNames.join(",");
@@ -6,11 +7,13 @@ const ScriptParamsNamesVal = ScriptParamsNames.map(() => undefined + '').join(",
 
 
 export async function loadSliderScript(schema: SliderSchema, scriptContext?: Record<string, any>) {
-  const url = schema.script;
+  let url = schema.script;
 
   if (!url) {
     return;
   }
+
+  url = getURL(url, schema.info?.baseURL);
 
   const response = await window.fetch(url);
   const responseText = await response.text();

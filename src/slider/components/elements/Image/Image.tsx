@@ -1,10 +1,11 @@
 import React from 'react';
 import { Image as OriginImage, ImageFit } from 'react-vant';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
+import { getURL } from '../../../utils/url';
 
 import styles from './Image.module.css'
 
-interface ImageProps extends SliderWidgetProps {
+interface ImageProps extends SliderComponentProps {
   width?: number | string;
   height?: number | string;
   alt?: string;
@@ -16,6 +17,7 @@ interface ImageProps extends SliderWidgetProps {
 
 // https://react-vant.3lang.dev/en/components/image
 function Image(props: ImageProps) {
+  const src = props.src && getURL(props.src, props.$$schema.info?.baseURL);
   return (
     <OriginImage 
       onClick={props.onClick}
@@ -28,7 +30,7 @@ function Image(props: ImageProps) {
       height={props.height}
       round={props.round} 
       radius={props.radius}
-      src={props.src}
+      src={src}
       fit={props.fit} >
     </OriginImage>
   );

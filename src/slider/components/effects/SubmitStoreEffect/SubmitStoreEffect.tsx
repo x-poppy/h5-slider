@@ -2,10 +2,10 @@ import { Method } from 'axios';
 import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
 import { useHttpClient } from '../../../hooks/useHttpClient';
 import { StoreKeyNames, useStore } from '../../../hooks/useStore';
-import { SliderEffectProps } from '../../../types/Widget';
+import { SliderEffectProps } from '../../../types/Component';
 import { getRandomValueFromArray } from '../../../utils/random';
 import { getStoreData } from '../../../utils/storage';
-import { getSearQueryObject } from '../../../utils/url';
+import { getSearQueryObject, getURL } from '../../../utils/url';
 
 interface HttpRequestEffectProps extends SliderEffectProps {
   url: string | string[]
@@ -24,8 +24,9 @@ function SubmitStoreEffect(props: HttpRequestEffectProps) {
       // blacklist mode
       const storeData = getStoreData(store, props.matcher);
       storeData[StoreKeyNames.EndTimeStamp] = storeData[StoreKeyNames.EndTimeStamp] ?? Date.now();
+      const url = getURL(getRandomValueFromArray(props.url), props.$$schema.info?.baseURL);
       await httpClient.request({
-        url: getRandomValueFromArray(props.url),
+        url,
         method: props.method ?? 'post',
         params: queryData,
         data: storeData

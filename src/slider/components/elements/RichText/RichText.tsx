@@ -1,11 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 
 import styles from './RichText.module.css'
 
-interface RichTextProps extends SliderWidgetProps {
+interface RichTextProps extends SliderComponentProps {
   block?: boolean
   children?: string;
 }

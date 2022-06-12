@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
 import { useStore } from '../../../hooks/useStore';
-import { SliderEffectProps } from '../../../types/Widget';
+import { SliderEffectProps } from '../../../types/Component';
 import { StoreValueType } from '../../../utils/storage';
 
 export interface UpdateStoreEffectProps extends SliderEffectProps {

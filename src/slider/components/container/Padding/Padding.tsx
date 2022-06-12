@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 
 import styles from './Padding.module.css';
 
-export interface PaddingProps extends SliderWidgetProps {
+export interface PaddingProps extends SliderComponentProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   children?: ReactNode
 }

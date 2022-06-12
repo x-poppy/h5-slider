@@ -1,9 +1,9 @@
 import React, { ReactNode, useMemo } from 'react';
 import { useStore } from '../../../hooks/useStore';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 
-export interface ShowableGroupProps extends SliderWidgetProps {
+export interface ShowableGroupProps extends SliderComponentProps {
   show: boolean | string | string[]
   children: ReactNode;
 }

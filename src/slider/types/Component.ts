@@ -1,10 +1,10 @@
-import { SliderSchema, WidgetSchema } from './Schema';
+import { SliderSchema, ComponentSchema } from './Schema';
 
 export type SpaceType = '0.5rem' | '1rem' | '1.5rem' | '2rem';
 
-export interface SliderWidgetProps {
+export interface SliderComponentProps {
   $$schema: SliderSchema;
-  $schema: WidgetSchema;
+  $schema: ComponentSchema;
   name: string;
 
   onClick?: (evt: React.MouseEvent<any>) => void;
@@ -12,11 +12,7 @@ export interface SliderWidgetProps {
 
 type OnEffectCompleteFunction = (err?: any, data?: any) => void;
 
-export interface SliderEffectProps extends SliderWidgetProps {
+export interface SliderEffectProps extends SliderComponentProps {
   event: SlideEffectEvent;
   onEffectComplete: OnEffectCompleteFunction;
-}
-
-export interface SliderStorableWidgetProps extends SliderWidgetProps {
-  name: string
 }

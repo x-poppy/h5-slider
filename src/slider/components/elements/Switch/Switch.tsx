@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Switch as OriginSwitch } from 'react-vant';
 import { useStore } from '../../../hooks/useStore';
-import { SliderStorableWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 
-export interface SwitchProps extends SliderStorableWidgetProps {
+export interface SwitchProps extends SliderComponentProps {
   size?: string | number;
   activeColor?: string;
   inactiveColor?: string;

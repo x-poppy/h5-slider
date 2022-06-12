@@ -1,14 +1,14 @@
 import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import { Space } from 'react-vant';
 import { useStore } from '../../../hooks/useStore';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { shuffle } from '../../../utils/math';
 import { noop } from '../../../utils/noop';
 import { converStringToBooleanMap, covertBooleanMapToString } from '../../../utils/object';
 
 import styles from './OptionGroup.module.css'
 
-interface OptionGroupProps extends SliderWidgetProps {
+interface OptionGroupProps extends SliderComponentProps {
   gap?: string;
   multiple?: boolean;
   children?: ReactNode;

@@ -1,5 +1,5 @@
 import { Dialog } from "react-vant";
-import { getNavigationURL, isRelativeURL } from "./url";
+import { getNavigationURL, getURL, isRelativeURL } from "./url";
 
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
@@ -8,17 +8,19 @@ interface NavigateToOpts {
   searchMatcher?: string | string[],
   i18nMessageBundle?: I18nMessageBundle
   knownHosts?: string[];
+  baseURL?: string;
 }
 
-export function isCors(href: string) {
+export function isCors(href: string, baseURL?: string) {
   if (isRelativeURL(href)) {
     return false;
   }
-  const currentDomain = window.location.origin;
-  if (href.startsWith(currentDomain)) {
-    return false;
+
+  if (baseURL) {
+    return href.startsWith(baseURL);
+  } else {
+    return href.startsWith(window.location.origin);
   }
-  return true;
 }
 
 export async function navigateTo(href: string, opts?: NavigateToOpts) {
@@ -26,8 +28,8 @@ export async function navigateTo(href: string, opts?: NavigateToOpts) {
     return;
   }
 
-  const transformedHref = getNavigationURL(href, opts?.searchMatcher);
-  if (!isCors(transformedHref)) {
+  const transformedHref = getNavigationURL(getURL(href, opts?.baseURL), opts?.searchMatcher);
+  if (!isCors(transformedHref, opts?.baseURL)) {
     window.location.href = transformedHref;
     return;
   }

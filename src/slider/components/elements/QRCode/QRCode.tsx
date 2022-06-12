@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import OriginQRCode from 'qrcode.react';
-import { SliderWidgetProps } from '../../../types/Widget';
+import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 import { useStore } from '../../../hooks/useStore';
+import { getURL } from '../../../utils/url';
 
-export interface QRCodeProps extends SliderWidgetProps {
+export interface QRCodeProps extends SliderComponentProps {
   // bind
   content?: string;
   color?: string;
@@ -28,8 +29,9 @@ function QRCode(props: QRCodeProps) {
     if (!props.avatar) {
       return undefined;
     }
+    const src = getURL(props.avatar.url, props.$$schema.info?.baseURL);
     return {
-      src: props.avatar.url,
+      src,
       width: props.avatar.width,
       height: props.avatar.height,
       excavate: props.avatar?.excavate ?? false,

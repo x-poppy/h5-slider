@@ -1,8 +1,11 @@
 import React, { ReactElement, useCallback, useMemo } from 'react';
 import { Swiper } from 'react-vant';
-import { SwiperDuration, useNavigation } from '../../../../../hooks/useNavigation';
-import { SlideIndexProvider } from '../../../../../hooks/useSlideIndex';
-import { isCloseTo } from '../../../../../utils/math';
+import { SwiperDuration, useNavigation } from '../../../../hooks/useNavigation';
+import { useSliderSchema } from '../../../../hooks/userSliderSchema';
+import { SlideIndexProvider } from '../../../../hooks/useSlideIndex';
+import { useSlideIndxWithStoreEffect } from '../../../../hooks/useSlideIndxWithStoreEffect';
+import { useSliderHTMLEffect } from '../../../../hooks/useSliderHTMLEffect';
+import { isCloseTo } from '../../../../utils/math';
 
 import styles from './SliderContentLayer.module.css';
 
@@ -15,6 +18,10 @@ interface SliderContentProps {
 function SliderContent(props: SliderContentProps) {
   const slideElements = props.slideElements ?? [];
   const navigation = useNavigation();
+  const scheme = useSliderSchema();
+
+  useSliderHTMLEffect(scheme);
+  useSlideIndxWithStoreEffect();
 
   const onActiveIndexChange = useCallback(
     (index: number) => {
