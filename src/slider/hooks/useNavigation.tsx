@@ -38,8 +38,7 @@ export function NavigationProvider(props: NavigationProviderProps) {
   const totalCount = props.totalCount;
   const initialIndex = limitNumer(props.initialIndex, 0, totalCount - 1);
   const cacheSize = props.cacheSize ?? 1;
-
-  const [activeIndex, setActiveIndex] = useState(props.initialIndex);
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
 
   const preSlide = useCallback(
     () => {

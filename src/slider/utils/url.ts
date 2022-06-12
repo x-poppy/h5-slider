@@ -58,7 +58,7 @@ export function getSearQueryObject(matcher?: string | string[]) {
   const filteredQuery: Record<string, any> = {};
   for (const [key, val] of Object.entries(query)) {
     if (!SearchParamKeyWorlds.includes(key)) {
-      filteredQuery[key] = val;
+      filteredQuery[key] = encodeURIComponent(val);
     }
   }
   return filterObjectByMatcher(filteredQuery, matcher ?? null, true);

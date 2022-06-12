@@ -64,7 +64,7 @@ export function OptionGroup(props: OptionGroupProps) {
 
   return (
     <OptionGroupContext.Provider value={inst}>
-      <Space wrap block className={styles.main} gap={gap} direction={props.direction}>
+      <Space wrap block className={styles.main} gap={gap} direction={props.direction ?? 'vertical'}>
         { randomChildren }
       </Space>
     </OptionGroupContext.Provider>

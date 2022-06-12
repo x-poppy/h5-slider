@@ -1,0 +1,121 @@
+version: 0.0.1
+info:
+  title: "抑郁症测试题SDS"
+  favicon: "https://shortcut.com/favicon-32x32.png?v=6a11b8fc3ed40b8e0f9626bf2292fd39"
+  description: "抑郁症测试题SDS"
+  contentBackground: "#FFF"
+security:
+  knownHosts:
+    - http://www.baidu.com
+definitions:
+  Components:
+    QuestionBlock:
+      type: Group
+      children:
+      - type: SlideIndicator
+      - type: FlexBox
+        props:
+          align: center
+        children:
+        - type: Text
+          props:
+            type: secondary
+          children: "From https://www.zxgj.cn/g/yiyuzheng"
+        - type: NavigationButton
+          props:
+            href: "https://www.zxgj.cn/g/yiyuzheng" 
+      - type: Image
+        props:
+          src: ${questionImgUrl}
+      - type: Gap
+      - type: Title
+        props:
+          size: xs
+        children: ${questionText}
+      - type: OptionGroup
+        props:
+          name: ${questionId}
+          random: true
+        children: ${$children}
+      - type: ActionBar 
+        props:
+          nextButtonEnable: ${${questionId}}
+          submitEffect:
+            type: SubmitStoreEffect
+            props:
+              url: "http://test/api/do/test/test"
+              searchMatcher: ["userId", "exerciseId"]
+
+    OptionBlock:
+      type: Block
+      children:
+        type: Option
+        props:
+          name: ${optionId}
+        children: ${optionText}
+
+type: Slider
+props:
+  widgets:
+    - type: FloatingBall
+      children:
+      - type: Button
+        props:
+          round: true
+          type: primary
+          clickEffect:
+            type: NavigationEffect
+            props:
+              href: "../../?schema=examples%2Findex%2Findex.yml"
+        children: 返回
+children:
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './001.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './002.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './003.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './004.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './005.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './006.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './007.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './008.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './009.yml'
+  - type: Slide
+    children:
+      type: Module
+      props: 
+        url: './0010.yml'                                                                      

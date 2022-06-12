@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:007'
+    questionImgUrl: './assets/07.jpeg'
+    questionText: '我感到体重减轻'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "一直正常中"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时候会这么想"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "常常担忧体重下降"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "持续忧虑体重下降."

@@ -102,7 +102,18 @@ definitions:
 
 type: Slider
 props:
-  cacheSize: 1
+  widgets:
+    - type: FloatingBall
+      children:
+      - type: Button
+        props:
+          round: true
+          type: primary
+          clickEffect:
+            type: NavigationEffect
+            props:
+              href: "../../?schema=examples%2Findex%2Findex.yml"
+        children: 返回
 children:
   # ActionBar
   - type: ${Components.ComponentSlide}
@@ -142,7 +153,7 @@ children:
         children:
           - type: AudioPlayer
             props:
-              src: "../assets/horse.mp3"
+              src: "./assets/horse.mp3"
               type: "audio/mpeg"
       - type: ${Components.ComponentPropBlock}
         props:
@@ -152,7 +163,7 @@ children:
         children:
           - type: AudioPlayer
             props:
-              src: "../assets/horse.mp3"
+              src: "./assets/horse.mp3"
               type: "audio/mpeg"
   
   # Block
@@ -386,7 +397,7 @@ children:
               props:
                 width: 10rem
                 height: 10rem
-                src: "../assets/pic_trulli.jpeg"
+                src: "./assets/pic_trulli.jpeg"
                 round: true
                 radius: 10rem
 
@@ -412,7 +423,7 @@ children:
               props:
                 width: 10rem
                 height: 10rem
-                src: "../assets/pic_trulli.jpeg"
+                src: "./assets/pic_trulli.jpeg"
                 round: true
                 radius: 10rem
 
@@ -484,6 +495,7 @@ children:
               children:
                 type: Button
                 children: XXXXXX  
+
   # Module
   - type: ${Components.ComponentSlide}
     props:
@@ -560,7 +572,7 @@ children:
         children:
           - type: Image
             props:
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
 
       - type: ${Components.ComponentPropBlock}
         props:
@@ -571,7 +583,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: contain
           - type: Text
             props:
@@ -582,7 +594,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: cover
           - type: Text
             props:
@@ -593,7 +605,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: fill
           - type: Text
             props:
@@ -604,7 +616,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: none
           - type: Text
             props:
@@ -615,7 +627,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               fit: scale-down
           - type: Text
             props:
@@ -632,7 +644,7 @@ children:
           - type: Image
             props:
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               round: true
       - type: ${Components.ComponentPropBlock}
         props:
@@ -644,7 +656,7 @@ children:
             props:
               width: 10rem
               height: 10rem
-              src: "../assets/pic_trulli.jpeg"
+              src: "./assets/pic_trulli.jpeg"
               round: true
               radius: 10rem
       - type: ${Components.ComponentPropBlock}
@@ -658,7 +670,7 @@ children:
               height: 10rem
               src: "https://xxxx"
 
- # Option
+  # Option
   - type: ${Components.ComponentSlide}
     props:
       slideTitle: Option
@@ -700,7 +712,7 @@ children:
                 props:
                   width: 6rem
                   height: 6rem
-                  src: "../assets/pic_trulli.jpeg"
+                  src: "./assets/pic_trulli.jpeg"
             - type: Option
               props:
                 name: "test-002:2"
@@ -709,7 +721,7 @@ children:
                 props:
                   width: 6rem
                   height: 6rem
-                  src: "../assets/img_girl.jpeg"
+                  src: "./assets/img_girl.jpeg"
 
             - type: Option
               props:
@@ -719,7 +731,7 @@ children:
                 props:
                   width: 6rem
                   height: 6rem
-                  src: "../assets/img_chania.jpeg"      
+                  src: "./assets/img_chania.jpeg"      
 
   # QRCode
   - type: ${Components.ComponentSlide}
@@ -1114,7 +1126,7 @@ children:
         children:
           - type: VideoPlayer
             props:
-              src: "../assets/flower.mp4"
+              src: "./assets/flower.mp4"
               type: "audio/mpeg"
       - type: ${Components.ComponentPropBlock}
         props:
@@ -1124,7 +1136,7 @@ children:
         children:
           - type: VideoPlayer
             props:
-              src: "../assets/flower.mp4"
+              src: "./assets/flower.mp4"
 
   # The End
   - type: ${Components.ComponentSlide}

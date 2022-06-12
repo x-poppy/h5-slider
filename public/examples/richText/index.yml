@@ -9,6 +9,19 @@ security:
     - http://www.baidu.com
 
 type: Slider
+props:
+  widgets:
+    - type: FloatingBall
+      children:
+      - type: Button
+        props:
+          round: true
+          type: primary
+          clickEffect:
+            type: NavigationEffect
+            props:
+              href: "../../?schema=examples%2Findex%2Findex.yml"
+        children: 返回
 children:
   - type: Slide
     children:

@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:006'
+    questionImgUrl: './assets/06.jpeg'
+    questionText: '我的性功能正常'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "不正常，没兴趣"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "经常提不起兴趣"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "基本上正常"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "一直很正常."

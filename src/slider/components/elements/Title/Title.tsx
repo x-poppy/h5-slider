@@ -5,7 +5,9 @@ import { SliderComponentProps } from '../../../types/Component';
 
 export interface TitleProps extends SliderComponentProps {
   width?: string | number
+  // 'danger' | 'secondary' | 'light' | 'primary' | 'success' | 'warning';
   type?: TypographyType;
+  // 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   size?: TypographySize;
   disabled?: boolean;
   delete?: boolean;

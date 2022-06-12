@@ -15,7 +15,10 @@ function NavigationEffect(props: NavigationEffectProps) {
     navigateTo(getRandomValueFromArray(props.href), {
       searchMatcher: props.searchMatcher,
       i18nMessageBundle,
-      knownHosts: props.$$schema.security?.knownHosts
+      knownHosts: props.$$schema.security?.knownHosts,
+      onClose: () => {
+        props.onEffectComplete();
+      }
     });
   }, [props.event], {
     popupError: true,

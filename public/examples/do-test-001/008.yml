@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:008'
+    questionImgUrl: './assets/08.jpeg'
+    questionText: '我为便秘烦恼'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从无或偶尔"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时候会这样"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "经常为此烦恼"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "持续烦恼中..."

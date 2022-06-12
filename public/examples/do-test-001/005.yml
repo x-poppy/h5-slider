@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:005'
+    questionImgUrl: './assets/05.jpeg'
+    questionText: '我觉得最近我的饭量下降了'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从无或偶尔有过"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时候会没有食欲"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "经常不想吃饭"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "持续的不想吃饭."

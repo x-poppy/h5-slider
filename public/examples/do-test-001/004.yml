@@ -1,0 +1,25 @@
+version: 0.0.1
+type: Padding
+children:
+  type: ${Components.QuestionBlock}
+  props:
+    questionId: 'question:004'
+    questionImgUrl: './assets/04.jpeg'
+    questionText: '我夜间睡眠不好'
+  children:
+    - type: ${Components.OptionBlock}
+      props:
+        optionId: "A"
+        optionText: "从无或偶尔"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "B"
+        optionText: "有时会辗转难眠"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "C"
+        optionText: "经常夜不能寐"
+    - type: ${Components.OptionBlock}
+      props: 
+        optionId: "D"
+        optionText: "持续失眠中..."

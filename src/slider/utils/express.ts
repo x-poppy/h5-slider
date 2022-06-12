@@ -17,7 +17,6 @@ export function getNameReferenceVariable(val: any) {
     return null;
   }
   const results = (val as string).slice(2, -1);
-
   if (results.length === 0) {
     return null;
   }
@@ -87,7 +86,28 @@ export function getReferenceExpressValue(val: any, scopeRefs?: Record<string, an
     }
 
     if (isReferenceVariable(val)) {
-      const variableName = getNameReferenceVariable(val);
+      let variableName = getNameReferenceVariable(val);
+      if (variableName) {
+        // todo for ${${xxx}} cause
+        const stillIsRef = isReferenceVariable(variableName);
+        if (stillIsRef) {
+          variableName = getNameReferenceVariable(variableName);
+        }
+
+        if (variableName && hasProperty(scopeRefs, variableName)) {
+          if (!stillIsRef) {
+            return getProperty(scopeRefs, variableName);
+          } else {
+            const result = getProperty(scopeRefs, variableName);
+            if (typeof result === 'string' || typeof result === 'number') {
+              return '${' + result + '}';
+            } else {
+              return result;
+            }
+          }
+        }
+      }
+
       if (variableName && hasProperty(scopeRefs, variableName)) {
         return getProperty(scopeRefs, variableName);
       }

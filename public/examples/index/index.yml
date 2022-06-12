@@ -1,0 +1,44 @@
+version: 0.0.1
+info:
+  title: "Example汇总"
+  favicon: "https://shortcut.com/favicon-32x32.png?v=6a11b8fc3ed40b8e0f9626bf2292fd39"
+  description: "Example汇总"
+  contentBackground: "#FFF"
+security:
+  knownHosts:
+    - http://www.baidu.com
+
+type: Slider
+children:
+- type: Slide
+  children:
+  - type: Gap
+  - type: Padding
+    children:  
+    - type: Text
+      props: 
+        size: lg
+        strong: true
+      children: "Example汇总"
+    - type: Divider
+    - type: Gap
+    - type: Text
+      children: "🌟 Star us on GitHub — it helps! 👏"
+    - type: Gap
+    - type: NavigationButton
+      props:
+        searchMatcher: ["schema"]
+        href: "../../?schema=examples%2Fcomponents%2Findex.yml"
+      children: "组件列表 Example"
+    - type: Gap
+    - type: NavigationButton
+      props:
+        searchMatcher: ["schema"]
+        href: "../../?schema=examples%2FrichText%2Findex.yml"
+      children: "富文本 Example"
+    - type: Gap
+    - type: NavigationButton
+      props:
+        searchMatcher: ["schema"]
+        href: "../../?schema=examples%2Fdo-test-001%2Findex.yml"
+      children: "抑郁症测试题 001"

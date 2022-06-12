@@ -24,7 +24,6 @@ interface ActionBarProps extends SliderComponentProps {
   // bind
   preButtonEnable?: boolean | string | string[];
   // bind
-  submitButtonEnable?: boolean | string | string[];
 
   preButtonText?: string,
   nextButtonText?: string,
@@ -79,10 +78,6 @@ function ActionBar(props: ActionBarProps) {
     return getReferenceVariableValue(props.preButtonEnable, true, (key: string) => store.get(key) ?? false);
   }, [props.preButtonEnable, store]);
 
-  const submitButtonStoreEnable = useMemo(() => {
-    return getReferenceVariableValue(props.submitButtonEnable, true, (key: string) => store.get(key) ?? false);
-  }, [props.submitButtonEnable, store]);
-
   const [activePreSlideEffect, openPreSlideEffect, isValidPreSlideEffect] = useEffectElement(props.preSlideEffect);
   const [activeNextSlideEffect, openNextSlideEffect, isValidNextSlideEffect] = useEffectElement(props.nextSlideEffect);
   const [activeSubmitEffect, openSubmitEffect, isValidSubmitEffect] = useEffectElement(props.submitEffect);
@@ -94,11 +89,11 @@ function ActionBar(props: ActionBarProps) {
   const hasPreSlidePermission = permission.getPermission(PermissionKey.PreviousSlide, true);
   const hasSubmitPermission = permission.getPermission(PermissionKey.SubmitSlide, true);
 
-  const isShowPreBtn = hasPreSlidePermission;
-  const isPreBtnEnabled = !isPreBtnLoading && navigation.activeIndex > 0 && preButtonStoreEnable;
+  const isShowPreBtn = hasPreSlidePermission && navigation.totalCount > 1;
+  const isPreBtnEnabled = isShowPreBtn && !isPreBtnLoading && navigation.activeIndex > 0 && preButtonStoreEnable;
   const isNexBtnEnabled = !isNextBtnLoading && nextButtonStoreEnable;
-  const isSubmitMode = !isSubmitBtnLoading && navigation.activeIndex === navigation.totalCount - 1;
-  const isSubmitBtnEnable = hasSubmitPermission && submitButtonStoreEnable;
+  const isSubmitMode = navigation.activeIndex === navigation.totalCount - 1;
+  const isSubmitBtnEnable = hasSubmitPermission && nextButtonStoreEnable && !isSubmitBtnLoading;
 
   const preButtonText = props.preButtonText ?? i18nMessageBundle.getMessage(LocaleMessageKey.PreviousSlide);
   const nextButtonText = props.nextButtonText ?? i18nMessageBundle.getMessage(LocaleMessageKey.NextSlide);

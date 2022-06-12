@@ -1,5 +1,4 @@
-import React, { ReactNode, useMemo, useRef } from 'react';
-import { useInViewport } from 'react-vant/es/hooks';
+import React, { ReactNode, useRef } from 'react';
 import { useEffectElement } from '../../../hooks/useEffectElement';
 import { SliderComponentProps } from '../../../types/Component';
 
@@ -23,9 +22,6 @@ const EventNames = {
 }
 
 function Slide(props: SlideProps) {
-  const ref = useRef<HTMLDivElement>();
-  const inViewPort = useInViewport(ref);
-
   const [activeEntryEffect, openEntryEffect, isValidEntryEffect] = useEffectElement(props.entryEffect);
   const navigation = useNavigation();
   const selfIndex = useSlideIndex();
@@ -42,17 +38,10 @@ function Slide(props: SlideProps) {
     valid: selfIndexActive && isValidEntryEffect
   });
 
-  const renderContent = useMemo(() => {
-    if (!inViewPort) {
-      return null;
-    }
-    return props.children;
-  }, [inViewPort, props.children]);
-
   return (
-    <div ref={ref as any} onClick={props.onClick} style={{background: props.background}} className={styles.main}>
+    <div onClick={props.onClick} style={{background: props.background}} className={styles.main}>
       <OverlapLayerRefProvider>
-        { renderContent }
+        { props.children }
         <OverlapLayer>
           { activeEntryEffect }
         </OverlapLayer>

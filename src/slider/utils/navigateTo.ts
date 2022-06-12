@@ -9,6 +9,7 @@ interface NavigateToOpts {
   i18nMessageBundle?: I18nMessageBundle
   knownHosts?: string[];
   baseURL?: string;
+  onClose?: () => void;
 }
 
 export function isCors(href: string, baseURL?: string) {
@@ -16,11 +17,9 @@ export function isCors(href: string, baseURL?: string) {
     return false;
   }
 
-  if (baseURL) {
-    return href.startsWith(baseURL);
-  } else {
-    return href.startsWith(window.location.origin);
-  }
+  const targetUrl = new URL(href);
+  const currentUrl = baseURL ? new URL(baseURL): window.location;
+  return targetUrl.origin !== currentUrl.origin;
 }
 
 export async function navigateTo(href: string, opts?: NavigateToOpts) {
@@ -30,6 +29,7 @@ export async function navigateTo(href: string, opts?: NavigateToOpts) {
 
   const transformedHref = getNavigationURL(getURL(href, opts?.baseURL), opts?.searchMatcher);
   if (!isCors(transformedHref, opts?.baseURL)) {
+    opts?.onClose?.();
     window.location.href = transformedHref;
     return;
   }
@@ -41,6 +41,7 @@ export async function navigateTo(href: string, opts?: NavigateToOpts) {
     })
   }
   if (isKnowHost) {
+    opts?.onClose?.();
     window.location.href = transformedHref;
     return;
   }
@@ -56,6 +57,7 @@ export async function navigateTo(href: string, opts?: NavigateToOpts) {
     cancelButtonText: i18nMessageBundle.getMessage(LocaleMessageKey.CommonCancelText),
     showCancelButton: true,
     className: fixStyles.main,
+    onClose: opts?.onClose
   })
 
   if (!result) {
