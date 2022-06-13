@@ -1,5 +1,5 @@
 import { Dialog } from "react-vant";
-import { getURLWithQueryString, getURL, isRelativeURL, isURLsCors } from "./url";
+import { getURLWithQueryString, isURLsCors } from "./url";
 
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";

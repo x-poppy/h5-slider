@@ -30,14 +30,16 @@ function SliderLoader() {
   useEffect(() => {
     callback(async () => {
       // validation
-      if (!initialConfig.schema || typeof initialConfig.schema !== 'string') {
+      let schemaUrl = initialConfig.schema;
+      if (typeof initialConfig.schema !== 'string') {
         throwError(new Error("Invalid Schema"));
       }
+
+      schemaUrl = decodeURIComponent(schemaUrl as unknown as string);
 
       try {
         loadingIndication.start();
         // load schema
-        const schemaUrl = decodeURIComponent(initialConfig.schema as string);
         const schema = await loadSchema(schemaUrl);
         const storeData = await loadStoreData(httpClient, schema);
 
@@ -78,7 +80,7 @@ function SliderLoader() {
       } catch(err) {
         setSliderElement(null);
         loadingIndication.end();
-        throw err;
+        throwError(err as Error);
       }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps

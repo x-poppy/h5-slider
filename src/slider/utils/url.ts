@@ -1,12 +1,16 @@
 import { filterObjectByMatcher } from "./object";
 
 export function isRelativeURL(url: string) {
-  if (url && url.startsWith('http')) {
+  if (url && (url.startsWith('http') || url.startsWith('//'))) {
     return false;
   }
   return true;
 }
 
+
+// baseURL = http://www.xxx.com/aaa/bbb
+// url = ./
+// http://www.xxx.com/aaa/bbb
 export function getURL(url: string, baseURL?: string) {
   if (!isRelativeURL(url)) {
     return url;
@@ -14,6 +18,9 @@ export function getURL(url: string, baseURL?: string) {
 
   if (!baseURL) {
     baseURL = window.location.origin + window.location.pathname;
+    if (!baseURL.endsWith('/')) {
+      baseURL = baseURL + '/';
+    }
   }
 
   return new URL(url, baseURL).href;
@@ -24,14 +31,18 @@ export function getURLWithQueryString(url: string, matcher?: string | string[] |
   return appendSearchParamsToUrl(url, getQueryObjectFromSearch(matcher, search));
 }
 
-
 export function getBaseURL(url: string) {
   let targetURL = url;
   if (isRelativeURL(url)) {
     targetURL = getURL(url);
   }
-  const urlObj = new URL(targetURL);
-  return urlObj.origin + urlObj.pathname;
+  if (targetURL.endsWith('/')) {
+    return targetURL;
+  } if (targetURL.lastIndexOf('.') > targetURL.lastIndexOf('/')) {
+    return new URL('./', targetURL).href;
+  } else {
+    return new URL('./', targetURL).href + '/';
+  }
 }
 
 function appendSearchParamsToUrl(url: string, query?: Record<string, any>) {
