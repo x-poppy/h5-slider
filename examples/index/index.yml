@@ -40,5 +40,5 @@ children:
     - type: NavigationButton
       props:
         searchMatcher: ["schema"]
-        href: "../../?schema=examples%2Fdo-test-001%2Findex.yml"
+        href: "./?schema=examples%2Fdo-test-001%2Findex.yml"
       children: "抑郁症测试题 001"
