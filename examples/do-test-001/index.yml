@@ -13,17 +13,14 @@ definitions:
       type: Group
       children:
       - type: SlideIndicator
-      - type: FlexBox
         props:
-          align: center
-        children:
-        - type: Text
-          props:
-            type: secondary
-          children: "From https://www.zxgj.cn/g/yiyuzheng"
-        - type: NavigationButton
-          props:
-            href: "https://www.zxgj.cn/g/yiyuzheng" 
+          color: green
+      - type: Link
+        props:
+          type: secondary
+          href: "https://www.zxgj.cn/g/yiyuzheng" 
+        children: "From https://www.zxgj.cn/g/yiyuzheng"
+      - type: Gap  
       - type: Image
         props:
           src: ${questionImgUrl}
@@ -44,7 +41,7 @@ definitions:
             type: SubmitStoreEffect
             props:
               url: "http://test/api/do/test/test"
-              searchMatcher: ["userId", "exerciseId"]
+              searchMatcher: ["userId", "testId"]
 
     OptionBlock:
       type: Block
