@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Button as OriginButton, ButtonSize, ButtonType } from 'react-vant';
 import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
-import { useEffectElement } from '../../../hooks/useEffectElement';
 import { useStore } from '../../../hooks/useStore';
 import { useVariableScopes } from '../../../hooks/useVariableScopes';
 import { SliderEffectElement } from '../../../types/Element';
 
 import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
+import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
 
 export interface ButtonProps extends SliderComponentProps {
   type?: ButtonType,
@@ -33,15 +33,15 @@ function Button(props: ButtonProps) {
   const store = useStore();
   useVariableScopes()
   const loadIndicator = useLoadingIndicator();
-  const [activeClickEffect, openClickEffect, isValidClickEffect] = useEffectElement(props.clickEffect);
   const [isLoading, setIsLoading] = useState(false);
+  const dispatchEffect = useDispatchEffect();
   
   const disabled = useMemo(() => {
     return getReferenceVariableValue(props.disabled, false, (key: string) => store.get(key));
   }, [props.disabled, store]);
 
   const onClickHandle = useCallback(async () => {
-    if (!isValidClickEffect) {
+    if (!props.clickEffect) {
       return;
     }
     try {
@@ -49,9 +49,11 @@ function Button(props: ButtonProps) {
       if (props.screenBusy) {
         loadIndicator.start();
       }
-      await openClickEffect({
+
+      await dispatchEffect(props.clickEffect, {
         eventName: EventNames.OnClick
       });
+
       setIsLoading(false);
       if (props.screenBusy) {
         loadIndicator.end();
@@ -62,27 +64,24 @@ function Button(props: ButtonProps) {
         loadIndicator.end();
       }
     }
-  }, [isValidClickEffect, loadIndicator, openClickEffect, props.screenBusy]);
+  }, [dispatchEffect, loadIndicator, props.clickEffect, props.screenBusy]);
 
   const isTextContent = typeof props.children === 'string';
   return (
-    <>
-      <OriginButton
-        onClick={onClickHandle}
-        disabled={disabled || isLoading}
-        loading={isLoading}
-        loadingText={ isTextContent ? props.children : undefined }
-        round={props.round}
-        type={props.type}
-        color={props.color}
-        plain={props.plain}
-        square={props.square}
-        shadow={props.shadow}
-      >
-        { props.children }
-      </OriginButton>
-      { activeClickEffect }
-    </>
+    <OriginButton
+      onClick={onClickHandle}
+      disabled={disabled || isLoading}
+      loading={isLoading}
+      loadingText={ isTextContent ? props.children : undefined }
+      round={props.round}
+      type={props.type}
+      color={props.color}
+      plain={props.plain}
+      square={props.square}
+      shadow={props.shadow}
+    >
+      { props.children }
+    </OriginButton>
   );
 }
 

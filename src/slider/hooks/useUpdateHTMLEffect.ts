@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { SliderSchema } from "../types/Schema";
 import { getURL } from "../utils/url";
 
-export function useSliderHTMLEffect(schema: SliderSchema | null) {
+export function useUpdateHTMLEffect(schema: SliderSchema | null) {
   useEffect(() => {
     const info = schema?.info;
     if (!info) {

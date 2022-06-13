@@ -23,5 +23,3 @@ registerComponent(Padding, 'Padding');
 registerComponent(Slide, 'Slide');
 registerComponent(Slider, 'Slider');
 registerComponent(ShowableGroup, 'ShowableGroup');
-
-

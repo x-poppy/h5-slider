@@ -3,7 +3,7 @@ import { Button, ButtonSize, ButtonType } from 'react-vant';
 import { ShareO } from '@react-vant/icons';
 
 import { SliderComponentProps } from '../../../types/Component';
-import { getNavigationURL } from '../../../utils/url';
+import { getURLWithQueryString } from '../../../utils/url';
 import { navigateTo } from '../../../utils/navigateTo';
 import { getReferenceVariableValue } from '../../../utils/express';
 import { useStore } from '../../../hooks/useStore';
@@ -29,14 +29,13 @@ function NavigationButton(props: NavigationButtonProps) {
   }, [props.href]);
 
   const onClickHandle = useCallback(async () => {
-      const navigateURL = getNavigationURL(href, props.searchMatcher);
+      const navigateURL = getURLWithQueryString(href, props.searchMatcher);
       if (!navigateURL) {
         return;
       }
       navigateTo(navigateURL, {
         searchMatcher: props.searchMatcher,
         knownHosts: props.$$schema.security?.knownHosts,
-        baseURL: props.$$schema.info?.baseURL,
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

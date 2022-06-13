@@ -1,8 +1,5 @@
-import React, { ReactNode, useRef } from 'react';
-import { useEffectElement } from '../../../hooks/useEffectElement';
+import React, { ReactNode, useEffect } from 'react';
 import { SliderComponentProps } from '../../../types/Component';
-
-import { useAsyncEffect } from '../../../hooks/useAsyncEffect';
 import { useSlideIndex } from '../../../hooks/useSlideIndex';
 import { SliderEffectElement } from '../../../types/Element';
 import { useNavigation } from '../../../hooks/useNavigation';
@@ -10,6 +7,8 @@ import { useNavigation } from '../../../hooks/useNavigation';
 import styles from './Slide.module.css';
 import OverlapLayer from '../../../baseComponents/OverlapLayer';
 import { OverlapLayerRefProvider } from '../../../hooks/useOverlapLayerRef';
+import { callback } from '../../../utils/callback';
+import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
 
 export interface SlideProps extends SliderComponentProps {
   entryEffect?: SliderEffectElement;
@@ -22,29 +21,35 @@ const EventNames = {
 }
 
 function Slide(props: SlideProps) {
-  const [activeEntryEffect, openEntryEffect, isValidEntryEffect] = useEffectElement(props.entryEffect);
   const navigation = useNavigation();
   const selfIndex = useSlideIndex();
   const selfIndexActive = navigation.activeIndex === selfIndex;
+  const dispatchEffect = useDispatchEffect();
 
-  useAsyncEffect(async () => {
-    await openEntryEffect({
-      eventName: EventNames.OnEntrySlide,
-      detail: {
-        activeIndex: selfIndex
-      }
-    });
-  }, [selfIndexActive], {
-    valid: selfIndexActive && isValidEntryEffect
-  });
+  useEffect(() => {
+    if (!selfIndexActive) {
+      return;
+    }
+
+    if (!props.entryEffect) {
+      return;
+    }
+
+    callback(async () => {
+      await dispatchEffect(props.entryEffect!, {
+        eventName: EventNames.OnEntrySlide,
+        detail: {
+          activeIndex: selfIndex
+        }
+      });
+    })
+  }, [dispatchEffect, props.entryEffect, selfIndex, selfIndexActive])
 
   return (
-    <div onClick={props.onClick} style={{background: props.background}} className={styles.main}>
+    <div style={{background: props.background}} className={styles.main}>
       <OverlapLayerRefProvider>
         { props.children }
-        <OverlapLayer>
-          { activeEntryEffect }
-        </OverlapLayer>
+        <OverlapLayer />
       </OverlapLayerRefProvider>
     </div>
   );

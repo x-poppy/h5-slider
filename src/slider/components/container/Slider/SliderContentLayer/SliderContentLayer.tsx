@@ -3,8 +3,8 @@ import { Swiper } from 'react-vant';
 import { SwiperDuration, useNavigation } from '../../../../hooks/useNavigation';
 import { useSliderSchema } from '../../../../hooks/userSliderSchema';
 import { SlideIndexProvider } from '../../../../hooks/useSlideIndex';
-import { useSlideIndxWithStoreEffect } from '../../../../hooks/useSlideIndxWithStoreEffect';
-import { useSliderHTMLEffect } from '../../../../hooks/useSliderHTMLEffect';
+import { useUpdateNavStoreEffect } from '../../../../hooks/useUpdateNavStoreEffect';
+import { useUpdateHTMLEffect } from '../../../../hooks/useUpdateHTMLEffect';
 import { isCloseTo } from '../../../../utils/math';
 
 import styles from './SliderContentLayer.module.css';
@@ -20,8 +20,8 @@ function SliderContent(props: SliderContentProps) {
   const navigation = useNavigation();
   const scheme = useSliderSchema();
 
-  useSliderHTMLEffect(scheme);
-  useSlideIndxWithStoreEffect();
+  useUpdateHTMLEffect(scheme);
+  useUpdateNavStoreEffect();
 
   const onActiveIndexChange = useCallback(
     (index: number) => {

@@ -5,6 +5,7 @@ const StoreContext = React.createContext(createStorage({}));
 
 export const StoreKeyNames = {
   ActiveIndex: 'activeIndex',
+  ActiveIndexTimeStamp: 'activeIndexTimeStamp', // activeIndexTimeStamp-index: xxxx
   TotalCount: 'totalCount',
   StartTimeStamp: 'startTimeStamp',
   EndTimeStamp: 'endTimeStamp',

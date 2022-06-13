@@ -2,6 +2,7 @@ import { registerComponent } from "../../utils/componentFactory";
 
 import AudioPlayer from './AudioPlayer';
 import Button from "./Button";
+import ClickListener from "../container/ClickListener";
 import Divider from "./Divider";
 import Gap from "./Gap";
 import Image from './Image';
@@ -22,6 +23,7 @@ import CircleProgress from "./CircleProgress";
 registerComponent(AudioPlayer, 'AudioPlayer');
 registerComponent(Button, 'Button');
 registerComponent(CircleProgress, 'CircleProgress');
+registerComponent(ClickListener, 'ClickListener');
 registerComponent(Divider, 'Divider');
 registerComponent(Gap, 'Gap');
 registerComponent(Image, 'Image');

@@ -1,39 +1,47 @@
 import React, { ReactNode } from "react";
 import { ComponentSchema } from "../types/Schema";
-import { isComponentSchema, isDebuggerValue, isPlainValue, isReactElement } from "./typeDetect";
+import { isComponentSchema, isDebuggerValue, isPlainValue, isReactOrEffectElement } from "./typeDetect";
 import { getRandomString } from "./random";
 import { getReferenceExpressValue, isReferenceExpress } from "./express";
-import { find } from "./schema";
 
-type ComponentFactory = CallableFunction;
-
-const registeredComponentsMap: Map<string, ComponentFactory> = new Map();
-
-export function registerComponent(factory: ComponentFactory, name?: string) {
-  registeredComponentsMap.set(name ?? factory.name , factory);
+export type ComponentFactory = CallableFunction;
+interface ComponentMetadata {
+  name: string;
+  factory: ComponentFactory;
+  isReactComponent: boolean,
 }
 
-function createReactElement(name: string, props: any, children: any) {
-  let ElementFactor = registeredComponentsMap.get(name);
-  if (!ElementFactor) {
+const registeredComponentsMap: Map<string, ComponentMetadata> = new Map();
+
+export function registerComponent(factory: ComponentFactory, name: string, isReactComponent?: boolean) {
+  registeredComponentsMap.set(name, {
+    factory,
+    name,
+    isReactComponent: isReactComponent ?? true,
+  });
+}
+
+function createComponentElement(name: string, props: any, children: any) {
+  let ElementFactor: ComponentFactory | null = null;
+  const metadata = registeredComponentsMap.get(name);
+  if (!metadata) {
     console.warn(`Can't find the '${name}' and back to the 'NoImplement Component'`);
-    ElementFactor = registeredComponentsMap.get('NoImplement') as any;
-    props = {
+    ElementFactor = registeredComponentsMap.get('NoImplement')!.factory;
+    return React.createElement(ElementFactor as any, props, children);
+  } else {
+    ElementFactor = registeredComponentsMap.get(name)!.factory;
+  }
+  if (metadata.isReactComponent) {
+    return React.createElement(ElementFactor as any, props, children);
+  } else {
+    return {
+      $$effect: ElementFactor,
       ...props,
-      componentName: name
+      componentName: name,
+      children,
     }
   }
-
-  return React.createElement(ElementFactor as any, props, children);
 }
-
-// export function findUsedComponentNamesFromSchema(schema: ComponentSchema): string[] {
-//   const results = find(schema, (componentSchema: ComponentSchema) => {
-
-//   });
-
-//   return results;
-// }
 
 export function createComponentFromSchema(
   schema: ComponentSchema,
@@ -84,7 +92,7 @@ export function createComponentFromSchema(
     childrenElement = childrenValue.map((childrenItem) => {
       if (isPlainValue(childrenItem)) {
         return childrenItem;
-      } else if (isReactElement(childrenItem)) {
+      } else if (isReactOrEffectElement(childrenItem)) {
         return childrenItem;
       } else if (isComponentSchema(childrenItem)) {
         return createComponentFromSchema(childrenItem, {
@@ -94,7 +102,7 @@ export function createComponentFromSchema(
       }
       return null;
     });
-  } else if (isReactElement(childrenValue)) {
+  } else if (isReactOrEffectElement(childrenValue)) {
     childrenElement = childrenValue;
   } else if (isComponentSchema(childrenValue)) {
     childrenElement = createComponentFromSchema(childrenValue as any, {
@@ -124,7 +132,7 @@ export function createComponentFromSchema(
         propValue = propValue.map((item) => {
           if (isPlainValue(item)) {
             return item;
-          } else if (isReactElement(item)) {
+          } else if (isReactOrEffectElement(item)) {
             return item;
           } else if (isComponentSchema(item)) {
             return createComponentFromSchema(item, {
@@ -156,7 +164,7 @@ export function createComponentFromSchema(
     }, schema);
   }
 
-  return createReactElement(
+  return createComponentElement(
     type, {
       name: getRandomString(),
       ...schemaProps,

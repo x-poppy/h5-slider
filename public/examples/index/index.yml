@@ -28,13 +28,13 @@ children:
     - type: NavigationButton
       props:
         searchMatcher: ["schema"]
-        href: "../../?schema=examples%2Fcomponents%2Findex.yml"
+        href: "./?schema=examples%2Fcomponents%2Findex.yml"
       children: "组件列表 Example"
     - type: Gap
     - type: NavigationButton
       props:
         searchMatcher: ["schema"]
-        href: "../../?schema=examples%2FrichText%2Findex.yml"
+        href: "./?schema=examples%2FrichText%2Findex.yml"
       children: "富文本 Example"
     - type: Gap
     - type: NavigationButton

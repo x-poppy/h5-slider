@@ -1,5 +1,4 @@
-import { ReactElement, useState } from "react";
-import { useAsyncEffect } from "../../hooks/useAsyncEffect";
+import { ReactElement, useEffect, useState } from "react";
 import { useHttpClient } from "../../hooks/useHttpClient";
 import { useInitialConfig } from "../../hooks/useInitialConfig";
 import { useScriptContext } from "../../hooks/useScriptContext";
@@ -11,6 +10,8 @@ import { find, findByProperty, findByType } from "../../utils/schema";
 import { isComponentSchema } from "../../utils/typeDetect";
 import { createComponentFromSchema } from "../../utils/componentFactory";
 import { useLoadingIndicator } from "../LoadingIndicator";
+import { useThrowError } from "../../hooks/useThrow";
+import { callback } from "../../utils/callback";
 
 const EventNames = {
   OnStoreDataLoaded: "onStoreDataLoaded",
@@ -21,63 +22,75 @@ function SliderLoader() {
   const initialConfig = useInitialConfig();
   const scriptContext = useScriptContext();
   const httpClient = useHttpClient();
+  const throwError = useThrowError();
 
   const [sliderElement, setSliderElement] = useState<ReactElement | null>(null);
   const loadingIndication = useLoadingIndicator();
 
-  useAsyncEffect(async () => {
-    // validation
-    if (!initialConfig.schema || typeof initialConfig.schema !== 'string') {
-      throw new Error("Invalid Schema");
-    }
-    try {
-      loadingIndication.start();
-      // load schema
-      const schemaUrl = decodeURIComponent(initialConfig.schema);
-      const schema = await loadSchema(schemaUrl);
-      const storeData = await loadStoreData(httpClient, schema);
+  useEffect(() => {
+    callback(async () => {
+      // validation
+      if (!initialConfig.schema || typeof initialConfig.schema !== 'string') {
+        throwError(new Error("Invalid Schema"));
+      }
 
-      // load script
-      await loadSliderScript(schema, scriptContext);
-      const storeDataLoadedEvt = new CustomEvent(EventNames.OnStoreDataLoaded, {
-        detail: storeData,
-      });
-      // this may modify in the scripts.
-      scriptContext.emit(storeDataLoadedEvt);
-      const transformedStoreData = storeDataLoadedEvt.detail ?? {};
-      const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
-        (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
-      transformedStoreData[StoreKeyNames.StartTimeStamp] = transformedStoreData[StoreKeyNames.StartTimeStamp] ?? Date.now();
+      try {
+        loadingIndication.start();
+        // load schema
+        const schemaUrl = decodeURIComponent(initialConfig.schema as string);
+        const schema = await loadSchema(schemaUrl);
+        const storeData = await loadStoreData(httpClient, schema);
 
-      const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {
-        detail: {
-          schema,
-          selector: {
-            find,
-            findByType,
-            findByProperty,
+        // load script
+        await loadSliderScript(schema, scriptContext);
+        const storeDataLoadedEvt = new CustomEvent(EventNames.OnStoreDataLoaded, {
+          detail: storeData,
+        });
+        // this may modify in the scripts.
+        scriptContext.emit(storeDataLoadedEvt);
+        const transformedStoreData = storeDataLoadedEvt.detail ?? {};
+        const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
+          (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
+        transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();
+
+        const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {
+          detail: {
+            schema,
+            selector: {
+              find,
+              findByType,
+              findByProperty,
+            }
           }
-        }
-      });
-      scriptContext.emit(schemaInitialEvt);
-      const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? schemaInitialEvt.detail.schema : schema;
-      const element = createComponentFromSchema(transformedSchema, {
-        localProps: {
-          initialIndex: initialIndex,
-          storeData: transformedStoreData
-        }
-      });
-      setSliderElement(element as ReactElement);
-      loadingIndication.end();
-    } catch(err) {
-      setSliderElement(null);
-      loadingIndication.end();
-      throw err;
-    }
-  // eslint-disable-next-line 
-  }, [], {
-    popupError: false
-  });
+        });
+
+        scriptContext.emit(schemaInitialEvt);
+        const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? schemaInitialEvt.detail.schema : schema;
+        const element = createComponentFromSchema(transformedSchema, {
+          localProps: {
+            initialIndex: initialIndex,
+            storeData: transformedStoreData
+          }
+        });
+
+        setSliderElement(element as ReactElement);
+        loadingIndication.end();
+      } catch(err) {
+        setSliderElement(null);
+        loadingIndication.end();
+        throw err;
+      }
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
+
+    
+    
+
+
+   
+
   
   return sliderElement;
 }

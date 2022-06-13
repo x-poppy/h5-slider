@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { SliderComponentProps } from '../../../types/Component';
 import { getURL } from '../../../utils/url';
 import styles from './AudioPlayer.module.css';
@@ -9,15 +9,9 @@ export interface AudioPlayerProps extends SliderComponentProps {
 }
 
 function AudioPlayer(props: AudioPlayerProps) {
-  const onClickHandler = useCallback(
-    (evt: any) => {
-      props.onClick?.(evt);
-    },
-    [props],
-  );
   const src = props.src && getURL(props.src, props.$$schema.info?.baseURL);
   return (
-    <audio tabIndex={-1} className={styles.main} controls onClick={onClickHandler}>
+    <audio tabIndex={-1} className={styles.main} controls>
       <source src={src} type={props.type ?? 'audio/mpeg'} />
     </audio>
   );

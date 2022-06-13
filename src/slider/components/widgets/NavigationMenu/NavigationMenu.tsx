@@ -3,7 +3,7 @@ import { Button, ButtonSize, ButtonType } from 'react-vant';
 import { ShareO } from '@react-vant/icons';
 
 import { SliderComponentProps } from '../../../types/Component';
-import { getNavigationURL } from '../../../utils/url';
+import { getURLWithQueryString } from '../../../utils/url';
 import { navigateTo } from '../../../utils/navigateTo';
 import { getRandomValueFromArray } from '../../../utils/random';
 
@@ -23,7 +23,7 @@ export interface NavigationButtonProps extends SliderComponentProps {
 function NavigationButton(props: NavigationButtonProps) {
   const onClickHandle = useCallback(async () => {
     const href = getRandomValueFromArray(props.href);
-      const navigateURL = getNavigationURL(href, props.searchMatcher);
+      const navigateURL = getURLWithQueryString(href, props.searchMatcher);
       if (!navigateURL) {
         return;
       }

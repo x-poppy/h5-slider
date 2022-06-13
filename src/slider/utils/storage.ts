@@ -9,6 +9,7 @@ export interface Storage {
   get<T=StoreValueType>(key: string): T | undefined;
   has(key: string): boolean;
   set(key: string, value: StoreValueType): void;
+  batchUpdate(val: Record<string, StoreValueType>): void
   clone(): Storage;
   toJSON(): Record<string, any>;
 }
@@ -64,6 +65,19 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
       const changed = store.get(trimPrefixKey) !== val;
       store.set(trimPrefixKey, val);
       changed && opts?.onUpdate?.();
+    },
+    batchUpdate(val: Record<string, StoreValueType>) {
+      let isAnychanged = false;
+      for (const [key, value] of Object.entries(val)) {
+        const trimPrefixKey = trimPrefix(key, opts?.prefix);
+        const changed = store.get(trimPrefixKey) !== value;
+        store.set(trimPrefixKey, value);
+
+        isAnychanged = isAnychanged || changed;
+      }
+      if (isAnychanged) {
+        opts?.onUpdate?.();
+      }
     },
     get size() {
       return store.size

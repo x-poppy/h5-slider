@@ -1,6 +1,7 @@
-import { ReactElement } from 'react';
-
-export interface SliderEffectElement extends ReactElement {
-  event: SlideEffectEvent;
-  onEffectComplete: OnEffectCompleteFunction;
+import { ComponentFactory } from '../utils/componentFactory';
+export interface SliderEffectElement {
+  $$effect: ComponentFactory;
+  $$schema: SliderSchema;
+  $schema: ComponentSchema;
+  name: string;
 }

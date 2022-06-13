@@ -19,6 +19,12 @@ export function getURL(url: string, baseURL?: string) {
   return new URL(url, baseURL).href;
 }
 
+export function getURLWithQueryString(url: string, matcher?: string | string[] | null, search?:string | null) {
+  url = getURL(url);
+  return appendSearchParamsToUrl(url, getQueryObjectFromSearch(matcher, search));
+}
+
+
 export function getBaseURL(url: string) {
   let targetURL = url;
   if (isRelativeURL(url)) {
@@ -52,8 +58,8 @@ const SearchParamKeyWorlds = [
   "debug"
 ];
 
-export function getSearQueryObject(matcher?: string | string[]) {
-  const searchParams = new URLSearchParams(window.location.search);
+export function getQueryObjectFromSearch(matcher?: string | string[] | null, search?:string | null) {
+  const searchParams = new URLSearchParams(search ?? window.location.search);
   const query = Object.fromEntries(searchParams);
   const filteredQuery: Record<string, any> = {};
   for (const [key, val] of Object.entries(query)) {
@@ -64,7 +70,13 @@ export function getSearQueryObject(matcher?: string | string[]) {
   return filterObjectByMatcher(filteredQuery, matcher ?? null, true);
 }
 
-export function getNavigationURL(href: string, matcher?: string | string[]) {
-  return appendSearchParamsToUrl(href, getSearQueryObject(matcher));
+export function isURLsCors(targetURL: string, currentURL?: string) {
+  if (isRelativeURL(targetURL)) {
+    return false;
+  }
+
+  const targetUrl = new URL(targetURL);
+  const currentUrl = currentURL ? new URL(currentURL): window.location;
+  return targetUrl.origin !== currentUrl.origin;
 }
 

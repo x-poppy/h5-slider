@@ -25,7 +25,7 @@ function SlideIndicator(props: SlideIndicatorProps) {
   const progress = totalCount === 0 ? 0 : format((activeIndex / totalCount) * 100);
   const pivotText = props.pivotText ?? `${activeIndex}/${totalCount}`;
   return (
-    <div onClick={props.onClick} className={styles.main} >
+    <div className={styles.main} >
       <Progress
         percentage={progress} 
         strokeWidth={props.strokeWidth}

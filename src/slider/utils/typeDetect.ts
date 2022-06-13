@@ -1,5 +1,5 @@
-export function isReactElement(val: any) {
-  if (typeof val === 'object' && '$$typeof' in val) {
+export function isReactOrEffectElement(val: any) {
+  if (typeof val === 'object' && ('$$typeof' in val || '$$effect' in val)) {
     return true;
   }
 
@@ -7,7 +7,10 @@ export function isReactElement(val: any) {
 }
 
 export function isPlainValue(val: any) {
-  return typeof val === 'string' || val === 'number'  || val === null || val === undefined;
+  return typeof val === 'string' || 
+    typeof val === 'number'  || 
+    val === null || 
+    val === undefined;
 }
 
 export function isDebuggerValue(val: any) {

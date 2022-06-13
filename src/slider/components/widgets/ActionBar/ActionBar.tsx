@@ -4,7 +4,6 @@ import { SliderComponentProps } from '../../../types/Component';
 import { LocaleMessageKey } from '../../../utils/language';
 import { PermissionKey } from '../../../utils/permission';
 
-import { useEffectElement } from '../../../hooks/useEffectElement';
 import { useI18nMessageBundle } from '../../../hooks/useI18nMessageBundle';
 import { usePermission } from '../../../hooks/usePermission';
 import { useNavigation } from '../../../hooks/useNavigation';
@@ -13,10 +12,9 @@ import { SliderEffectElement } from '../../../types/Element';
 
 import styles from './ActionBar.module.css';
 import { getReferenceVariableValue } from '../../../utils/express';
+import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
 
 interface ActionBarProps extends SliderComponentProps {
-  preSlideEffect?: SliderEffectElement;
-  nextSlideEffect?: SliderEffectElement;
   submitEffect?: SliderEffectElement;
 
   // bind
@@ -69,6 +67,7 @@ function ActionBar(props: ActionBarProps) {
   const permission = usePermission();
   const navigation = useNavigation();
   const store = useStore();
+  const dispatchEffect = useDispatchEffect();
 
   const nextButtonStoreEnable = useMemo(() => {
     return getReferenceVariableValue(props.nextButtonEnable, true, (key: string) => store.get(key) ?? false);
@@ -78,20 +77,13 @@ function ActionBar(props: ActionBarProps) {
     return getReferenceVariableValue(props.preButtonEnable, true, (key: string) => store.get(key) ?? false);
   }, [props.preButtonEnable, store]);
 
-  const [activePreSlideEffect, openPreSlideEffect, isValidPreSlideEffect] = useEffectElement(props.preSlideEffect);
-  const [activeNextSlideEffect, openNextSlideEffect, isValidNextSlideEffect] = useEffectElement(props.nextSlideEffect);
-  const [activeSubmitEffect, openSubmitEffect, isValidSubmitEffect] = useEffectElement(props.submitEffect);
-
-  const [isPreBtnLoading, setIsPreBtnLoading] = useState(false);
-  const [isNextBtnLoading, setIsNextBtnLoading] = useState(false);
   const [isSubmitBtnLoading, setIsSubmitBtnLoading] = useState(false);
   
-  const hasPreSlidePermission = permission.getPermission(PermissionKey.PreviousSlide, true);
   const hasSubmitPermission = permission.getPermission(PermissionKey.SubmitSlide, true);
 
-  const isShowPreBtn = hasPreSlidePermission && navigation.totalCount > 1;
-  const isPreBtnEnabled = isShowPreBtn && !isPreBtnLoading && navigation.activeIndex > 0 && preButtonStoreEnable;
-  const isNexBtnEnabled = !isNextBtnLoading && nextButtonStoreEnable;
+  const isShowPreBtn = navigation.activeIndex > 0 && navigation.totalCount > 1;
+  const isPreBtnEnabled = isShowPreBtn && navigation.activeIndex > 0 && preButtonStoreEnable;
+  const isNexBtnEnabled = nextButtonStoreEnable;
   const isSubmitMode = navigation.activeIndex === navigation.totalCount - 1;
   const isSubmitBtnEnable = hasSubmitPermission && nextButtonStoreEnable && !isSubmitBtnLoading;
 
@@ -99,58 +91,26 @@ function ActionBar(props: ActionBarProps) {
   const nextButtonText = props.nextButtonText ?? i18nMessageBundle.getMessage(LocaleMessageKey.NextSlide);
   const submitSlideText = props.submitButtonText ?? i18nMessageBundle.getMessage(LocaleMessageKey.SubmitSlide);
 
-  const onPreBtnClickHandle = useCallback(
-    async () => {
-      if (!isValidPreSlideEffect) {
-        navigation.preSlide()
-        return;
-      }
-      try {
-        setIsPreBtnLoading(true);
-        await openPreSlideEffect({
-          eventName: EventNames.OnPreSlide
-        });
-        navigation.preSlide()
-        setIsPreBtnLoading(false);
-      } catch (err) {
-        setIsPreBtnLoading(false);
-      }
+  const onPreBtnClickHandle = useCallback(() => {
+      navigation.preSlide()
     },
-    // eslint-disable-next-line
-    [isValidPreSlideEffect, openPreSlideEffect],
+    [navigation],
   )
 
-  const onNextBtnClickHandle = useCallback(
-    async () => {
-      if (!isValidNextSlideEffect) {
-        navigation.nextSlide();
-        return;
-      }
-      try {
-        setIsNextBtnLoading(true);
-        await openNextSlideEffect({
-          eventName: EventNames.OnNextSlide
-        });
-        navigation.nextSlide();
-        setIsNextBtnLoading(false);
-      } catch (err) {
-        setIsNextBtnLoading(false);
-      }
-      
+  const onNextBtnClickHandle = useCallback(() => {
       navigation.nextSlide();
     },
-    // eslint-disable-next-line
-    [openNextSlideEffect, props.nextSlideEffect],
+    [navigation],
   )
 
   const onSubmitBtnClickHandle = useCallback(
     async () => {
-      if (!isValidSubmitEffect) {
+      if (!props.submitEffect) {
         return;
       }
       try {
         setIsSubmitBtnLoading(true);
-        await openSubmitEffect({
+        dispatchEffect(props.submitEffect, {
           eventName: EventNames.OnSubmitSlider
         });
         setIsSubmitBtnLoading(false);
@@ -158,11 +118,11 @@ function ActionBar(props: ActionBarProps) {
         setIsSubmitBtnLoading(false);
       }
     },
-    [isValidSubmitEffect, openSubmitEffect],
+    [dispatchEffect, props.submitEffect],
   ) 
 
   return (
-    <div className={styles.main} onClick={props.onClick}>
+    <div className={styles.main}>
       { isShowPreBtn && (
         <>
           <Button 
@@ -172,7 +132,6 @@ function ActionBar(props: ActionBarProps) {
             plain={props.preButtonStyle?.plain}
             square={props.preButtonStyle?.square}
             shadow={props.preButtonStyle?.shadow}
-            loading={isPreBtnLoading}
             loadingText={preButtonText}
             className={styles.preBtn} 
             disabled={!isPreBtnEnabled} 
@@ -190,7 +149,6 @@ function ActionBar(props: ActionBarProps) {
           plain={props.nextButtonStyle?.plain}
           square={props.nextButtonStyle?.square}
           shadow={props.nextButtonStyle?.shadow}
-          loading={isNextBtnLoading}
           loadingText={nextButtonText}
           className={styles.nextBtn} 
           disabled={!isNexBtnEnabled} 
@@ -213,9 +171,6 @@ function ActionBar(props: ActionBarProps) {
           { submitSlideText }
         </Button>
       ) }
-      { activePreSlideEffect }
-      { activeNextSlideEffect }
-      { activeSubmitEffect }
     </div>
   );
 }

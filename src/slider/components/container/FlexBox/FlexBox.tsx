@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import { Space } from 'react-vant';
-import { SliderComponentProps, SpaceType } from '../../../types/Component';
+import { ClickAbleComponentProps, SliderComponentProps, SpaceType } from '../../../types/Component';
 
 import styles from './FlexBox.module.css';
 
-export interface FlexBoxProps extends SliderComponentProps {
+export interface FlexBoxProps extends SliderComponentProps, ClickAbleComponentProps {
   block?: boolean
   children: ReactNode;
   gap?: SpaceType

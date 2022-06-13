@@ -1,11 +1,11 @@
 import React from 'react';
 import { Image as OriginImage, ImageFit } from 'react-vant';
-import { SliderComponentProps } from '../../../types/Component';
+import { ClickAbleComponentProps, SliderComponentProps } from '../../../types/Component';
 import { getURL } from '../../../utils/url';
 
 import styles from './Image.module.css'
 
-interface ImageProps extends SliderComponentProps {
+interface ImageProps extends SliderComponentProps, ClickAbleComponentProps {
   width?: number | string;
   height?: number | string;
   alt?: string;

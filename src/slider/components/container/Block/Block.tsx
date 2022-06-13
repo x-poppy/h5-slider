@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames'
-import { SliderComponentProps, SpaceType } from '../../../types/Component';
+import { ClickAbleComponentProps, SliderComponentProps, SpaceType } from '../../../types/Component';
 
 import styles from './Block.module.css';
 
-export interface BlockProps extends SliderComponentProps {
+export interface BlockProps extends SliderComponentProps, ClickAbleComponentProps {
   round?: boolean;
   shadow?: boolean;
   children: ReactNode;
