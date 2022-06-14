@@ -209,6 +209,10 @@ children:
     props:
       url: "./ToggleGroup.yml"
 
+  - type: Module
+    props:
+      url: "./Tack.yml"    
+
   # ============================================================ 
   - type: Module
     definitions:

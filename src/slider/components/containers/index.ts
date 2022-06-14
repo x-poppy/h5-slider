@@ -11,6 +11,7 @@ import Padding from './Padding';
 import ToggleGroup from './ToggleGroup';
 import Slide from './Slide';
 import Slider from './Slider';
+import Tack from './Tack';
 
 registerComponent(Block, 'Block');
 registerComponent(ClickListener, 'ClickListener');
@@ -22,4 +23,5 @@ registerComponent(Module, 'Module');
 registerComponent(Padding, 'Padding');
 registerComponent(Slide, 'Slide');
 registerComponent(Slider, 'Slider');
+registerComponent(Tack, 'Tack');
 registerComponent(ToggleGroup, 'ToggleGroup');

@@ -1,5 +1,4 @@
 import React, { ReactNode, useMemo } from 'react';
-import ReactDOM from 'react-dom';
 import { SliderComponentProps } from '../../../types/Component';
 
 import styles from './Float.module.css';
