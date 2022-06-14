@@ -31,7 +31,8 @@ const EventNames = {
 
 function Button(props: ButtonProps) {
   const store = useStore();
-  useVariableScopes()
+  useVariableScopes();
+
   const loadIndicator = useLoadingIndicator();
   const [isLoading, setIsLoading] = useState(false);
   const dispatchEffect = useDispatchEffect();
@@ -77,7 +78,7 @@ function Button(props: ButtonProps) {
       type={props.type}
       color={props.color}
       plain={props.plain}
-      square={props.square}
+      size={props.size}
       shadow={props.shadow}
     >
       { props.children }

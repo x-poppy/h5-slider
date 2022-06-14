@@ -19,9 +19,6 @@ export interface LinkProps extends SliderComponentProps {
   strong?: boolean;
   ellipsis?: boolean | number;
   children?: React.ReactNode;
-
-  href?: string;
-  searchMatcher?: string | string[];
   //events
   clickEffect?: SliderEffectElement;
 }
@@ -35,20 +32,7 @@ function Link(props: LinkProps) {
   const dispatchEffect = useDispatchEffect();
 
   const onClickHandle = useCallback(async () => {
-    // link
     if (!props.clickEffect) {
-      if (!props.href) {
-        return;
-      }
-
-      const navigateURL = getURLWithQueryString(props.href, props.searchMatcher);
-      if (!navigateURL) {
-        return;
-      }
-      navigateTo(navigateURL, {
-        searchMatcher: props.searchMatcher,
-        knownHosts: props.$$schema.security?.knownHosts,
-      });
       return;
     }
 
@@ -62,7 +46,7 @@ function Link(props: LinkProps) {
     } catch (err) {
       loadingIndicator.end();
     }
-  }, [dispatchEffect, loadingIndicator, props.$$schema.security?.knownHosts, props.clickEffect, props.href, props.searchMatcher]);
+  }, [dispatchEffect, loadingIndicator, props.clickEffect]);
   
   return (
     <Typography.Link style={{width: props.width}} 

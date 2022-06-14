@@ -1,0 +1,114 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Button
+  slideSubTitle: '按钮'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "type"
+        propSubTitle: "类型，可选值为 primary info warning danger"
+        propUsage: "type: danger"
+    children:
+      type: Button
+      props:
+        type: danger
+      children: "测试Test按钮"
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "size"
+        propSubTitle: "尺寸，可选值为 large small mini"
+        propUsage: "size: small"
+    children:
+      - type: Button
+        props:
+          type: primary
+          size: large
+        children: "测试Test按钮"
+      - type: Button
+        props:
+          type: info
+        children: "测试Test按钮"  
+      - type: Button
+        props:
+          type: warning
+          size: small
+        children: "测试Test按钮"
+      - type: Button
+        props:
+          type: danger
+          size: small
+        children: "测试Test按钮"
+      
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "color"
+        propSubTitle: "按钮颜色，支持传入 linear-gradient 渐变色"
+        propUsage: "color: linear-gradient(#e66465, #9198e5)"
+    children:
+      type: Button
+      props:
+        type: info
+        size: small
+        color: "linear-gradient(#e66465, #9198e5)"
+      children: "测试Test按钮"  
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "plain"
+        propSubTitle: "是否为朴素按钮"
+        propUsage: "plain: true"
+    children:
+      type: Button
+      props:
+        type: info
+        size: small
+        color: "linear-gradient(#e66465, #9198e5)"
+        plain: true
+      children: "测试Test按钮" 
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "round"
+        propSubTitle: "是否为圆形按钮"
+        propUsage: "round: true"
+    children:
+      type: Button
+      props:
+        type: warning
+        size: small
+        round: true
+      children: "测试Test按钮"
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "shadow"
+        propSubTitle: "显示阴影，可选值为 1 2 3	"
+        propUsage: "shadow: 2"
+    children:
+      type: Button
+      props:
+        type: warning
+        size: small
+        round: true
+        shadow: 2
+      children: "测试Test按钮"
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "clickEffect"
+        propSubTitle: "点击效果"
+        propUsage: "clickEffect: -"
+    children:
+      type: Button
+      props:
+        type: warning
+        size: small
+        round: true
+        shadow: 2
+        onClickEffect:
+          type: AlertEffect
+          props: 
+            message: "点击效果"
+      children: "测试Test按钮"
+

@@ -128,7 +128,11 @@ children:
 
   - type: Module
     props:
-      url: "./CircleProgress.yml"        
+      url: "./CircleProgress.yml"
+
+  - type: Module
+    props:
+      url: "./Button.yml"            
 
   - type: Module
     props:
@@ -136,11 +140,7 @@ children:
 
   - type: Module
     props:
-      url: "./Image.yml"    
-
-  - type: Module
-    props:
-      url: "./NavigationButton.yml" 
+      url: "./Image.yml"
 
   - type: Module
     props:
