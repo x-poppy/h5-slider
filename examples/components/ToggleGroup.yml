@@ -1,0 +1,24 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: ToggleGroup
+  slideSubTitle: '控制Group内容的是否显示'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "show"
+      propSubTitle: "点击按钮后会显示内容"
+      propUsage: "show: true"
+    children:
+      - type: Switch
+        props:
+          name: 'ToggleGroup-Switch'
+      - type: ToggleGroup
+        props:
+          show: ${ToggleGroup-Switch}
+        children:
+          type: Block
+          children:
+            type: QRCode
+            props:
+              size: 256
+            children: "https://xxxx"  

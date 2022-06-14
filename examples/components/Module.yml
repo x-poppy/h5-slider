@@ -1,0 +1,14 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Module
+  slideSubTitle: '模块'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "contentPosition"
+      propSubTitle: "文字位置 'left' | 'center' | 'right'"
+      propUsage: "contentPosition: center"
+    children:
+      - type: Module
+        props:
+          url: './slide-001.yml' 

@@ -1,0 +1,30 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: The End
+  slideSubTitle: '-'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "点击提交按钮"
+      propSubTitle: "-"
+      propUsage: "-"
+    children:
+      - type: ActionBar
+        props:
+          submitEffect:
+            type: QueueEffect
+            children:
+            - type: SubmitStoreEffect
+              props:
+                url: "./test"
+                searchMatcher: ["userId","exerciseId"]
+                mockData: {data: {jumpURL: "http://www.baidu.com"}}
+            - type: AlertEffect
+              props:
+                message: "点击确认后，将要跳转到 ${event.detail.response.data.jumpURL}"
+            - type: NavigationEffect
+              props:
+                url: ${event.detail.response.data.jumpURL}  
+                searchMatcher: ["userId","exerciseId"]
+                skipSecurityCheck: true
+                 

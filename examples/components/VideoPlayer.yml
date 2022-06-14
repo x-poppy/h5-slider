@@ -1,0 +1,24 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: VideoPlayer
+  slideSubTitle: '视频播放器'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "src"
+      propSubTitle: "文件地址"
+      propUsage: "src: \"xxxxxxx\""
+    children:
+      - type: VideoPlayer
+        props:
+          src: "./assets/flower.mp4"
+          type: "audio/mpeg"
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "type"
+      propSubTitle: "文件格式, 'video/mp4' | 'video/ogg' | 'video/webm'"
+      propUsage: "type: video/mp4"
+    children:
+      - type: VideoPlayer
+        props:
+          src: "./assets/flower.mp4"

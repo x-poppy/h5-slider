@@ -1,0 +1,50 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: ClickListener
+  slideSubTitle: 'ClickListener, 当被包裹的元素被点击时触发的事件'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "effect"
+      propSubTitle: "触发相应的效果"
+      propUsage: "effect: AlertEffect"
+    children:
+      - type: ClickListener
+        props: 
+          clickEffect:
+            type: AlertEffect
+            props:
+              message: "${event.eventName} ${title} This element is clicked~"
+        children:
+          type: Image
+          props:
+            width: 10rem
+            height: 10rem
+            src: "./assets/pic_trulli.jpeg"
+            round: true
+            radius: 10rem
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "effect"
+      propSubTitle: "触发队列效果"
+      propUsage: "effect: QueueEffect"
+    children:
+      - type: ClickListener
+        props: 
+          clickEffect:
+            type: QueueEffect
+            children: 
+              - type: AlertEffect
+                props:
+                  message: "This element is clicked 1~"
+              - type: AlertEffect
+                props:
+                  message: "This element is clicked 2~"  
+        children:
+          type: Image
+          props:
+            width: 10rem
+            height: 10rem
+            src: "./assets/pic_trulli.jpeg"
+            round: true
+            radius: 10rem

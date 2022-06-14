@@ -1,0 +1,13 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: ActionBar
+  slideSubTitle: '控制条, 一般用于Slide导航'
+  propUsage: "-"
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "-"
+      propSubTitle: "-"
+      propUsage: "-"
+    children:
+      type: ActionBar

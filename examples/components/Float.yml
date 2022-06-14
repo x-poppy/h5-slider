@@ -1,0 +1,22 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Float
+  slideSubTitle: '漂浮'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "left"
+        propSubTitle: "左边位置"
+        propUsage: "left: 20%"
+    children:
+      type: Float
+      props:
+        left: 20px
+        top: 80px
+      children: 
+        - type: Block
+          props:
+            background: "#f6f8fa"
+          children:
+            type: Button
+            children: XXXXXX 

@@ -1,0 +1,15 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: QRCode
+  slideSubTitle: '二维码'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "childrem"
+      propSubTitle: "内容"
+      propUsage: "childrem: 'xxxxx'"
+    children:
+      - type: QRCode
+        props:
+          size: 256
+        children: "https://xxxx"

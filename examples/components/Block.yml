@@ -1,0 +1,80 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Block
+  slideSubTitle: '区块组件'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "round"
+        propSubTitle: "控制区块是否具有圆角默认开启"
+        propUsage: "round: true"
+    children:
+      - type: Block
+        props:
+          round: true
+          background: red
+        children: "round: true"
+      - type: Gap
+      - type: Block
+        props:
+          round: false
+          background: green
+        children: "round: false"    
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "background"
+        propSubTitle: "区块的背景色"
+        propUsage: "background: green"
+    children:
+      - type: Block
+        props:
+          background: "linear-gradient(#e66465, #9198e5)"
+        children: "XXX"
+      - type: Gap  
+      - type: Block
+        props:
+          background: "linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)"
+        children: "XXX" 
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "shadow"
+        propSubTitle: "是否显示阴影"
+        propUsage: "shadow: true"
+    children:
+      - type: Gap  
+      - type: Block
+        props:
+          shadow: true
+        children: "shadow: true"   
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "padding"
+        propSubTitle: "区块内边距"
+        propUsage: "padding 3rem"
+    children:
+      - type: Gap
+      - type: Block
+        props:
+          padding: "3rem"
+          shadow: true
+        children: "padding 3rem"
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "children"
+      propSubTitle: "区块可以包含其他的组件"
+      propUsage: "在children中放入其他组件"
+    children:
+      - type: Block
+        props:
+        padding: "1rem"
+        shadow: true
+        children:
+          type: Block
+          props:
+            padding: "1rem"
+            shadow: true
+          children: "XXXXXX"  
