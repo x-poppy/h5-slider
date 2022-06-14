@@ -22,19 +22,27 @@ export function useDispatchEffect() {
   const httpClient = useHttpClient();
 
   const dispatch = useCallback(
-    async (effectElement:SliderEffectElement, event: SlideEffectEvent, opts?: DispatchEffectOpts) => {
+    async (effectElement:SliderEffectElement, event: SlideEffectInitEvent, opts?: DispatchEffectOpts) => {
       if (!effectElement) {
         return;
       }
 
       const popupError = opts?.popupError ?? true;
 
+
+      const contextEvent: SlideEffectEvent = {
+        eventName: event.eventName,
+        detail: {
+          ...event.detail
+        }
+      };
+
       variableScopes.pushScope({
         navigation: {
           activeIndex: navigation.activeIndex,
           totalCount: navigation.totalCount,
         },
-        event,
+        event: contextEvent,
       });
 
       const props = {
@@ -43,7 +51,7 @@ export function useDispatchEffect() {
         i18nMessageBundle,
         store,
         httpClient,
-        event,
+        event: contextEvent,
       };
 
       try {

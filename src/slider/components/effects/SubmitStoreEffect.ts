@@ -5,14 +5,19 @@ import { getRandomValueFromArray } from '../../utils/random';
 import { getStoreData } from '../../utils/storage';
 import { getQueryObjectFromSearch, getURL } from '../../utils/url';
 
-interface HttpRequestEffectProps extends SliderEffectProps {
+interface SubmitStoreEffectProps extends SliderEffectProps {
   url: string | string[]
   method?: Method | string;
+  // black list
   matcher?: string | string[];
+  // white list
   searchMatcher?: string | string[];
+
+  // for testing purpose
+  mockData?: Record<string, any>;
 }
 
-async function SubmitStoreEffect(props: HttpRequestEffectProps) {
+async function SubmitStoreEffect(props: SubmitStoreEffectProps) {
   const store = props.store;
   const httpClient = props.httpClient;
 
@@ -21,13 +26,26 @@ async function SubmitStoreEffect(props: HttpRequestEffectProps) {
   // blacklist mode
   const storeData = getStoreData(store, props.matcher);
   storeData[StoreKeyNames.EndTimeStamp] = storeData[StoreKeyNames.EndTimeStamp] ?? Date.now();
+
+  if (props.mockData) {
+    props.event.detail = {
+      ...props.event.detail,
+      response: props.mockData,
+    }
+    return;
+  }
+
   const url = getURL(getRandomValueFromArray(props.url), props.$$schema.info?.baseURL);
-  await httpClient.request({
+  const response = await httpClient.request({
     url,
     method: props.method ?? 'post',
     params: queryData,
     data: storeData
   });
+  props.event.detail = {
+    ...props.event.detail,
+    response: response.data,
+  }
 }
 
 export default SubmitStoreEffect;

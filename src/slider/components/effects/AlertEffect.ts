@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React from "react";
 import { Dialog } from "react-vant";
 import { SliderEffectProps } from "../../types/Component";
@@ -13,7 +14,7 @@ export interface AlertEffectProps extends SliderEffectProps {
   confirmButtonColor?: string;
 }
 
-async function AlertEffect(props: AlertEffectProps) {
+async function AlertEffect(props: AlertEffectProps) {debugger;
   const replacedProps = props.variableScopes.getExpressValues([
     'title',
     'message',

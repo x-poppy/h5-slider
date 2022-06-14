@@ -212,10 +212,19 @@ children:
   # ============================================================ 
   - type: Module
     definitions:
-      middlePageTitle: 小部件
+      middlePageTitle: 效果
     props:
       url: "./MiddlePage.yml"
   # ------------------------------------------------------------ 
+
+  # ============================================================ 
+  - type: Module
+    definitions:
+      middlePageTitle: 小部件
+    props:
+      url: "./MiddlePage.yml"
+  # ------------------------------------------------------------
+
   # widget
   - type: Module
     props:

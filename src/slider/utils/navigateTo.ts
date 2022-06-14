@@ -3,19 +3,26 @@ import { getURLWithQueryString, isURLsCors } from "./url";
 
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
+import { isPlainObject } from "./typeDetect";
+import { getProperty, hasProperty } from "dot-prop";
 
 interface NavigateToOpts {
-  searchMatcher?: string | string[],
+  searchMatcher?: string | string[];
+  dataPath?: string;
   i18nMessageBundle?: I18nMessageBundle
   knownHosts?: string[];
+  skipSecurityCheck?: boolean;
 }
 
 export async function navigateTo(url: string, opts?: NavigateToOpts) {
-  if (!url) {
+  const skipSecurityCheck = opts?.skipSecurityCheck ?? false;
+
+  url = getURLWithQueryString(url, opts?.searchMatcher);
+  if (skipSecurityCheck) {
+    window.location.href = url;
     return;
   }
 
-  url = getURLWithQueryString(url, opts?.searchMatcher);
   if (!isURLsCors(url)) {
     window.location.href = url;
     return;
