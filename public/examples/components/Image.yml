@@ -1,0 +1,110 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Image
+  slideSubTitle: '图片'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "src"
+      propSubTitle: "文件地址"
+      propUsage: "src: \"xxxxxxx\""
+    children:
+      - type: Image
+        props:
+          src: "./assets/pic_trulli.jpeg"
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "fit"
+      propSubTitle: "填充类型 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'"
+      propUsage: "fit: contain"
+    children:
+      - type: Image
+        props:
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          fit: contain
+      - type: Text
+        props:
+          center: true
+          width: 100%
+        children: "fit: contain" 
+      - type: Gap  
+      - type: Image
+        props:
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          fit: cover
+      - type: Text
+        props:
+          center: true
+          width: 100%
+        children: "fit: cover" 
+      - type: Gap      
+      - type: Image
+        props:
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          fit: fill
+      - type: Text
+        props:
+          center: true
+          width: 100%
+        children: "fit: fill" 
+      - type: Gap      
+      - type: Image
+        props:
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          fit: none
+      - type: Text
+        props:
+          center: true
+          width: 100%
+        children: "fit: none" 
+      - type: Gap       
+      - type: Image
+        props:
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          fit: scale-down
+      - type: Text
+        props:
+          center: true
+          width: 100%
+        children: "scale-down" 
+      - type: Gap
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "round"
+      propSubTitle: "是否圆形"
+      propUsage: "round: true"
+    children:
+      - type: Image
+        props:
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          round: true
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "round"
+      propSubTitle: "圆形弧度"
+      propUsage: "radius: 10rem, 仅在round下有效"
+    children:
+      - type: Image
+        props:
+          width: 10rem
+          height: 10rem
+          src: "./assets/pic_trulli.jpeg"
+          round: true
+          radius: 10rem
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "Load Error"
+      propSubTitle: "加载异常"
+      propUsage: "-"
+    children:
+      - type: Image
+        props:
+          height: 10rem
+          src: "https://xxxx"

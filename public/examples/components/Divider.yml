@@ -1,0 +1,43 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Divider
+  slideSubTitle: '分割线'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "color"
+        propSubTitle: "分割线颜色"
+        propUsage: "color: black"
+    children:
+      - type: Divider
+      - type: Gap
+      - type: Divider
+        color: black
+        children: "color: black"
+      - type: Gap
+      - type: Divider
+        props:
+          color: red
+        children: "color: red"
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "contentPosition"
+        propSubTitle: "文字位置 'left' | 'center' | 'right'"
+        propUsage: "contentPosition: center"
+    children:
+      - type: Divider
+        props:
+          color: gray
+          contentPosition: left
+        children: "contentPosition: left"
+      - type: Gap
+      - type: Divider
+        color: black
+        contentPosition: center
+        children: "contentPosition: center"
+      - type: Gap
+      - type: Divider
+        props:
+          color: red
+          contentPosition: right
+        children: "contentPosition right"

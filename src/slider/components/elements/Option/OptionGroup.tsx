@@ -11,6 +11,7 @@ import styles from './OptionGroup.module.css'
 interface OptionGroupProps extends SliderComponentProps {
   gap?: string;
   multiple?: boolean;
+  nullable?: boolean;
   children?: ReactNode;
   checkedColor?: string;
   direction?: 'horizontal' | 'vertical'
@@ -41,6 +42,19 @@ export function OptionGroup(props: OptionGroupProps) {
 
   const selectOptionHandle = useCallback(
     (name: string, selected: boolean) => {
+      if (!props.nullable && !selected) {
+        const selectedCount = Object.keys(selectedValues).reduce((sum, key) => {
+          if (selectedValues[key]) {
+            sum = sum + 1;
+          }
+          return sum;
+        }, 0)
+        // the last one, if unselect it will be 0
+        if (selectedCount === 1) {
+          return;
+        }
+      }
+
       const values = {
         ...(multiple && selectedValues),
         [name]: selected,
@@ -48,8 +62,8 @@ export function OptionGroup(props: OptionGroupProps) {
       setSelectedValues(values);
       store.set(props.name, covertBooleanMapToString(values, ',')); 
     },
-    [multiple, props.name, selectedValues, store],
-  )
+    [multiple, props.name, props.nullable, selectedValues, store],
+  );
   
   const inst = useMemo(() => {
     return {

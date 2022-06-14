@@ -1,0 +1,61 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Option
+  slideSubTitle: '单选'
+  nextButtonEnable: ${test-002}
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "文本单选"
+      propSubTitle: "文本单选"
+      propUsage: "-"
+    children:
+      type: OptionGroup
+      props:
+        name: "test-001"
+      children:
+        - type: Option
+          props:
+            name: "test-001:1"
+          children: "XXXXXXX"
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "选项"
+      propSubTitle: "图片单选 形状, 可选值为 square round"
+      propUsage: "shape: square"
+    children:
+      type: OptionGroup
+      props:
+        random: true
+        name: "test-002"
+        direction: vertical
+      children:
+        - type: Option
+          props:
+            name: "test-002:1"
+            shape: square
+          children:
+            type: Image
+            props:
+              width: 6rem
+              height: 6rem
+              src: "./assets/pic_trulli.jpeg"
+        - type: Option
+          props:
+            name: "test-002:2"
+          children:
+            type: Image
+            props:
+              width: 6rem
+              height: 6rem
+              src: "./assets/img_girl.jpeg"
+
+        - type: Option
+          props:
+            name: "test-002:3"
+          children:
+            type: Image
+            props:
+              width: 6rem
+              height: 6rem
+              src: "./assets/img_chania.jpeg"      

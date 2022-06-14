@@ -1,0 +1,15 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: IFrame
+  slideSubTitle: IFrame
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "href"
+      propSubTitle: "地址"
+      propUsage: "href: \"http://www.baidu.com\""
+    children:
+      - type: IFrame
+        props: 
+          src: 'https://c.xiumi.us/stage/v5/5aV92/378019867'
+          height: 100vh

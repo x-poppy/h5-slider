@@ -1,6 +1,12 @@
-export function callback(fn?: CallableFunction):void {
+export function callback(fn?: CallableFunction, delay?: number):void {
   if (!fn) {
     return;
   }
-  fn();
+
+  if (delay === undefined) {
+    fn();
+    return;
+  }
+
+  setTimeout(fn, ~~delay);
 }

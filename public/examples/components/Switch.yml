@@ -1,0 +1,24 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Switch
+  slideSubTitle: '开关组建'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "size"
+      propSubTitle: "	开关尺寸"
+      propUsage: "size: 2rem"
+    children:
+      - type: Switch
+        props:
+          size: 2rem
+          inactiveColor: green
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "activeColor"
+      propSubTitle: "打开时的背景色"
+      propUsage: "activeColor: #FFCCCC"
+    children:
+      - type: Switch
+        props:
+          activeColor: red        

@@ -29,12 +29,6 @@ export function getReferenceVariableValue(
   reader?: (key: string) => any): any {
   if (value === undefined || value === null) {
     return defaultValue;
-  } else if (isReferenceVariable(value)) {
-    const variableNme = getNameReferenceVariable(value);
-    if (!variableNme || !reader) {
-      return defaultValue;
-    }
-    return reader(variableNme) ?? defaultValue;
   }
 
   if (typeof defaultValue === 'boolean') {
@@ -44,6 +38,12 @@ export function getReferenceVariableValue(
       return value.some((item) => {
         return Boolean(getReferenceVariableValue(item, defaultValue, reader));
       })
+    } if (isReferenceVariable(value)) {
+      const variableNme = getNameReferenceVariable(value);
+      if (!variableNme || !reader) {
+        return defaultValue;
+      }
+      return !!(reader(variableNme) ?? defaultValue);
     } else {
       return !!value;
     }
@@ -51,12 +51,32 @@ export function getReferenceVariableValue(
     if (Array.isArray(value)) {
       const results = value.map((item) => getReferenceVariableValue(item, defaultValue, reader));
       return getRandomValueFromArray(results);
-    } else {
-      return value + '';
+    } else if (isReferenceVariable(value)) {
+      const variableNme = getNameReferenceVariable(value);
+      if (!variableNme || !reader) {
+        return defaultValue;
+      }
+      return (reader(variableNme) ?? defaultValue) + '';
     }
+    return value + '';
   } else if(typeof defaultValue !== typeof value) {
+    if (isReferenceVariable(value)) {
+      const variableNme = getNameReferenceVariable(value);
+      if (!variableNme || !reader) {
+        return defaultValue;
+      }
+      return reader(variableNme) ?? defaultValue;
+    }
     return defaultValue;
   } else {
+    if (isReferenceVariable(value)) {
+      const variableNme = getNameReferenceVariable(value);
+      if (!variableNme || !reader) {
+        return defaultValue;
+      }
+      return reader(variableNme) ?? defaultValue;
+    }
+
     return value; 
   }
 }

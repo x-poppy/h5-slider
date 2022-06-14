@@ -2,7 +2,7 @@ import { registerComponent } from "../../utils/componentFactory";
 
 import AudioPlayer from './AudioPlayer';
 import Button from "./Button";
-import ClickListener from "../container/ClickListener";
+import ClickListener from "../containers/ClickListener";
 import Divider from "./Divider";
 import Gap from "./Gap";
 import Image from './Image';

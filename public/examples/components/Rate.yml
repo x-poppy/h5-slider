@@ -1,0 +1,33 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Rate
+  slideSubTitle: '评分'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "gutter"
+      propSubTitle: "图标间距,默认单位为px"
+      propUsage: "gutter: 6px"
+    children:
+      - type: Rate
+        props:
+          gutter: 10px
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "color"
+      propSubTitle: "选中时的颜色"
+      propUsage: "color: red"
+    children:
+      - type: Rate
+        props:
+          color: red
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "voidColor"
+      propSubTitle: "选中时的颜色"
+      propUsage: "voidColor: black"
+    children:
+      - type: Rate
+        props:
+          color: red   
+          voidColor: black

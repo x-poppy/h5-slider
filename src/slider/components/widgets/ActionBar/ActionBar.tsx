@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonSize, ButtonType } from 'react-vant';
 import { SliderComponentProps } from '../../../types/Component';
 import { LocaleMessageKey } from '../../../utils/language';
@@ -13,19 +13,25 @@ import { SliderEffectElement } from '../../../types/Element';
 import styles from './ActionBar.module.css';
 import { getReferenceVariableValue } from '../../../utils/express';
 import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
+import { useUpdateEffect } from 'react-vant/es/hooks';
+import { callback } from '../../../utils/callback';
 
 interface ActionBarProps extends SliderComponentProps {
   submitEffect?: SliderEffectElement;
 
+  nextButtonDefaultEnable?: boolean;
   // bind
   nextButtonEnable?: boolean | string | string[];
   // bind
+  preButtonDefaultEnable?: boolean;
   preButtonEnable?: boolean | string | string[];
   // bind
 
   preButtonText?: string,
   nextButtonText?: string,
   submitButtonText?: string,
+
+  autoNext?: boolean;
 
   preButtonStyle?: {
     type?: ButtonType,
@@ -70,12 +76,12 @@ function ActionBar(props: ActionBarProps) {
   const dispatchEffect = useDispatchEffect();
 
   const nextButtonStoreEnable = useMemo(() => {
-    return getReferenceVariableValue(props.nextButtonEnable, true, (key: string) => store.get(key) ?? false);
-  }, [props.nextButtonEnable, store]);
+    return getReferenceVariableValue(props.nextButtonEnable, props.nextButtonDefaultEnable ?? true, (key: string) => store.get(key) ?? false);
+  }, [props.nextButtonDefaultEnable, props.nextButtonEnable, store]);
 
   const preButtonStoreEnable = useMemo(() => {
-    return getReferenceVariableValue(props.preButtonEnable, true, (key: string) => store.get(key) ?? false);
-  }, [props.preButtonEnable, store]);
+    return getReferenceVariableValue(props.preButtonEnable, props.preButtonDefaultEnable ?? true, (key: string) => store.get(key) ?? false);
+  }, [props.preButtonDefaultEnable, props.preButtonEnable, store]);
 
   const [isSubmitBtnLoading, setIsSubmitBtnLoading] = useState(false);
   
@@ -119,8 +125,18 @@ function ActionBar(props: ActionBarProps) {
       }
     },
     [dispatchEffect, props.submitEffect],
-  ) 
+  );
 
+  useUpdateEffect(() => {
+    if (!props.autoNext) return;
+    if (isSubmitMode) return;
+    if (!nextButtonStoreEnable) return;
+
+    callback(() => {
+      navigation.nextSlide();
+    }, 300);
+  }, [nextButtonStoreEnable]);
+  
   return (
     <div className={styles.main}>
       { isShowPreBtn && (

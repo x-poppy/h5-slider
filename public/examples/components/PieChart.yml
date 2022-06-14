@@ -1,0 +1,28 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: PieChart
+  slideSubTitle: 'PieChart'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "config"
+        propSubTitle: "控制组件的数据结构"
+        propUsage: "config: "
+    children:
+      - type: PieChart
+        props:
+          height: 350
+          data: [{"name":"Group A","value":2400, "name1":"Group A1","value1":300, },{"name":"Group B","value":4567,"name1":"Group B1","value1":457},{"name":"Group C","value":1398, "name1":"Group C1","value1":139},{"name":"Group D","value":9800,"name1":"Group D1","value1":900},{"name":"Group E","value":3908,"name1":"Group E1","value1":908},{"name":"Group F","value":4800,"name1":"Group F1","value1":800}]
+          config:
+            legends:
+            - dataKey: value
+              nameKey: name
+              fill: "red"
+              innerRadius: 20%
+              outerRadius: 40%
+            - dataKey: value1
+              nameKey: name1
+              fill: "blue"
+              innerRadius: 50%
+              outerRadius: 90%
+              label: true

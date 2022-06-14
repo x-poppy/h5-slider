@@ -1,0 +1,31 @@
+type: Slide
+children:
+
+- type: Float
+  props:
+    bottom: 2rem
+  children:
+    type: Block
+    props:
+      width: 100vw
+      shadow: false
+      round: false
+      background: none
+    children:
+      type: ActionBar
+
+- type: Float
+  props:
+    left: 50%
+    top: 40%
+    transform: "translate(-50%, -50%)"
+  children:
+    type: Block
+    props: 
+      shadow: true
+      width: 100vw
+      padding: "2rem"
+    children:
+      type: Title
+      children: ${middlePageTitle}
+

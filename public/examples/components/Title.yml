@@ -1,0 +1,171 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Title/Text/Link
+  slideSubTitle: '文本展示 标题/文本/连接 其中 Title 有 level 属性，其他属性保持一致' 
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "level"
+      propSubTitle: "通过设置 'level'属性来设置标题级数,支持1-5级标题 (仅限Title使用)"
+      propUsage: "level: 2"
+    children:
+      - type: Title
+        props:
+          level: 2
+        children: Test 二级测试标题
+      - type: Title
+        props:
+          level: 3
+        children: Test 三级测试标题
+      - type: Title
+        props:
+          level: 4
+        children: Test 四级测试标题
+      - type: Title
+        props:
+          level: 5
+        children: Test 五级测试标题
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "type"
+      propSubTitle: "文本类型. danger secondary light primary success warning"
+      propUsage: "type: danger"
+    children:
+      - type: Title
+        props:
+          type: danger
+        children: 文本 Text Hello 文本 Text Hello
+      - type: Title
+        props:
+          type: secondary
+        children: 文本 Text Hello 文本 Text Hello
+      - type: Title
+        props:
+          type: light
+        children: 文本 Text Hello 文本 Text Hello
+      - type: Title
+        props:
+          type: primary
+        children: 文本 Text Hello 文本 Text Hello
+      - type: Title
+        props:
+          type: success
+        children: 文本 Text Hello 文本 Text Hello
+      - type: Title
+        props:
+          type: warning
+        children: 文本 Text Hello 文本 Text Hello
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "size"
+      propSubTitle: "文本大小, xs sm md lg xl xxl"  
+      propUsage: "size: xs"
+    children:
+      - type: Title
+        props:
+          size: xs
+        children: 文本 Text Hello 文本 Text Hello  
+      - type: Title
+        props:
+          size: sm
+        children: 文本 Text Hello 文本 Text Hello  
+      - type: Title
+        props:
+          size: md
+        children: 文本 Text Hello 文本 Text Hello  
+      - type: Title
+        props:
+          size: lg
+        children: 文本 Text Hello 文本 Text Hello  
+      - type: Title
+        props:
+          size: xl
+        children: 文本 Text Hello 文本 Text Hello  
+      - type: Title
+        props:
+          size: xxl
+        children: 文本 Text Hello 文本 Text Hello        
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "disabled"
+      propSubTitle: "禁用文本" 
+      propUsage: "disabled: true"
+    children:
+      - type: Title
+        props:
+          disabled: true
+        children: 文本 Text Hello 文本 Text Hello  
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "ellipsis"
+      propSubTitle: "文本显示省略号, 数字可以控制行数" 
+      propUsage: "ellipsis: 2"
+    children: 
+      - type: Title
+        props:
+          ellipsis: 2
+        children: "文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello 文本 Text Hello"  
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "delete"
+      propSubTitle: "文本显示删除线" 
+      propUsage: "delete: true"
+    children:
+      - type: Title
+        props:
+          delete: true
+        children: "文本 Text Hello 文本 Text Hello"  
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "underline"
+      propSubTitle: "文本显示下划线" 
+      propUsage: "center: true"
+    children:
+      - type: Title
+        props:
+          underline: true
+        children: "文本 Text Hello 文本 Text Hello" 
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "center"
+      propSubTitle: "文本居中显示,一般需要配合with来控制, 例如: with: 100%"
+      propUsage: "center: true"
+    children:
+      - type: Title
+        props:
+          width: 100%
+          center: true
+        children: "文本 Text Hello"    
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "strong"
+      propSubTitle: "加粗文本"
+      propUsage: "strong: true"
+    children:
+      - type: Title
+        props:
+          strong: true
+        children: "strong: true"
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "link"
+      propSubTitle: "连接"
+      propUsage: "strong: true"
+    children:
+      - type: Link
+        props:
+          strong: true
+          href: "http://www.baidu.com"
+          clickEffect:
+            type: AlertEffect
+            props:
+              message: "${event.eventName} ${title} This element is clicked~"
+        children: "Link Link Link"      

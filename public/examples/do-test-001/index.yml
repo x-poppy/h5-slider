@@ -36,7 +36,9 @@ definitions:
         children: ${$children}
       - type: ActionBar 
         props:
+          autoNext: true
           nextButtonEnable: ${${questionId}}
+          nextButtonDefaultEnable: false
           submitEffect:
             type: SubmitStoreEffect
             props:

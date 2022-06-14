@@ -12,6 +12,7 @@ import { createComponentFromSchema } from "../../utils/componentFactory";
 import { useLoadingIndicator } from "../LoadingIndicator";
 import { useThrowError } from "../../hooks/useThrow";
 import { callback } from "../../utils/callback";
+import { loadAllComponents } from "../../components";
 
 const EventNames = {
   OnStoreDataLoaded: "onStoreDataLoaded",
@@ -41,13 +42,18 @@ function SliderLoader() {
         loadingIndication.start();
         // load schema
         const schema = await loadSchema(schemaUrl);
-        const storeData = await loadStoreData(httpClient, schema);
+
+        const [storeData] = await Promise.all([
+          loadStoreData(httpClient, schema),
+          loadSliderScript(schema, scriptContext),
+          loadAllComponents(),
+        ])
 
         // load script
-        await loadSliderScript(schema, scriptContext);
         const storeDataLoadedEvt = new CustomEvent(EventNames.OnStoreDataLoaded, {
           detail: storeData,
         });
+
         // this may modify in the scripts.
         scriptContext.emit(storeDataLoadedEvt);
         const transformedStoreData = storeDataLoadedEvt.detail ?? {};

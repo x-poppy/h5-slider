@@ -1,0 +1,70 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Sticky
+  slideSubTitle: 'Sticky可以在滚动时将组件固定在顶部或者底部'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "position"
+      propSubTitle: "位置 'top' | 'bottom'"
+      propUsage: "position: top"
+    children:
+      - type: Sticky
+        props: 
+          position: top
+          offsetTop: 4rem
+        children:
+          - type: Block
+            props:
+              padding: "1rem"
+              shadow: true
+            children: "Top Sticky 001"
+      - type: Gap      
+      - type: Sticky
+        props: 
+          position: top
+        children:
+          - type: Block
+            props:
+              padding: "1rem"
+              shadow: true
+            children: "Top Sticky 002"
+      - type: Gap        
+      - type: Text
+        children: "尝试滚动到页面底部, 上面的2个色块并不会消失"      
+  - type: Gap
+    props: 
+      size: xxxl
+
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "position"
+      propSubTitle: "固定位置 'top' | 'bottom'"
+      propUsage: "position: top"
+    children:
+      - type: Sticky
+        props: 
+          position: bottom
+        children:
+          - type: Block
+            props:
+              padding: "1rem"
+              shadow: true
+            children: "Bottom Sticky 001"
+      - type: Gap      
+      - type: Sticky
+        props: 
+          position: bottom
+          offsetBottom: 4rem
+        children:
+          - type: Block
+            props:
+              padding: "1rem"
+              shadow: true
+            children: "Bottom Sticky 002"
+      - type: Gap        
+      - type: Text
+        children: "尝试滚动到页面顶部,下面的2个色块的并不会消失"      
+  - type: Gap
+    props: 
+      size: xxxl
