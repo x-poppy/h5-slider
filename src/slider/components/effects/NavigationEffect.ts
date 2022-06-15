@@ -9,8 +9,12 @@ export interface NavigationEffectProps extends SliderEffectProps {
 }
 
 async function NavigationEffect(props: NavigationEffectProps) {
-  const href = props.variableScopes.getExpressValue(props.url, props);
-  await navigateTo(href, {
+  const url = props.variableScopes.getExpressValue(props.url, props);
+  if (!url) {
+    throw new Error("Invalid URL!");
+  }
+
+  await navigateTo(url, {
     searchMatcher: props.searchMatcher,
     i18nMessageBundle: props.i18nMessageBundle,
     knownHosts: props.$$schema.security?.knownHosts,
