@@ -72,6 +72,8 @@ definitions:
               color: "#27527a"
             nextButtonStyle:
               color: "#27527a" 
+            submitButtonStyle:
+              color: "#3f45ff"  
             nextButtonEnable: ${${questionId}}
             nextButtonDefaultEnable: false
             submitEffect:

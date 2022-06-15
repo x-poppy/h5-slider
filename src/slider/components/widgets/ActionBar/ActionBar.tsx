@@ -51,7 +51,7 @@ interface ActionBarProps extends SliderComponentProps {
     round?: boolean,
     shadow?: boolean | 1 | 2 | 3;
   },
-  submitButtStyle?: {
+  submitButtonStyle?: {
     type?: ButtonType,
     size?: ButtonSize,
     color?: string,
@@ -173,12 +173,12 @@ function ActionBar(props: ActionBarProps) {
         </Button>
       ) : (
         <Button
-          round={props.submitButtStyle?.round ?? true}
-          type={props.submitButtStyle?.type ?? 'danger'}
-          color={props.submitButtStyle?.color}
-          plain={props.submitButtStyle?.plain}
-          square={props.submitButtStyle?.square}
-          shadow={props.submitButtStyle?.shadow}
+          round={props.submitButtonStyle?.round ?? true}
+          type={props.submitButtonStyle?.type ?? 'danger'}
+          color={props.submitButtonStyle?.color}
+          plain={props.submitButtonStyle?.plain}
+          square={props.submitButtonStyle?.square}
+          shadow={props.submitButtonStyle?.shadow}
           loading={isSubmitBtnLoading}
           loadingText={submitSlideText}
           disabled={!isSubmitBtnEnable}
