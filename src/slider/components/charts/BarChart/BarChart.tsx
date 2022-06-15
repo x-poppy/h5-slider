@@ -56,7 +56,8 @@ function BarChart(props: BarChartProps) {
                   name={legend.name} 
                   dataKey={legend.dataKey}
                   fill={legend.fill}
-                />);
+                />
+              );
             })
           }
       </OriginBarChart>

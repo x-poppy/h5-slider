@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ResponsiveContainer, PieChart as OriginPieChart, Pie } from 'recharts';
+import { ResponsiveContainer, PieChart as OriginPieChart, Pie, Cell } from 'recharts';
 import { useStore } from '../../../hooks/useStore';
 import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
@@ -11,6 +11,7 @@ interface PieChartLegend {
   label?: boolean;
   innerRadius?: number | string;
   outerRadius?: number | string;
+  colorKey?: string;
 }
 
 interface PieChartConfig {
@@ -50,7 +51,15 @@ function PieChart(props: PieChartProps) {
               label={legend.label} 
               innerRadius={legend.innerRadius}
               outerRadius={legend.outerRadius}
-              />
+              >
+              {
+                data.map((dataItem: any, index: number) => {
+                  return (
+                    <Cell key={`cell-${index}`} fill={legend.colorKey ? (dataItem[legend.colorKey] ?? legend.fill) : legend.fill } />
+                  );
+                })
+              }
+              </Pie>
           );
         }) }
       </OriginPieChart>

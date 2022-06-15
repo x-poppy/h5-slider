@@ -12,12 +12,13 @@ children:
       - type: PieChart
         props:
           height: 350
-          data: [{"name":"Group A","value":2400, "name1":"Group A1","value1":300, },{"name":"Group B","value":4567,"name1":"Group B1","value1":457},{"name":"Group C","value":1398, "name1":"Group C1","value1":139},{"name":"Group D","value":9800,"name1":"Group D1","value1":900},{"name":"Group E","value":3908,"name1":"Group E1","value1":908},{"name":"Group F","value":4800,"name1":"Group F1","value1":800}]
+          data: [{"name":"Group A","value":2400,"color":"red","name1":"Group A1","value1":300 },{"name":"Group B","value":4567,"color":"yellow","name1":"Group B1","value1":457},{"name":"Group C","value":1398, "color":"blue","name1":"Group C1","value1":139},{"name":"Group D","value":9800,"color":"black","name1":"Group D1","value1":900},{"name":"Group E","value":3908,"color":"red","name1":"Group E1","value1":908},{"name":"Group F","value":4800,"color":"blue","name1":"Group F1","value1":800}]
           config:
             legends:
             - dataKey: value
               nameKey: name
               fill: "red"
+              colorKey: "color"
               innerRadius: 20%
               outerRadius: 40%
             - dataKey: value1

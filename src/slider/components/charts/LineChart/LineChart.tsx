@@ -8,6 +8,7 @@ interface RadarChartLegend {
   dataKey: string;
   name: string;
   stroke?: string;
+  strokeDasharray?: string;
 }
 
 interface LintChartConfig {
@@ -57,6 +58,7 @@ function LineChart(props: LineChartProps) {
                   name={legend.name} 
                   dataKey={legend.dataKey}
                   stroke={legend.stroke}
+                  strokeDasharray={legend.strokeDasharray}
                 />);
             })
           }
