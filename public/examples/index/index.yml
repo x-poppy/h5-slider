@@ -48,3 +48,11 @@ children:
           props:
             url: "./?schema=examples%2Fdo-test-001%2Findex.yml"
       children: "抑郁症测试题 001"
+    - type: Gap
+    - type: Link
+      props:
+        clickEffect:
+          type: NavigationEffect
+          props:
+            url: "./?schema=examples%2Fiq-001%2Findex.yml"
+      children: "瑞文题型 001"

@@ -17,11 +17,9 @@ export interface BlockProps extends SliderComponentProps, ClickAbleComponentProp
 
 function Block(props: BlockProps) {
   const shadow = props.shadow ?? false;
-  const round = props.round ?? true;
+  const round = props.round ?? false;
 
   const initStyle = useMemo(() => ({
-    round: props.round ?? true,
-    shadow: props.shadow ?? false,
     background: props.background,
     padding: props.padding,
     width: props.width,

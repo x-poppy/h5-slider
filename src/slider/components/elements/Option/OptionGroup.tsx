@@ -1,20 +1,15 @@
 import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
-import { Space } from 'react-vant';
 import { useStore } from '../../../hooks/useStore';
 import { SliderComponentProps } from '../../../types/Component';
 import { shuffle } from '../../../utils/math';
 import { noop } from '../../../utils/noop';
 import { convertStringToBooleanMap, covertBooleanMapToString } from '../../../utils/object';
 
-import styles from './OptionGroup.module.css'
-
 interface OptionGroupProps extends SliderComponentProps {
-  gap?: string;
   multiple?: boolean;
   nullable?: boolean;
   children?: ReactNode;
   checkedColor?: string;
-  direction?: 'horizontal' | 'vertical'
   random?: boolean;
 }
 
@@ -29,7 +24,6 @@ const OptionGroupContext = React.createContext<OptionGroupAPI>({
 });
 
 export function OptionGroup(props: OptionGroupProps) {
-  const gap = props.gap ?? '0.25rem';
   const multiple = props.multiple ?? false;
   const store = useStore();
   const defaultSelectedValues = useMemo(() => {
@@ -78,9 +72,7 @@ export function OptionGroup(props: OptionGroupProps) {
 
   return (
     <OptionGroupContext.Provider value={inst}>
-      <Space wrap block className={styles.main} gap={gap} direction={props.direction ?? 'vertical'}>
-        { randomChildren }
-      </Space>
+      { randomChildren }
     </OptionGroupContext.Provider>
   );
 }
