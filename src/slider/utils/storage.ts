@@ -2,7 +2,7 @@ import { filterObjectByMatcher } from "./object";
 import { trimPrefix } from "./string";
 import { isPlainValue } from "./typeDetect";
 
-export type StoreValueType = string | number | boolean | null;
+export type StoreValueType = Record<string, any> | string | number | boolean | null;
 
 export interface Storage {
   delete(key: string): void;

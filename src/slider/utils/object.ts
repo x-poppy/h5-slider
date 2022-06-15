@@ -64,11 +64,11 @@ export function filterObjectByMatcher(
   }
 }
 
-export function converStringToBooleanMap(value: string | null, separtor = ','):Record<string, boolean> {
+export function convertStringToBooleanMap(value: string | null, separator = ','):Record<string, boolean> {
   if (!value) {
     return {};
   }
-  return value.split(separtor)
+  return value.split(separator)
   .reduce<Record<string, boolean>>((map, item: string) => {
     item = item.trim();
     if (item) {
@@ -78,9 +78,9 @@ export function converStringToBooleanMap(value: string | null, separtor = ','):R
   }, {});
 }
 
-export function covertBooleanMapToString(map: Record<string, boolean> | null, separtor = ',') {
+export function covertBooleanMapToString(map: Record<string, boolean> | null, separator = ',') {
   if (!map) {
     return '';
   }
-  return Object.keys(map).filter(key => !!map[key]).join(separtor);
+  return Object.keys(map).filter(key => !!map[key]).join(separator);
 }

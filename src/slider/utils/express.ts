@@ -35,7 +35,7 @@ export function getReferenceVariableValue(
     if (typeof value === 'boolean') {
       return value;
     } else if (Array.isArray(value)) {
-      return value.some((item) => {
+      return value.every((item) => {
         return Boolean(getReferenceVariableValue(item, defaultValue, reader));
       })
     } if (isReferenceVariable(value)) {

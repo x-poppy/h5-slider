@@ -4,7 +4,7 @@ import { useStore } from '../../../hooks/useStore';
 import { SliderComponentProps } from '../../../types/Component';
 import { shuffle } from '../../../utils/math';
 import { noop } from '../../../utils/noop';
-import { converStringToBooleanMap, covertBooleanMapToString } from '../../../utils/object';
+import { convertStringToBooleanMap, covertBooleanMapToString } from '../../../utils/object';
 
 import styles from './OptionGroup.module.css'
 
@@ -34,7 +34,7 @@ export function OptionGroup(props: OptionGroupProps) {
   const store = useStore();
   const defaultSelectedValues = useMemo(() => {
     const value = store.get<string>(props.name) ?? '';
-    return converStringToBooleanMap(value, ',');
+    return convertStringToBooleanMap(value, ',');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
