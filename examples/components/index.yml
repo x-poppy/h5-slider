@@ -112,7 +112,7 @@ props:
           clickEffect:
             type: NavigationEffect
             props:
-              href: "./?schema=examples%2Findex%2Findex.yml"
+              url: "./?schema=examples%2Findex%2Findex.yml"
         children: 返回
 children:
   # ============================================================ 

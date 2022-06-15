@@ -25,20 +25,26 @@ children:
     - type: Text
       children: "🌟 Star us on GitHub — it helps! 👏"
     - type: Gap
-    - type: NavigationButton
+    - type: Link
       props:
-        searchMatcher: ["schema"]
-        href: "./?schema=examples%2Fcomponents%2Findex.yml"
+        clickEffect:
+          type: NavigationEffect
+          props:
+            url: "./?schema=examples%2Fcomponents%2Findex.yml" 
       children: "组件列表 Example"
     - type: Gap
-    - type: NavigationButton
+    - type: Link
       props:
-        searchMatcher: ["schema"]
-        href: "./?schema=examples%2Frich-text%2Findex.yml"
+        clickEffect:
+          type: NavigationEffect
+          props:
+            url: "./?schema=examples%2Frich-text%2Findex.yml"
       children: "富文本 Example"
     - type: Gap
-    - type: NavigationButton
+    - type: Link
       props:
-        searchMatcher: ["schema"]
-        href: "./?schema=examples%2Fdo-test-001%2Findex.yml"
+        clickEffect:
+          type: NavigationEffect
+          props:
+            url: "./?schema=examples%2Fdo-test-001%2Findex.yml"
       children: "抑郁症测试题 001"
