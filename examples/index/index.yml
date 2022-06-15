@@ -16,7 +16,7 @@ children:
   - type: Padding
     children:  
     - type: Text
-      props: 
+      props:
         size: lg
         strong: true
       children: "Example汇总"
