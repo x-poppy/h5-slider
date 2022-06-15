@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Button, ButtonSize, ButtonType } from 'react-vant';
 import { SliderComponentProps } from '../../../types/Component';
 import { LocaleMessageKey } from '../../../utils/language';
@@ -85,9 +85,10 @@ function ActionBar(props: ActionBarProps) {
 
   const [isSubmitBtnLoading, setIsSubmitBtnLoading] = useState(false);
   
+  const hasPreviousSlidePermission = permission.getPermission(PermissionKey.PreviousSlide, true);
   const hasSubmitPermission = permission.getPermission(PermissionKey.SubmitSlide, true);
 
-  const isShowPreBtn = navigation.activeIndex > 0 && navigation.totalCount > 1;
+  const isShowPreBtn = hasPreviousSlidePermission && navigation.activeIndex > 0 && navigation.totalCount > 1;
   const isPreBtnEnabled = isShowPreBtn && navigation.activeIndex > 0 && preButtonStoreEnable;
   const isNexBtnEnabled = nextButtonStoreEnable;
   const isSubmitMode = navigation.activeIndex === navigation.totalCount - 1;

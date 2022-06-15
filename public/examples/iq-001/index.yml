@@ -7,9 +7,17 @@ info:
 security:
   knownHosts:
 definitions:
+  Permissions:
+    PreviousSlide: true
+  LocaleMessages:
+    PreviousSlide: "Previous"
+    NextSlide: "Next"
+    SubmitSlide: "Submit"
   Components:
     ExerciseOption:
       type: Option
+      props: 
+        checkedColor: "#27527a"
       children:
         type: Image
         props:

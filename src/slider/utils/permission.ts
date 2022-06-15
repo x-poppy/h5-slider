@@ -1,5 +1,6 @@
 export enum PermissionKey {
-  SubmitSlide = "DisabledSubmitSlide"
+  PreviousSlide = "PreviousSlide",
+  SubmitSlide = "SubmitSlide"
 }
 
 
