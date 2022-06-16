@@ -15,12 +15,15 @@ export interface SlideIndicatorProps extends SliderComponentProps {
   showPivot?: boolean
   pivotText?: string;
   pivotColor?: string;
+  totalOffset?: number;
 }
 
 function SlideIndicator(props: SlideIndicatorProps) {
   const navigation = useNavigation();
+
+  const totalOffset = props.totalOffset ?? 0;
   const activeIndex = navigation.activeIndex + 1;
-  const totalCount = navigation.totalCount;
+  const totalCount = navigation.totalCount + totalOffset;
 
   const progress = totalCount === 0 ? 0 : format((activeIndex / totalCount) * 100);
   const pivotText = props.pivotText ?? `${activeIndex}/${totalCount}`;
