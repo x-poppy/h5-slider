@@ -5,8 +5,7 @@ const ScriptParamsNames = Object.keys(window).filter(key=>key !== 'window');
 const ScriptParamsNamesStr = ScriptParamsNames.join(",");
 const ScriptParamsNamesVal = ScriptParamsNames.map(() => undefined + '').join(",");
 
-
-export async function loadSliderScript(schema: SliderSchema, scriptContext?: Record<string, any>) {
+export async function loadScript(schema: SliderSchema, scriptContext?: Record<string, any>) {
   let url = schema.script;
 
   if (!url) {
@@ -15,7 +14,11 @@ export async function loadSliderScript(schema: SliderSchema, scriptContext?: Rec
 
   url = getURL(url, schema.info?.baseURL);
 
-  const response = await window.fetch(url);
+  const response = await window.fetch(url, {
+    headers: {
+      'cache-control': 'no-cache'
+    }
+  });
   const responseText = await response.text();
   const scriptElement = document.createElement("script");
   (window as any).sliderScriptContext = scriptContext ?? {};

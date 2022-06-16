@@ -4,7 +4,7 @@ import { useInitialConfig } from "../../hooks/useInitialConfig";
 import { useScriptContext } from "../../hooks/useScriptContext";
 import { StoreKeyNames } from "../../hooks/useStore";
 import { loadSchema } from "../../utils/loadSchema";
-import { loadSliderScript } from "../../utils/loadSliderScript";
+import { loadScript } from "../../utils/loadScript";
 import { loadStoreData } from "../../utils/loadStoreData";
 import { find, findByProperty, findByType } from "../../utils/schema";
 import { isComponentSchema } from "../../utils/typeDetect";
@@ -53,7 +53,7 @@ function SliderLoader() {
 
         const [storeData] = await Promise.all([
           loadStoreData(httpClient, schema),
-          loadSliderScript(schema, scriptContext),
+          loadScript(schema, scriptContext),
           loadAllComponents(),
         ])
 

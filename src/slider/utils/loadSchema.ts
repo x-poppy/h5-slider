@@ -9,7 +9,11 @@ export async function loadSchema(url: string, baseURL?: string) {
 
   url = getURL(url, baseURL);
 
-  const response = await window.fetch(url);
+  const response = await window.fetch(url, {
+    headers: {
+      'cache-control': 'no-cache'
+    }
+  });
   const responseText = await response.text();
   const contextType = response.headers.get('content-type');
 
