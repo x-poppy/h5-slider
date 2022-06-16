@@ -8,6 +8,7 @@ script: "./test.js"
 security:
   knownHosts:
     - http://www.bing.com
+  userAgentMatcher:  
 definitions:
   Components:
     # -------------------------------------------
@@ -110,7 +111,7 @@ props:
           round: true
           type: primary
           clickEffect:
-            type: NavigationEffect
+            type: RedirectLocationEffect
             props:
               url: "./?schema=examples%2Findex%2Findex.yml"
         children: 返回
@@ -140,7 +141,15 @@ children:
 
   - type: Module
     props:
+      url: "./FlexItem.yml"
+
+  - type: Module
+    props:
       url: "./Image.yml"
+
+  - type: Module
+    props:
+      url: "./Gap.yml"    
 
   - type: Module
     props:
@@ -196,6 +205,10 @@ children:
   - type: Module
     props:
       url: "./Option.yml"          
+
+  - type: Module
+    props:
+      url: "./ScreenLock.yml"
 
   - type: Module
     props:

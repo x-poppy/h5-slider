@@ -1,0 +1,63 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: LineChart
+  slideSubTitle: 'LineChart'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "config"
+        propSubTitle: "控制组件的数据结构"
+        propUsage: "config: "
+    children:
+      - type: LineChart
+        props:
+          height: 350
+          config:
+            grid:
+              strokeDasharray: '3 3'
+            xAxis: 
+              dataKey: name
+            yAxis: true
+            legends:
+              - dataKey: pv
+                stroke: "#8884d8"
+              - name: uv
+                dataKey: uv
+                stroke: "#82ca9d"
+          data: [{"name":"Page A","uv":4000,"pv":2400},{"name":"Page B","uv":3000,"pv":1398},{"name":"Page C","uv":2000,"pv":9800},{"name":"Page D","uv":2780,"pv":3908},{"name":"Page E","uv":1890,"pv":4800},{"name":"Page F","uv":2390,"pv":3800},{"name":"Page G","uv":3490,"pv":4300}]    
+      - type: ScreenLock
+        props:
+          lock: true
+        children:
+          - type: Padding
+            children:
+            - type: Gap
+              props:
+                size: 'xxl'
+            - type: Image
+              props:
+                height: 10rem
+                src: "./assets/pic_trulli.jpeg"
+                fit: contain
+            - type: Space
+              props:
+                gap: 6rem
+                align: center
+                justify: center
+              children:    
+              - type: Button
+                children: Pre
+                props:
+                  clickEffect:
+                    type: NavigationEffect
+                    props: 
+                      step: -1
+              - type: Button
+                children: Next
+                props:
+                  clickEffect:
+                    type: NavigationEffect
+                    props: 
+                      step: 1      
+
+

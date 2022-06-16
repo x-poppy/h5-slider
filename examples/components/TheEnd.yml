@@ -22,7 +22,7 @@ children:
             - type: AlertEffect
               props:
                 message: "点击确认后，将要跳转到 ${event.detail.response.data.jumpURL}"
-            - type: NavigationEffect
+            - type: RedirectLocationEffect
               props:
                 url: ${event.detail.response.data.jumpURL}  
                 searchMatcher: ["userId","exerciseId"]
