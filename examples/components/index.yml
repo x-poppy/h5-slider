@@ -27,6 +27,8 @@ definitions:
         type: Padding
         children:
           - type: SlideIndicator
+            props:
+              totalOffset: -1
           - type: Title
             props:
               level: 1
@@ -99,7 +101,7 @@ definitions:
     SubmitSlide: Submit
   Permissions:
     PreviousSlide: true
-    SubmitSlide: false  
+    SubmitSlide: true  
 
 type: Slider
 props:

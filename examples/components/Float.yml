@@ -11,7 +11,7 @@ children:
     children:
       type: Float
       props:
-        left: 20px
+        left: 120px
         top: 80px
       children: 
         - type: Block
