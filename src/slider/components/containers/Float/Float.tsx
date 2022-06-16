@@ -23,6 +23,7 @@ function Float(props: FloatProps) {
       transform: props.transform,
       zIndex: props.zIndex,
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

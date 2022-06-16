@@ -1,5 +1,6 @@
 import { useHttpClient } from '../hooks/useHttpClient';
 import { useI18nMessageBundle } from '../hooks/useI18nMessageBundle';
+import { useNavigation } from '../hooks/useNavigation';
 import { useStore } from '../hooks/useStore';
 import { useVariableScopes } from '../hooks/useVariableScopes';
 import { ComponentFactory } from '../utils/componentFactory';
@@ -24,4 +25,5 @@ export interface SliderEffectProps extends SliderComponentProps {
   store: ReturnType<typeof useStore>;
   httpClient: ReturnType<typeof useHttpClient>
   event: SlideEffectEvent;
+  navigation: ReturnType<typeof useNavigation>
 }

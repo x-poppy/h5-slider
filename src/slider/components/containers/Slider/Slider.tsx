@@ -13,7 +13,7 @@ import SliderContentLayer from './SliderContentLayer';
 
 import styles from './Slider.module.css';
 import { SwiperInstance } from 'react-vant';
-
+import SliderOverlapLayer from './SliderOverlapLayer';
 
 export interface SliderProps extends SliderComponentProps {
   background?: string;
@@ -50,7 +50,9 @@ function Slider(props: SliderProps) {
                       vertical={props.vertical}
                     />
                   }
-                { props.widgets }
+                <SliderOverlapLayer>
+                  { props.widgets }
+                </SliderOverlapLayer>
                 </VariableScopesProvider>
               </StoreProvider>
             </PermissionProvider>

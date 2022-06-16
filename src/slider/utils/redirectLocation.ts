@@ -4,7 +4,7 @@ import { getURLWithQueryString, isURLsCors } from "./url";
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
 
-interface NavigateToOpts {
+interface RedirectToOpts {
   searchMatcher?: string | string[];
   dataPath?: string;
   i18nMessageBundle?: I18nMessageBundle
@@ -12,7 +12,7 @@ interface NavigateToOpts {
   skipSecurityCheck?: boolean;
 }
 
-export async function navigateTo(url: string, opts?: NavigateToOpts) {
+export async function redirectTo(url: string, opts?: RedirectToOpts) {
   const skipSecurityCheck = opts?.skipSecurityCheck ?? false;
 
   url = getURLWithQueryString(url, opts?.searchMatcher);

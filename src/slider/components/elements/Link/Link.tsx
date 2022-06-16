@@ -4,8 +4,6 @@ import { TypographySize, TypographyType } from 'react-vant/es/typography/PropsTy
 import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
 import { SliderEffectElement } from '../../../types/Element';
 import { SliderComponentProps } from '../../../types/Component';
-import { getURLWithQueryString } from '../../../utils/url';
-import { navigateTo } from '../../../utils/navigateTo';
 import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
 
 export interface LinkProps extends SliderComponentProps {

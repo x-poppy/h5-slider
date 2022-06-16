@@ -1,25 +1,22 @@
-import { SliderEffectProps } from '../../types/Component';
-import { navigateTo } from '../../utils/navigateTo';
+import { SliderEffectProps } from "../../types/Component";
 
-export interface NavigationEffectProps extends SliderEffectProps {
-  url: string;
-  searchMatcher?: string | string[];
-  responseDataPath?: string;
-  skipSecurityCheck?: boolean
+interface NavigationEffectProps extends SliderEffectProps {
+  index: number;
 }
 
 async function NavigationEffect(props: NavigationEffectProps) {
-  const url = props.variableScopes.getExpressValue(props.url, props);
-  if (!url) {
-    throw new Error("Invalid URL!");
+  const { navigation } = props;
+  let index = props.index ?? 0;
+  const totalCount = navigation.totalCount;
+  if (totalCount === 0) {
+    return;
+  } 
+  index = index % totalCount;
+  if (index < 0) {
+    index = index + totalCount;
   }
-
-  await navigateTo(url, {
-    searchMatcher: props.searchMatcher,
-    i18nMessageBundle: props.i18nMessageBundle,
-    knownHosts: props.$$schema.security?.knownHosts,
-    skipSecurityCheck: props.skipSecurityCheck ?? false,
-  });
+  
+  navigation.gotoSlide(index);
 }
 
 export default NavigationEffect;

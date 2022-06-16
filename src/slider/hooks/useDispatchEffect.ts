@@ -49,6 +49,7 @@ export function useDispatchEffect() {
         ...effectElement,
         variableScopes,
         i18nMessageBundle,
+        navigation,
         store,
         httpClient,
         event: contextEvent,

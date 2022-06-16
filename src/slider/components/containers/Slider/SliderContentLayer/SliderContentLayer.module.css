@@ -1,3 +1,13 @@
+.main {
+  width: 100%;
+  height: 100%;
+}
+
 .swiper {
   height: 100%;
+}
+
+.locked {
+  filter: blur(5px);
+  pointer-events: none;
 }

@@ -6,8 +6,10 @@ import { SlideIndexProvider } from '../../../../hooks/useSlideIndex';
 import { useUpdateNavStoreEffect } from '../../../../hooks/useUpdateNavStoreEffect';
 import { useUpdateHTMLEffect } from '../../../../hooks/useUpdateHTMLEffect';
 import { isCloseTo } from '../../../../utils/math';
+import classnames from 'classnames';
 
 import styles from './SliderContentLayer.module.css';
+import { useUILock } from '../../../../hooks/useUILock';
 
 interface SliderContentProps {
   swiperRef: any;
@@ -19,6 +21,7 @@ function SliderContent(props: SliderContentProps) {
   const slideElements = props.slideElements ?? [];
   const navigation = useNavigation();
   const scheme = useSliderSchema();
+  const { locked } = useUILock();
 
   useUpdateHTMLEffect(scheme);
   useUpdateNavStoreEffect();
@@ -32,7 +35,7 @@ function SliderContent(props: SliderContentProps) {
 
   const renderSideElements = useMemo(() => {
     return (
-      <>
+      <div className={classnames(styles.main, locked && styles.locked)}>
         <Swiper
           ref={props.swiperRef}
           initialSwipe={navigation.initialIndex}
@@ -54,10 +57,11 @@ function SliderContent(props: SliderContentProps) {
             );
           })}
         </Swiper>
-      </>
+      </div>
     );
-  // eslint-disable-next-line 
-  }, [navigation.activeIndex]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation.activeIndex, locked]);
 
   return renderSideElements;
 }
