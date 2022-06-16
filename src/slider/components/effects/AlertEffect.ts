@@ -14,7 +14,8 @@ export interface AlertEffectProps extends SliderEffectProps {
 }
 
 async function AlertEffect(props: AlertEffectProps) {
-  const replacedProps = props.variableScopes.getExpressValues([
+  const context = props.context;
+  const replacedProps = context.variableScopes.getExpressValues([
     'title',
     'message',
     'overlay', 

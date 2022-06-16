@@ -2,6 +2,7 @@ import { useHttpClient } from '../hooks/useHttpClient';
 import { useI18nMessageBundle } from '../hooks/useI18nMessageBundle';
 import { useNavigation } from '../hooks/useNavigation';
 import { useStore } from '../hooks/useStore';
+import { useUILock } from '../hooks/useUILock';
 import { useVariableScopes } from '../hooks/useVariableScopes';
 import { ComponentFactory } from '../utils/componentFactory';
 import { SliderSchema, ComponentSchema } from './Schema';
@@ -18,12 +19,17 @@ export interface ClickAbleComponentProps {
   onClick?: (evt: React.MouseEvent<any>) => void;
 }
 
-export interface SliderEffectProps extends SliderComponentProps {
-  $$effect: ComponentFactory;
+interface SliderEffectContext {
   variableScopes: ReturnType<typeof useVariableScopes>;
   i18nMessageBundle: ReturnType<typeof useI18nMessageBundle>;
   store: ReturnType<typeof useStore>;
   httpClient: ReturnType<typeof useHttpClient>
-  event: SlideEffectEvent;
   navigation: ReturnType<typeof useNavigation>
+  screenLock: ReturnType<typeof useUILock>
+}
+
+export interface SliderEffectProps extends SliderComponentProps {
+  $$effect: ComponentFactory;
+  event: SlideEffectEvent;
+  context: SliderEffectContext;
 }

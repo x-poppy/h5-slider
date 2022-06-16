@@ -12,11 +12,8 @@ async function QueueEffect(props: QueueEffectProps) {
   for (const effectElement of queue) {
     const effectElementProps = {
       ...effectElement,
-      variableScopes: props.variableScopes,
-      i18nMessageBundle: props.i18nMessageBundle,
-      store: props.store,
-      httpClient: props.httpClient,
       event: props.event,
+      context: props.context,
     };
     await effectElement.$$effect(effectElementProps);
   }

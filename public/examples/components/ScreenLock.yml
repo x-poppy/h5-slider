@@ -49,15 +49,25 @@ children:
                 children: Pre
                 props:
                   clickEffect:
-                    type: NavigationEffect
-                    props: 
-                      step: -1
+                    type: QueueEffect
+                    children:
+                    - type: NavigationEffect
+                      props: 
+                        step: -1
+                    - type: ScreenLockEffect
+                      props:
+                        locked: false  
               - type: Button
                 children: Next
                 props:
                   clickEffect:
-                    type: NavigationEffect
-                    props: 
-                      step: 1      
+                    type: QueueEffect
+                    children:
+                    - type: NavigationEffect
+                      props: 
+                        step: 1
+                    - type: ScreenLockEffect
+                      props:
+                        locked: false    
 
 

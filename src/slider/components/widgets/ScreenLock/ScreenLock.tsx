@@ -25,7 +25,6 @@ function ScreenLock(props: ScreenLockProps) {
     if (!lock) {
       return;
     }
-    
     screenLocker.lock();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

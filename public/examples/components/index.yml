@@ -99,7 +99,7 @@ definitions:
     SubmitSlide: Submit
   Permissions:
     PreviousSlide: true
-    SubmitSlide: false  
+    SubmitSlide: true  
 
 type: Slider
 props:

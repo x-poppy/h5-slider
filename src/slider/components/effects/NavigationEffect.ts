@@ -5,7 +5,9 @@ interface NavigationEffectProps extends SliderEffectProps {
 }
 
 async function NavigationEffect(props: NavigationEffectProps) {
-  const { navigation } = props;
+  const context = props.context;
+  const { navigation } = context;
+  
   const step = props.step ?? 0;
   if (step === 1) {
     navigation.nextSlide();

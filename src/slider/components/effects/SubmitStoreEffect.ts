@@ -18,8 +18,9 @@ interface SubmitStoreEffectProps extends SliderEffectProps {
 }
 
 async function SubmitStoreEffect(props: SubmitStoreEffectProps) {
-  const store = props.store;
-  const httpClient = props.httpClient;
+  const context = props.context;
+  const store = context.store;
+  const httpClient = context.httpClient;
 
   // whitelist mode
   const queryData = getQueryObjectFromSearch(props.searchMatcher);

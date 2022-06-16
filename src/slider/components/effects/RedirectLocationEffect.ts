@@ -9,14 +9,16 @@ export interface RedirectLocationEffectProps extends SliderEffectProps {
 }
 
 async function RedirectLocationEffect(props: RedirectLocationEffectProps) {
-  const url = props.variableScopes.getExpressValue(props.url, props);
+  const context = props.context;
+
+  const url = context.variableScopes.getExpressValue(props.url, props);
   if (!url) {
     throw new Error("Invalid URL!");
   }
 
   await redirectTo(url, {
     searchMatcher: props.searchMatcher,
-    i18nMessageBundle: props.i18nMessageBundle,
+    i18nMessageBundle: context.i18nMessageBundle,
     knownHosts: props.$$schema.security?.knownHosts,
     skipSecurityCheck: props.skipSecurityCheck ?? false,
   });

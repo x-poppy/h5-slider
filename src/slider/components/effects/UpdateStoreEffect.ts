@@ -7,7 +7,9 @@ export interface UpdateStoreEffectProps extends SliderEffectProps {
 }
 
 async function UpdateStoreEffect(props: UpdateStoreEffectProps) {
-  const store = props.store;
+  const context = props.context;
+  const store = context.store;
+  
   if (props.type === 'stepper') {
     const preVal = ~~(store.get(props.name) ?? 0);
     const val = ~~(props.value ?? 0);

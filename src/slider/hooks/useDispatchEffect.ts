@@ -9,6 +9,7 @@ import { LocaleMessageKey } from "../utils/language";
 import { SliderEffectElement } from "../types/Element";
 import { useStore } from "./useStore";
 import { useHttpClient } from "./useHttpClient";
+import { useUILock } from "./useUILock";
 
 interface DispatchEffectOpts {
   popupError?: boolean;
@@ -20,6 +21,7 @@ export function useDispatchEffect() {
   const variableScopes = useVariableScopes();
   const store = useStore();
   const httpClient = useHttpClient();
+  const screenLock = useUILock();
 
   const dispatch = useCallback(
     async (effectElement:SliderEffectElement, event: SlideEffectInitEvent, opts?: DispatchEffectOpts) => {
@@ -28,8 +30,6 @@ export function useDispatchEffect() {
       }
 
       const popupError = opts?.popupError ?? true;
-
-
       const contextEvent: SlideEffectEvent = {
         eventName: event.eventName,
         detail: {
@@ -47,12 +47,15 @@ export function useDispatchEffect() {
 
       const props = {
         ...effectElement,
-        variableScopes,
-        i18nMessageBundle,
-        navigation,
-        store,
-        httpClient,
         event: contextEvent,
+        context: {
+          variableScopes,
+          i18nMessageBundle,
+          navigation,
+          store,
+          httpClient,
+          screenLock,
+        }
       };
 
       try {
@@ -60,6 +63,9 @@ export function useDispatchEffect() {
         variableScopes.popScope();
         return results;
       } catch (error) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error(error);
+        }
         if (popupError) {
           Dialog.alert({
             message: i18nMessageBundle.getMessage(LocaleMessageKey.ErrorAlertMessage),

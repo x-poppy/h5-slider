@@ -19,7 +19,7 @@ children:
             props:
               elementId: 'tack_0001'
             children:
-              type: FlexBox
+              type: Space
               children:
                 type: Button
                 props:
