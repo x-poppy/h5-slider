@@ -3,8 +3,6 @@ import { getURLWithQueryString, isURLsCors } from "./url";
 
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
-import { isPlainObject } from "./typeDetect";
-import { getProperty, hasProperty } from "dot-prop";
 
 interface NavigateToOpts {
   searchMatcher?: string | string[];

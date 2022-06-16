@@ -8,6 +8,7 @@ script: "./test.js"
 security:
   knownHosts:
     - http://www.bing.com
+  userAgentMatcher:  
 definitions:
   Components:
     # -------------------------------------------
@@ -140,7 +141,15 @@ children:
 
   - type: Module
     props:
+      url: "./FlexItem.yml"
+
+  - type: Module
+    props:
       url: "./Image.yml"
+
+  - type: Module
+    props:
+      url: "./Gap.yml"    
 
   - type: Module
     props:

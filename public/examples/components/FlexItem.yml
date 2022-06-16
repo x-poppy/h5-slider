@@ -1,0 +1,32 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: FlexItem
+  slideSubTitle: 'FlexItem'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "flex"
+        propSubTitle: "剩余空间占比"
+        propUsage: "flex: 1"
+    children:
+      type: Block
+      children:
+        type: FlexBox
+        props:
+          direction: column
+          height: 20rem
+        children:
+        - type: Button
+          children: "XXXX"
+        - type: FlexItem
+          props:
+            height: '1rem'
+        - type: Button
+          children: "XXXX" 
+        - type: FlexItem
+          props:
+            flex: 1
+        - type: Button
+          children: "XXXX"
+
+        

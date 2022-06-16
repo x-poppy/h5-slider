@@ -1,3 +1,4 @@
+import React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
 import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
 import { useScriptContext } from '../../../hooks/useScriptContext';

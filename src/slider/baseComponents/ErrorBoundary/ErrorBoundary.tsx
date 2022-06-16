@@ -5,7 +5,7 @@ import { getMessage, LocaleMessageKey } from "../../utils/language";
 import styles from './ErrorBoundary.module.css'
 
 interface ErrorBoundaryProps {
-  popup?: boolean;
+  error?: any;
   children?: ReactNode;
 }
 
@@ -14,9 +14,9 @@ interface ErrorBoundaryState {
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: any) {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: null };
+    this.state = { hasError: props.error ?? null };
   }
 
   static getDerivedStateFromError(error: Error) {
@@ -28,7 +28,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   render() {
-    // const isPopup = this.props.popup ?? false;
     if (this.state.hasError) {
       const description = getMessage(LocaleMessageKey.PageErrorDesc);
       const refreshText = getMessage(LocaleMessageKey.Refresh);

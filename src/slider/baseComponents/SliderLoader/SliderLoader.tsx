@@ -13,6 +13,7 @@ import { useLoadingIndicator } from "../LoadingIndicator";
 import { useThrowError } from "../../hooks/useThrow";
 import { callback } from "../../utils/callback";
 import { loadAllComponents } from "../../components";
+import { match } from "../../utils/string";
 
 const EventNames = {
   OnStoreDataLoaded: "onStoreDataLoaded",
@@ -42,6 +43,13 @@ function SliderLoader() {
         loadingIndication.start();
         // load schema
         const schema = await loadSchema(schemaUrl);
+        // validate useragent
+        const userAgentMatcher = schema.security?.userAgentMatcher;
+        if (userAgentMatcher) {
+          if (!match(window.navigator.userAgent, userAgentMatcher, true)) {
+            throwError(new Error("Invalid UserAgent"));
+          }
+        }
 
         const [storeData] = await Promise.all([
           loadStoreData(httpClient, schema),

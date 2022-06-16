@@ -1,0 +1,48 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: Gap
+  slideSubTitle: '空隙'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+        propTitle: "size"
+        propSubTitle: "空隙大小 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl'"
+        propUsage: "size: md"
+    children:
+      type: Block
+      children:
+        - type: Button
+          children: "XXXX"
+        - type: Gap
+          props:
+            size: 'sm'
+        - type: Button
+          children: "XXXX" 
+        - type: Gap
+          props:
+            size: 'md' 
+        - type: Button
+          children: "XXXX"  
+        - type: Gap
+          props:
+            size: 'lg' 
+        - type: Button
+          children: "XXXX"  
+        - type: Gap
+          props:
+            size: 'xl' 
+        - type: Button
+          children: "XXXX" 
+        - type: Gap
+          props:
+            size: 'xxl' 
+        - type: Button
+          children: "XXXX"
+        - type: Gap
+          props:
+            size: 'xxxl' 
+        - type: Button
+          children: "XXXX"
+
+        
+

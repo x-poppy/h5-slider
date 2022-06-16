@@ -29,12 +29,13 @@ export interface SchemaInfo {
 
 export interface SchemaStore {
   url: string | string[];
-  searchMatcher?: string;
+  searchMatcher?: string | string[];
   responseDataPath?: string;
 }
 
 export interface SchemaSecurity{
   knownHosts?: string[]
+  userAgentMatcher?: string | string[];
 }
 
 export interface SlideSchema extends ComponentSchema {
