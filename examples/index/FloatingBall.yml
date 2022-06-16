@@ -1,0 +1,16 @@
+type: Float
+props:
+  right: 5px
+  bottom: 5px
+children: 
+  type: Button
+  props:
+    round: true
+    type: info
+    color: red
+    plain: true
+    clickEffect:
+      type: NavigationEffect
+      props:
+        url: "./?schema=examples%2Findex%2Findex.yml"
+  children: Back 

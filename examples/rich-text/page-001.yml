@@ -1,7 +1,4 @@
 type: Slide
 children:
   - type: RichText
-    children: 
-  
-  
   - type: ActionBar
