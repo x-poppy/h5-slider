@@ -5,7 +5,7 @@ children:
   props:
     bottom: 2rem
   children:
-    type: Block
+    type: FlexBox
     props:
       width: 100vw
       shadow: false
@@ -16,9 +16,7 @@ children:
 
 - type: Float
   props:
-    left: 50%
     top: 40%
-    transform: "translate(-50%, -50%)"
   children:
     type: Block
     props: 

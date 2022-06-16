@@ -7,8 +7,8 @@ export interface FlexBoxProps extends SliderComponentProps, ClickAbleComponentPr
   children: ReactNode;
   padding?: string;
   margin?: string;
-  width?: string
-  height?: string
+  width?: string;
+  height?: string;
   direction?: 'row' | 'column';
   align?: 'start' | 'end' | 'center' | 'baseline';
   justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch';

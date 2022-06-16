@@ -8,6 +8,8 @@ export interface FloatProps extends SliderComponentProps {
   right?: string;
   top?: string;
   bottom?: string;
+  width?: string;
+  height?: string;
   transform?: string;
   zIndex?: number;
   children?: ReactNode;
@@ -20,6 +22,8 @@ function Float(props: FloatProps) {
       right: props.right,
       top: props.top,
       bottom: props.bottom,
+      width: props.width,
+      height: props.height,
       transform: props.transform,
       zIndex: props.zIndex,
     };

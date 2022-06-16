@@ -51,7 +51,7 @@ children:
                   clickEffect:
                     type: QueueEffect
                     children:
-                    - type: NavigationEffect
+                    - type: SlideNavigationEffect
                       props: 
                         step: -1
                     - type: ScreenLockEffect
@@ -63,7 +63,7 @@ children:
                   clickEffect:
                     type: QueueEffect
                     children:
-                    - type: NavigationEffect
+                    - type: SlideNavigationEffect
                       props: 
                         step: 1
                     - type: ScreenLockEffect

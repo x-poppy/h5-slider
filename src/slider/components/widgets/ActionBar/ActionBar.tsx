@@ -115,6 +115,7 @@ function ActionBar(props: ActionBarProps) {
       if (!props.submitEffect) {
         return;
       }
+
       try {
         setIsSubmitBtnLoading(true);
         dispatchEffect(props.submitEffect, {

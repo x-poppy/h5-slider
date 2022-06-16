@@ -56,17 +56,9 @@ definitions:
 type: Slider
 props:
   widgets:
-    - type: FloatingBall
-      children:
-      - type: Button
-        props:
-          round: true
-          type: primary
-          clickEffect:
-            type: NavigationEffect
-            props:
-              url: "./?schema=examples%2Findex%2Findex.yml"
-        children: 返回
+    - type: Module
+      props:
+        url: "../index/FloatingBall.yml"
 children:
   - type: Slide
     children:
