@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useHttpClient } from "../../hooks/useHttpClient";
 import { useInitialConfig } from "../../hooks/useInitialConfig";
-import { useScriptContext } from "../../hooks/useScriptContext";
+import { EventNames, useScriptContext } from "../../hooks/useScriptContext";
 import { StoreKeyNames } from "../../hooks/useStore";
 import { loadSchema } from "../../utils/loadSchema";
 import { loadScript } from "../../utils/loadScript";
@@ -14,11 +14,6 @@ import { useThrowError } from "../../hooks/useThrow";
 import { callback } from "../../utils/callback";
 import { loadAllComponents } from "../../components";
 import { match } from "../../utils/string";
-
-const EventNames = {
-  OnStoreDataLoaded: "onStoreDataLoaded",
-  OnSchemaInitial: "onSchemaInitial",
-}
 
 function SliderLoader() {
   const initialConfig = useInitialConfig();
@@ -36,9 +31,7 @@ function SliderLoader() {
       if (typeof initialConfig.schema !== 'string') {
         throwError(new Error("Invalid Schema"));
       }
-
       schemaUrl = decodeURIComponent(schemaUrl as unknown as string);
-
       try {
         loadingIndication.start();
         // load schema
@@ -53,22 +46,23 @@ function SliderLoader() {
 
         const [storeData] = await Promise.all([
           loadStoreData(httpClient, schema),
-          loadScript(schema, scriptContext),
+          loadScript(schema, scriptContext, throwError),
           loadAllComponents(),
         ])
-
         // load script
         const storeDataLoadedEvt = new CustomEvent(EventNames.OnStoreDataLoaded, {
           detail: storeData,
         });
-
         // this may modify in the scripts.
         scriptContext.emit(storeDataLoadedEvt);
-        const transformedStoreData = storeDataLoadedEvt.detail ?? {};
+        const transformedStoreData = {
+          ...(storeDataLoadedEvt.detail ?? {})
+        };
         const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
           (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
         transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();
 
+        // transform schema
         const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {
           detail: {
             schema,
@@ -79,9 +73,10 @@ function SliderLoader() {
             }
           }
         });
-
         scriptContext.emit(schemaInitialEvt);
-        const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? schemaInitialEvt.detail.schema : schema;
+        const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? {
+          ...schemaInitialEvt.detail.schema,
+        } : schema;
         const element = createComponentFromSchema(transformedSchema, {
           localProps: {
             initialIndex: initialIndex,
@@ -91,6 +86,8 @@ function SliderLoader() {
 
         setSliderElement(element as ReactElement);
         loadingIndication.end();
+
+        scriptContext.emit(new CustomEvent(EventNames.OnLoaded));
       } catch(err) {
         setSliderElement(null);
         loadingIndication.end();
@@ -99,14 +96,6 @@ function SliderLoader() {
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
-
-    
-    
-
-
-   
-
   
   return sliderElement;
 }

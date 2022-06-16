@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { useOverlap } from '../../../../hooks/userOverlap';
 
 import styles from './SliderOverlapLayer.module.css'

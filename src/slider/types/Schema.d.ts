@@ -29,6 +29,7 @@ export interface SchemaInfo {
 
 export interface SchemaStore {
   url: string | string[];
+  mockData?: Record<string, any>
   searchMatcher?: string | string[];
   responseDataPath?: string;
 }

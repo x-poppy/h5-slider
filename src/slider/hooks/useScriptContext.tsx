@@ -2,6 +2,12 @@ import React, { useContext, useMemo } from "react";
 import { ReactNode } from "react";
 import { noop } from "../utils/noop";
 
+export const EventNames = {
+  OnStoreDataLoaded: "onStoreDataLoaded",
+  OnSchemaInitial: "onSchemaInitial",
+  OnLoaded: "onLoaded",
+}
+
 interface ScriptContextAPI {
   on(event: string, callback: EventListener): void;
   once(event: string, callback: EventListener): void;

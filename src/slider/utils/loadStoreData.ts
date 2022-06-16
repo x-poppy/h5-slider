@@ -23,6 +23,13 @@ export async function loadStoreData(httpClient: AxiosInstance, schema: SliderSch
 
   url = getRandomValueFromArray(url);
   url = getURL(url, schema.info?.baseURL);
+
+  if (storeInfo.mockData) {
+    return {
+      ...storeInfo.mockData
+    };
+  }
+
   const response = await httpClient.get(url, {
     params: getQueryObjectFromSearch(storeInfo?.searchMatcher),
   })
