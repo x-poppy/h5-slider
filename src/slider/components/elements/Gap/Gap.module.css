@@ -4,34 +4,61 @@
   height: 0;
 }
 
-.main:global(.size__xs) {
+.main:global(.w_size__xs) {
   height: 0.25rem;
 }
 
-.main:global(.size__sm) {
+.main:global(.h_size__xs) {
+  height: 0.25rem;
+}
+
+.main:global(.w_size__sm) {
+  width: 0.5rem;
+}
+
+.main:global(.h_size__sm) {
   height: 0.5rem;
 }
 
-.main:global(.size__md) {
+.main:global(.w_size__md) {
+  width: 1rem;
+}
+
+.main:global(.h_size__md) {
   height: 1rem;
 }
 
-.main:global(.size__lg) {
+.main:global(.w_size__lg) {
+  width: 3rem;
+}
+
+.main:global(.h_size__lg) {
   height: 3rem;
 }
 
-.main:global(.size__xl) {
+.main:global(.w_size__xl) {
+  width: 5rem;
+}
+
+.main:global(.h_size__xl) {
   height: 5rem;
 }
 
-.main:global(.size__xxl) {
+.main:global(.w_size__xxl) {
+  width: 10rem;
+}
+
+.main:global(.h_size__xxl) {
   height: 10rem;
 }
 
-.main:global(.size__xxxl) {
-  height: 20rem;
+.main:global(.w_size__xxxl) {
+  width: 20rem;
 }
 
+.main:global(.h_size__xxxl) {
+  height: 20rem;
+}
 
 
 

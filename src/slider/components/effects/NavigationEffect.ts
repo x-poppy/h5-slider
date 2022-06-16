@@ -1,22 +1,19 @@
 import { SliderEffectProps } from "../../types/Component";
 
 interface NavigationEffectProps extends SliderEffectProps {
-  index: number;
+  step: number;
 }
 
 async function NavigationEffect(props: NavigationEffectProps) {
   const { navigation } = props;
-  let index = props.index ?? 0;
-  const totalCount = navigation.totalCount;
-  if (totalCount === 0) {
-    return;
-  } 
-  index = index % totalCount;
-  if (index < 0) {
-    index = index + totalCount;
+  const step = props.step ?? 0;
+  if (step === 1) {
+    navigation.nextSlide();
+  } else if (step === -1) {
+    navigation.preSlide();
+  } else {
+    navigation.gotoSlide(navigation.activeIndex + step);
   }
-  
-  navigation.gotoSlide(index);
 }
 
 export default NavigationEffect;

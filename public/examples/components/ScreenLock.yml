@@ -29,10 +29,35 @@ children:
         props:
           lock: true
         children:
-          - type: Image
-            props:
-              height: 10rem
-              src: "./assets/pic_trulli.jpeg"
-              fit: contain
-          - type: Button
-            children: XXXXX
+          - type: Padding
+            children:
+            - type: Gap
+              props:
+                size: 'xxl'
+            - type: Image
+              props:
+                height: 10rem
+                src: "./assets/pic_trulli.jpeg"
+                fit: contain
+            - type: Space
+              props:
+                gap: 6rem
+                align: center
+                justify: center
+              children:    
+              - type: Button
+                children: Pre
+                props:
+                  clickEffect:
+                    type: NavigationEffect
+                    props: 
+                      step: -1
+              - type: Button
+                children: Next
+                props:
+                  clickEffect:
+                    type: NavigationEffect
+                    props: 
+                      step: 1      
+
+

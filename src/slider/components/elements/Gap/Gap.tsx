@@ -6,6 +6,7 @@ import styles from './Gap.module.css';
 
 export interface GapProps extends SliderComponentProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+  horizontal?:boolean;
   width?: string;
   height?: string;
 }
@@ -17,11 +18,14 @@ function Gap(props: GapProps) {
     // eslint-disable-next-line
   }), []);
 
+  const directionCssName = props.horizontal ?
+    'w_' : 'h_';
+
   const size = props.size ?? 'md';
   return (
     <div 
       className={classnames(styles.main, 
-      size && 'size__' + size,
+      size && directionCssName + 'size__' + size,
     )}
     style={initStyle}
     >
