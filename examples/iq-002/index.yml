@@ -5,9 +5,9 @@ version: 0.0.1
 # 37-48
 # 49-60
 info:
-  title: "Raven IQ 测试"
+  title: "Raven IQ Test"
   favicon: "./favicon.ico"
-  description: "Raven IQ 测试 002"
+  description: "Raven IQ Test 002"
   contentBackground: "#f4f8fc"
   cssVariables:
 security:
@@ -148,8 +148,6 @@ definitions:
             optionId: F
     Exercise8:
       type: ${Components.Exercise}
-      props:
-        entryEffect: ${entryEffect}
       children:
         - type: ${Components.ExerciseOption}
           props:
@@ -264,7 +262,7 @@ children:
       entryEffect:
         type: ${Components.CheersAlertMessageEffect}
         props:
-          cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage2}
+          cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage2}    
   - type: ${Components.Exercise8}
     props:
       questionId: 'Q26'  

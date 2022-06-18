@@ -13,7 +13,7 @@
       }
 
       .cls-2 {
-        fill: #29549c;
+        fill: #f4f8fc;
         stroke-linejoin: round;
         stroke-width: 1.02px;
       }
