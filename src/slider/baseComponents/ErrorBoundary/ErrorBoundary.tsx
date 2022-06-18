@@ -1,5 +1,8 @@
 import React, { Component, ReactNode } from "react";
 import { Button, Empty } from 'react-vant';
+import QRCode from 'qrcode.react';
+
+import { isEnviromentNotSupportError } from "../../utils/enviroment";
 import { getMessage, LocaleMessageKey } from "../../utils/language";
 
 import styles from './ErrorBoundary.module.css'
@@ -29,12 +32,36 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     if (this.state.hasError) {
-      const description = getMessage(LocaleMessageKey.PageErrorDesc);
+      const isEnviromentError = isEnviromentNotSupportError(this.state.hasError);
+      const description = isEnviromentError ? 
+      getMessage(LocaleMessageKey.MobileSupportOnlyError) : 
+        getMessage(LocaleMessageKey.PageErrorDesc);
+      if (isEnviromentError) {
+        return (
+          <Empty 
+            className={styles.main} 
+            image={
+              <QRCode
+                width={128}
+                height={128}
+                value={window.location.href} 
+              />}
+            description={description}>
+          </Empty>
+        );
+      }
+
       const refreshText = getMessage(LocaleMessageKey.Refresh);
 
       return (
-        <Empty className={styles.main} image="./images/error.png" description={description}>
-          <Button className={styles.refreshBtn} onClick={this.onRefreshBtnClick} round type="info">{refreshText}</Button>
+        <Empty 
+          className={styles.main} 
+          image="./images/error.png" 
+          description={description}>
+          <Button className={styles.refreshBtn} 
+            onClick={this.onRefreshBtnClick} 
+            round type="info">{refreshText}
+          </Button>
         </Empty>
       );
     }

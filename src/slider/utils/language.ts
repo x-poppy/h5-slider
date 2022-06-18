@@ -13,6 +13,7 @@ export enum LocaleMessageKey {
   CommonCloseText = "CommonCloseText",
   CommonConfirmText = "CommonConfirmText",
   CommonCancelText = "CommonCancelText",
+  MobileSupportOnlyError = "MobileSupportOnlyError",
   PageErrorDesc = "PageErrorDesc",
   Refresh = "Refresh",
   PreviousSlide = "PreviousSlide",
@@ -37,8 +38,12 @@ const localeMessages = {
     en: 'Cancel'
   },
   [LocaleMessageKey.PageErrorDesc]: {
-    zh: '页面异常, 请您稍后再试！',
+    zh: '页面异常, 请您稍后再试!',
     en: 'Page Error! Please Try Again Later!'
+  },
+  [LocaleMessageKey.MobileSupportOnlyError]: {
+    zh: '该页面仅支持移动端打开, 请用手机扫码打开!',
+    en: 'This Page is Only Support For Mobile Device, Please Scan The Upon QRCode!'
   },
   [LocaleMessageKey.Refresh]: {
     zh: '刷新',
