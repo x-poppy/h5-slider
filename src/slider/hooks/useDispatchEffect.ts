@@ -10,6 +10,7 @@ import { SliderEffectElement } from "../types/Element";
 import { useStore } from "./useStore";
 import { useHttpClient } from "./useHttpClient";
 import { useUILock } from "./useUILock";
+import { isEffectElement } from "../utils/typeDetect";
 
 interface DispatchEffectOpts {
   popupError?: boolean;
@@ -25,7 +26,7 @@ export function useDispatchEffect() {
 
   const dispatch = useCallback(
     async (effectElement:SliderEffectElement, event: SlideEffectInitEvent, opts?: DispatchEffectOpts) => {
-      if (!effectElement) {
+      if (!isEffectElement(effectElement)) {
         return;
       }
 

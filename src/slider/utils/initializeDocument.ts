@@ -117,8 +117,6 @@ function initCssVariables(cssVariables?: SchemaCSSVariables) {
 }
 
 export function initializeDocument(schema: SliderSchema | null) {
-  initContextmenu();
-
   const info = schema?.info;
   if (info) {
     initDocumentTitle(info);

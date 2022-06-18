@@ -2,10 +2,6 @@ import React, { useContext, useMemo } from "react";
 import { ReactNode } from "react";
 import { getInitialConfig } from "../utils/getInitialConfig";
 
-const BlackList = {
-  activeIndex: process.env.NODE_ENV === 'production',
-}
-
 export interface InitialConfig {
   [key: string]: boolean | string | number | null | undefined
 }

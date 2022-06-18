@@ -1,9 +1,21 @@
-export function isReactOrEffectElement(val: any) {
-  if (typeof val === 'object' && ('$$typeof' in val || '$$effect' in val)) {
+export function isEffectElement(val: any) {
+  if (val !== null && typeof val === 'object' && '$$effect' in val && !!(val.$$effect)) {
     return true;
   }
 
   return false;
+}
+
+export function isReactElement(val: any) {
+  if (val !== null && typeof val === 'object' && '$$typeof' in val && !!(val.$$typeof)) {
+    return true;
+  }
+
+  return false;
+}
+
+export function isReactOrEffectElement(val: any) {
+  return isReactElement(val) || isEffectElement(val);
 }
 
 export function isPlainValue(val: any) {

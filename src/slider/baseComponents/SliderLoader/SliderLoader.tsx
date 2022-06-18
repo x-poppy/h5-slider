@@ -15,6 +15,7 @@ import { callback } from "../../utils/callback";
 import { loadAllComponents } from "../../components";
 import { match } from "../../utils/string";
 import { initializeDocument } from "../../utils/initializeDocument";
+import { validateEnviroments } from "../../utils/enviroment";
 
 function SliderLoader() {
   const initialConfig = useInitialConfig();
@@ -27,11 +28,16 @@ function SliderLoader() {
 
   useEffect(() => {
     callback(async () => {
+      validateEnviroments(initialConfig);
       // validation
+      validateEnviroments(initialConfig);
       let schemaUrl = initialConfig.schema;
       if (typeof initialConfig.schema !== 'string') {
         throwError(new Error("Invalid Schema"));
       }
+
+
+
       schemaUrl = decodeURIComponent(schemaUrl as unknown as string);
       try {
         loadingIndication.start();

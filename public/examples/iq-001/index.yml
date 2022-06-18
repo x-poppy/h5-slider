@@ -1,8 +1,8 @@
 version: 0.0.1
 info:
-  title: "Raven IQ 测试"
+  title: "Raven IQ Test"
   favicon: "./favicon.ico"
-  description: "Raven IQ 测试 001"
+  description: "Raven IQ Test 001"
   contentBackground: "#f4f8fc"
 security:
   knownHosts:

@@ -22,8 +22,10 @@
   "dependencies": {
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "disable-devtool": "^0.2.5",
     "dot-prop": "^7.2.0",
     "js-yaml": "^4.1.0",
+    "mobile-detect": "^1.4.5",
     "qrcode.react": "^3.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

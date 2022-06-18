@@ -27,15 +27,15 @@ function Slide(props: SlideProps) {
   const dispatchEffect = useDispatchEffect();
 
   useEffect(() => {
+    if (!props.entryEffect) {
+      return;
+    }
+    
     if (!selfIndexActive) {
       return;
     }
 
     if (selfIndex < navigation.lastActiveIndex) {
-      return;
-    }
-
-    if (!props.entryEffect) {
       return;
     }
 
@@ -47,7 +47,7 @@ function Slide(props: SlideProps) {
         }
       });
     })
-  }, [dispatchEffect, props.entryEffect, selfIndex, selfIndexActive])
+  }, [dispatchEffect, navigation.lastActiveIndex, props.entryEffect, selfIndex, selfIndexActive])
 
   return (
     <div style={{background: props.background}} className={styles.main}>
