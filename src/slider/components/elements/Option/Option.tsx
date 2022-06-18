@@ -11,7 +11,6 @@ export interface OptionProps extends SliderComponentProps {
 
 function Option(props: OptionProps) {
   const optionGroup = useOptionGroup();
-
   const checked = props.name ? (optionGroup.values[props.name] ?? false) : false;
 
   const onClickHandel = useCallback(() => {

@@ -19,6 +19,7 @@ definitions:
     ExerciseOption:
       type: Option
       props: 
+        name: ${optionId}
         checkedColor: ${Themes.PrimaryColor}
       children:
         type: FlexBox
@@ -35,7 +36,6 @@ definitions:
             type: Image
             props:
               fit: fill
-              name: {optionId}
               width: 100%
               src: "./assets/test/${questionId}${optionId}.svg"
     Exercise:

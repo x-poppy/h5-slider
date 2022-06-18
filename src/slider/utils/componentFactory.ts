@@ -175,9 +175,11 @@ export function createComponentFromSchema(
     }, schema);
   }
 
+  const name = schemaProps.name ?? getRandomString();
+
   return createComponentElement(
     type, {
-      name: getRandomString(),
+      name,
       ...schemaProps,
       ...localProps,
       ...sharedProps,
