@@ -22,7 +22,7 @@
     }
 
     .st3 {
-      fill: #29549C;
+      fill: #f4f8fc;
       stroke: #27527a;
       stroke-width: 1.02;
       stroke-linejoin: round;
