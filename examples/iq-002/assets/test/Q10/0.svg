@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 416 295.95">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-2,
+      .cls-5 {
+        stroke: #27527a;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.18px;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        fill: #27527a;
+      }
+
+      .cls-5 {
+        fill: #f4f8fc;
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" x="11.49" y="12.24" width="400" height="250" />
+    </clipPath>
+  </defs>
+  <title>10</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <rect class="cls-2" x="11.49" y="12.24" width="400" height="250" />
+      <g class="cls-3">
+        <polygon class="cls-4"
+          points="0 22.8 368.24 43.74 0 64.68 368.24 85.62 0 106.56 368.24 127.5 0 148.44 368.24 169.38 0 190.32 368.24 211.26 0 232.2 360.04 252.67 0 273.14 416 295.95 416 0 0 22.8" />
+      </g>
+      <path class="cls-5"
+        d="M349.56,235.77H265.08a1.59,1.59,0,0,1-1.59-1.59V160a1.59,1.59,0,0,1,1.59-1.59h84.48a18,18,0,0,1,11.61,4.25l23.57,19.9a19,19,0,0,1,0,29.08l-23.57,19.9A18,18,0,0,1,349.56,235.77Z" />
+    </g>
+  </g>
+</svg>

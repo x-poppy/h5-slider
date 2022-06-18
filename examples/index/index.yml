@@ -56,3 +56,11 @@ children:
           props:
             url: "./?schema=examples%2Fiq-001%2Findex.yml"
       children: "瑞文题型 001"
+    - type: Gap
+    - type: Link
+      props:
+        clickEffect:
+          type: NavigationEffect
+          props:
+            url: "./?schema=examples%2Fiq-002%2Findex.yml"
+      children: "瑞文题型 002"  

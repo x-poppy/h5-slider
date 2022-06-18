@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #27527a;
+      }
+
+      .cls-3 {
+        stroke: #27527a;
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+    </style>
+  </defs>
+  <title>8_3</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-1"
+        d="M1.09,43V35h65.5V.51H2.1A1.59,1.59,0,0,0,.51,2.1V76.3A1.59,1.59,0,0,0,2.1,77.89H66.59V43Z" />
+      <path class="cls-1" d="M121.76,53.74A18.89,18.89,0,0,0,128.11,43H74.59V77.89h12a18,18,0,0,0,11.61-4.25Z" />
+      <path class="cls-1" d="M128,35a18.89,18.89,0,0,0-6.28-10.37L98.19,4.76A18,18,0,0,0,86.58.51h-12V35Z" />
+      <rect class="cls-2" x="66.59" y="0.51" width="8" height="34.52" />
+      <rect class="cls-2" x="66.59" y="43.03" width="8" height="34.86" />
+      <path class="cls-2" d="M66.59,35H1.09v8h127a19.18,19.18,0,0,0-.07-8H66.59Z" />
+      <path class="cls-3"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+    </g>
+  </g>
+</svg>

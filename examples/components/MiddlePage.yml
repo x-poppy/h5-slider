@@ -1,13 +1,19 @@
 type: Slide
-children:
+props:
+  entryEffect:
+    type: AlertEffect
+    props:
+      message: "hello"
 
+children:
 - type: Float
   props:
+    width: 100%
     bottom: 2rem
   children:
     type: FlexBox
     props:
-      width: 100vw
+      width: 100%
       shadow: false
       round: false
       background: none
@@ -17,11 +23,12 @@ children:
 - type: Float
   props:
     top: 40%
+    width: 100%
   children:
     type: Block
     props: 
       shadow: true
-      width: 100vw
+      width: 100%
       padding: "2rem"
     children:
       type: Title

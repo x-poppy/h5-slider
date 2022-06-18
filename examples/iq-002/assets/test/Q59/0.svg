@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 401.18 327.58">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-1,
+      .cls-2,
+      .cls-3 {
+        stroke: #27527a;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.18px;
+      }
+
+      .cls-2 {
+        fill: #f4f8fc;
+      }
+
+      .cls-2,
+      .cls-3 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-4 {
+        fill: #27527a;
+      }
+    </style>
+  </defs>
+  <title>59</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <rect class="cls-1" x="0.59" y="0.59" width="400" height="326.4" />
+      <path class="cls-2"
+        d="M340.68,285.23h-75.9a1.43,1.43,0,0,1-1.43-1.43V217.14a1.43,1.43,0,0,1,1.43-1.43h75.9a16.17,16.17,0,0,1,10.43,3.81l21.17,17.88a17.1,17.1,0,0,1,0,26.13l-21.17,17.88A16.17,16.17,0,0,1,340.68,285.23Z" />
+      <polyline class="cls-3" points="101.82 73.56 42.54 73.56 42.54 36.84" />
+      <circle class="cls-4" cx="72.18" cy="55.2" r="4" />
+      <polygon class="cls-3" points="101.82 167.06 42.54 167.06 101.82 130.35 101.82 167.06" />
+      <circle class="cls-4" cx="72.18" cy="148.7" r="4" />
+      <polyline class="cls-3" points="160.95 73.56 160.95 36.84 220.22 36.84" />
+      <line class="cls-3" x1="220.23" y1="73.56" x2="160.95" y2="36.84" />
+      <circle class="cls-4" cx="190.59" cy="55.2" r="4" />
+      <polygon class="cls-3" points="220.22 167.06 160.95 167.06 160.95 130.35 220.22 167.06" />
+      <line class="cls-3" x1="160.95" y1="167.06" x2="220.23" y2="130.35" />
+      <line class="cls-3" x1="220.23" y1="167.06" x2="160.95" y2="130.35" />
+      <circle class="cls-4" cx="190.59" cy="148.7" r="4" />
+      <line class="cls-3" x1="284.36" y1="36.84" x2="343.63" y2="36.84" />
+      <line class="cls-3" x1="343.63" y1="73.56" x2="284.36" y2="73.56" />
+      <line class="cls-3" x1="343.63" y1="73.56" x2="284.36" y2="36.84" />
+      <circle class="cls-4" cx="313.99" cy="55.2" r="4" />
+      <line class="cls-3" x1="219.54" y1="232.11" x2="160.27" y2="232.11" />
+      <line class="cls-3" x1="160.27" y1="268.83" x2="219.54" y2="268.83" />
+      <line class="cls-3" x1="160.27" y1="268.83" x2="219.54" y2="232.11" />
+      <circle class="cls-4" cx="189.91" cy="250.47" r="4" />
+      <line class="cls-3" x1="284.36" y1="167.06" x2="284.36" y2="130.35" />
+      <line class="cls-3" x1="343.63" y1="130.35" x2="343.63" y2="167.06" />
+      <line class="cls-3" x1="343.63" y1="167.06" x2="284.36" y2="130.35" />
+      <circle class="cls-4" cx="313.99" cy="148.7" r="4" />
+      <line class="cls-3" x1="102.91" y1="268.83" x2="102.91" y2="232.11" />
+      <line class="cls-3" x1="43.63" y1="232.11" x2="43.63" y2="268.83" />
+      <line class="cls-3" x1="43.63" y1="268.83" x2="102.91" y2="232.11" />
+      <circle class="cls-4" cx="73.27" cy="250.47" r="4" />
+    </g>
+  </g>
+</svg>

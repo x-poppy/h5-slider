@@ -1,0 +1,15 @@
+type: ${Components.ComponentSlide}
+props:
+  slideTitle: SVGImage
+  slideSubTitle: 'SVG Image'
+children:
+  - type: ${Components.ComponentPropBlock}
+    props:
+      propTitle: "entryEffect"
+      propSubTitle: "进入触发相应的效果"
+      propUsage: "entryEffect: AlertEffect"
+    children:
+      - type: SVGImage
+        props: 
+          width: 10rem
+          src: "./assets/cicle.svg"

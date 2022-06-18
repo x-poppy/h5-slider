@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2 {
+        fill: none;
+        stroke: #27527a;
+      }
+
+      .cls-1 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: #27527a;
+      }
+    </style>
+  </defs>
+  <title>16_5</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-1"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+      <rect class="cls-2" x="13.42" y="10.82" width="77.17" height="57.22"
+        transform="translate(104 78.86) rotate(180)" />
+      <ellipse class="cls-3" cx="51.19" cy="38.93" rx="31.36" ry="20.28" />
+    </g>
+  </g>
+</svg>

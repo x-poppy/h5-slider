@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.61 66.06">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #27527a;
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-2 {
+        fill: #27527a;
+      }
+    </style>
+  </defs>
+  <title>55_6</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-1"
+        d="M72.85,65.55h-71A1.34,1.34,0,0,1,.51,64.21V1.85A1.34,1.34,0,0,1,1.85.51h71a15.13,15.13,0,0,1,9.76,3.57l19.81,16.73a16,16,0,0,1,0,24.44L82.61,62A15.13,15.13,0,0,1,72.85,65.55Z" />
+      <rect class="cls-1" x="18.08" y="30.75" width="23" height="23" />
+      <line class="cls-1" x1="29.57" y1="30.71" x2="29.57" y2="7.08" />
+      <circle class="cls-2" cx="29.25" cy="14.98" r="4.52" />
+    </g>
+  </g>
+</svg>

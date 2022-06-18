@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 401.18 327.58">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 1.18px;
+      }
+
+      .cls-1,
+      .cls-2 {
+        stroke: #27527a;
+      }
+
+      .cls-2 {
+        fill: #f4f8fc;
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-3 {
+        fill: #27527a;
+      }
+    </style>
+  </defs>
+  <title>27</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <rect class="cls-1" x="0.59" y="0.59" width="400" height="326.4" />
+      <path class="cls-2"
+        d="M340.18,293.27h-75.9a1.54,1.54,0,0,1-1.43-1.63V215.84a1.54,1.54,0,0,1,1.43-1.63h75.9a15.05,15.05,0,0,1,10.43,4.34l21.17,20.34c8.09,7.77,8.09,21.95,0,29.71l-21.17,20.34A15.05,15.05,0,0,1,340.18,293.27Z" />
+      <circle class="cls-3" cx="64.84" cy="67.89" r="10.5" />
+      <circle class="cls-3" cx="64.84" cy="138.02" r="10.5" />
+      <circle class="cls-3" cx="64.84" cy="162" r="10.5" />
+      <circle class="cls-3" cx="64.84" cy="228.92" r="10.5" />
+      <circle class="cls-3" cx="64.84" cy="252.9" r="10.5" />
+      <circle class="cls-3" cx="64.84" cy="276.87" r="10.5" />
+      <circle class="cls-3" cx="172.57" cy="68.48" r="10.5" />
+      <circle class="cls-3" cx="172.57" cy="138.61" r="10.5" />
+      <circle class="cls-3" cx="172.57" cy="162.59" r="10.5" />
+      <circle class="cls-3" cx="172.57" cy="229.51" r="10.5" />
+      <circle class="cls-3" cx="172.57" cy="253.49" r="10.5" />
+      <circle class="cls-3" cx="172.57" cy="277.46" r="10.5" />
+      <circle class="cls-3" cx="196.44" cy="68.6" r="10.5" />
+      <circle class="cls-3" cx="196.44" cy="138.73" r="10.5" />
+      <circle class="cls-3" cx="196.44" cy="162.71" r="10.5" />
+      <circle class="cls-3" cx="196.44" cy="229.63" r="10.5" />
+      <circle class="cls-3" cx="196.44" cy="253.61" r="10.5" />
+      <circle class="cls-3" cx="196.44" cy="277.58" r="10.5" />
+      <circle class="cls-3" cx="282.23" cy="138.02" r="10.5" />
+      <circle class="cls-3" cx="282.23" cy="162" r="10.5" />
+      <circle class="cls-3" cx="306.1" cy="138.14" r="10.5" />
+      <circle class="cls-3" cx="306.1" cy="162.12" r="10.5" />
+      <circle class="cls-3" cx="282.23" cy="67.89" r="10.5" />
+      <circle class="cls-3" cx="306.1" cy="68.01" r="10.5" transform="translate(206.63 365.37) rotate(-84.03)" />
+      <circle class="cls-3" cx="329.96" cy="68.12" r="10.5" />
+      <circle class="cls-3" cx="329.96" cy="138.26" r="10.5" />
+      <circle class="cls-3" cx="329.96" cy="162.23" r="10.5" />
+    </g>
+  </g>
+</svg>

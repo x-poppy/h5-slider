@@ -5,10 +5,15 @@ info:
   description: "xxxxxx"
   contentBackground: "#FFF"
 script: "./test.js"
+cssVariables:
+  --fill-test: blue
 security:
   knownHosts:
     - http://www.bing.com
-  userAgentMatcher:  
+  userAgentMatcher:
+store:
+  url: 'xxxx'
+  mockData: {name: 'xxxxxxx'}  
 definitions:
   Components:
     # -------------------------------------------
@@ -161,6 +166,10 @@ children:
   - type: Module
     props:
       url: "./Switch.yml"  
+
+  - type: Module
+    props:
+      url: "./SVGImage.yml"      
 
   - type: Module
     props:
