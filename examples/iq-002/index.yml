@@ -21,7 +21,7 @@ definitions:
     PreviousSlide: "Previous"
     NextSlide: "Next"
     SubmitSlide: "Submit"
-    ExerciseCheersAlertMessage1: "Wow! Group 1 Completed!"
+    ExerciseCheersAlertMessage1: "WOW! Group 1 Completed!"
     ExerciseCheersAlertMessage2: "Amazing! Group 2 Completed!"
     ExerciseCheersAlertMessage3: "Bravo! Group 3 Completed!"
     ExerciseCheersAlertMessage4: "Awesome! Group 4 Completed!"
@@ -38,6 +38,7 @@ definitions:
     ExerciseOption:
       type: Option
       props: 
+        name: ${optionId}
         checkedColor: ${Themes.PrimaryColor}
       children:
         type: FlexBox
@@ -54,7 +55,6 @@ definitions:
             type: Image
             props:
               fit: fill
-              name: {optionId}
               width: 100%
               src: "./assets/test/${questionId}/${optionId}.svg"
     Exercise:
