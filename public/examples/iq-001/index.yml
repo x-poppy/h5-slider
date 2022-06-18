@@ -1,12 +1,14 @@
 version: 0.0.1
 info:
-  title: "瑞文IQ测试"
-  favicon: "https://shortcut.com/favicon-32x32.png?v=6a11b8fc3ed40b8e0f9626bf2292fd39"
-  description: "瑞文IQ测试"
-  contentBackground: "rgb(244, 248, 252)"
+  title: "Raven IQ 测试"
+  favicon: "./favicon.ico"
+  description: "Raven IQ 测试 001"
+  contentBackground: "#f4f8fc"
 security:
   knownHosts:
 definitions:
+  Themes:
+    PrimaryColor: '#27527a'
   Permissions:
     PreviousSlide: true
   LocaleMessages:
@@ -17,15 +19,25 @@ definitions:
     ExerciseOption:
       type: Option
       props: 
-        checkedColor: "#27527a"
+        checkedColor: ${Themes.PrimaryColor}
       children:
-        type: Image
+        type: FlexBox
         props:
-          fit: fill
-          name: {optionId}
-          width: 3rem
-          height: 3rem
-          src: "./assets/${questionId}${optionId}.svg"
+          width: 6rem
+          height: 6rem
+          align: center
+          justify: center
+        children:
+          type: Padding
+          props:
+            padding: "0.5rem 1rem 0.5rem 0"
+          children:
+            type: Image
+            props:
+              fit: fill
+              name: {optionId}
+              width: 100%
+              src: "./assets/test/${questionId}${optionId}.svg"
     Exercise:
       type: Slide
       children:
@@ -34,7 +46,8 @@ definitions:
         children:
         - type: SlideIndicator
           props:
-            color: "#27527a"
+            color: ${Themes.PrimaryColor}
+        - type: Gap        
         - type: FlexBox
           props:
             align: center
@@ -45,43 +58,52 @@ definitions:
               fit: fill
               height: 16rem
               width: 16rem
-              src: "./assets/${questionId}.svg"
+              src: "./assets/test/${questionId}.svg"
         - type: Gap
         - type: OptionGroup
           props:
             name: ${questionId}
             direction: horizontal
-            random: true
           children:
             - type: FlexBox
               props:
                 align: center
-                justify: center
+                justify: center  
               children:
-                - type: ${Components.ExerciseOption}
+                type: FlexBox
+                props:
+                  width: 20rem
+                  wrap: true
+                  justify: center 
+                children:
+                  type: Group
                   props:
-                    optionId: A
-                - type: ${Components.ExerciseOption}
-                  props:
-                    optionId: B
-                - type: ${Components.ExerciseOption}
-                  props:
-                    optionId: C
-                - type: ${Components.ExerciseOption}
-                  props:
-                    optionId: D         
+                    random: true
+                  children:  
+                  - type: ${Components.ExerciseOption}
+                    props:
+                      optionId: A
+                  - type: ${Components.ExerciseOption}
+                    props:
+                      optionId: B
+                  - type: ${Components.ExerciseOption}
+                    props:
+                      optionId: C
+                  - type: ${Components.ExerciseOption}
+                    props:
+                      optionId: D         
         - type: Gap
           props:
-            size: xxl
+            size: lg
         - type: ActionBar 
           props:
             autoNext: true
             preButtonStyle: 
-              color: "#27527a"
+              color: ${Themes.PrimaryColor}
             nextButtonStyle:
-              color: "#27527a" 
+              color: ${Themes.PrimaryColor}
             submitButtonStyle:
-              color: "#27527a"
+              color: ${Themes.PrimaryColor}
             nextButtonEnable: ${${questionId}}
             nextButtonDefaultEnable: false
             submitEffect:

@@ -14,6 +14,7 @@ import { useThrowError } from "../../hooks/useThrow";
 import { callback } from "../../utils/callback";
 import { loadAllComponents } from "../../components";
 import { match } from "../../utils/string";
+import { initializeDocument } from "../../utils/initializeDocument";
 
 function SliderLoader() {
   const initialConfig = useInitialConfig();
@@ -61,7 +62,6 @@ function SliderLoader() {
         const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
           (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
         transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();
-
         // transform schema
         const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {
           detail: {
@@ -83,10 +83,9 @@ function SliderLoader() {
             storeData: transformedStoreData
           }
         });
-
+        initializeDocument(schema);
         setSliderElement(element as ReactElement);
         loadingIndication.end();
-
         scriptContext.emit(new CustomEvent(EventNames.OnLoaded));
       } catch(err) {
         setSliderElement(null);

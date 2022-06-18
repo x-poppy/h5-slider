@@ -11,6 +11,10 @@ export interface SchemaDefinition {
   [key: string]: SchemaDefinition | ComponentSchema | null | string | number | undefined
 }
 
+export interface SchemaCSSVariables {
+  [variableName: string]: string;
+}
+
 export interface SchemaInfo {
   title?: string;
   lang?: string;
@@ -47,6 +51,7 @@ export interface SliderSchema extends ComponentSchema {
   version: string;
   info?: SchemaInfo;
   script?: string;
+  cssVariables?: SchemaCSSVariables;
   store?: SchemaStore;
   security?: SchemaSecurity;
   children: SlideSchema[]

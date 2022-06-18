@@ -8,7 +8,7 @@ export interface AlertEffectProps extends SliderEffectProps {
   title?: string | React.ReactNode;
   message?: string;
   overlay?: boolean;
-  theme?: "round";
+  theme?: "round-button";
   confirmButtonText?: string;
   confirmButtonColor?: string;
 }

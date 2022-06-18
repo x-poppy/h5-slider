@@ -1,6 +1,11 @@
 type: Slide
-children:
+props:
+  entryEffect:
+    type: AlertEffect
+    props:
+      message: "hello"
 
+children:
 - type: Float
   props:
     width: 100%

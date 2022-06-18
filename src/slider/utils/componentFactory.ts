@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { ComponentSchema } from "../types/Schema";
-import { isComponentSchema, isDebuggerValue, isPlainValue, isReactOrEffectElement } from "./typeDetect";
+import { isComponentSchema, isDebuggerValue, isPlainObject, isPlainValue, isReactOrEffectElement } from "./typeDetect";
 import { getRandomString } from "./random";
 import { getReferenceExpressValue, isReferenceExpress } from "./express";
 
@@ -142,6 +142,17 @@ export function createComponentFromSchema(
           }
           return item;
         });
+      } else if (isPlainObject(propValue)) {
+        // todo we need put it in the self loop
+        const results: Record<string, any> = {};
+        for (const [key, val] of Object.entries(propValue)) {
+          if (isReferenceExpress(val)) {
+            results[key] = getReferenceExpressValue(val, refScopes);
+          } else {
+            results[key] = val;
+          }
+        }
+        propValue = results;
       }
       schemaProps[key] = propValue;
     }

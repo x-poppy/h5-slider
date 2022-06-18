@@ -23,10 +23,15 @@ function Slide(props: SlideProps) {
   const navigation = useNavigation();
   const selfIndex = useSlideIndex();
   const selfIndexActive = navigation.activeIndex === selfIndex;
+  
   const dispatchEffect = useDispatchEffect();
 
   useEffect(() => {
     if (!selfIndexActive) {
+      return;
+    }
+
+    if (selfIndex < navigation.lastActiveIndex) {
       return;
     }
 

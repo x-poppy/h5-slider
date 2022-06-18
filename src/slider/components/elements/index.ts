@@ -18,6 +18,7 @@ import VideoPlayer from "./VideoPlayer";
 import Switch from "./Switch";
 import Rate from "./Rate";
 import CircleProgress from "./CircleProgress";
+import SVGImage from "./SVGImage";
 
 registerComponent(AudioPlayer, 'AudioPlayer');
 registerComponent(Button, 'Button');
@@ -34,6 +35,7 @@ registerComponent(QRCode, 'QRCode');
 registerComponent(Rate, 'Rate');
 registerComponent(RichText, 'RichText');
 registerComponent(Sticky, 'Sticky');
+registerComponent(SVGImage, 'SVGImage');
 registerComponent(Switch, 'Switch');
 registerComponent(Text, 'Text');
 registerComponent(Title, 'Title');

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-2,
+      .cls-3 {
+        stroke: #27527a;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-4 {
+        fill: url(#lines);
+      }
+    </style>
+    <pattern id="lines" data-name="lines" width="76" height="60" patternTransform="translate(-9 16)"
+      patternUnits="userSpaceOnUse" viewBox="0 0 76 60">
+      <rect class="cls-1" width="76" height="60" />
+      <line class="cls-2" x1="66.5" y1="60" x2="85.5" y2="60" />
+      <line class="cls-2" x1="-9.5" y1="60" x2="9.5" y2="60" />
+      <line class="cls-2" x1="66.5" y1="40" x2="85.5" y2="40" />
+      <line class="cls-2" x1="28.5" y1="50" x2="47.5" y2="50" />
+      <line class="cls-2" x1="-9.5" y1="40" x2="9.5" y2="40" />
+      <line class="cls-2" x1="66.5" y1="20" x2="85.5" y2="20" />
+      <line class="cls-2" x1="28.5" y1="30" x2="47.5" y2="30" />
+      <line class="cls-2" x1="-9.5" y1="20" x2="9.5" y2="20" />
+      <line class="cls-2" x1="66.5" x2="85.5" />
+      <line class="cls-2" x1="28.5" y1="10" x2="47.5" y2="10" />
+      <line class="cls-2" x1="-9.5" x2="9.5" />
+    </pattern>
+  </defs>
+  <title>4_1</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-3"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+      <path class="cls-1"
+        d="M122.26,24.5,98.69,4.6A18,18,0,0,0,87.08.36H86.8A18,18,0,0,1,98.41,4.6L122,24.5a19,19,0,0,1,0,29.08L98.41,73.49A18,18,0,0,1,86.8,77.73h.28a18,18,0,0,0,11.61-4.25l23.57-19.9A19,19,0,0,0,122.26,24.5Z" />
+      <path class="cls-4"
+        d="M122,53.59a19,19,0,0,0,0-29.08L98.41,4.6A18,18,0,0,0,86.8.36H2.6A1.59,1.59,0,0,0,1,1.95v74.2A1.59,1.59,0,0,0,2.6,77.73H86.8a18,18,0,0,0,11.61-4.25Z" />
+    </g>
+  </g>
+</svg>

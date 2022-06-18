@@ -1,7 +1,6 @@
 import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import { useStore } from '../../../hooks/useStore';
 import { SliderComponentProps } from '../../../types/Component';
-import { shuffle } from '../../../utils/math';
 import { noop } from '../../../utils/noop';
 import { convertStringToBooleanMap, covertBooleanMapToString } from '../../../utils/object';
 
@@ -10,7 +9,6 @@ interface OptionGroupProps extends SliderComponentProps {
   nullable?: boolean;
   children?: ReactNode;
   checkedColor?: string;
-  random?: boolean;
 }
 
 interface OptionGroupAPI {
@@ -66,13 +64,9 @@ export function OptionGroup(props: OptionGroupProps) {
     }
   }, [selectOptionHandle, selectedValues]);
 
-  const randomChildren = useMemo(() => {
-    return (props.random && Array.isArray(props.children)) ? shuffle(props.children) : props.children;
-  }, [props.children, props.random]);
-
   return (
     <OptionGroupContext.Provider value={inst}>
-      { randomChildren }
+      { props.children }
     </OptionGroupContext.Provider>
   );
 }

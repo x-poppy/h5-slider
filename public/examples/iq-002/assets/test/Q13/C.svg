@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-2,
+      .cls-3 {
+        stroke: #27527a;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5 {
+        fill: #27527a;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" x="22.71" y="13.4" width="69.57" height="51.59" />
+    </clipPath>
+  </defs>
+  <title>13_3</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-2"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+      <rect class="cls-3" x="22.71" y="13.4" width="69.57" height="51.59" />
+      <g class="cls-4">
+        <rect class="cls-5" x="55.01" y="-6.86" width="5" height="95.66"
+          transform="translate(56.24 -29.63) rotate(53.51)" />
+        <rect class="cls-5" x="55.01" y="-6.86" width="5" height="95.66"
+          transform="translate(124.65 19.1) rotate(126.49)" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.61 66.06">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2 {
+        fill: none;
+        stroke: #27527a;
+      }
+
+      .cls-1 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.18px;
+      }
+    </style>
+  </defs>
+  <title>58_8</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-1"
+        d="M72.85,65.55h-71A1.34,1.34,0,0,1,.51,64.21V1.85A1.34,1.34,0,0,1,1.85.51h71a15.13,15.13,0,0,1,9.76,3.57l19.81,16.73a16,16,0,0,1,0,24.44L82.61,62A15.13,15.13,0,0,1,72.85,65.55Z" />
+      <rect class="cls-2" x="21.46" y="16.41" width="33.23" height="33.23"
+        transform="translate(34.51 -17.25) rotate(45)" />
+      <circle class="cls-2" cx="38.08" cy="33.03" r="8.5" />
+      <line class="cls-2" x1="38.08" y1="9.53" x2="38.08" y2="56.53" />
+      <line class="cls-2" x1="61.58" y1="33.03" x2="14.58" y2="33.03" />
+    </g>
+  </g>
+</svg>

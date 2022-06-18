@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #27527a;
+      }
+
+      .cls-3 {
+        stroke: #27527a;
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+    </style>
+  </defs>
+  <title>11_6</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-1" d="M65,55.94h54.14l2.6-2.2A19,19,0,0,0,124.3,27.3H65Z" />
+      <path class="cls-1" d="M65,26.3h58.45a19.26,19.26,0,0,0-1.7-1.64l-7.45-6.29H65Z" />
+      <path class="cls-1" d="M113.13,17.37,98.19,4.76A18,18,0,0,0,86.58.51H65V17.37Z" />
+      <rect class="cls-1" x="0.51" y="27.3" width="16.01" height="28.64" />
+      <rect class="cls-1" x="26.44" y="56.94" width="28.64" height="7.93" />
+      <rect class="cls-1" x="0.51" y="18.37" width="16.01" height="7.93" />
+      <rect class="cls-1" x="26.44" y="0.51" width="28.64" height="16.86" />
+      <path class="cls-1" d="M16.52.51H2.1A1.59,1.59,0,0,0,.51,2.1V17.37h16Z" />
+      <rect class="cls-1" x="26.44" y="18.37" width="28.64" height="7.93" />
+      <path class="cls-1" d="M65,65.86v12H86.58a18,18,0,0,0,11.61-4.25l9.21-7.78Z" />
+      <path class="cls-1" d="M.51,65.86V76.3A1.59,1.59,0,0,0,2.1,77.89H16.52v-12Z" />
+      <rect class="cls-1" x="0.51" y="56.94" width="16.01" height="7.93" />
+      <polygon class="cls-1" points="65.01 64.86 108.58 64.86 117.97 56.94 65.01 56.94 65.01 64.86" />
+      <rect class="cls-1" x="26.44" y="27.3" width="28.64" height="28.64" />
+      <rect class="cls-1" x="26.44" y="65.86" width="28.64" height="12.02" />
+      <path class="cls-2"
+        d="M107.4,65.86l1.18-1H65V56.94h53l1.18-1H65V27.3h59.3c-.27-.34-.54-.68-.84-1H65V18.37h49.3l-1.18-1H65V.51H55.08V17.37H26.44V.51H16.52V17.37H.51v1h16V26.3H.51v1h16V55.94H.51v1h16v7.93H.51v1h16v12h9.93v-12H55.08v12H65v-12Zm-52.32-1H26.44V56.94H55.08Zm0-8.93H26.44V27.3H55.08Zm0-29.64H26.44V18.37H55.08Z" />
+      <path class="cls-3"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+    </g>
+  </g>
+</svg>

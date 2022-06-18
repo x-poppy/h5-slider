@@ -1,0 +1,469 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 414 276">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #27527a;
+      }
+
+      .cls-4 {
+        fill: #f4f8fc;
+        stroke: #27527a;
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" x="5" y="11" width="400" height="250" />
+    </clipPath>
+  </defs>
+  <title>4</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <g class="cls-2">
+        <rect class="cls-1" x="391" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="391" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="391" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="391" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="391" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="391" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="391" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="391" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="391" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="391" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="391" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="391" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="402.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="368" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="368" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="368" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="368" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="368" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="368" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="368" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="368" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="368" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="368" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="368" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="368" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="379.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="345" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="345" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="345" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="345" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="345" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="345" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="345" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="345" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="345" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="345" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="345" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="345" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="356.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="322" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="322" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="322" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="322" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="322" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="322" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="322" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="322" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="322" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="322" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="322" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="322" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="333.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="299" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="299" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="299" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="299" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="299" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="299" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="299" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="299" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="299" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="299" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="299" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="299" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="310.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="276" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="276" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="276" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="276" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="276" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="276" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="276" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="276" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="276" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="276" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="276" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="276" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="287.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="253" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="253" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="253" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="253" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="253" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="253" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="253" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="253" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="253" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="253" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="253" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="253" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="264.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="230" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="230" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="230" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="230" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="230" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="230" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="230" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="230" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="230" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="230" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="230" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="230" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="241.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="207" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="207" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="207" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="207" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="207" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="207" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="207" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="207" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="207" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="207" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="207" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="207" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="218.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="184" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="184" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="184" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="184" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="184" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="184" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="184" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="184" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="184" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="184" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="184" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="184" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="195.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="161" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="161" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="161" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="161" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="161" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="161" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="161" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="161" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="161" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="161" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="161" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="161" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="172.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="138" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="138" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="138" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="138" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="138" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="138" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="138" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="138" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="138" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="138" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="138" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="138" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="149.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="115" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="115" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="115" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="115" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="115" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="115" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="115" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="115" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="115" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="115" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="115" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="115" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="126.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="92" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="92" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="92" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="92" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="92" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="92" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="92" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="92" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="92" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="92" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="92" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="92" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="103.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="69" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="69" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="69" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="69" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="69" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="69" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="69" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="69" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="69" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="69" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="69" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="69" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="80.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="46" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="46" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="46" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="46" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="46" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="46" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="46" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="46" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="46" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="46" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="46" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="46" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="57.5" cy="264.5" r="6" />
+        <rect class="cls-1" x="23" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="11.5" r="6" />
+        <rect class="cls-1" x="23" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="34.5" r="6" />
+        <rect class="cls-1" x="23" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="57.5" r="6" />
+        <rect class="cls-1" x="23" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="80.5" r="6" />
+        <rect class="cls-1" x="23" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="103.5" r="6" />
+        <rect class="cls-1" x="23" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="126.5" r="6" />
+        <rect class="cls-1" x="23" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="149.5" r="6" />
+        <rect class="cls-1" x="23" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="172.5" r="6" />
+        <rect class="cls-1" x="23" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="195.5" r="6" />
+        <rect class="cls-1" x="23" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="218.5" r="6" />
+        <rect class="cls-1" x="23" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="241.5" r="6" />
+        <rect class="cls-1" x="23" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="34.5" cy="264.5" r="6" />
+        <rect class="cls-1" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="11.5" r="6" />
+        <rect class="cls-1" y="23" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="34.5" r="6" />
+        <rect class="cls-1" y="46" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="57.5" r="6" />
+        <rect class="cls-1" y="69" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="80.5" r="6" />
+        <rect class="cls-1" y="92" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="103.5" r="6" />
+        <rect class="cls-1" y="115" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="126.5" r="6" />
+        <rect class="cls-1" y="138" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="149.5" r="6" />
+        <rect class="cls-1" y="161" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="172.5" r="6" />
+        <rect class="cls-1" y="184" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="195.5" r="6" />
+        <rect class="cls-1" y="207" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="218.5" r="6" />
+        <rect class="cls-1" y="230" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="241.5" r="6" />
+        <rect class="cls-1" y="253" width="23" height="23" />
+        <circle class="cls-3" cx="11.5" cy="264.5" r="6" />
+      </g>
+      <path class="cls-3" d="M405.59,261.59H4.41V10.41H405.59Zm-400-1.18H404.41V11.59H5.59Z" />
+      <path class="cls-4"
+        d="M343.07,234.54H258.59a1.59,1.59,0,0,1-1.59-1.59v-74.2a1.59,1.59,0,0,1,1.59-1.59h84.48a18,18,0,0,1,11.61,4.25l23.57,19.9a19,19,0,0,1,0,29.08l-23.57,19.9A18,18,0,0,1,343.07,234.54Z" />
+    </g>
+  </g>
+</svg>

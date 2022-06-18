@@ -1,0 +1,411 @@
+version: 0.0.1
+# 1-12 
+# 13-24 
+# 25-36
+# 37-48
+# 49-60
+info:
+  title: "Raven IQ 测试"
+  favicon: "./favicon.ico"
+  description: "Raven IQ 测试 002"
+  contentBackground: "#f4f8fc"
+  cssVariables:
+security:
+  knownHosts:
+definitions:
+  Themes:
+    PrimaryColor: '#27527a'
+  Permissions:
+    PreviousSlide: true
+  LocaleMessages:
+    PreviousSlide: "Previous"
+    NextSlide: "Next"
+    SubmitSlide: "Submit"
+    ExerciseCheersAlertMessage1: "Wow! Group 1 Completed!"
+    ExerciseCheersAlertMessage2: "Amazing! Group 2 Completed!"
+    ExerciseCheersAlertMessage3: "Bravo! Group 3 Completed!"
+    ExerciseCheersAlertMessage4: "Awesome! Group 4 Completed!"
+    ExerciseCheersAlertConfirm: "Continue"
+  Components:
+    CheersAlertMessageEffect:
+      type: AlertEffect
+      props:
+        overlay: false
+        message: ${cheersMessage}
+        confirmButtonColor: ${Themes.PrimaryColor}
+        theme: round-button
+        confirmButtonText: ${LocaleMessages.ExerciseCheersAlertConfirm}
+    ExerciseOption:
+      type: Option
+      props: 
+        checkedColor: ${Themes.PrimaryColor}
+      children:
+        type: FlexBox
+        props:
+          width: 8rem
+          height: 4.5rem
+          align: center
+          justify: center 
+        children:
+          type: Padding
+          props:
+            padding: "0.25rem 2rem 0.25rem 0"
+          children:
+            type: Image
+            props:
+              fit: fill
+              name: {optionId}
+              width: 100%
+              src: "./assets/test/${questionId}/${optionId}.svg"
+    Exercise:
+      type: Slide
+      definitions:
+        entryEffect: null
+      props:
+        entryEffect: ${entryEffect}
+      children:
+      - type: Gap
+      - type: Padding
+        children:
+        - type: SlideIndicator
+          props:
+            color: ${Themes.PrimaryColor}
+        - type: Gap   
+          props:
+            size: sm     
+        - type: FlexBox
+          props:
+            align: center
+            justify: center
+          children:
+          - type: Image
+            props:
+              fit: fill
+              height: 15rem
+              src: "./assets/test/${questionId}/0.svg"
+        - type: Gap
+          props:
+            size: sm
+        - type: OptionGroup
+          props:
+            name: ${questionId}
+            direction: horizontal
+          children:
+            - type: FlexBox
+              props:
+                align: center
+                justify: center  
+              children:
+                type: FlexBox
+                props:
+                  width: 100%
+                  wrap: true
+                  justify: center 
+                children: 
+                  type: Group
+                  props:
+                    random: true  
+                  children: ${$children} 
+        - type: Gap
+          props:
+            size: md
+        - type: ActionBar 
+          props:
+            autoNext: true
+            preButtonStyle: 
+              color: ${Themes.PrimaryColor}
+            nextButtonStyle:
+              color: ${Themes.PrimaryColor} 
+            submitButtonStyle:
+              color: ${Themes.PrimaryColor}
+            nextButtonEnable: ${${questionId}}
+            nextButtonDefaultEnable: false
+            submitEffect:
+              type: SubmitStoreEffect
+              props:
+                url: "http://test/api/do/test/test"
+                searchMatcher: ["userId", "testId"]
+    Exercise6:
+      type: ${Components.Exercise}
+      children:
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: A
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: B
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: C
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: D
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: E
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: F
+    Exercise8:
+      type: ${Components.Exercise}
+      props:
+        entryEffect: ${entryEffect}
+      children:
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: A
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: B
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: C
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: D
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: E
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: F
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: G
+        - type: ${Components.ExerciseOption}
+          props:
+            optionId: H   
+type: Slider
+props:
+  widgets:
+    - type: Module
+      props:
+        url: "../index/FloatingBall.yml"
+children:
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q1'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q2'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q3'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q4'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q5'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q6'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q7'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q8'  
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q9'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q10'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q11'  
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q12'  
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q13'
+      entryEffect:
+        type: ${Components.CheersAlertMessageEffect}
+        props:
+          cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage1}
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q14'   
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q15'   
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q16'   
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q17'   
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q18'   
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q19'       
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q20'
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q21'    
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q22'  
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q23' 
+  - type: ${Components.Exercise6}
+    props:
+      questionId: 'Q24'
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q25'
+      entryEffect:
+        type: ${Components.CheersAlertMessageEffect}
+        props:
+          cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage2}
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q26'  
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q27'   
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q28'   
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q29'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q30'   
+           
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q31'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q32'       
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q33'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q34'          
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q35'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q36'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q37'
+      entryEffect:
+        type: ${Components.CheersAlertMessageEffect}
+        props:
+          cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage3}
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q38'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q39'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q40'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q41'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q42'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q43'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q44'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q45'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q46'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q47'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q48'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q49'
+      entryEffect:
+        type: ${Components.CheersAlertMessageEffect}
+        props:
+          cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage4}
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q50'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q51'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q52'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q53'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q54'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q55'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q56' 
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q57'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q58'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q59'
+
+  - type: ${Components.Exercise8}
+    props:
+      questionId: 'Q60'                                                                                                                           

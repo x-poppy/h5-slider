@@ -10,6 +10,7 @@ export interface FlexBoxProps extends SliderComponentProps, ClickAbleComponentPr
   width?: string;
   height?: string;
   direction?: 'row' | 'column';
+  wrap?: boolean;
   align?: 'start' | 'end' | 'center' | 'baseline';
   justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch';
 }
@@ -24,12 +25,12 @@ function FlexBox(props: FlexBoxProps) {
       flexDirection: props.direction,
       alignItems: props.align,
       justifyContent: props.justify,
-      // eslint-disable-next-line
+      flexWrap: props.wrap ? 'wrap' : 'nowrap',
     }
-  }, [props.align, props.direction, props.height, props.justify, props.margin, props.padding, props.width]);
+  }, [props.align, props.direction, props.height, props.justify, props.margin, props.padding, props.width, props.wrap]);
 
   return (
-    <div className={styles.main} style={initStyle}>
+    <div className={styles.main} style={initStyle as any}>
       { props.children }
     </div>
   );

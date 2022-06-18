@@ -5,6 +5,8 @@ info:
   description: "xxxxxx"
   contentBackground: "#FFF"
 script: "./test.js"
+cssVariables:
+  --fill-test: blue
 security:
   knownHosts:
     - http://www.bing.com
@@ -164,6 +166,10 @@ children:
   - type: Module
     props:
       url: "./Switch.yml"  
+
+  - type: Module
+    props:
+      url: "./SVGImage.yml"      
 
   - type: Module
     props:

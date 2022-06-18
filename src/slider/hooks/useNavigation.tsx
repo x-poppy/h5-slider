@@ -1,5 +1,4 @@
-import React, { MutableRefObject, ReactNode, useCallback, useContext, useMemo, useRef, useState } from "react";
-import { SwiperInstance } from "react-vant";
+import React, { ReactNode, useCallback, useContext, useMemo, useRef, useState } from "react";
 import { limitNumer } from "../utils/math";
 import { noop } from "../utils/noop";
 
@@ -8,6 +7,7 @@ export const SwiperDuration = 300;
 export interface Navigation {
   initialIndex: number,
   activeIndex: number;
+  lastActiveIndex: number;
   totalCount: number;
   cacheSize: number;
   preSlide: () => void;
@@ -19,6 +19,7 @@ export interface Navigation {
 const NavigationReactContext = React.createContext<Navigation>({
   initialIndex: 0,
   activeIndex: 0,
+  lastActiveIndex: 0,
   totalCount: 0,
   cacheSize: 0,
   preSlide: noop,
@@ -39,6 +40,7 @@ export function NavigationProvider(props: NavigationProviderProps) {
   const initialIndex = limitNumer(props.initialIndex, 0, totalCount - 1);
   const cacheSize = props.cacheSize ?? 1;
   const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const lastActiveIndexref = useRef(initialIndex);
 
   const preSlide = useCallback(
     () => {
@@ -66,6 +68,7 @@ export function NavigationProvider(props: NavigationProviderProps) {
       return;
     }
     // do some delay
+    lastActiveIndexref.current = activeIndex;
     setTimeout(()=>{
       setActiveIndex(index);
     }, SwiperDuration * 0.5);
@@ -75,6 +78,7 @@ export function NavigationProvider(props: NavigationProviderProps) {
     return {
       initialIndex,
       activeIndex,
+      lastActiveIndex: lastActiveIndexref.current,
       totalCount,
       cacheSize,
       preSlide,

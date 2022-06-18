@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-2,
+      .cls-3,
+      .cls-5 {
+        stroke: #27527a;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.14px;
+      }
+
+      .cls-3,
+      .cls-5 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-4 {
+        fill: url(#squarediagonal);
+      }
+
+      .cls-5 {
+        fill: #f4f8fc;
+      }
+    </style>
+    <pattern id="squarediagonal" data-name="squarediagonal" width="24" height="24" patternTransform="translate(7.5)"
+      patternUnits="userSpaceOnUse" viewBox="0 0 24 24">
+      <rect class="cls-1" width="24" height="24" />
+      <line class="cls-2" x1="12" y1="16" x2="12" y2="56" />
+      <line class="cls-2" x1="16" y1="12" x2="56" y2="12" />
+      <line class="cls-2" x1="-8" y1="12" x2="32" y2="12" />
+      <line class="cls-2" x1="12" y1="-8" x2="12" y2="32" />
+      <line class="cls-2" x1="-32" y1="12" x2="8" y2="12" />
+      <line class="cls-2" x1="12" y1="-32" x2="12" y2="8" />
+    </pattern>
+  </defs>
+  <title>3_3</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-3"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+      <path class="cls-1"
+        d="M121.76,53.51,98.19,73.41a18,18,0,0,1-11.61,4.25H2.1A1.59,1.59,0,0,1,.51,76.07v.23A1.59,1.59,0,0,0,2.1,77.89H86.58a18,18,0,0,0,11.61-4.25l23.57-19.9a18.94,18.94,0,0,0,6.75-14.65A18.94,18.94,0,0,1,121.76,53.51Z" />
+      <path class="cls-4"
+        d="M2.1,77.66H86.58a18,18,0,0,0,11.61-4.25l23.57-19.9a18.8,18.8,0,0,0,0-28.85L98.19,4.76A18,18,0,0,0,86.58.51H2.1A1.59,1.59,0,0,0,.51,2.1v74A1.59,1.59,0,0,0,2.1,77.66Z" />
+      <path class="cls-5"
+        d="M121.26,24.39,97.51,4.59l-5,13,1,33-25.82,27H86.08a18,18,0,0,0,11.61-4.25l23.57-19.9A19,19,0,0,0,121.26,24.39Z" />
+    </g>
+  </g>
+</svg>

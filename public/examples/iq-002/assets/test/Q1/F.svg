@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 129.02 78.4">
+  <defs>
+    <style>
+      .cls-1,
+      .cls-2,
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-2,
+      .cls-3,
+      .cls-5 {
+        stroke: #27527a;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.18px;
+      }
+
+      .cls-3,
+      .cls-5 {
+        stroke-linejoin: round;
+        stroke-width: 1.02px;
+      }
+
+      .cls-4 {
+        fill: url(#New_Pattern);
+      }
+
+      .cls-5 {
+        fill: #f4f8fc;
+      }
+    </style>
+    <pattern id="New_Pattern" data-name="New Pattern" width="34" height="22.61" patternTransform="translate(28 0)"
+      patternUnits="userSpaceOnUse" viewBox="0 0 34 22.61">
+      <rect class="cls-1" width="34" height="22.61" />
+      <line class="cls-2" x1="34" y1="11.32" x2="33.5" y2="28.32" />
+      <line class="cls-2" y1="11.32" x2="-0.5" y2="28.32" />
+      <line class="cls-2" x1="34" y1="-11.29" x2="33.5" y2="5.71" />
+      <line class="cls-2" x1="42.5" y1="10.71" x2="25.5" y2="10.71" />
+      <line class="cls-2" x1="17" y1="0.02" x2="16.5" y2="17.02" />
+      <line class="cls-2" x1="25.5" y1="22.02" x2="8.5" y2="22.02" />
+      <line class="cls-2" y1="-11.29" x2="-0.5" y2="5.71" />
+      <line class="cls-2" x1="8.5" y1="10.71" x2="-8.5" y2="10.71" />
+    </pattern>
+  </defs>
+  <title>1_5_1</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-3"
+        d="M86.58,77.89H2.1A1.59,1.59,0,0,1,.51,76.3V2.1A1.59,1.59,0,0,1,2.1.51H86.58A18,18,0,0,1,98.19,4.76l23.57,19.9a19,19,0,0,1,0,29.08L98.19,73.64A18,18,0,0,1,86.58,77.89Z" />
+      <path class="cls-4"
+        d="M121.76,24.66,98.19,4.76A18,18,0,0,0,86.58.51H2.1A1.59,1.59,0,0,0,.51,2.1V76.3A1.59,1.59,0,0,0,2.1,77.89H86.58a18,18,0,0,0,11.61-4.25l23.57-19.9A19,19,0,0,0,121.76,24.66Z" />
+      <path class="cls-5"
+        d="M121.76,24.66,98,4.85l-5,13,1,33-25.82,27H86.58a18,18,0,0,0,11.61-4.25l23.57-19.9A19,19,0,0,0,121.76,24.66Z" />
+    </g>
+  </g>
+</svg>
