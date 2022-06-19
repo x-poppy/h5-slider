@@ -11,7 +11,7 @@ definitions:
   Themes:
     PrimaryColor: '#27527a'
   Permissions:
-    PreviousSlide: false
+    PreviousSlide: true
   LocaleMessages:
     PreviousSlide: "Previous"
     NextSlide: "Next"
