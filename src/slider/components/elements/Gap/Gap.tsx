@@ -10,7 +10,6 @@ export interface GapProps extends SliderComponentProps {
   margin?: string;
   width?: string;
   height?: string;
-  
 }
 
 function Gap(props: GapProps) {

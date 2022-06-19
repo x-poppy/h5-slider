@@ -11,9 +11,12 @@ definitions:
   LocaleMessages:
     PaymentReportPriceText: "¥ 29.9"
     PaymentReportTitle: "您的专属测评报告已经生成"
-    PaymentBtnText: "支付后解锁我的报告"
-    PaymentReportDesc001: "测评报告全文超过3000字, 98%用户好评!" 
-    PaymentReportDesc002: "该报告将长期保存, 供你随时查看。"  
+    PaymentReportTitle2: "瑞文智商(IQ)测试深度分析报告"
+    PaymentBtnText: "支付后解锁报告"
+    PaymentReportDesc001: "测评报告全文超过2000多字, 98%用户好评! " 
+    PaymentReportDesc002: "该报告将长期保存, 供您随时查看。" 
+    PaymentReportDesc003: "你也可以将该报告链接发给别人, 替你完成支付。" 
+    PaymentReportPriceDesc: "新用户专享优惠价: " 
 type: Slider
 props:
   widgets:
@@ -52,6 +55,16 @@ props:
                 height: 100%
                 direction: column
               children:
+                - type: Float
+                  props:
+                    right: 0.75rem
+                    top: 0.75rem
+                  children:
+                    type: Icon
+                    props:
+                      size: 1.25rem
+                      icon: Lock
+                      color: '#ccc'
                 - type: Title
                   props:
                     strong: true
@@ -60,29 +73,62 @@ props:
                   props: 
                     size: xs
                     type: secondary
-                  children: ${LocaleMessages.PaymentReportDesc002}   
+                  children: ${LocaleMessages.PaymentReportDesc001} 
+                - type: Gap
+                  props:
+                    size: md
                 - type: Image
                   props:
                     round: true
                     radius: 4px
-                    width: 10rem
+                    height: 10rem
+                    fit: cover
                     src: "./assets/report/tubiao_001.png"
-
-                - type: FlexItem
-                  props:
-                    flex: "1 1 auto"
+                - type: Gap    
                 - type: Text
                   props: 
                     size: xs
                     type: secondary
-                  children: ${LocaleMessages.PaymentReportDesc001}     
+                  children: ${LocaleMessages.PaymentReportDesc002}    
+                - type: FlexItem
+                  props:
+                    flex: "1 1 auto"
+                - type: Space
+                  props:
+                    justify: center
+                    align: center
+                  children:
+                    - type: Text
+                      props: 
+                        size: md
+                        strong: true
+                      children: ${LocaleMessages.PaymentReportPriceDesc} 
+                    - type: Text
+                      props: 
+                        color: red
+                        size: lg
+                        strong: true
+                      children: "¥ 29.9 元"
+                - type: FlexItem
+                  props:
+                    flex: "1 1 auto"      
                 - type: Gap   
                 - type: Button
                   props:
                     round: true
-                    color: green
+                    color: '#55b737'
                     block: true
+                    icon:
+                      type: Icon
+                      props:
+                        icon: WechatPay
+                    clickEffect:
+                      type: NavigationEffect
+                      props:
+                        mock: false
+                        url: "./?schema=${info.encodedBaseURL}poster.yml"
                   children: ${LocaleMessages.PaymentBtnText}
+                - type: Gap  
 
 children:
   - type: Slide   

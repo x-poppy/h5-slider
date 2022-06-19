@@ -20,6 +20,7 @@ import Rate from "./Rate";
 import CircleProgress from "./CircleProgress";
 import SVGImage from "./SVGImage";
 import Empty from "./Empty/Empty";
+import Icon from "./Icon/Icon";
 
 registerComponent(AudioPlayer, 'AudioPlayer');
 registerComponent(Button, 'Button');
@@ -29,6 +30,7 @@ registerComponent(Divider, 'Divider');
 registerComponent(Empty, 'Empty');
 registerComponent(Gap, 'Gap');
 registerComponent(Image, 'Image');
+registerComponent(Icon, 'Icon');
 registerComponent(Link, 'Link');
 registerComponent(NoImplement, 'NoImplement');
 registerComponent(Option, 'Option');

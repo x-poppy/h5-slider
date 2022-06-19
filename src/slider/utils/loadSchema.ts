@@ -31,6 +31,7 @@ export async function loadSchema(url: string, baseURL?: string) {
       schema.info = {};
     }
     schema.info.baseURL = getBaseURL(url);
+    schema.info.encodedBaseURL = encodeURIComponent(schema.info.baseURL);
   }
 
   return schema;

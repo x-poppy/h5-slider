@@ -1,5 +1,7 @@
 import React, { Component, ReactNode } from "react";
 import { Button, Empty } from 'react-vant';
+import { Replay } from '@react-vant/icons';
+
 import QRCode from 'qrcode.react';
 
 import { isEnviromentNotSupportError } from "../../utils/enviroment";
@@ -59,6 +61,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
           image="./images/error.png" 
           description={description}>
           <Button className={styles.refreshBtn} 
+            icon={<Replay  />}
             onClick={this.onRefreshBtnClick} 
             round type="info">{refreshText}
           </Button>

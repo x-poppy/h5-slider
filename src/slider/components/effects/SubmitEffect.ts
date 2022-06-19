@@ -18,7 +18,7 @@ interface SubmitEffectProps extends SliderEffectProps {
   localStorageEffectMatcher?: string | string[];
 
   // for testing purpose
-  mockData?: Record<string, any>;
+  mock?: Record<string, any>;
 }
 
 async function SubmitEffect(props: SubmitEffectProps) {
@@ -28,17 +28,17 @@ async function SubmitEffect(props: SubmitEffectProps) {
 
   // whitelist mode
   const queryStringQueryData = getQueryObjectFromSearch(props.searchMatcher);
-  const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageEffectMatcher)
+  const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageEffectMatcher);
   // blacklist mode
   const storeData = getStoreData(store, props.storeMatcher);
   if (storeData && Object.keys(storeData).length > 0) {
     storeData[StoreKeyNames.EndTimeStamp] = Date.now();
   }
   
-  if (props.mockData) {
+  if (props.mock) {
     props.event.detail = {
       ...props.event.detail,
-      response: props.mockData,
+      response: props.mock,
     }
     return;
   }

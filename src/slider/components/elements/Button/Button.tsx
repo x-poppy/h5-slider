@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useMemo, useState } from 'react';
 import { Button as OriginButton, ButtonSize, ButtonType } from 'react-vant';
 import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
 import { useStore } from '../../../hooks/useStore';
@@ -20,7 +20,9 @@ export interface ButtonProps extends SliderComponentProps {
   // runtime bindable
   disabled?: boolean | string | string[];
   children?: string;
-  screenBusy?: false,
+  screenBusy?: false;
+  icon?: ReactNode;
+  iconPosition?: 'right' | 'left'
   //events
   clickEffect?: SliderEffectElement;
 }
@@ -80,6 +82,8 @@ function Button(props: ButtonProps) {
       plain={props.plain}
       size={props.size}
       shadow={props.shadow}
+      icon={props.icon}
+      iconPosition={props.iconPosition}
     >
       { props.children }
     </OriginButton>

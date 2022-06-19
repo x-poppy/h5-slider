@@ -54,6 +54,7 @@ function SliderLoader() {
           loadScript(schema, scriptContext, throwError),
           loadAllComponents(),
         ])
+
         // load script
         const storeDataLoadedEvt = new CustomEvent(EventNames.OnStoreDataLoaded, {
           detail: storeData,

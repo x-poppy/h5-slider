@@ -29,6 +29,7 @@ export interface SchemaInfo {
   background?: string;
   contentBackground?: string;
   baseURL?: string;
+  encodedBaseURL?: string;
 }
 
 export interface SchemaStore {

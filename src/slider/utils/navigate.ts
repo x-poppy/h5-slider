@@ -1,28 +1,34 @@
 import { Dialog } from "react-vant";
-import { getURLWithQueryString, isURLsCors } from "./url";
+import { isURLsCors } from "./url";
 
 import fixStyles from "./alertStyleFix.module.css";
 import { getMessage, I18nMessageBundle, LocaleMessageKey } from "./language";
 
 interface NavigateToOpts {
-  searchMatcher?: string | string[];
-  dataPath?: string;
   i18nMessageBundle?: I18nMessageBundle
   knownHosts?: string[];
   skipSecurityCheck?: boolean;
+  mock?: boolean
+}
+
+function nativeNavigateTo(url: string, mock: boolean) {
+  if (mock) {
+    console.log('Mock navigate to ' + url);
+    return;
+  }
+  window.location.href = url;
 }
 
 export async function navigateTo(url: string, opts?: NavigateToOpts) {
   const skipSecurityCheck = opts?.skipSecurityCheck ?? false;
 
-  url = getURLWithQueryString(url, opts?.searchMatcher);
   if (skipSecurityCheck) {
-    window.location.href = url;
+    nativeNavigateTo(url, opts?.mock ?? false);
     return;
   }
 
   if (!isURLsCors(url)) {
-    window.location.href = url;
+    nativeNavigateTo(url, opts?.mock ?? false);
     return;
   }
 
@@ -33,7 +39,7 @@ export async function navigateTo(url: string, opts?: NavigateToOpts) {
     })
   }
   if (isKnowHost) {
-    window.location.href = url;
+    nativeNavigateTo(url, opts?.mock ?? false);
     return;
   }
 
@@ -54,5 +60,5 @@ export async function navigateTo(url: string, opts?: NavigateToOpts) {
     return;
   }
 
-  window.location.href = url;
+  nativeNavigateTo(url, opts?.mock ?? false);
 }

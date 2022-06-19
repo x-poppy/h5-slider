@@ -9,19 +9,13 @@ definitions:
   Themes:
     PrimaryColor: '#27527a'
   LocaleMessages:
-    DoTestText: "立即开始测试"  
+    DoTestText: "开始测试"
 type: Slider
 props:
   widgets:
-    - type: Module
-      props:
-        url: "../index/FloatingBall.yml"
 children:
   - type: Slide
     children:
-    - type: Image
-      props:
-        src: "./assets/poster/001.jpeg"
     - type: Image
       props:
         src: "./assets/poster/001.jpeg"
@@ -39,5 +33,9 @@ children:
           props:
             type: danger
             size: normal
+            clickEffect:
+              type: NavigationEffect
+              props:
+                url: "./?schema=examples%2Fiq-002%2Findex.yml"
           children: ${LocaleMessages.DoTestText}    
           

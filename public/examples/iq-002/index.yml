@@ -129,9 +129,16 @@ definitions:
               - type: SubmitEffect
                 props:
                   url: "http://test/api/do/test/test"
+                  query:
+                    templateId: "iq-002"
+                  mock: {data: {url: {testId: '111'}}}
                   storeMatcher: {}
-                  searchMatcher: ["userId", "templateId", "marketSource"]
+                  searchMatcher: ["marketSource"]
                   localStorageEffectMatcher: ["userId"]
+              - type: NavigationEffect
+                props:
+                  mock: false
+                  url: "./?schema=${info.encodedBaseURL}report.yml?testId=${event.detail.response.data.url.testId}"
     Exercise6:
       type: ${Components.Exercise}
       children:
@@ -183,9 +190,6 @@ definitions:
 type: Slider
 props:
   widgets:
-    - type: Module
-      props:
-        url: "../index/FloatingBall.yml"
 children:
   - type: ${Components.Exercise6}
     props:

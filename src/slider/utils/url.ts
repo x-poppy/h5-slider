@@ -28,7 +28,7 @@ export function getURL(url: string, baseURL?: string) {
 
 export function getURLWithQueryString(url: string, matcher?: string | string[] | null, search?:string | null) {
   url = getURL(url);
-  return appendSearchParamsToUrl(url, getQueryObjectFromSearch(matcher, search));
+  return appendQueryToUrl(url, getQueryObjectFromSearch(matcher, search));
 }
 
 export function getBaseURL(url: string) {
@@ -45,18 +45,15 @@ export function getBaseURL(url: string) {
   }
 }
 
-function appendSearchParamsToUrl(url: string, query?: Record<string, any>) {
+export function appendQueryToUrl(url: string, query: Record<string, any> = {}) {
   if (!url) {
     return url;
   }
 
-  if (!query || Object.keys(query).length < 1) {
-    return url;
-  }
-
   const urlObj = new URL(url, isRelativeURL(url) ? (window.location.origin + window.location.pathname) : undefined);
+  const searchParams = urlObj.searchParams;
   for (const [key, val] of Object.entries(query)) {
-    urlObj.searchParams.append(key, encodeURIComponent(val));
+    searchParams.append(key, encodeURIComponent(val));
   }
   return urlObj.toString();
 }

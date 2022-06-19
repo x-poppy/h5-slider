@@ -15,10 +15,14 @@ export function VariableScopesProvider(props: VariableScopesProviderProps) {
   const inst = useMemo(() => {
     return createVariableScopes({
       ...definitions,
+      info: {
+        ...sliderSchema.info,
+      },
       title: sliderSchema?.info?.title ?? "",
-      description: sliderSchema?.info?.description ?? ""
+      location: window.location.href,
+      description: sliderSchema?.info?.description ?? "",
     })
-  }, [definitions, sliderSchema?.info?.description, sliderSchema?.info?.title])
+  }, [definitions, sliderSchema.info])
 
   return (
     <VariableScopesContext.Provider value={inst}>

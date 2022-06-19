@@ -4,6 +4,7 @@ import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 import { useStore } from '../../../hooks/useStore';
 import { getURL } from '../../../utils/url';
+import { useVariableScopes } from '../../../hooks/useVariableScopes';
 
 export interface QRCodeProps extends SliderComponentProps {
   // bind
@@ -24,6 +25,7 @@ export interface QRCodeProps extends SliderComponentProps {
 // https://github.com/zpao/qrcode.react
 function QRCode(props: QRCodeProps) {
   const store = useStore();
+  const variableScopes = useVariableScopes();
   
   const avatar = useMemo(() => {
     if (!props.avatar) {
@@ -37,10 +39,12 @@ function QRCode(props: QRCodeProps) {
       excavate: props.avatar?.excavate ?? false,
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const content = useMemo(() => {
-    return getReferenceVariableValue(props.content, '', (key: string) => store.get(key));
+    return getReferenceVariableValue(
+        variableScopes.getExpressValue(props.content ?? ''), '', 
+        (key: string) => store.get(key));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.content]);
 

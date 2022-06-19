@@ -10,6 +10,7 @@ export interface ImageProps extends SliderComponentProps, ClickAbleComponentProp
   height?: number | string;
   alt?: string;
   src?: string;
+  // 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
   fit?: ImageFit;
   round?: boolean;
   radius: string | number;
