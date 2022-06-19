@@ -63,4 +63,11 @@ children:
           type: NavigationEffect
           props:
             url: "./?schema=examples%2Fiq-002%2Findex.yml&templateId=IQ002&marketSource=demo"
-      children: "瑞文题型 002"  
+      children: "瑞文题型 002"
+    - type: Link
+      props:
+        clickEffect:
+          type: NavigationEffect
+          props:
+            url: "./?schema=examples%2Fiq-002%2Freport.yml&testId=xxxxx"
+      children: "瑞文题型 002 报告"    

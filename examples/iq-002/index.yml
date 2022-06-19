@@ -122,9 +122,9 @@ definitions:
               children:
               - type: WriteLocalStorageEffect
                 props:
-                  writeKey: 'userId'
-                  writeValue: ''
-                  writeType: SetNX
+                  name: 'userId'
+                  value: ''
+                  mode: SetNX
                   uuid: true
               - type: SubmitEffect
                 props:
