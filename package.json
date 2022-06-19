@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "Alex.Zhang",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -13,6 +15,7 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "@types/uuid": "^8.3.4",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "gh-pages": "^4.0.0",
@@ -32,6 +35,7 @@
     "react-dom": "^18.1.0",
     "react-vant": "^2.0.0-alpha.45",
     "recharts": "^2.1.10",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

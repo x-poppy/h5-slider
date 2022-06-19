@@ -1,12 +1,12 @@
 import { SliderEffectProps } from '../../types/Component';
 import { StoreValueType } from '../../utils/storage';
 
-export interface UpdateStoreEffectProps extends SliderEffectProps {
+export interface WriteStoreEffectProps extends SliderEffectProps {
   value: StoreValueType;
   type: 'stepper' | 'toggle'
 }
 
-async function UpdateStoreEffect(props: UpdateStoreEffectProps) {
+async function WriteStoreEffect(props: WriteStoreEffectProps) {
   const context = props.context;
   const store = context.store;
   
@@ -25,4 +25,4 @@ async function UpdateStoreEffect(props: UpdateStoreEffectProps) {
   }
 }
 
-export default UpdateStoreEffect;
+export default WriteStoreEffect;

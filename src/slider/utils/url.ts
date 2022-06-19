@@ -81,6 +81,21 @@ export function getQueryObjectFromSearch(matcher?: string | string[] | null, sea
   return filterObjectByMatcher(filteredQuery, matcher ?? null, true);
 }
 
+export function getQueryObjectFromLocalStorage(matcher?: string | string[] | null) {
+  const localStorage = window.localStorage;
+  const keys = Object.keys(window.localStorage);
+
+  const filteredQuery = keys.reduce< Record<string, any>>((map, key) => {
+    const val = localStorage.getItem(key);
+    if (val) {
+      map[key] = val;
+    }
+    return map;
+  }, {});
+
+  return filterObjectByMatcher(filteredQuery, matcher ?? null, true);
+}
+
 export function isURLsCors(targetURL: string, currentURL?: string) {
   if (isRelativeURL(targetURL)) {
     return false;

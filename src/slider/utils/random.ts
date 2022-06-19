@@ -1,5 +1,5 @@
 export function getRandomString() {
-  return Math.random().toString(36).slice(2, 7);
+  return  Math.random().toString(36).substring(2, 15);
 }
 
 export function getRandomValueFromArray<T = string>(value: T[] | T) {
