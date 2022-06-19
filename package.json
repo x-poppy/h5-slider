@@ -46,6 +46,7 @@
     "format": "prettier src --write",
     "eject": "react-scripts eject",
     "prepare": "husky install",
+    "gh-page": "gh-pages -d build",
     "gh-page:deploy": "npm run build && gh-pages -d build"
   },
   "browserslist": {
