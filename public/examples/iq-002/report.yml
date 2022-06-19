@@ -9,11 +9,87 @@ definitions:
   Themes:
     PrimaryColor: '#27527a'
   LocaleMessages:
-    DoTestText: "测试"  
+    PaymentReportPriceText: "¥ 29.9"
+    PaymentReportTitle: "您的专属测评报告已经生成"
+    PaymentBtnText: "支付后解锁我的报告"
+    PaymentReportDesc001: "测评报告全文超过3000字, 98%用户好评!" 
+    PaymentReportDesc002: "该报告将长期保存, 供你随时查看。"  
 type: Slider
+props:
+  widgets:
+    - type: Empty
+      props:
+        attachEffect:
+          type: QueueEffect
+          children:
+            - type: WriteStoreEffect
+              props:
+                name: "testLock"
+                value: true
+            - type: ScreenLockEffect
+              props:
+                lock: "${testLock}" 
+    - type: ToggleGroup
+      props:
+        show: "${testLock}" 
+      children:
+        - type: Float
+          props:
+            left: 1rem
+            right: 1rem
+            top: 20%
+            bottom: 15%
+          children:
+            type: Block
+            props:
+              height: 100%
+              round: true
+              shadow: true
+              background: "#FFFFFF"
+            children:
+              type: FlexBox
+              props:
+                height: 100%
+                direction: column
+              children:
+                - type: Title
+                  props:
+                    strong: true
+                  children: ${LocaleMessages.PaymentReportTitle}
+                - type: Text
+                  props: 
+                    size: xs
+                    type: secondary
+                  children: ${LocaleMessages.PaymentReportDesc002}   
+                - type: Image
+                  props:
+                    round: true
+                    radius: 4px
+                    width: 10rem
+                    src: "./assets/report/tubiao_001.png"
+
+                - type: FlexItem
+                  props:
+                    flex: "1 1 auto"
+                - type: Text
+                  props: 
+                    size: xs
+                    type: secondary
+                  children: ${LocaleMessages.PaymentReportDesc001}     
+                - type: Gap   
+                - type: Button
+                  props:
+                    round: true
+                    color: green
+                    block: true
+                  children: ${LocaleMessages.PaymentBtnText}
+
 children:
-  - type: Slide
+  - type: Slide   
     children:
+    - type: Image
+      props:
+        src: "./assets/poster/001.jpeg"
     - type: Float
       props:
         bottom: 0
@@ -28,10 +104,4 @@ children:
           props:
             type: danger
             size: normal
-            clickEffect:
-              type: SubmitEffect
-              props:
-                url: "http://test/api/do/test/test"
-                storeMatcher: {}
-          children: ${LocaleMessages.DoTestText}   
-
+          children: ${LocaleMessages.DoTestText}

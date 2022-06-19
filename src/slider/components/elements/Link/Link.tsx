@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Typography } from 'react-vant';
 import { TypographySize, TypographyType } from 'react-vant/es/typography/PropsType';
 import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
@@ -19,6 +19,9 @@ export interface LinkProps extends SliderComponentProps {
   children?: React.ReactNode;
   //events
   clickEffect?: SliderEffectElement;
+
+  fontSize?: string;
+  color?: string;
 }
 
 const EventNames = {
@@ -45,9 +48,16 @@ function Link(props: LinkProps) {
       loadingIndicator.end();
     }
   }, [dispatchEffect, loadingIndicator, props.clickEffect]);
+
+  const initStyle = useMemo(() => ({
+    width: props.width,
+    fontSize: props.fontSize,
+    color: props.color
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), []);
   
   return (
-    <Typography.Link style={{width: props.width}} 
+    <Typography.Link style={initStyle} 
       onClick={onClickHandle}
       type={props.type}
       size={props.size}

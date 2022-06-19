@@ -19,12 +19,14 @@ import Switch from "./Switch";
 import Rate from "./Rate";
 import CircleProgress from "./CircleProgress";
 import SVGImage from "./SVGImage";
+import Empty from "./Empty/Empty";
 
 registerComponent(AudioPlayer, 'AudioPlayer');
 registerComponent(Button, 'Button');
 registerComponent(CircleProgress, 'CircleProgress');
 registerComponent(ClickListener, 'ClickListener');
 registerComponent(Divider, 'Divider');
+registerComponent(Empty, 'Empty');
 registerComponent(Gap, 'Gap');
 registerComponent(Image, 'Image');
 registerComponent(Link, 'Link');
