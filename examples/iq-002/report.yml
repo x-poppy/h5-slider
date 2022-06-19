@@ -8,6 +8,30 @@ info:
 definitions:
   Themes:
     PrimaryColor: '#27527a'
+  LocaleMessages:
+    DoTestText: "测试"  
 type: Slider
 children:
   - type: Slide
+    children:
+    - type: Float
+      props:
+        bottom: 0
+        width: 100%
+      children:
+        type: FlexBox
+        props:
+          direction: column
+          justify: stretch
+        children:
+          type: Button
+          props:
+            type: danger
+            size: normal
+            clickEffect:
+              type: SubmitEffect
+              props:
+                url: "http://test/api/do/test/test"
+                storeMatcher: {}
+          children: ${LocaleMessages.DoTestText}   
+
