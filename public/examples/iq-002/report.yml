@@ -1,0 +1,13 @@
+version: 0.0.1
+info:
+  title: "Raven IQ Test"
+  favicon: "./favicon.ico"
+  description: "Raven IQ Test 002"
+  contentBackground: "#f4f8fc"
+  cssVariables:
+definitions:
+  Themes:
+    PrimaryColor: '#27527a'
+type: Slider
+children:
+  - type: Slide
