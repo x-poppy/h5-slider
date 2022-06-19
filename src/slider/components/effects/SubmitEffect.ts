@@ -8,6 +8,7 @@ import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from
 interface SubmitEffectProps extends SliderEffectProps {
   url: string | string[]
   method?: Method | string;
+  query?: Record<string, any>;
   data?: Record<string, any>;
   // black list
   storeMatcher?: string | string[];
@@ -26,7 +27,7 @@ async function SubmitEffect(props: SubmitEffectProps) {
   const httpClient = context.httpClient;
 
   // whitelist mode
-  const queryData = getQueryObjectFromSearch(props.searchMatcher);
+  const queryStringQueryData = getQueryObjectFromSearch(props.searchMatcher);
   const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageEffectMatcher)
   // blacklist mode
   const storeData = getStoreData(store, props.storeMatcher);
@@ -47,7 +48,8 @@ async function SubmitEffect(props: SubmitEffectProps) {
     url,
     method: props.method ?? 'post',
     params: {
-      ...queryData,
+      ...props.query,
+      ...queryStringQueryData,
       ...localStorageQueryData
     },
     data: {
