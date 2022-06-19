@@ -11,11 +11,6 @@ definitions:
   LocaleMessages:
     DoTestText: "测试"  
 type: Slider
-props:
-  widgets:
-    - type: Module
-      props:
-        url: "../index/FloatingBall.yml"
 children:
   - type: Slide
     children:
