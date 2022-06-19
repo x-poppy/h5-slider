@@ -1,0 +1,43 @@
+version: 0.0.1
+info:
+  title: "Raven IQ Test"
+  favicon: "./favicon.ico"
+  description: "Raven IQ Test 002"
+  contentBackground: "#f4f8fc"
+  cssVariables:
+definitions:
+  Themes:
+    PrimaryColor: '#27527a'
+  LocaleMessages:
+    DoTestText: "立即开始测试"  
+type: Slider
+props:
+  widgets:
+    - type: Module
+      props:
+        url: "../index/FloatingBall.yml"
+children:
+  - type: Slide
+    children:
+    - type: Image
+      props:
+        src: "./assets/poster/001.jpeg"
+    - type: Image
+      props:
+        src: "./assets/poster/001.jpeg"
+    - type: Float
+      props:
+        bottom: 0
+        width: 100%
+      children:
+        type: FlexBox
+        props:
+          direction: column
+          justify: stretch
+        children:
+          type: Button
+          props:
+            type: danger
+            size: normal
+          children: ${LocaleMessages.DoTestText}    
+          

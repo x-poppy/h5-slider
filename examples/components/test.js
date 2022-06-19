@@ -9,7 +9,16 @@ window.slider.once('onStoreDataLoaded', (evt) => {
     hello: 'from script'
   }
 
+
+  if (Q1 == 'A') {}
+
+
+  const report = {
+
+  };
+
   storeData.appendData = appendData;
+
 });
 
 window.slider.once('onSchemaInitial', () => {

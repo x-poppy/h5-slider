@@ -107,10 +107,20 @@ definitions:
             nextButtonEnable: ${${questionId}}
             nextButtonDefaultEnable: false
             submitEffect:
-              type: SubmitStoreEffect
-              props:
-                url: "http://test/api/do/test/test"
-                searchMatcher: ["userId", "testId"]
+              type: QueueEffect
+              children:
+              - type: WriteLocalStorageEffect
+                props:
+                  writeKey: 'userId'
+                  writeValue: ''
+                  writeType: SetNX
+                  uuid: true
+              - type: SubmitEffect
+                props:
+                  url: "http://test/api/do/test/test"
+                  storeMatcher: {}
+                  searchMatcher: ["userId", "templateId", "marketSource"]
+                  localStorageEffectMatcher: ["userId"]
 
 type: Slider
 props:
@@ -121,61 +131,61 @@ props:
 children:
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q1'
+      questionId: 'Question_1'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q2' 
+      questionId: 'Question_2' 
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q3'
+      questionId: 'Question_3'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q4'
+      questionId: 'Question_4'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q5'
+      questionId: 'Question_5'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q6'
+      questionId: 'Question_6'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q7'
+      questionId: 'Question_7'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q8'
+      questionId: 'Question_8'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q9'
+      questionId: 'Question_9'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q10'
+      questionId: 'Question_10'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q11'
+      questionId: 'Question_11'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q12'
+      questionId: 'Question_12'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q13'
+      questionId: 'Question_13'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q14'
+      questionId: 'Question_14'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q15'
+      questionId: 'Question_15'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q16'
+      questionId: 'Question_16'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q17'
+      questionId: 'Question_17'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q18'
+      questionId: 'Question_18'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q19'
+      questionId: 'Question_19'
   - type: ${Components.Exercise}
     props:
-      questionId: 'Q20'                                                            
+      questionId: 'Question_20'                                                            

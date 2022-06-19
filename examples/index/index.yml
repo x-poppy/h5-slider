@@ -62,5 +62,5 @@ children:
         clickEffect:
           type: NavigationEffect
           props:
-            url: "./?schema=examples%2Fiq-002%2Findex.yml"
+            url: "./?schema=examples%2Fiq-002%2Findex.yml&templateId=IQ002&marketSource=demo"
       children: "瑞文题型 002"  

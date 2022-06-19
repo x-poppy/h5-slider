@@ -1,9 +1,4 @@
 version: 0.0.1
-# 1-12 
-# 13-24 
-# 25-36
-# 37-48
-# 49-60
 info:
   title: "Raven IQ Test"
   favicon: "./favicon.ico"
@@ -28,8 +23,9 @@ definitions:
     ExerciseCheersAlertConfirm: "Continue"
   Components:
     CheersAlertMessageEffect:
-      type: AlertEffect
+      type: DelayEffect
       props:
+        delay: 0
         overlay: false
         message: ${cheersMessage}
         confirmButtonColor: ${Themes.PrimaryColor}
@@ -121,10 +117,21 @@ definitions:
             nextButtonEnable: ${${questionId}}
             nextButtonDefaultEnable: false
             submitEffect:
-              type: SubmitStoreEffect
-              props:
-                url: "http://test/api/do/test/test"
-                searchMatcher: ["userId", "testId"]
+              submitEffect:
+              type: QueueEffect
+              children:
+              - type: WriteLocalStorageEffect
+                props:
+                  writeKey: 'userId'
+                  writeValue: ''
+                  writeType: SetNX
+                  uuid: true
+              - type: SubmitEffect
+                props:
+                  url: "http://test/api/do/test/test"
+                  storeMatcher: {}
+                  searchMatcher: ["userId", "templateId", "marketSource"]
+                  localStorageEffectMatcher: ["userId"]
     Exercise6:
       type: ${Components.Exercise}
       children:
@@ -182,228 +189,228 @@ props:
 children:
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q1'
+      questionId: 'Question_1'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q2'
+      questionId: 'Question_2'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q3'
+      questionId: 'Question_3'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q4'
+      questionId: 'Question_4'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q5'
+      questionId: 'Question_5'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q6'
+      questionId: 'Question_6'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q7'
+      questionId: 'Question_7'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q8'  
+      questionId: 'Question_8'  
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q9'
+      questionId: 'Question_9'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q10'
+      questionId: 'Question_10'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q11'  
+      questionId: 'Question_11'  
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q12'  
+      questionId: 'Question_12'  
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q13'
+      questionId: 'Question_13'
       entryEffect:
         type: ${Components.CheersAlertMessageEffect}
         props:
           cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage1}
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q14'   
+      questionId: 'Question_14'   
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q15'   
+      questionId: 'Question_15'   
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q16'   
+      questionId: 'Question_16'   
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q17'   
+      questionId: 'Question_17'   
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q18'   
+      questionId: 'Question_18'   
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q19'       
+      questionId: 'Question_19'       
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q20'
+      questionId: 'Question_20'
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q21'    
+      questionId: 'Question_21'    
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q22'  
+      questionId: 'Question_22'  
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q23' 
+      questionId: 'Question_23' 
   - type: ${Components.Exercise6}
     props:
-      questionId: 'Q24'
+      questionId: 'Question_24'
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q25'
+      questionId: 'Question_25'
       entryEffect:
         type: ${Components.CheersAlertMessageEffect}
         props:
           cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage2}    
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q26'  
+      questionId: 'Question_26'  
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q27'   
+      questionId: 'Question_27'   
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q28'   
+      questionId: 'Question_28'   
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q29'
+      questionId: 'Question_29'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q30'   
+      questionId: 'Question_30'   
            
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q31'
+      questionId: 'Question_31'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q32'       
+      questionId: 'Question_32'       
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q33'
+      questionId: 'Question_33'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q34'          
+      questionId: 'Question_34'          
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q35'
+      questionId: 'Question_35'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q36'
+      questionId: 'Question_36'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q37'
+      questionId: 'Question_37'
       entryEffect:
         type: ${Components.CheersAlertMessageEffect}
         props:
           cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage3}
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q38'
+      questionId: 'Question_38'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q39'
+      questionId: 'Question_39'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q40'
+      questionId: 'Question_40'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q41'
+      questionId: 'Question_41'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q42'
+      questionId: 'Question_42'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q43'
+      questionId: 'Question_43'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q44'
+      questionId: 'Question_44'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q45'
+      questionId: 'Question_45'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q46'
+      questionId: 'Question_46'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q47'
+      questionId: 'Question_47'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q48'
+      questionId: 'Question_48'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q49'
+      questionId: 'Question_49'
       entryEffect:
         type: ${Components.CheersAlertMessageEffect}
         props:
           cheersMessage: ${LocaleMessages.ExerciseCheersAlertMessage4}
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q50'
+      questionId: 'Question_50'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q51'
+      questionId: 'Question_51'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q52'
+      questionId: 'Question_52'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q53'
+      questionId: 'Question_53'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q54'
+      questionId: 'Question_54'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q55'
+      questionId: 'Question_55'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q56' 
+      questionId: 'Question_56' 
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q57'
+      questionId: 'Question_57'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q58'
+      questionId: 'Question_58'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q59'
+      questionId: 'Question_59'
 
   - type: ${Components.Exercise8}
     props:
-      questionId: 'Q60'                                                                                                                           
+      questionId: 'Question_60'                                                                                                                           
