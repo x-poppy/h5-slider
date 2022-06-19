@@ -11,7 +11,7 @@ definitions:
   Themes:
     PrimaryColor: '#27527a'
   Permissions:
-    PreviousSlide: true
+    PreviousSlide: false
   LocaleMessages:
     PreviousSlide: "Previous"
     NextSlide: "Next"
@@ -23,8 +23,9 @@ definitions:
     ExerciseCheersAlertConfirm: "Continue"
   Components:
     CheersAlertMessageEffect:
-      type: AlertEffect
+      type: DelayEffect
       props:
+        delay: 0
         overlay: false
         message: ${cheersMessage}
         confirmButtonColor: ${Themes.PrimaryColor}
@@ -116,10 +117,21 @@ definitions:
             nextButtonEnable: ${${questionId}}
             nextButtonDefaultEnable: false
             submitEffect:
-              type: SubmitStoreEffect
-              props:
-                url: "http://test/api/do/test/test"
-                searchMatcher: ["userId", "testId"]
+              submitEffect:
+              type: QueueEffect
+              children:
+              - type: WriteLocalStorageEffect
+                props:
+                  writeKey: 'userId'
+                  writeValue: ''
+                  writeType: SetNX
+                  uuid: true
+              - type: SubmitEffect
+                props:
+                  url: "http://test/api/do/test/test"
+                  storeMatcher: {}
+                  searchMatcher: ["userId", "templateId", "marketSource"]
+                  localStorageEffectMatcher: ["userId"]
     Exercise6:
       type: ${Components.Exercise}
       children:

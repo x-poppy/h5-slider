@@ -8,11 +8,7 @@ export function filterObjectByMatcher(
   const isWhiteListMode = whiteListMode ?? true;
 
   if (!matcher) {
-    if (isWhiteListMode) {
-      return {};
-    } else {
-      return value;
-    }
+    return {};
   }
 
   if (typeof matcher === 'boolean') {

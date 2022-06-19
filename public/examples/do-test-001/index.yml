@@ -40,9 +40,10 @@ definitions:
           nextButtonEnable: ${${questionId}}
           nextButtonDefaultEnable: false
           submitEffect:
-            type: SubmitStoreEffect
+            type: SubmitEffect
             props:
               url: "http://test/api/do/test/test"
+              storeMatcher: {}
               searchMatcher: ["userId", "testId"]
 
     OptionBlock:

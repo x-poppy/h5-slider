@@ -115,9 +115,10 @@ definitions:
                   writeValue: ''
                   writeType: SetNX
                   uuid: true
-              - type: SubmitStoreEffect
+              - type: SubmitEffect
                 props:
                   url: "http://test/api/do/test/test"
+                  storeMatcher: {}
                   searchMatcher: ["userId", "templateId", "marketSource"]
                   localStorageEffectMatcher: ["userId"]
 

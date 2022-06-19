@@ -5,11 +5,12 @@ import { getRandomValueFromArray } from '../../utils/random';
 import { getStoreData } from '../../utils/storage';
 import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from '../../utils/url';
 
-interface SubmitStoreEffectProps extends SliderEffectProps {
+interface SubmitEffectProps extends SliderEffectProps {
   url: string | string[]
   method?: Method | string;
+  data?: Record<string, any>;
   // black list
-  matcher?: string | string[];
+  storeMatcher?: string | string[];
   // white list
   searchMatcher?: string | string[];
   // white list
@@ -19,7 +20,7 @@ interface SubmitStoreEffectProps extends SliderEffectProps {
   mockData?: Record<string, any>;
 }
 
-async function SubmitStoreEffect(props: SubmitStoreEffectProps) {
+async function SubmitEffect(props: SubmitEffectProps) {
   const context = props.context;
   const store = context.store;
   const httpClient = context.httpClient;
@@ -28,9 +29,11 @@ async function SubmitStoreEffect(props: SubmitStoreEffectProps) {
   const queryData = getQueryObjectFromSearch(props.searchMatcher);
   const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageEffectMatcher)
   // blacklist mode
-  const storeData = getStoreData(store, props.matcher);
-  storeData[StoreKeyNames.EndTimeStamp] = storeData[StoreKeyNames.EndTimeStamp] ?? Date.now();
-
+  const storeData = getStoreData(store, props.storeMatcher);
+  if (storeData && Object.keys(storeData).length > 0) {
+    storeData[StoreKeyNames.EndTimeStamp] = Date.now();
+  }
+  
   if (props.mockData) {
     props.event.detail = {
       ...props.event.detail,
@@ -47,7 +50,10 @@ async function SubmitStoreEffect(props: SubmitStoreEffectProps) {
       ...queryData,
       ...localStorageQueryData
     },
-    data: storeData
+    data: {
+      ...storeData,
+      ...props.data,
+    }
   });
   props.event.detail = {
     ...props.event.detail,
@@ -55,4 +61,4 @@ async function SubmitStoreEffect(props: SubmitStoreEffectProps) {
   }
 }
 
-export default SubmitStoreEffect;
+export default SubmitEffect;

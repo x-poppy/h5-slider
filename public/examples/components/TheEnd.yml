@@ -14,7 +14,7 @@ children:
           submitEffect:
             type: QueueEffect
             children:
-            - type: SubmitStoreEffect
+            - type: SubmitEffect
               props:
                 url: "./test"
                 searchMatcher: ["userId","exerciseId"]
