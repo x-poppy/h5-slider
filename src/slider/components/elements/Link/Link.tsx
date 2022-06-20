@@ -37,6 +37,10 @@ function Link(props: LinkProps) {
       return;
     }
 
+    if (loadingIndicator.loading) {
+      return;
+    }
+
     // effect mode
     try {
       loadingIndicator.start();

@@ -11,7 +11,8 @@ interface LoadingIndicatorProps {
 
 const LoadingIndicatorContext = React.createContext({
   start: noop,
-  end: noop
+  end: noop,
+  loading: false
 });
 
 interface LoadingIndicatorProps {
@@ -29,9 +30,10 @@ function LoadingIndicator(props: LoadingIndicatorProps) {
       },
       end: () => {
         setPendingCount((count)=> count - 1);
-      }
+      },
+      loading: isLoading,
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <LoadingIndicatorContext.Provider value={inst}>

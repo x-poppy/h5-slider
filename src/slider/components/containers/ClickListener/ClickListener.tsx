@@ -2,6 +2,7 @@ import React, { Children, cloneElement, ReactNode, useCallback } from 'react';
 import { SliderEffectElement } from '../../../types/Element';
 import { SliderComponentProps } from '../../../types/Component';
 import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
+import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
 
 export interface ClickListenerProps extends SliderComponentProps {
   clickEffect?: SliderEffectElement;
@@ -14,22 +15,33 @@ const EventNames = {
 
 function ClickListener(props: ClickListenerProps) {
   const dispatchEffect = useDispatchEffect();
+  const loadingIndicator = useLoadingIndicator();
 
-  const onClickHandle = useCallback((event: React.MouseEvent) => {
+  const onClickHandle = useCallback(async (event: React.MouseEvent) => {
     if (!props.clickEffect) {
       return;
     }
+
+    if (loadingIndicator.loading) {
+      return;
+    }
+
     if (!props.children) {
       return;
     }
-    
+
     event.stopPropagation();
 
-    dispatchEffect(props.clickEffect, {
-      eventName: EventNames.OnClick
-    })
-
-  }, [dispatchEffect, props.children, props.clickEffect]);
+    try {
+      loadingIndicator.start();
+      await dispatchEffect(props.clickEffect, {
+        eventName: EventNames.OnClick
+      })
+      loadingIndicator.end();
+    } catch (err) {
+      loadingIndicator.end();
+    }
+  }, [dispatchEffect, loadingIndicator, props.children, props.clickEffect]);
 
   if (!props.children) {
     return null;

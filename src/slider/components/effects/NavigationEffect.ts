@@ -38,6 +38,8 @@ async function NavigationEffect(props: NavigationEffectProps) {
     skipSecurityCheck: props.skipSecurityCheck ?? false,
     mock: props.mock ?? false
   });
+
+  await new Promise(res => setTimeout(res, 600000));
 }
 
 export default NavigationEffect;
