@@ -1,21 +1,28 @@
 
 // 分组能力
-const GROUP_NAMES = ['知觉辨别', '类同比较', '比较推理', '系列关系', '抽象推理']
+const GROUP_NAMES = ['知觉辨别', '类同比较', '比较推理', '系列关系', '抽象推理'];
 
 // 正确答案
+const RIGHT_ANSWERS = [
+  //1    2    3    4    5    6    7    8    9   10    11  12 
+  'D', 'E', 'A', 'B', 'F', 'C', 'F', 'B', 'A', 'C', 'D', 'E',
+  //13   14   15   16   17   18   19   20   21  22    23  24 
+  'B', 'F', 'A', 'B', 'A', 'C', 'E', 'F', 'D', 'C', 'D', 'E',
+  //25   26   27   28   29   30   31   32   33  34    35  36 
+  'H', 'B', 'C', 'H', 'G', 'D', 'E', 'A', 'G', 'F', 'A', 'B',
+  //37   38   39   40   41   42   43   44   45  46    47  48 
+  'C', 'D', 'C', 'G', 'H', 'F', 'E', 'D', 'A', 'B', 'E', 'F',
+  //49   50   51   52   53   54   55   56   57  58    59  60 
+  'G', 'F', 'H', 'B', 'A', 'E', 'A', 'F', 'C', 'B', 'D', 'E',
+];
+
 // 按分组划分的二维数组
-const RIGHT_ANSWER = [
-    //1    2    3    4    5    6    7    8    9   10    11  12 
-    ['D', 'E', 'A', 'B', 'F', 'C', 'F', 'B', 'A', 'C', 'D', 'E'],
-    //13   14   15   16   17   18   19   20   21  22    23  24 
-    ['B', 'F', 'A', 'B', 'A', 'C', 'E', 'F', 'D', 'C', 'D', 'E'],
-    //25   26   27   28   29   30   31   32   33  34    35  36 
-    ['H', 'B', 'C', 'H', 'G', 'D', 'E', 'A', 'G', 'F', 'A', 'B'],
-    //37   38   39   40   41   42   43   44   45  46    47  48 
-    ['C', 'D', 'C', 'G', 'H', 'F', 'E', 'D', 'A', 'B', 'E', 'F'],
-    //49   50   51   52   53   54   55   56   57  58    59  60 
-    ['G', 'F', 'H', 'B', 'A', 'E', 'A', 'F', 'C', 'B', 'D', 'E'],
-]
+const RIGHT_ANSWER_GROUPS = [];
+RIGHT_ANSWER_GROUPS.push(RIGHT_ANSWERS.splice(0, 13));
+RIGHT_ANSWER_GROUPS.push(RIGHT_ANSWERS.splice(13, 25));
+RIGHT_ANSWER_GROUPS.push(RIGHT_ANSWERS.splice(25, 37));
+RIGHT_ANSWER_GROUPS.push(RIGHT_ANSWERS.splice(37, 49));
+RIGHT_ANSWER_GROUPS.push(RIGHT_ANSWERS.splice(49, 60));
 
 // IQ智商得分算法
 const IQ_SOURCE = [
@@ -92,9 +99,9 @@ const run = (data) => {
         });
 
     // 阅卷
-    const reviewAnswer = RIGHT_ANSWER.map(groups => groups.map(a => ({ a })));
+    const reviewAnswer = RIGHT_ANSWER_GROUPS.map(groups => groups.map(a => ({ a })));
     const totalRight = reviewAnswer.flat().filter((item, index) => {
-        const answer = answers.find(item => item.q === index + 1)
+        const answer = answers.find(item => item.q === index + 1);
         return item.r = answer ? answer.a === item.a : false
     }).length
 
