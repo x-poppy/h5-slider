@@ -17,6 +17,7 @@ export interface FlexBoxProps extends SliderComponentProps, ClickAbleComponentPr
   fontSize?: string;
   fontColor?: string;
   fontWeight?: string;
+  overflow?: string;
 }
 
 function FlexBox(props: FlexBoxProps) {
@@ -35,6 +36,7 @@ function FlexBox(props: FlexBoxProps) {
       fontSize: props.fontSize,
       color: props.fontColor,
       fontWeight: props.fontWeight,
+      overflow: props.overflow,
     }
     // eslint-disable-next-line
   }, []);

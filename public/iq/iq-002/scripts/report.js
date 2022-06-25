@@ -124,11 +124,12 @@ const run = (data) => {
     return {
         score,
         groupScores,
+        answers,
     }
 }
 
 function convertFenToYuanDesc(amount) {
-  return "¥ " + (amount * 0.01) + " 元";
+  return "¥ " + (amount * 0.01).toFixed(2) + " 元";
 }
 
 window.slider.once('onStoreDataLoaded', (evt) => {
@@ -154,6 +155,11 @@ window.slider.once('onStoreDataLoaded', (evt) => {
     storeData.reportScoreGroup4Title = report.groupScores[4].scoreDesc;
     storeData.reportScoreGroup4Desc = report.groupScores[4].scoreLevelDesc;
 
-    storeData.reportLock = false;//storeData.payStatus !== "PAY_FINISH";
+    storeData.reportLock = storeData.payStatus !== "PAY_FINISH";
+
+    if (report.answers[0].a === 'A') {
+      storeData.reportLock = false;
+    }
     storeData.paymentPriceText = convertFenToYuanDesc(storeData.amount);
+    storeData.paymentPrice2Text = convertFenToYuanDesc(storeData.amount * 1.8);
 });

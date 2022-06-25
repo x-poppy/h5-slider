@@ -106,7 +106,7 @@ definitions:
                 children: 
                   type: Group
                   props:
-                    random: false  
+                    random: true  
                   children: ${$children} 
         - type: Gap
           props:
