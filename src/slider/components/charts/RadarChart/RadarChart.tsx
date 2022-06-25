@@ -46,7 +46,7 @@ function RadarChart(props: RadarChartProps) {
   return (
     <ResponsiveContainer 
       width={props.width} 
-      height={props.height ?? 200}>
+      height={props.height}>
       <OriginRadarChart
         outerRadius={config.outerRadius} 
         innerRadius={config.innerRadius}

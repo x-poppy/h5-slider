@@ -5,3 +5,7 @@
 .withBlock {
   display: block;
 }
+
+.main > * {
+  font-family: unset !important;
+}
