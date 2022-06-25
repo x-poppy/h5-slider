@@ -8,7 +8,7 @@ export interface NavigationEffectProps extends SliderEffectProps {
   // white list
   searchMatcher?: string | string[];
   // white list
-  localStorageEffectMatcher?: string | string[];
+  localStorageMatcher?: string | string[];
   query?: Record<string, any>;
   skipSecurityCheck?: boolean
 }
@@ -17,26 +17,31 @@ async function NavigationEffect(props: NavigationEffectProps) {
   const context = props.context;
 
   const queryStringQueryData = getQueryObjectFromSearch(props.searchMatcher);
-  const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageEffectMatcher);
+  const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageMatcher);
 
   const url = context.variableScopes.getExpressValue(props.url, {
     ...props,
+    query: {
+      ...localStorageQueryData,
+      ...queryStringQueryData,
+    }
   });
   if (!url) {
     throw new Error("Invalid URL!");
   }
 
-  const transformedUrl = appendQueryToUrl(url, {
-    ...queryStringQueryData,
-    ...localStorageQueryData,
-    ...props.query,
-  })
+  // const transformedUrl = appendQueryToUrl(url, {
+  //   ...queryStringQueryData,
+  //   ...localStorageQueryData,
+  //   ...props.query,
+  // })
 
-  await navigateTo(transformedUrl, {
+  const mock = (props.mock ?? false) && !!context.initialConfig.mock;
+  await navigateTo(url, {
     i18nMessageBundle: context.i18nMessageBundle,
     knownHosts: props.$$schema.security?.knownHosts,
     skipSecurityCheck: props.skipSecurityCheck ?? false,
-    mock: props.mock ?? false
+    mock,
   });
 
   await new Promise(res => setTimeout(res, 600000));

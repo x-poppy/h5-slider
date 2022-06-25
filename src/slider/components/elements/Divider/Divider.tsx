@@ -3,7 +3,7 @@ import { Divider as OriginDivider } from 'react-vant';
 import { DividerContentPosition } from 'react-vant/es/divider/PropsType';
 import { SliderComponentProps } from '../../../types/Component';
 
-import styles from './Divider.module.css'
+import styles from './Divider.module.css';
 
 // https://react-vant.3lang.dev/en/components/divider
 export interface DividerProps extends SliderComponentProps {

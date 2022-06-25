@@ -5,6 +5,8 @@ import { useLoadingIndicator } from '../../../baseComponents/LoadingIndicator';
 import { SliderEffectElement } from '../../../types/Element';
 import { SliderComponentProps } from '../../../types/Component';
 import { useDispatchEffect } from '../../../hooks/useDispatchEffect';
+import { getReferenceVariableValue } from '../../../utils/express';
+import { useStore } from '../../../hooks/useStore';
 
 export interface LinkProps extends SliderComponentProps {
   width?: string | number
@@ -16,12 +18,16 @@ export interface LinkProps extends SliderComponentProps {
   center?: boolean;
   strong?: boolean;
   ellipsis?: boolean | number;
-  children?: React.ReactNode;
+
+  text?: string;
+  children?: string;
+
   //events
   clickEffect?: SliderEffectElement;
 
   fontSize?: string;
-  color?: string;
+  fontColor?: string;
+  fontWeight?: string;
 }
 
 const EventNames = {
@@ -29,8 +35,22 @@ const EventNames = {
 }
 
 function Link(props: LinkProps) {
+  const store = useStore();
   const loadingIndicator = useLoadingIndicator();
   const dispatchEffect = useDispatchEffect();
+
+  const initStyle = useMemo(() => ({
+    width: props.width,
+    fontSize: props.fontSize,
+    color: props.fontColor,
+    fontWeight: props.fontWeight,
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), []);
+
+  const content = useMemo(() => {
+    return getReferenceVariableValue(props.text ?? props.children, '', (key: string) => store.get(key));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.children]);
 
   const onClickHandle = useCallback(async () => {
     if (!props.clickEffect) {
@@ -52,13 +72,6 @@ function Link(props: LinkProps) {
       loadingIndicator.end();
     }
   }, [dispatchEffect, loadingIndicator, props.clickEffect]);
-
-  const initStyle = useMemo(() => ({
-    width: props.width,
-    fontSize: props.fontSize,
-    color: props.color
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), []);
   
   return (
     <Typography.Link style={initStyle} 
@@ -72,7 +85,7 @@ function Link(props: LinkProps) {
       strong={props.strong}
       ellipsis={props.ellipsis}
     >
-      {props.children}
+      { content }
     </Typography.Link>
   );
 }

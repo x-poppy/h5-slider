@@ -4,7 +4,7 @@ import { Replay } from '@react-vant/icons';
 
 import QRCode from 'qrcode.react';
 
-import { isEnviromentNotSupportError } from "../../utils/enviroment";
+import { isEnviromentNotSupportError } from "../../utils/security";
 import { getMessage, LocaleMessageKey } from "../../utils/language";
 
 import styles from './ErrorBoundary.module.css'

@@ -1,5 +1,11 @@
 # h5-slider
 
+## Variables Namespace
+
+$ {schema.xxxxxxxx}
+$ {event.xxxxxxxxx}
+$ {store.xxxxxxxxx}
+
 ## Components
 
 

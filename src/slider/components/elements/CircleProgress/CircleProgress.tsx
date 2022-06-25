@@ -4,6 +4,8 @@ import { useStore } from '../../../hooks/useStore';
 import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 
+import styles from './CircleProgress.module.css';
+
 // https://react-vant.3lang.dev/components/circle
 export interface CircleProgressProps extends SliderComponentProps {
   size?: number | string;
@@ -32,6 +34,7 @@ function CircleProgress(props: CircleProgressProps) {
   
   return (
     <Circle 
+      className={styles.main}
       defaultRate={props.defaultRate}
       rate={rate}
       size={props.size}

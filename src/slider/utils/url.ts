@@ -66,7 +66,7 @@ const SearchParamKeyWorlds = [
   "debug"
 ];
 
-export function getQueryObjectFromSearch(matcher?: string | string[] | null, search?:string | null) {
+export function getQueryObjectFromSearch(matcher?: string | string[] | Record<string, any> | null, search?:string | null) {
   const searchParams = new URLSearchParams(search ?? window.location.search);
   const query = Object.fromEntries(searchParams);
   const filteredQuery: Record<string, any> = {};

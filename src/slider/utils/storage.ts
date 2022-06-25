@@ -1,6 +1,5 @@
 import { filterObjectByMatcher } from "./object";
 import { trimPrefix } from "./string";
-import { isPlainValue } from "./typeDetect";
 
 export type StoreValueType = Record<string, any> | string | number | boolean | null;
 
@@ -23,9 +22,7 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
   const transformedData = Object.keys(data ?? {}).reduce((map, key) => {
     const trimPrefixKey = trimPrefix(key, opts?.prefix);
     const val = data[trimPrefixKey];
-    if (isPlainValue(val)) {
-      map[trimPrefixKey] = val;
-    }
+    map[trimPrefixKey] = val;
     return map;
   }, {} as any);
 

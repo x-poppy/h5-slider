@@ -1,5 +1,7 @@
+import { useVariableScopes } from "../hooks/useVariableScopes";
 import { SliderSchema } from "../types/Schema";
-import { getURL } from "./url";
+import { getRandomValueFromArray } from "./random";
+import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from "./url";
 
 const ScriptParamsNames = Object.keys(window).filter(key=>{
   const win: Record<string, any> = window as any;
@@ -18,15 +20,35 @@ const ScriptParamsNames = Object.keys(window).filter(key=>{
 const ScriptParamsNamesStr = ScriptParamsNames.join(",");
 const ScriptParamsNamesVal = ScriptParamsNames.map(() => undefined + '').join(",");
 
-export async function loadScript(
-    schema: SliderSchema, 
-    scriptContext: Record<string, any>, 
-    throwError: (error: any) => void) {
-  let url = schema.script;
+interface LoadScriptOpts {
+  scriptContext: Record<string, any>
+  throwError: (error: any) => void
+  variableScopes: ReturnType<typeof useVariableScopes>
+}
 
-  if (!url) {
+export async function loadScript(schema: SliderSchema, opts: LoadScriptOpts) {
+  const scriptInfo = schema.script;
+  if (!scriptInfo) {
     return;
   }
+
+  if (!scriptInfo.url) {
+    return;
+  }
+
+  const queryStringQueryData = getQueryObjectFromSearch(scriptInfo.searchMatcher);
+  const localStorageQueryData = getQueryObjectFromLocalStorage(scriptInfo.localStorageMatcher);
+
+  let url = getRandomValueFromArray(scriptInfo.url);
+  url = getRandomValueFromArray(url);
+
+  url = opts.variableScopes.getExpressValue(url, {
+    query: {
+      ...localStorageQueryData,
+      ...queryStringQueryData,
+    }
+  });
+
 
   url = getURL(url, schema.info?.baseURL);
 
@@ -38,12 +60,16 @@ export async function loadScript(
   const responseText = await response.text();
   const scriptElement = document.createElement("script");
   (window as any).sliderScriptContext = {
-    ...scriptContext,
-    throwError,
+    ...opts.scriptContext,
+    throwError: opts.throwError,
   };
   const scriptContent = `
   (function(window, slider, ${ScriptParamsNamesStr}) {
-    ${responseText}
+    try {
+      ${responseText}
+    } catch(err) {
+      slider.throwError(err);
+    }
   }).apply(null, [{slider: window.sliderScriptContext}, window.sliderScriptContext, ${ScriptParamsNamesVal}]);
   `;
   scriptElement.setAttribute("slider-script", "");

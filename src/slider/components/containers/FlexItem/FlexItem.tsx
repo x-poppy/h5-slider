@@ -12,6 +12,9 @@ export interface FlexItemProps extends SliderComponentProps, ClickAbleComponentP
   height?: string;
   alignSelf?: string;
   justifySelf?: string;
+  fontSize?: string;
+  fontColor?: string;
+  fontWeight?: string;
 }
 function FlexItem(props: FlexItemProps) {
   const initStyle = useMemo(() => ({
@@ -22,6 +25,10 @@ function FlexItem(props: FlexItemProps) {
     flex: props.flex,
     alignSelf: props.alignSelf,
     justifySelf: props.justifySelf,
+    // font
+    fontSize: props.fontSize,
+    color: props.fontColor,
+    fontWeight: props.fontWeight,
     // eslint-disable-next-line
   }), []);
   

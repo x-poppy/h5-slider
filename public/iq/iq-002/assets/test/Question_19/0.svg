@@ -23,7 +23,7 @@
       }
 
       .cls-3 {
-        fill: #27527a;
+        fill: #f4f8fc;
         stroke-linejoin: round;
         stroke-width: 1.02px;
       }

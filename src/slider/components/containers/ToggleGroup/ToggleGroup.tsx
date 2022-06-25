@@ -4,16 +4,17 @@ import { SliderComponentProps } from '../../../types/Component';
 import { getReferenceVariableValue } from '../../../utils/express';
 
 export interface ToggleGroupProps extends SliderComponentProps {
+  defaultShow?: boolean;
   show: boolean | string | string[]
   children: ReactNode;
 }
 
 function ToggleGroup(props: ToggleGroupProps) {
   const store = useStore();
-
+  
   const show = useMemo(() => {
-    return getReferenceVariableValue(props.show, false, (key: string) => store.get(key));
-  }, [props.show, store]);
+    return getReferenceVariableValue(props.show, props.defaultShow ?? false, (key: string) => store.get(key));
+  }, [props.defaultShow, props.show, store]);
 
   if (!show) {
     return null;

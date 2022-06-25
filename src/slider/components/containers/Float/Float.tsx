@@ -12,6 +12,9 @@ export interface FloatProps extends SliderComponentProps {
   height?: string;
   transform?: string;
   zIndex?: number;
+  fontSize?: string;
+  fontColor?: string;
+  fontWeight?: string;
   children?: ReactNode;
 }
 
@@ -26,6 +29,9 @@ function Float(props: FloatProps) {
       height: props.height,
       transform: props.transform,
       zIndex: props.zIndex,
+      fontSize: props.fontSize,
+      color: props.fontColor,
+      fontWeight: props.fontWeight,
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

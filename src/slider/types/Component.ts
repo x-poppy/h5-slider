@@ -1,5 +1,6 @@
 import { useHttpClient } from '../hooks/useHttpClient';
 import { useI18nMessageBundle } from '../hooks/useI18nMessageBundle';
+import { useInitialConfig } from '../hooks/useInitialConfig';
 import { useNavigation } from '../hooks/useNavigation';
 import { useStore } from '../hooks/useStore';
 import { useUILock } from '../hooks/useUILock';
@@ -20,6 +21,7 @@ export interface ClickAbleComponentProps {
 }
 
 interface SliderEffectContext {
+  initialConfig: ReturnType<typeof useInitialConfig>;
   variableScopes: ReturnType<typeof useVariableScopes>;
   i18nMessageBundle: ReturnType<typeof useI18nMessageBundle>;
   store: ReturnType<typeof useStore>;

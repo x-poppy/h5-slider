@@ -22,10 +22,14 @@ function ScreenLock(props: ScreenLockProps) {
   }, [props.lock, store]);
 
   useEffect(() => {
-    if (!lock) {
-      return;
+    // eslint-disable-next-line no-debugger
+    debugger;
+    if (lock) {
+      screenLocker.lock();
+    } 
+    return () => {
+      screenLocker.unlock();
     }
-    screenLocker.lock();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -13,15 +13,16 @@ import { useLoadingIndicator } from "../LoadingIndicator";
 import { useThrowError } from "../../hooks/useThrow";
 import { callback } from "../../utils/callback";
 import { loadAllComponents } from "../../components";
-import { match } from "../../utils/string";
 import { initializeDocument } from "../../utils/initializeDocument";
-import { validateEnviroments } from "../../utils/enviroment";
+import { validateEnviroments, validateScurity } from "../../utils/security";
+import { useVariableScopes } from "../../hooks/useVariableScopes";
 
 function SliderLoader() {
   const initialConfig = useInitialConfig();
   const scriptContext = useScriptContext();
   const httpClient = useHttpClient();
   const throwError = useThrowError();
+  const variableScopes = useVariableScopes();
 
   const [sliderElement, setSliderElement] = useState<ReactElement | null>(null);
   const loadingIndication = useLoadingIndicator();
@@ -41,17 +42,19 @@ function SliderLoader() {
         schemaUrl = decodeURIComponent(schemaUrl as unknown as string);
         // load schema
         const schema = await loadSchema(schemaUrl);
-        // validate useragent
-        const userAgentMatcher = schema.security?.userAgentMatcher;
-        if (userAgentMatcher) {
-          if (!match(window.navigator.userAgent, userAgentMatcher, true)) {
-            throwError(new Error("Invalid UserAgent"));
-          }
-        }
+        validateScurity(schema);
 
         const [storeData] = await Promise.all([
-          loadStoreData(httpClient, schema),
-          loadScript(schema, scriptContext, throwError),
+          loadStoreData(schema, {
+            httpClient,
+            initialConfig,
+            variableScopes,
+          }),
+          loadScript(schema, {
+            scriptContext,
+            variableScopes,
+            throwError,
+          }),
           loadAllComponents(),
         ])
 
@@ -64,6 +67,7 @@ function SliderLoader() {
         const transformedStoreData = {
           ...(storeDataLoadedEvt.detail ?? {})
         };
+
         const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
           (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
         transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();

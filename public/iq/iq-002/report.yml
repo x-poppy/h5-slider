@@ -1,0 +1,430 @@
+version: 0.0.1
+info:
+  title: "瑞文智商测试"
+  favicon: "./favicon.ico"
+  description: "瑞文智商测试"
+  contentBackground: "#f4f8fc"
+  cssVariables:
+store:
+  searchMatcher: ["testId"]
+  url: "http://106.14.147.173:8080/user/answer/${query.testId}"
+  responseDataPath: "result"
+script:
+  url: "./scripts/report.js"
+definitions:
+  Themes:
+    PrimaryColor: '#27527a'
+  Components:
+    GropuScoreBlock:
+      type: Block
+      props:
+        round: true
+        background: '#f4f7ff'
+      children:
+        type: FlexBox
+        props:
+          direction: column
+        children:
+          - type: Title
+            props:
+              text: '${groupScoreTitle}'
+          - type: Text
+            props:
+              fontWeight: bold
+              fontColor: '#f99177'
+            children: "${groupScoreSubTitle}"
+          - type: Gap
+          - type: FlexBox
+            props:
+              align: center
+              justify: center
+            children:
+              type: Image
+              props:
+                fit: contain
+                height: 10rem
+                src: "${groupScoreImg}"
+          - type: Group
+            children:
+            - type: Text
+              children: "${groupScoreDesc}"
+            - type: Gap  
+            - type: Text
+              children: "${groupScoreDes2}"
+
+  LocaleMessages:
+    PaymentReportTitle: "您的专属测评报告已经生成"
+    PaymentReportTitle2: "瑞文智商(IQ)测试深度分析报告"
+    PaymentBtnText: "支付后解锁报告"
+    PaymentReportDesc001: "测评报告全文超过2000多字, 98%用户好评! " 
+    PaymentReportDesc002: "该报告将长期保存, 供您随时查看。" 
+    PaymentReportDesc003: "你也可以将该报告链接发给别人, 替你完成支付。" 
+    PaymentReportPriceDesc: "新用户专享优惠价: " 
+
+    ToalSoreTitle: "您的智商综合评分为:"
+    ToalSoreSubTitle: "智商水平为:  "
+
+    ToalGroupSoreTitle: "各个维度能力分布:"
+
+    RuiWenIntroTitle: "关于瑞文标准智商测评"
+    RuiWenIntroContent: '瑞文标准智商测试(简称SPM), 是国际上广受认可的智力测验工具。由英国心理学家瑞文(J.C.Raven)于1938年创制,在世界各国沿用至今。它是一种纯粹的非文字智力测验,所以广泛应用于无国界的智力推理能力测试。'
+    RuiWenIntroContent2: '瑞文标准智商测试的理论假设源于依据英国心理学家斯皮尔曼(C.E.Spearman)的智力二因素论, 该理论认为智力主要是由“G”因素和“S”因素共同构成的,其中 “G”因素是普通因素,它可以参与到所有的智力活动中,它是每个人都具有的,只是水平上有所差异;“S”因素是特殊因素,这类因素种类很多,且与相关的训练有很大关系。“G”因素智商高的人天资聪慧,“S”因素智商高的人术业超群。成就卓越者通常在两种因素上的智力都很高。瑞文推理测试是测量“G”因素的有效工具,主要通过图形的辨别,组合,系列关系等测量人的智力水平，以及人们解决问题的能力、观察力、思维能力、发现和利用自己所需的信息及适应社会生活的能力。'
+    
+    ReportScoreGroup0InfoContent: '知觉辨别(perceptual ideotification), 是指对外界总体感官信息的组织和辨别能力。知觉其实是大脑对于现实的建构，当外界刺激作用于感官时，我们的大脑对会对这些外界的感官信息进行处理，对属性相同的信息进行归纳合并，对属性不同的信息进行分类区分，这样大脑就会对这一物体形成一个整体的认知。'
+    ReportScoreGroup0InfoContent2: '本测试中1—12题主要考察知觉辨别的能力。 知觉辨别力强的人对周围大环境有很强的洞察力，大脑对外界环境信息的分类、归纳能力强，有很好的全局观，看待问题较为全面。'
+    
+    ReportScoreGroup1InfoContent: '指将关注集中在有限的具体事物上时，针对其相似性和区别的观察比较能力，以及对参考物借鉴、模仿的能力。13—24题的题目图里都是由4个部分组成，通过横向或纵向的两两配对就可以看出规律，考察的是对单一变化的比较和模仿能力。类同比较能力强的人对具体事物观察和比较的能力很强，且具有很强的模仿能力。在处理问题时，很容易通过借鉴的方式从其他领域获得启发和解决方案。类同比较能力较弱的人对具体事物的观察不够细致，因此不太容易发现它们的特点和内在规律，因此在比较和做选择上容易遇到困难，有时因为把握不住关键区别和规律而抓不对重点，所以模仿、借鉴的能力也受到了一些限制。'
+    ReportScoreGroup1InfoContent2: ''
+    
+    ReportScoreGroup2InfoContent: '指针对多个角度或多个方向的变化规律进行比较、总结的能力。25—36题的题目图都是由9个部分组成的矩阵，从横向和纵向两个方向都有简单的渐变规律，比类同比较题组多了确认变化规律的环节，然后再进行变化模仿。考察的是比较和推理的能力。比较推理能力强的人善于从多个角度考虑事物，并且会考虑到不同的发展规律，最后做出综合了多角度考量的最合理判断。比较能力较弱的人虽然也知道应该从多个角度考虑问题，但有时仍会忽略掉一些角度，在考虑问题时容易因为角度单一、缺少换位思考，而出现结论片面或解决方案涵盖不全的纰漏。'
+    ReportScoreGroup2InfoContent2: ''
+
+    ReportScoreGroup3InfoContent: '指对相对复杂的复合型事物进行拆分和再组合的列举式推理能力。37—48题的题目图全部由9个部分组成矩阵，每个部分都有两种元素组成，需要在第三行里找到没出现过的两种元素的组合，考察的是统计、拆分、组合的能力，与记忆力也有一定关联。系列关系推理能力强的人善于把复杂事物或问题拆分成更简单的元素，从而在更直观和简单的层面上进行分析，从而让处理问题得到很大便利。系列关系推理能力较弱的人在处理或分析复杂事物，有时容易被事物表面上的复杂假象蒙蔽住，导致无法进一步分析和处理问题，因此容易在遇到困难时停滞不前。'
+    ReportScoreGroup3InfoContent2: ''
+    
+    ReportScoreGroup4InfoContent: '指通过对事物的细心观察进一步发现事物内在的抽象规律或与其他事物之间的联系以及相互作用规律的能力。49—60题的题目图体现的是加减法这类抽象的逻辑运算，从抽象的形式中找到做加法还是减法的判断规律，考察的是对事物之间联系规律的猜想、判断和运算能力。抽象推理能力强的人对事物的观察能力很强，而且善于透过事物表面找到事物之间更深层的联系和相互作用规律，也很善于在事物更本质的角度上考虑问题，从而准确、彻底地处理问题。抽象推理能力较弱的人不太善于透过事物表面看到其本质或发现事物之间的深层联系。'
+    ReportScoreGroup4InfoContent2: ''
+
+    SuggestionTitle: "建议与提高"
+
+
+    CompanyInfo: "上海钛咖科技工作室"
+type: Slider
+props:
+  widgets:
+    - type: Empty
+      props:
+        attachEffect:
+          type: QueueEffect
+          children:
+            - type: ScreenLockEffect
+              props:
+                lock: "${reportLock}"
+    - type: ToggleGroup
+      props:
+        defaultShow: true
+        show: "${reportLock}" 
+      children:
+        - type: Float
+          props:
+            left: 1rem
+            right: 1rem
+            top: 20%
+            bottom: 15%
+          children:
+            type: Block
+            props:
+              height: 100%
+              round: true
+              shadow: true
+              background: "#FFFFFF"
+            children:
+              type: FlexBox
+              props:
+                height: 100%
+                direction: column
+              children:
+                - type: Float
+                  props:
+                    right: 0.75rem
+                    top: 0.75rem
+                  children:
+                    type: Icon
+                    props:
+                      size: 1.25rem
+                      icon: Lock
+                      color: '#ccc'
+                - type: Title
+                  props:
+                    strong: true
+                  children: ${LocaleMessages.PaymentReportTitle}
+                - type: Text
+                  props: 
+                    size: xs
+                    type: secondary
+                  children: ${LocaleMessages.PaymentReportDesc001} 
+                - type: Gap
+                  props:
+                    size: md
+                - type: Image
+                  props:
+                    round: true
+                    radius: 4px
+                    height: 10rem
+                    fit: cover
+                    src: "./assets/report/tubiao_001.png"
+                - type: Gap    
+                - type: Text
+                  props: 
+                    size: xs
+                    type: secondary
+                  children: ${LocaleMessages.PaymentReportDesc002}    
+                - type: FlexItem
+                  props:
+                    flex: "1 1 auto"
+                - type: Space
+                  props:
+                    justify: center
+                    align: center
+                  children:
+                    - type: Text
+                      props: 
+                        size: md
+                        strong: true
+                      children: ${LocaleMessages.PaymentReportPriceDesc} 
+                    - type: Text
+                      props: 
+                        color: red
+                        size: lg
+                        strong: true
+                      children: "${paymentPriceText}"
+                - type: FlexItem
+                  props:
+                    flex: "1 1 auto"      
+                - type: Gap   
+                - type: Button
+                  props:
+                    round: true
+                    color: '#55b737'
+                    block: true
+                    icon:
+                      type: Icon
+                      props:
+                        icon: WechatPay
+                    clickEffect:
+                      type: NavigationEffect
+                      props:
+                        mock: false
+                        url: "./?schema=${info.encodedBaseURL}poster.yml"
+                  children: ${LocaleMessages.PaymentBtnText}
+                - type: Gap  
+    
+children:
+  - type: Slide
+    props:
+      background: "#FFF"
+    children:
+    - type: FlexBox
+      props:
+        direction: column
+      children:
+      - type: Image
+        props:
+          src: "./assets/report/header.png"
+      - type: Gap
+      # 综合评分
+      - type: FlexBox
+        props:
+          justify: center
+          align: center
+          direction: column
+        children:
+        - type: Title
+          props:
+            size: xl
+            fontWeight: bold
+          children: "${LocaleMessages.ToalSoreTitle}"
+        - type: Gap  
+        - type: FlexBox
+          props:
+            justify: center
+            fontSize: 2rem
+            fontColor: 'gold'
+            fontWeight: bold
+          children:
+          - type: CircleProgress
+            props:
+              defaultRate: 0
+              rate: 100
+              size: 100
+              strokeWidth: 60
+              color: 'gold'
+              text: '${scoreText}'
+        - type: Gap
+        - type: FlexBox
+          props:
+            justify: center
+          children:
+          - type: Text
+            props:
+              fontColor: '#f99177'
+              fontWeight: bold
+            children: '${LocaleMessages.ToalSoreSubTitle}' 
+          - type: Text
+            props:
+              fontColor: '#f99177'
+              fontWeight: bold
+            children: '${levelText}'
+          - type: Gap
+      - type: Gap
+
+      # 关于瑞文测评
+      - type: Padding
+        children:
+          type: Block
+          props:
+            round: true
+            background: '#f4f7ff'
+          children:
+          - type: FlexBox
+            props:
+              direction: column
+            children:
+              - type: Title
+                children: "${LocaleMessages.RuiWenIntroTitle}"
+              - type: Text
+                children: "${LocaleMessages.RuiWenIntroContent}"
+              - type: Gap  
+              - type: Text
+                children: "${LocaleMessages.RuiWenIntroContent2}"  
+              - type: Gap  
+              - type: Image
+                props:
+                  src: "./assets/report/spearman.webp" 
+      
+      # 装饰
+      - type: Image
+        props:
+          width: 60%
+          src: "./assets/report/decorator_001.png"  
+
+      # 装饰
+      - type: FlexBox
+        props:
+          direction: row
+          justify: end
+        children:
+        - type: Image
+          props:
+            width: 60%
+            src: "./assets/report/decorator_002.png"
+
+      - type: Gap
+
+      # 综合能力分布
+      - type: FlexBox
+        props:
+          justify: center
+          align: center
+          direction: column
+        children:
+        - type: Title
+          props:
+            size: xl
+            fontWeight: bold
+          children: "${LocaleMessages.ToalGroupSoreTitle}"
+        - type: RadarChart
+          props:
+            width: 300
+            config:
+              dataKey: subject
+              angle: 30
+              domain: [0, 150]
+              legends:
+                - name: IQ
+                  dataKey: 'scorePercent'
+                  stroke: "#8884d8"
+                  fill: "#8884d8"
+            data: ${radarData} 
+      - type: Gap
+
+      - type: Padding
+        children:    
+        # 知觉辨别
+        - type: ${Components.GropuScoreBlock}
+          props:
+            groupScoreTitle: ${reportScoreGroup0Title}
+            groupScoreSubTitle: ${reportScoreGroup0Desc}
+            groupScoreImg: "./assets/report/report_group_ganzhi.png"
+            groupScoreDesc: ${LocaleMessages.ReportScoreGroup0InfoContent}
+            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup0InfoContent2}
+
+        - type: Gap
+
+        # 类同比较
+        - type: ${Components.GropuScoreBlock}
+          props:
+            groupScoreTitle: ${reportScoreGroup1Title}
+            groupScoreImg: "./assets/report/report_group_leitong.png"
+            groupScoreSubTitle: ${reportScoreGroup1Desc}
+            groupScoreDesc: ${LocaleMessages.ReportScoreGroup1InfoContent}
+            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup1InfoContent2}
+        - type: Gap
+
+        # 比较推理
+        - type: ${Components.GropuScoreBlock}
+          props:
+            groupScoreTitle: ${reportScoreGroup2Title}
+            groupScoreImg: "./assets/report/report_group_tuili.png"
+            groupScoreSubTitle: ${reportScoreGroup2Desc}
+            groupScoreDesc: ${LocaleMessages.ReportScoreGroup1InfoContent}
+            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup1InfoContent2}
+
+        - type: Gap
+
+        # 系列关系
+        - type: ${Components.GropuScoreBlock}
+          props:
+            groupScoreTitle: ${reportScoreGroup3Title}
+            groupScoreImg: "./assets/report/report_group_guanxi.png"
+            groupScoreSubTitle: ${reportScoreGroup3Desc}
+            groupScoreDesc: ${LocaleMessages.ReportScoreGroup1InfoContent}
+            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup1InfoContent2}
+
+        - type: Gap
+
+        # 抽象推理
+        - type: ${Components.GropuScoreBlock}
+          props:
+            groupScoreTitle: ${reportScoreGroup4Title}
+            groupScoreImg: "./assets/report/report_group_xiangxiang.png"
+            groupScoreSubTitle: ${reportScoreGroup4Desc}
+            groupScoreDesc: ${LocaleMessages.ReportScoreGroup1InfoContent}
+            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup1InfoContent2}
+      
+      - type: Gap
+
+      # 建议与提高
+      - type: Padding
+        children:
+        - type: FlexBox
+          props:
+            justify: center
+            align: center
+            direction: column
+          children:
+          - type: Title
+            props:
+              size: xl
+              fontWeight: bold
+            children: "${LocaleMessages.SuggestionTitle}"
+          - type: RichText
+            children: '<p data-pid="kAHypxR1" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">我们的大脑当中神经元连接的数量，会影响一个人的智力水平，而通过持续地学习和思考能够强化神经元之间的连接。大脑具有无限的潜能，和健身锻炼一样，需要我们循序渐进，持之以恒地努力。</p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="rj37w_xF" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">1 学习新技能，尝试新路径，不断刺激大脑</span></p><p data-pid="igPkNg8P" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">学习新事物，新技能，尝试一些你没有做过的事情，可以提升大脑的认知能力。比如，学习外语，画画，乐器，围棋，国际象棋等等。尝试一些新体验，打破惯性。换一种方式，尝试不同的路线，换个做事的方法，尝试一些你从来没有做过的事情，这些都可以激活你大脑中沉睡的部分，主动激发自身潜能。</p><p data-pid="3Loi4PlL" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">2 转换左右脑，开发脑半球</span></p><p data-pid="jvjByMPz" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">我们的大脑分左右半球，有不同的分工，右半球负责形象思维，比如画画，音乐等艺术创作，左半球是逻辑思维，比如，数学，物理等科目。大多数人都是擅长于身体的某一侧，因此，要有意识地训练相对不熟练的另一侧，长期下来，能够提升另一侧脑半球的活跃度。左右手交替。左撇子就训练用右手，如果你是右撇子，则可以尝试在生活中刻意使用左手写字，吃饭，刷牙等等，训练左手的灵活度。</p><p data-pid="Z46mfkR9" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">3 分模块，刻意练习</span></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">上面我们说了影响智力的各个因素有：记忆力，想象力，创造力，专注力，理解力，分析判断能力，抽象思维能力，逻辑思维能力，推理能力等等。<br></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="IDPFJMcN" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">平时可以通过一些app，或者通过互联网寻找一些方法，有意识地训练这些能力。</p><p data-pid="Rz4XFc-x" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">4 提升快速运算，快速思考的能力</span></p><p data-pid="Rz4XFc-x" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">告别计算器，强迫自己对一些数字进行快速运算。比如，外出吃饭时，根据菜的价格和数量，计算出总价，去超市买东西时，根据商品单价和种类，计算出购买商品的总价格。</p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="nSQeURBl" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">5 提升专注力，舒尔特表</span></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">利用好舒尔特表，训练专注力。可以从5x5的表格开始，里面有1到25个随机排列的数字，你需要按照顺序依次点击每个数字，速度越快越好。每天可以训练5-10次。后面可以逐步增加难度，比如6x6，8x8的表格。<br></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="KYT7Vdyq" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">6 保持好奇心，求知欲，多思考</span></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">大脑越用越灵光。不要懒于思考，不要遇到问题就习惯性地去问别人。保持一颗好奇心，多问为什么，引发自身的思考，并且养成习惯。<br></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="o1FmnUZu" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">7 长期坚持运动</span></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">体育运动可以加速氧气供给，提升大脑的代谢率，加速大脑血液循环，提高大脑的反应能力，让头脑更敏锐。<br></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="BhPnwIwa" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">8 有助于大脑健康的食物</span></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">健脑食物有豆类，鸡蛋，鱼，坚果等等。平时要少吃一些高糖，高油的垃圾食品或加工食品。<br></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><br></p><p data-pid="GyFk4vaD" style="margin-top:1.4em;margin-bottom:1.4em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff"><span style="font-weight:600;font-synthesis:style">9 持续学习和运用实践，挑战自己的极限</span></p><p class="ztext-empty-paragraph" style="margin-top:-.8em;margin-bottom:-.8em;color:#121212;font-family:-apple-system,&quot;white-space:normal;background-color:#fff">多读书，多学习，努力运用知识解决实际问题。读书的时候，带着目的，多思考分析。有时间可以多做一些推理题，智力题。尽全力，挑战自己的极限，争取每一次都比前一次做的更好。<br></p>'
+
+      - type: Gap
+      
+      - type: Image
+        props:
+          width: 80%
+          src: "./assets/report/decorator_end.png"         
+
+      # compay info
+      - type: FlexBox
+        props:
+          background: '#efefef'
+          padding: 1rem
+          align: center
+          direction: column
+        children:
+        - type: QRCode
+          props:
+            size: 128
+            includeMargin: true
+            content: "${location}" 
+        - type: Gap
+        - type: Text
+          props:
+            color: black
+            type: secondary
+          children: "${LocaleMessages.CompanyInfo}"
+        - type: Gap  

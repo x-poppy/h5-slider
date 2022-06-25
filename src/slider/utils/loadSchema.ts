@@ -18,7 +18,7 @@ export async function loadSchema(url: string, baseURL?: string) {
   const contextType = response.headers.get('content-type');
 
   let data = null;
-  if (contextType && contextType.includes("text/yaml")) {
+  if ((contextType && contextType.includes("text/yaml")) || url.endsWith('yml') || url.endsWith('yaml')) {
     data = yaml.load(responseText);
   } else {
     data = JSON.stringify(responseText);

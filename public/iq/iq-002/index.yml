@@ -1,29 +1,36 @@
 version: 0.0.1
 info:
-  title: "Raven IQ Test"
+  title: "瑞文智商测试"
   favicon: "./favicon.ico"
-  description: "Raven IQ Test 002"
+  description: "瑞文智商测试"
   contentBackground: "#f4f8fc"
   cssVariables:
 security:
   knownHosts:
+  searchMatcher: 
+    - marketSource
 definitions:
   Themes:
     PrimaryColor: '#27527a'
   Permissions:
     PreviousSlide: true
   LocaleMessages:
-    PreviousSlide: "Previous"
-    NextSlide: "Next"
-    SubmitSlide: "Submit"
-    ExerciseCheersAlertMessage1: "WOW! Group 1 Completed!"
-    ExerciseCheersAlertMessage2: "Amazing! Group 2 Completed!"
-    ExerciseCheersAlertMessage3: "Bravo! Group 3 Completed!"
-    ExerciseCheersAlertMessage4: "Awesome! Group 4 Completed!"
-    ExerciseCheersAlertConfirm: "Continue"
+    PreviousSlide: "上一题"
+    NextSlide: "下一题"
+    SubmitSlide: "提交"
+    # ExerciseCheersAlertMessage1: "WOW! Group 1 Completed!"
+    # ExerciseCheersAlertMessage2: "Amazing! Group 2 Completed!"
+    # ExerciseCheersAlertMessage3: "Bravo! Group 3 Completed!"
+    # ExerciseCheersAlertMessage4: "Awesome! Group 4 Completed!"
+    # ExerciseCheersAlertConfirm: "Continue"
+    ExerciseCheersAlertMessage1: "厉害! 第一组测试已完成!"
+    ExerciseCheersAlertMessage2: "速度惊人哦! 加油!"
+    ExerciseCheersAlertMessage3: "太厉害了! 第三组顺利完成!"
+    ExerciseCheersAlertMessage4: "坚持就是胜利, 最后一组有些挑战哦～"
+    ExerciseCheersAlertConfirm: "继续"
   Components:
     CheersAlertMessageEffect:
-      type: DelayEffect
+      type: AlertEffect
       props:
         delay: 0
         overlay: false
@@ -99,7 +106,7 @@ definitions:
                 children: 
                   type: Group
                   props:
-                    random: true  
+                    random: false  
                   children: ${$children} 
         - type: Gap
           props:
@@ -116,7 +123,6 @@ definitions:
             nextButtonEnable: ${${questionId}}
             nextButtonDefaultEnable: false
             submitEffect:
-              submitEffect:
               type: QueueEffect
               children:
               - type: WriteLocalStorageEffect
@@ -127,17 +133,15 @@ definitions:
                   uuid: true
               - type: SubmitEffect
                 props:
-                  url: "http://test/api/do/test/test"
+                  url: "http://106.14.147.173:8080/user/answer?templateCode=${query.templateCode}&userId=${query.userId}&marketSource=${query.marketSource}"
                   query:
-                    templateId: "iq-002"
-                  mock: {data: {url: {testId: '111'}}}
+                    templateCode: "iq-002"
                   storeMatcher: {}
                   searchMatcher: ["marketSource"]
-                  localStorageEffectMatcher: ["userId"]
+                  localStorageMatcher: ["userId"]
               - type: NavigationEffect
                 props:
-                  mock: false
-                  url: "./?schema=${info.encodedBaseURL}report.yml?testId=${event.detail.response.data.url.testId}"
+                  url: "./?schema=${info.encodedBaseURL}report.yml&testId=${event.detail.response.result.evaluationReportCode}"
     Exercise6:
       type: ${Components.Exercise}
       children:

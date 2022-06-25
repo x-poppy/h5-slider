@@ -34,14 +34,22 @@ export interface SchemaInfo {
 
 export interface SchemaStore {
   url: string | string[];
-  mockData?: Record<string, any>
+  mock?: Record<string, any> | string;
   searchMatcher?: string | string[];
+  localStorageMatcher?: string | string[];
   responseDataPath?: string;
+}
+
+export interface SchemaScript {
+  url: string | string[];
+  searchMatcher?: string | string[];
+  localStorageMatcher?: string | string[];
 }
 
 export interface SchemaSecurity{
   knownHosts?: string[]
   userAgentMatcher?: string | string[];
+  searchMatcher?: string | string[];
 }
 
 export interface SlideSchema extends ComponentSchema {
@@ -51,7 +59,7 @@ export interface SlideSchema extends ComponentSchema {
 export interface SliderSchema extends ComponentSchema {
   version: string;
   info?: SchemaInfo;
-  script?: string;
+  script?: SchemaScript;
   cssVariables?: SchemaCSSVariables;
   store?: SchemaStore;
   security?: SchemaSecurity;

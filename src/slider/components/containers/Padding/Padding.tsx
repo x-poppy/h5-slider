@@ -9,6 +9,9 @@ export interface PaddingProps extends SliderComponentProps {
   width?: string;
   height?: string;
   padding?: string;
+  fontSize?: string;
+  fontColor?: string;
+  fontWeight?: string;
   children?: ReactNode
 }
 
@@ -18,7 +21,11 @@ function Padding(props: PaddingProps) {
     width: props.width,
     height: props.height,
     padding: props.padding,
-  }), [props.height, props.padding, props.width]);
+    fontSize: props.fontSize,
+    color: props.fontColor,
+    fontWeight: props.fontWeight,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), []);
   return (
     <div className={classnames(styles.main, 
       size && 'size__' + size,

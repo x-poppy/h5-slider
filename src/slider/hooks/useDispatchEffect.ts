@@ -11,6 +11,7 @@ import { useStore } from "./useStore";
 import { useHttpClient } from "./useHttpClient";
 import { useUILock } from "./useUILock";
 import { isEffectElement } from "../utils/typeDetect";
+import { useInitialConfig } from "./useInitialConfig";
 
 interface DispatchEffectOpts {
   popupError?: boolean;
@@ -23,6 +24,7 @@ export function useDispatchEffect() {
   const store = useStore();
   const httpClient = useHttpClient();
   const screenLock = useUILock();
+  const initialConfig = useInitialConfig();
 
   const dispatch = useCallback(
     async (effectElement:SliderEffectElement, event: SlideEffectInitEvent, opts?: DispatchEffectOpts) => {
@@ -50,6 +52,7 @@ export function useDispatchEffect() {
         ...effectElement,
         event: contextEvent,
         context: {
+          initialConfig,
           variableScopes,
           i18nMessageBundle,
           navigation,

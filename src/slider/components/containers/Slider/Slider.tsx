@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useRef } from 'react';
+import React, { ReactElement, ReactNode, useMemo, useRef } from 'react';
 
 import { SliderComponentProps } from '../../../types/Component';
 import { I18nMessageBundleProvider } from '../../../hooks/useI18nMessageBundle';
@@ -17,6 +17,9 @@ import SliderOverlapLayer from './SliderOverlapLayer';
 
 export interface SliderProps extends SliderComponentProps {
   background?: string;
+  fontSize?: string;
+  fontColor?: string;
+  fontWeight?: string;
   initialIndex: number;
   storeData?: Record<string, StoreValueType>
   vertical?: boolean;
@@ -31,8 +34,17 @@ function Slider(props: SliderProps) {
   const slideElements = Array.isArray(props.children) ? props.children : [];
   const totalCount = slideElements.length;
   const swiperRef = useRef<SwiperInstance>(null);
+
+  const initStyle = useMemo(() => ({
+    fontSize: props.fontSize,
+    color: props.fontColor,
+    fontWeight: props.fontWeight,
+    background: props.background,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), []);
+
   return (
-    <div className={styles.main} style={{background: props.background}}>
+    <div className={styles.main} style={initStyle}>
       <SliderSchemaProvider sliderSchema={props.$$schema}>
         <I18nMessageBundleProvider>
           <NavigationProvider 

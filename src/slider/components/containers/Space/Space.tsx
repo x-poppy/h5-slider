@@ -6,6 +6,9 @@ import styles from './Space.module.css';
 
 export interface SpaceBoxProps extends SliderComponentProps, ClickAbleComponentProps {
   block?: boolean
+  fontSize?: string;
+  fontColor?: string;
+  fontWeight?: string;
   children: ReactNode;
   gap?: SpaceType
   padding?: string;
@@ -24,6 +27,10 @@ function Space(props: SpaceBoxProps) {
     width: props.width,
     height: props.height,
     margin: props.margin,
+    fontSize: props.fontSize,
+    color: props.fontColor,
+    fontWeight: props.fontWeight,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     // eslint-disable-next-line
   }), []);
 

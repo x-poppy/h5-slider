@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useMemo } from 'react';
 import { SliderComponentProps } from '../../../types/Component';
 import { useSlideIndex } from '../../../hooks/useSlideIndex';
 import { SliderEffectElement } from '../../../types/Element';
@@ -12,6 +12,9 @@ import styles from './Slide.module.css';
 export interface SlideProps extends SliderComponentProps {
   entryEffect?: SliderEffectElement;
   background?: string;
+  fontSize?: string;
+  fontColor?: string;
+  fontWeight?: string;
   children?: ReactNode;
 }
 
@@ -49,8 +52,16 @@ function Slide(props: SlideProps) {
     })
   }, [dispatchEffect, navigation.lastActiveIndex, props.entryEffect, selfIndex, selfIndexActive])
 
+  const initStyle = useMemo(() => ({
+    fontSize: props.fontSize,
+    color: props.fontColor,
+    fontWeight: props.fontWeight,
+    background: props.background,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), []);
+  
   return (
-    <div style={{background: props.background}} className={styles.main}>
+    <div style={initStyle} className={styles.main}>
       { props.children }
     </div>
   );

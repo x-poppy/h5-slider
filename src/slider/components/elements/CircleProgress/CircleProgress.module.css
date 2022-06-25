@@ -1,0 +1,5 @@
+.main > :global(.rv-circle__text) {
+  font-size: unset;
+  font-weight: unset;
+  color: unset;
+}

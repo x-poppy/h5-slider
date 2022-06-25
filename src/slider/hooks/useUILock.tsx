@@ -2,8 +2,8 @@ import React, { ReactNode, useContext, useMemo, useState } from "react";
 import { noop } from "../utils/noop";
 
 const UILockContext = React.createContext({
-  lock: noop,
-  unlock: noop,
+  lock: noop as any,
+  unlock: noop as any,
   locked: false,
 });
 

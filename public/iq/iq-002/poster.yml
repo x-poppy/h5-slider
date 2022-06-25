@@ -1,0 +1,69 @@
+version: 0.0.1
+info:
+  title: "瑞文智商测试"
+  favicon: "./favicon.ico"
+  description: "瑞文智商测试"
+  contentBackground: "#f4f8fc"
+  cssVariables:
+security:
+  knownHosts:
+  searchMatcher: 
+    - marketSource  
+definitions:
+  Themes:
+    PrimaryColor: '#27527a'
+  LocaleMessages:
+    DoTestText: "开始测试"
+    CompanyInfo: "上海钛咖科技工作室"
+
+type: Slider
+props:
+  widgets:
+children:
+  - type: Slide
+    children:
+    - type: FlexBox
+      props:
+        direction: column
+        background: "url('./iq/iq-002/assets/poster/repeat-bg.png') repeat"
+      children:
+      - type: Image
+        props:
+          src: "./assets/poster/001.png"
+      - type: FlexBox
+        props:
+          padding: 1rem
+          direction: column
+          justify: stretch
+          fontWeight: bold
+        children:
+        - type: Button
+          props:
+            color: "#f47f2d"
+            size: normal
+            round: true
+            shadow: 1
+            clickEffect:
+              type: NavigationEffect
+              props:
+                searchMatcher: ["marketSource"]
+                url: "./?schema=iq%2Fiq-002%2Findex.yml&marketSource=${query.marketSource}"
+          children: ${LocaleMessages.DoTestText} 
+        - type: Gap  
+    - type: FlexBox
+      props:
+        padding: 1rem
+        align: center
+        direction: column
+      children:
+      - type: QRCode
+        props:
+          size: 128
+          includeMargin: true
+          content: "${location}" 
+      - type: Gap
+      - type: Text
+        props:
+          color: black
+          type: secondary
+        children: "${LocaleMessages.CompanyInfo}"
