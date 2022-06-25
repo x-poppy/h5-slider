@@ -164,9 +164,9 @@ window.slider.once('onStoreDataLoaded', (evt) => {
 
     storeData.reportLock = storeData.payStatus !== "PAY_FINISH";
 
-    if (report.answers[0].a === 'E') {
+    // if (report.answers[0].a === 'E') {
       storeData.reportLock = false;
-    }
+    // }
 
     storeData.paymentPriceText = convertFenToYuanDesc(storeData.amount);
     storeData.paymentPrice2Text = convertFenToYuanDesc(storeData.amount * 1.8);

@@ -90,11 +90,10 @@ definitions:
                 src: "${groupScoreImg}"
           - type: Group
             children:
-            - type: Text
-              children: "${groupScoreDesc}"
+            - type: RichText
+              props:
+                text: "${groupScoreDesc}"
             - type: Gap  
-            - type: Text
-              children: "${groupScoreDes2}"
 
   LocaleMessages:
     PaymentReportTitle: "您的专属测评报告已经生成"
@@ -107,27 +106,9 @@ definitions:
 
     ToalSoreTitle: "您的智商综合评分为:"
     ToalSoreSubTitle: "智商水平为:  "
-
     ToalGroupSoreTitle: "各个维度能力分布:"
-
     RuiWenIntroTitle: "关于瑞文标准智商测评"
-    RuiWenIntroContent: '瑞文标准智商测试(简称SPM), 是国际上广受认可的智力测验工具。由英国心理学家瑞文(J.C.Raven)于1938年创制,在世界各国沿用至今。它是一种纯粹的非文字智力测验,所以广泛应用于无国界的智力推理能力测试。'
-    RuiWenIntroContent2: '瑞文标准智商测试的理论假设源于依据英国心理学家斯皮尔曼(C.E.Spearman)的智力二因素论, 该理论认为智力主要是由“G”因素和“S”因素共同构成的,其中 “G”因素是普通因素,它可以参与到所有的智力活动中,它是每个人都具有的,只是水平上有所差异;“S”因素是特殊因素,这类因素种类很多,且与相关的训练有很大关系。“G”因素智商高的人天资聪慧,“S”因素智商高的人术业超群。成就卓越者通常在两种因素上的智力都很高。瑞文推理测试是测量“G”因素的有效工具,主要通过图形的辨别,组合,系列关系等测量人的智力水平，以及人们解决问题的能力、观察力、思维能力、发现和利用自己所需的信息及适应社会生活的能力。'
-    
-    ReportScoreGroup0InfoContent: '知觉辨别(perceptual ideotification), 是指对外界总体感官信息的组织和辨别能力。知觉其实是大脑对于现实的建构，当外界刺激作用于感官时，我们的大脑对会对这些外界的感官信息进行处理，对属性相同的信息进行归纳合并，对属性不同的信息进行分类区分，这样大脑就会对这一物体形成一个整体的认知。'
-    ReportScoreGroup0InfoContent2: '本测试中1—12题主要考察知觉辨别的能力。 知觉辨别力强的人对周围大环境有很强的洞察力，大脑对外界环境信息的分类、归纳能力强，有很好的全局观，看待问题较为全面。'
-    
-    ReportScoreGroup1InfoContent: '指将关注集中在有限的具体事物上时，针对其相似性和区别的观察比较能力，以及对参考物借鉴、模仿的能力。13—24题的题目图里都是由4个部分组成，通过横向或纵向的两两配对就可以看出规律，考察的是对单一变化的比较和模仿能力。类同比较能力强的人对具体事物观察和比较的能力很强，且具有很强的模仿能力。在处理问题时，很容易通过借鉴的方式从其他领域获得启发和解决方案。类同比较能力较弱的人对具体事物的观察不够细致，因此不太容易发现它们的特点和内在规律，因此在比较和做选择上容易遇到困难，有时因为把握不住关键区别和规律而抓不对重点，所以模仿、借鉴的能力也受到了一些限制。'
-    ReportScoreGroup1InfoContent2: ''
-    
-    ReportScoreGroup2InfoContent: '指针对多个角度或多个方向的变化规律进行比较、总结的能力。25—36题的题目图都是由9个部分组成的矩阵，从横向和纵向两个方向都有简单的渐变规律，比类同比较题组多了确认变化规律的环节，然后再进行变化模仿。考察的是比较和推理的能力。比较推理能力强的人善于从多个角度考虑事物，并且会考虑到不同的发展规律，最后做出综合了多角度考量的最合理判断。比较能力较弱的人虽然也知道应该从多个角度考虑问题，但有时仍会忽略掉一些角度，在考虑问题时容易因为角度单一、缺少换位思考，而出现结论片面或解决方案涵盖不全的纰漏。'
-    ReportScoreGroup2InfoContent2: ''
-
-    ReportScoreGroup3InfoContent: '指对相对复杂的复合型事物进行拆分和再组合的列举式推理能力。37—48题的题目图全部由9个部分组成矩阵，每个部分都有两种元素组成，需要在第三行里找到没出现过的两种元素的组合，考察的是统计、拆分、组合的能力，与记忆力也有一定关联。系列关系推理能力强的人善于把复杂事物或问题拆分成更简单的元素，从而在更直观和简单的层面上进行分析，从而让处理问题得到很大便利。系列关系推理能力较弱的人在处理或分析复杂事物，有时容易被事物表面上的复杂假象蒙蔽住，导致无法进一步分析和处理问题，因此容易在遇到困难时停滞不前。'
-    ReportScoreGroup3InfoContent2: ''
-    
     ReportScoreGroup4InfoContent: '指通过对事物的细心观察进一步发现事物内在的抽象规律或与其他事物之间的联系以及相互作用规律的能力。49—60题的题目图体现的是加减法这类抽象的逻辑运算，从抽象的形式中找到做加法还是减法的判断规律，考察的是对事物之间联系规律的猜想、判断和运算能力。抽象推理能力强的人对事物的观察能力很强，而且善于透过事物表面找到事物之间更深层的联系和相互作用规律，也很善于在事物更本质的角度上考虑问题，从而准确、彻底地处理问题。抽象推理能力较弱的人不太善于透过事物表面看到其本质或发现事物之间的深层联系。'
-    ReportScoreGroup4InfoContent2: ''
 
     SuggestionTitle: "建议与提高"
     ThanksTitle: "感谢您的支持和参与"
@@ -333,11 +314,9 @@ children:
             children:
               - type: Title
                 children: "${LocaleMessages.RuiWenIntroTitle}"
-              - type: Text
-                children: "${LocaleMessages.RuiWenIntroContent}"
-              - type: Gap  
-              - type: Text
-                children: "${LocaleMessages.RuiWenIntroContent2}"  
+              - type: RichText
+                props:
+                  text: '<p><strong>瑞文标准智商测试</strong>(简称SPM)，是国际上广受认可的智力测验工具。由英国心理学家<span style="text-decoration:underline">瑞文(J.C.Raven)</span>于1938年创制，在世界各国沿用至今。它是一种纯粹的<span style="color:#e36c09">非文字智力测验<span style="color:#000">，</span></span>所以广泛应用于无国界的智力推理能力测试。</p><p><strong>瑞文标准智商测试</strong>的理论假设源于依据英国心理学家<span style="text-decoration:underline">斯皮尔曼(C.E.Spearman)</span>的智力二因素论，该理论认为智力主要是由“G”因素和“S”因素共同构成的，其中 “G”因素是普通因素，它可以参与到所有的智力活动中，它是每个人都具有的，只是水平上有所差异;“S”因素是特殊因素，这类因素种类很多,且与相关的训练有很大关系。“G”因素智商高的人天资聪慧，“S”因素智商高的人术业超群。成就卓越者通常在两种因素上的智力都很高。瑞文推理测试是测量“G”因素的有效工具，主要通过图形的辨别，组合，系列关系等测量人的智力水平，以及人们解决问题的能力、观察力、思维能力、发现和利用自己所需的信息及适应社会生活的能力。</p>'
               - type: Gap  
               - type: Image
                 props:
@@ -383,8 +362,7 @@ children:
             groupScoreTitle: ${reportScoreGroup0Title}
             groupScoreSubTitle: ${reportScoreGroup0Desc}
             groupScoreImg: "./assets/report/report_group_ganzhi.png"
-            groupScoreDesc: ${LocaleMessages.ReportScoreGroup0InfoContent}
-            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup0InfoContent2}
+            groupScoreDesc: '<p><strong>知觉辨别(perceptual ideotification)</strong>, 是指对外界总体感官信息的组织和辨别能力。知觉其实是大脑对于现实的建构，当外界刺激作用于感官时，我们的大脑对会对这些外界的感官信息进行处理，对属性相同的信息进行归纳合并，对属性不同的信息进行分类区分，这样大脑就会对这一物体形成一个整体的认知。<strong>本测试中 1-12 题</strong>主要考察知觉辨别的能力。&nbsp;</p><p>知觉辨别力强的人对周围大环境有很强的洞察力，大脑对外界环境信息的分类、归纳能力强，有很好的全局观，看待问题较为全面。</p>'
 
         - type: Gap
 
@@ -394,8 +372,8 @@ children:
             groupScoreTitle: ${reportScoreGroup1Title}
             groupScoreImg: "./assets/report/report_group_leitong.png"
             groupScoreSubTitle: ${reportScoreGroup1Desc}
-            groupScoreDesc: ${LocaleMessages.ReportScoreGroup1InfoContent}
-            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup1InfoContent2}
+            groupScoreDesc: '<p><strong>类同比较</strong>，是指将关注集中在有限的具体事物上时，针对其相似性和区别的观察比较能力，以及对参考物借鉴、模仿的能力。<strong>本测试中13—24题</strong>的题目图里都是由4个部分组成，通过横向或纵向的两两配对就可以看出规律，考察的是对单一变化的比较和模仿能力。</p><p>类同比较能力强的人对具体事物观察和比较的能力很强，且具有很强的模仿能力。在处理问题时，很容易通过借鉴的方式从其他领域获得启发和解决方案。类同比较能力较弱的人对具体事物的观察不够细致，因此不太容易发现它们的特点和内在规律，因此在比较和做选择上容易遇到困难，有时因为把握不住关键区别和规律而抓不对重点，所以模仿、借鉴的能力也受到了一些限制。</p>'
+
         - type: Gap
 
         # 比较推理 2
@@ -404,8 +382,7 @@ children:
             groupScoreTitle: ${reportScoreGroup2Title}
             groupScoreImg: "./assets/report/report_group_tuili.png"
             groupScoreSubTitle: ${reportScoreGroup2Desc}
-            groupScoreDesc: ${LocaleMessages.ReportScoreGroup2InfoContent}
-            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup2InfoContent2}
+            groupScoreDesc: '<p><strong>比较推理</strong>，指针对多个角度或多个方向的变化规律进行比较、总结的能力。<strong>本测试中25—36</strong><strong>题</strong>的题目图都是由9个部分组成的矩阵，从横向和纵向两个方向都有简单的渐变规律，比类同比较题组多了确认变化规律的环节，然后再进行变化模仿。考察的是比较和推理的能力。</p><p>比较推理能力强的人善于从多个角度考虑事物，并且会考虑到不同的发展规律，最后做出综合了多角度考量的最合理判断。比较能力较弱的人虽然也知道应该从多个角度考虑问题，但有时仍会忽略掉一些角度，在考虑问题时容易因为角度单一、缺少换位思考，而出现结论片面或解决方案涵盖不全的纰漏。</p>'
 
         - type: Gap
 
@@ -415,8 +392,7 @@ children:
             groupScoreTitle: ${reportScoreGroup3Title}
             groupScoreImg: "./assets/report/report_group_guanxi.png"
             groupScoreSubTitle: ${reportScoreGroup3Desc}
-            groupScoreDesc: ${LocaleMessages.ReportScoreGroup3InfoContent}
-            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup3InfoContent2}
+            groupScoreDesc: '<p><strong>系列关系</strong>， 指对相对复杂的复合型事物进行拆分和再组合的列举式推理能力。<strong>本测试中37—48题</strong>的题目图全部由9个部分组成矩阵，每个部分都有两种元素组成，需要在第三行里找到没出现过的两种元素的组合，考察的是统计、拆分、组合的能力，与记忆力也有一定关联。</p><p>系列关系推理能力强的人善于把复杂事物或问题拆分成更简单的元素，从而在更直观和简单的层面上进行分析，从而让处理问题得到很大便利。系列关系推理能力较弱的人在处理或分析复杂事物，有时容易被事物表面上的复杂假象蒙蔽住，导致无法进一步分析和处理问题，因此容易在遇到困难时停滞不前。</p>'
 
         - type: Gap
 
@@ -426,8 +402,7 @@ children:
             groupScoreTitle: ${reportScoreGroup4Title}
             groupScoreImg: "./assets/report/report_group_xiangxiang.png"
             groupScoreSubTitle: ${reportScoreGroup4Desc}
-            groupScoreDesc: ${LocaleMessages.ReportScoreGroup4InfoContent}
-            groupScoreDesc2: ${LocaleMessages.ReportScoreGroup4InfoContent2}
+            groupScoreDesc: '<p><strong>抽象推理</strong>, 指通过对事物的细心观察进一步发现事物内在的抽象规律或与其他事物之间的联系以及相互作用规律的能力。<strong>本测试中49—60题</strong>的题目图体现的是加减法这类抽象的逻辑运算，从抽象的形式中找到做加法还是减法的判断规律，考察的是对事物之间联系规律的猜想、判断和运算能力。</p><p>抽象推理能力强的人对事物的观察能力很强，而且善于透过事物表面找到事物之间更深层的联系和相互作用规律，也很善于在事物更本质的角度上考虑问题，从而准确、彻底地处理问题。抽象推理能力较弱的人不太善于透过事物表面看到其本质或发现事物之间的深层联系。</p>'
       
       - type: Gap
 
