@@ -40,10 +40,17 @@ export interface SchemaStore {
   responseDataPath?: string;
 }
 
+export interface SchemaVendorScript {
+  url: string;
+  userAgentMatcher?: string | string[];
+}
+
 export interface SchemaScript {
   url: string | string[];
+  globalVariables?: string | string[];
   searchMatcher?: string | string[];
   localStorageMatcher?: string | string[];
+  vendors?: SchemaVendorScript[]
 }
 
 export interface SchemaSecurity{

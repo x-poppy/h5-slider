@@ -1,6 +1,6 @@
 import { SliderEffectProps } from '../../types/Component';
 import { navigateTo } from '../../utils/navigate';
-import { appendQueryToUrl, getQueryObjectFromLocalStorage, getQueryObjectFromSearch } from '../../utils/url';
+import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch } from '../../utils/url';
 
 export interface NavigationEffectProps extends SliderEffectProps {
   url: string;

@@ -2,6 +2,7 @@ import { useHttpClient } from '../hooks/useHttpClient';
 import { useI18nMessageBundle } from '../hooks/useI18nMessageBundle';
 import { useInitialConfig } from '../hooks/useInitialConfig';
 import { useNavigation } from '../hooks/useNavigation';
+import { useScriptContext } from '../hooks/useScriptContext';
 import { useStore } from '../hooks/useStore';
 import { useUILock } from '../hooks/useUILock';
 import { useVariableScopes } from '../hooks/useVariableScopes';
@@ -28,6 +29,7 @@ interface SliderEffectContext {
   httpClient: ReturnType<typeof useHttpClient>
   navigation: ReturnType<typeof useNavigation>
   screenLock: ReturnType<typeof useUILock>
+  scriptContext: ReturnType<typeof useScriptContext>
 }
 
 export interface SliderEffectProps extends SliderComponentProps {

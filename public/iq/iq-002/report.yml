@@ -10,7 +10,11 @@ store:
   url: "http://106.14.147.173:8080/user/answer/${query.testId}"
   responseDataPath: "result"
 script:
+  vendors:
+    - url: "http://res2.wx.qq.com/open/js/jweixin-1.6.0.js"
+      userAgentMatcher: 'MicroMessenger'
   url: "./scripts/report.js"
+  globalVariables: ['alert', 'navigator', 'wx']
 definitions:
   Themes:
     PrimaryColor: '#27527a'
@@ -230,10 +234,15 @@ props:
                       props:
                         icon: WechatPay
                     clickEffect:
-                      type: NavigationEffect
-                      props:
-                        mock: false
-                        url: "./?schema=${info.encodedBaseURL}poster.yml"
+                      type: QueueEffect
+                      children:
+                      - type: ScriptEffect
+                        props:
+                          functionName: "payment"
+                      # - type: NavigationEffect
+                      #   props:
+                      #     mock: false
+                      #     url: "./?schema=${info.encodedBaseURL}poster.yml"
                   children: ${LocaleMessages.PaymentBtnText}
                 - type: Gap  
     

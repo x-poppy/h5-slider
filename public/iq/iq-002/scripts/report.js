@@ -165,9 +165,15 @@ window.slider.once('onStoreDataLoaded', (evt) => {
     storeData.reportLock = storeData.payStatus !== "PAY_FINISH";
 
     // if (report.answers[0].a === 'E') {
-      storeData.reportLock = false;
+      storeData.reportLock = true;
     // }
 
     storeData.paymentPriceText = convertFenToYuanDesc(storeData.amount);
     storeData.paymentPrice2Text = convertFenToYuanDesc(storeData.amount * 1.8);
 });
+
+window.slider.once('onCallFunction', (evt) => {
+  evt.detail.callback();
+
+  console.log(window.slider);
+})

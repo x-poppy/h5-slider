@@ -51,6 +51,7 @@ function SliderLoader() {
             variableScopes,
           }),
           loadScript(schema, {
+            httpClient,
             scriptContext,
             variableScopes,
             throwError,

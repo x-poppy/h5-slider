@@ -7,6 +7,7 @@ export const EventNames = {
   OnStoreDataLoaded: "onStoreDataLoaded",
   OnSchemaInitial: "onSchemaInitial",
   OnLoaded: "onLoaded",
+  OnCallFunction: "onCallFunction",
 }
 
 interface ScriptContextAPI {

@@ -2,7 +2,6 @@ import MobileDetect from 'mobile-detect';
 import disableDevtool from 'disable-devtool';
 import { SliderSchema } from '../types/Schema';
 import { match } from "./string";
-import { getQueryObjectFromSearch } from './url';
 
 const InvalidErrorMessage = 'EnviromentNotSupport';
 
