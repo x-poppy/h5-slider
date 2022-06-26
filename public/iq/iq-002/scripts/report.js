@@ -174,7 +174,12 @@ window.slider.once('onStoreDataLoaded', (evt) => {
 });
 
 window.slider.once('onCallFunction', (evt) => {
-  evt.detail.callback();
+  const functionName = evt.detail.functionName;
+  // 支付
+  if (functionName === 'payment') {
+    evt.detail.callback();
+    return;
+  }
 
-  console.log(window.slider);
+  evt.detail.callback();
 })
