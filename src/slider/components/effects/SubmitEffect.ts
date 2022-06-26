@@ -2,6 +2,7 @@ import { Method } from 'axios';
 import { StoreKeyNames } from '../../hooks/useStore';
 import { SliderEffectProps } from '../../types/Component';
 import { getRandomValueFromArray } from '../../utils/random';
+import { request } from '../../utils/request';
 import { getStoreData } from '../../utils/storage';
 import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from '../../utils/url';
 
@@ -38,7 +39,7 @@ async function SubmitEffect(props: SubmitEffectProps) {
   
   if (mock && props.mock) {
     if (typeof props.mock === 'string') {
-      const mockResponse =  await fetch(props.mock);
+      const mockResponse =  await request(props.mock);
       const mockData = await mockResponse.json();
       props.event.detail = {
         ...props.event.detail,

@@ -3,6 +3,7 @@ import {getProperty, hasProperty} from 'dot-prop';
 import { useVariableScopes } from '../hooks/useVariableScopes';
 import { SliderSchema } from '../types/Schema';
 import { getRandomValueFromArray } from './random';
+import { request } from './request';
 import { StoreValueType } from './storage';
 import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from './url';
 
@@ -29,7 +30,7 @@ export async function loadStoreData(
 
   if (initialConfig.mock && storeInfo.mock) {
     if (typeof storeInfo.mock === 'string') {
-      const mockResponse = await fetch(storeInfo.mock);
+      const mockResponse = await request(storeInfo.mock);
       const mockData = await mockResponse.json();
       return {
         ...mockData

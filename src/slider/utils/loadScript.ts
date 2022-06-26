@@ -1,6 +1,7 @@
 import { useVariableScopes } from "../hooks/useVariableScopes";
 import { SliderSchema } from "../types/Schema";
 import { getRandomValueFromArray } from "./random";
+import { request } from "./request";
 import { match } from "./string";
 import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from "./url";
 
@@ -82,7 +83,7 @@ export async function loadScript(schema: SliderSchema, opts: LoadScriptOpts) {
 
   url = getURL(url, schema.info?.baseURL);
 
-  const response = await window.fetch(url, {
+  const response = await request(url, {
     headers: {
       'cache-control': 'no-cache'
     }

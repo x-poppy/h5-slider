@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { callback } from '../../../utils/callback';
+import { request } from '../../../utils/request';
 import { getURL } from '../../../utils/url';
 import { ImageProps } from '../Image/Image';
 
@@ -21,7 +22,7 @@ function SVGImage(props: ImageProps) {
 
     const controller = new AbortController();
     callback(async () => {
-      const response =  await fetch(src, {
+      const response =  await request(src, {
         signal: controller.signal,
       })
       const responseText = await response.text();

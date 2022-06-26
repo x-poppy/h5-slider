@@ -1,5 +1,6 @@
 import yaml from 'js-yaml';
 import { SliderSchema } from '../types/Schema';
+import { request } from './request';
 import { getBaseURL, getURL } from './url';
 
 export async function loadSchema(url: string, baseURL?: string) {
@@ -9,7 +10,7 @@ export async function loadSchema(url: string, baseURL?: string) {
 
   url = getURL(url, baseURL);
 
-  const response = await window.fetch(url, {
+  const response = await request(url, {
     headers: {
       'cache-control': 'no-cache'
     }

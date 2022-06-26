@@ -2,6 +2,7 @@ import React, { ReactNode, useContext, useMemo } from "react";
 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { useInitialConfig } from "./useInitialConfig";
+import { request } from "../utils/request";
 
 const mockAdapter = async (cfg: AxiosRequestConfig) => {
   const mockUrl = cfg.headers?.['x-mock-url'] as string;
@@ -9,7 +10,7 @@ const mockAdapter = async (cfg: AxiosRequestConfig) => {
     throw new Error('Mock url is empty!');
   }
 
-  const results = await fetch(mockUrl as string);
+  const results = await request(mockUrl as string);
   const data = await results.json();
   return {
     data,
