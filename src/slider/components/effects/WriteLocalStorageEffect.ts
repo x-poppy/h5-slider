@@ -7,7 +7,7 @@ export enum WriteModes {
   SetNX = 'SetNX',
 }
 
-const SliderClientHashKeyName = 'sliderClientHash';
+const SliderClientHashKeyName = 'scid';
 
 // this is default value for client hash
 if (!localStorage.getItem(SliderClientHashKeyName)) {
