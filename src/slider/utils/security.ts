@@ -12,15 +12,7 @@ export function isEnviromentNotSupportError(error: any): boolean {
   return false;
 }
 
-export function validateEnviroments(config: Record<string, any>) {
-  if (process.env.NODE_ENV !== 'production') {
-    return;
-  }
-
-  if (config['__SkipEnviromentsValidation__']) {
-    return;
-  }
-
+function validateEnviroments(schema: SliderSchema) {
   disableDevtool({
     interval: 1000,
     detectors: [-1, 0, 2],
@@ -44,14 +36,16 @@ export function validateEnviroments(config: Record<string, any>) {
   }
 }
 
-export function validateScurity(schema: SliderSchema) {
+function validateUserAgent(schema: SliderSchema) {
   const userAgentMatcher = schema.security?.userAgentMatcher;
   if (userAgentMatcher) {
     if (!match(window.navigator.userAgent, userAgentMatcher, true)) {
       throw(new Error("Invalid UserAgent"));
     }
   }
+}
 
+function validateSearchParams(schema: SliderSchema) {
   if (schema.security?.searchMatcher) {
     const queries: string[] = [];
     if (Array.isArray(schema.security?.searchMatcher)) {
@@ -67,4 +61,14 @@ export function validateScurity(schema: SliderSchema) {
       }
     })
   }
+}
+
+export function validateScurity(schema: SliderSchema) {
+  if (schema.security?.skipValidation) {
+    return;
+  }
+  
+  validateEnviroments(schema);
+  validateUserAgent(schema);
+  validateSearchParams(schema);
 }

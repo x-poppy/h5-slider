@@ -14,7 +14,7 @@ import { useThrowError } from "../../hooks/useThrow";
 import { callback } from "../../utils/callback";
 import { loadAllComponents } from "../../components";
 import { initializeDocument } from "../../utils/initializeDocument";
-import { validateEnviroments, validateScurity } from "../../utils/security";
+import { validateScurity } from "../../utils/security";
 import { useVariableScopes } from "../../hooks/useVariableScopes";
 
 function SliderLoader() {
@@ -31,8 +31,6 @@ function SliderLoader() {
     callback(async () => {
       try {
         loadingIndication.start();
-
-        validateEnviroments(initialConfig);
 
         let schemaUrl = initialConfig.schema;
         if (typeof initialConfig.schema !== 'string') {
@@ -70,7 +68,7 @@ function SliderLoader() {
         };
 
         let initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 0;
-        if (process.env.NODE_ENV !== 'production' || schema.security?.allowActiveIndex) {
+        if (process.env.NODE_ENV !== 'production' || schema.security?.allowDebugActiveIndex) {
           initialIndex = ~~(initialConfig.activeIndex ?? 0)
         }
 
