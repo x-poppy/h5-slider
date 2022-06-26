@@ -120,7 +120,7 @@ definitions:
                   url: "http://test/api/do/test/test"
                   storeMatcher: {}
                   searchMatcher: ["userId", "templateId", "marketSource"]
-                  localStorageEffectMatcher: ["userId"]
+                  localStorageMatcher: ["userId"]
 
 type: Slider
 props:
