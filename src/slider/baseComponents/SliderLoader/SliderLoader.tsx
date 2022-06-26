@@ -69,8 +69,11 @@ function SliderLoader() {
           ...(storeDataLoadedEvt.detail ?? {})
         };
 
-        const initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 
-          (process.env.NODE_ENV === 'production' ? 0 : ~~(initialConfig.activeIndex ?? 0));
+        let initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 0;
+        if (process.env.NODE_ENV !== 'production' || schema.security?.allowActiveIndex) {
+          initialIndex = ~~(initialConfig.activeIndex ?? 0)
+        }
+
         transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();
         // transform schema
         const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {

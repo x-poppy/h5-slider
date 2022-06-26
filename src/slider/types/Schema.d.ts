@@ -57,6 +57,7 @@ export interface SchemaSecurity{
   knownHosts?: string[]
   userAgentMatcher?: string | string[];
   searchMatcher?: string | string[];
+  allowActiveIndex?: boolean
 }
 
 export interface SlideSchema extends ComponentSchema {

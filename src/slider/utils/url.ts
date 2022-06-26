@@ -17,10 +17,7 @@ export function getURL(url: string, baseURL?: string) {
   }
 
   if (!baseURL) {
-    baseURL = window.location.origin + window.location.pathname;
-    if (!baseURL.endsWith('/')) {
-      baseURL = baseURL + '/';
-    }
+    baseURL = getBaseURL(window.location.origin + window.location.pathname);
   }
 
   return new URL(url, baseURL).href;
