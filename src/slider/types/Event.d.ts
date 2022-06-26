@@ -5,5 +5,6 @@ interface SlideEffectInitEvent {
 
 interface SlideEffectEvent {
   eventName: string
+  eventTimeStamp: number
   detail: Record<string, any>
 }

@@ -37,9 +37,10 @@ export function useDispatchEffect() {
       const popupError = opts?.popupError ?? true;
       const contextEvent: SlideEffectEvent = {
         eventName: event.eventName,
+        eventTimeStamp: Date.now(),
         detail: {
           ...event.detail
-        }
+        },
       };
 
       variableScopes.pushScope({

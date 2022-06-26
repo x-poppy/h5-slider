@@ -93,6 +93,9 @@ export function createStorage(data: Record<string, StoreValueType>, opts?: Creat
 }
 
 export function getStoreData(store: Storage,  matcher?: string | string[]) {
+  if (!matcher) {
+    return {};
+  }
   const jsonData = store.toJSON();
   return filterObjectByMatcher(jsonData, matcher, false) as Record<string, StoreValueType>;
 }

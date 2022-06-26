@@ -7,6 +7,13 @@ export enum WriteModes {
   SetNX = 'SetNX',
 }
 
+const SliderClientHashKeyName = 'sliderClientHash';
+
+// this is default value for client hash
+if (!localStorage.getItem(SliderClientHashKeyName)) {
+  localStorage.setItem(SliderClientHashKeyName, uuidv4());
+}
+
 export type StoreValueType = string | number | null;
 
 export interface WriteLocalStorageEffectProps extends SliderEffectProps {
