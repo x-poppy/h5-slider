@@ -15,6 +15,7 @@ script:
       userAgentMatcher: 'MicroMessenger'
   url: "./scripts/report.js"
   globalVariables: ['alert', 'navigator', 'wx']
+  searchMatcher: ["testId"]
 definitions:
   Themes:
     PrimaryColor: '#27527a'
@@ -137,8 +138,8 @@ props:
           props:
             left: 1rem
             right: 1rem
-            top: 20%
-            height: 30rem
+            top: 12%
+            height: 75%
           children:
             type: Block
             props:
@@ -161,7 +162,7 @@ props:
                     props:
                       size: 1.25rem
                       icon: Lock
-                      color: '#000'
+                      color: '#000'      
                 - type: Title
                   props:
                     strong: true
@@ -183,47 +184,55 @@ props:
                   props:
                     width: 100%
                     src: "./assets/report/payment_tubiao_003.png"
-                - type: Gap    
-                
+                - type: Gap
+                - type: FlexItem
+                  props:
+                    flex: "0.5 1 auto"
+                - type: FlexBox
+                  props:
+                    align: center
+                  children: 
+                  - type: QRCode
+                    props:
+                      size: 128
+                      includeMargin: true
+                      content: "${location}" 
+                  - type: FlexBox
+                    props:
+                      direction: column
+                    children:
+                    - type: Space
+                      props:
+                        justify: center
+                        align: center
+                      children:
+                        - type: Text
+                          props: 
+                            size: md
+                            strong: true
+                          children: ${LocaleMessages.PaymentReportPriceDesc} 
+                        - type: Text
+                          props: 
+                            type: secondary
+                            strong: true
+                            delete: true
+                          children: "${paymentPrice2Text}"
+                        - type: Text
+                          props: 
+                            fontColor: red
+                            size: lg
+                            strong: true
+                            text: "${paymentPriceText}" 
+                    - type: Text
+                      props:
+                        align: center
+                        size: xs
+                        type: secondary
+                        text: "${LocaleMessages.PaymentReportDesc003}"       
+                - type: Gap
                 - type: FlexItem
                   props:
                     flex: "1 1 auto"
-                - type: FlexBox
-                  props:
-                    direction: column
-                  children:    
-                  - type: Space
-                    props:
-                      justify: center
-                      align: center
-                    children:
-                      - type: Text
-                        props: 
-                          size: md
-                          strong: true
-                        children: ${LocaleMessages.PaymentReportPriceDesc} 
-                      - type: Text
-                        props: 
-                          type: secondary
-                          strong: true
-                          delete: true
-                        children: "${paymentPrice2Text}"
-                      - type: Text
-                        props: 
-                          fontColor: red
-                          size: lg
-                          strong: true
-                        children: "${paymentPriceText}" 
-                  - type: Text
-                    props:
-                      align: center
-                      size: xs
-                      type: secondary
-                      text: "${LocaleMessages.PaymentReportDesc003}"      
-                - type: FlexItem
-                  props:
-                    flex: "1 1 auto"      
-                - type: Gap   
                 - type: Button
                   props:
                     round: true

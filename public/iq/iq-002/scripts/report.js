@@ -168,6 +168,7 @@ window.slider.once('onStoreDataLoaded', (evt) => {
       storeData.reportLock = true;
     // }
 
+    storeData.orderId = window.slider.query.testId;
     storeData.paymentPriceText = convertFenToYuanDesc(storeData.amount);
     storeData.paymentPrice2Text = convertFenToYuanDesc(storeData.amount * 1.8);
 });
