@@ -2,7 +2,6 @@ import React, { ReactElement, useCallback, useMemo } from 'react';
 import { Swiper } from 'react-vant';
 import { SwiperDuration, useNavigation } from '../../../../hooks/useNavigation';
 import { SlideIndexProvider } from '../../../../hooks/useSlideIndex';
-import { useUpdateNavStoreEffect } from '../../../../hooks/useUpdateNavStoreEffect';
 import { isCloseTo } from '../../../../utils/math';
 import classnames from 'classnames';
 
@@ -19,7 +18,7 @@ function SliderContent(props: SliderContentProps) {
   const slideElements = props.slideElements ?? [];
   const navigation = useNavigation();
   const { locked } = useUILock();
-  useUpdateNavStoreEffect();
+
   const onActiveIndexChange = useCallback(
     (index: number) => {
       navigation.onSlideChange(index);
