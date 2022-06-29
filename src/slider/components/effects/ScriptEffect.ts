@@ -3,7 +3,7 @@ import { SliderEffectProps } from '../../types/Component';
 
 interface ScriptEffectProps extends SliderEffectProps {
   functionName: number;
-  functionPrams?: string;
+  functionPrams?: any;
 }
 
 async function ScriptEffect(props: ScriptEffectProps) {
@@ -26,14 +26,11 @@ async function ScriptEffect(props: ScriptEffectProps) {
       resolve(data);
     }
 
-    const callFunctionEvent = new CustomEvent(EventNames.OnCallFunction, {
-      detail: {
-        functionName: props.functionName,
-        functionPrams: props.functionPrams,
-        callback: callbackHandler,
-      }
+    scriptContext.emit(EventNames.OnCallFunction, {
+      functionName: props.functionName,
+      functionPrams: props.functionPrams,
+      callback: callbackHandler,
     });
-    scriptContext.emit(callFunctionEvent);
   })
 }
 

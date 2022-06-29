@@ -33,18 +33,15 @@ function Module(props: ModuleProps) {
       try {
         loadingIndicator.start();
         const schema = await loadSchema(props.url, props.$$schema.info?.baseURL);
-        const schemaInitialEvt = new CustomEvent(EventNames.OnModuleSchemaInitial, {
-          detail: {
-            schema,
-            name: props.name,
-            selector: {
-              find,
-              findByType,
-              findByProperty,
-            }
+        const schemaInitialEvt = scriptContext.emit(EventNames.OnModuleSchemaInitial, {
+          schema,
+          name: props.name,
+          selector: {
+            find,
+            findByType,
+            findByProperty,
           }
         });
-        scriptContext.emit(schemaInitialEvt);
         const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? schemaInitialEvt.detail.schema : schema;
         const element = createComponentFromSchema(transformedSchema, {
           refScopes: {

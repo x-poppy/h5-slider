@@ -58,13 +58,10 @@ function SliderLoader() {
         ])
 
         // load script
-        const storeDataLoadedEvt = new CustomEvent(EventNames.OnStoreDataLoaded, {
-          detail: storeData,
-        });
         // this may modify in the scripts.
-        scriptContext.emit(storeDataLoadedEvt);
+        const storeDataLoadedEvt  = scriptContext.emit(EventNames.OnStoreDataLoaded, storeData);
         const transformedStoreData = {
-          ...(storeDataLoadedEvt.detail ?? {})
+          ...(storeDataLoadedEvt.detail.data ?? {})
         };
 
         let initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 0;
@@ -74,19 +71,18 @@ function SliderLoader() {
 
         transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();
         // transform schema
-        const schemaInitialEvt = new CustomEvent(EventNames.OnSchemaInitial, {
-          detail: {
-            schema,
-            selector: {
-              find,
-              findByType,
-              findByProperty,
-            }
+        const schemaInitialEvt = scriptContext.emit(EventNames.OnSchemaInitial, {
+          schema,
+          selector: {
+            find,
+            findByType,
+            findByProperty,
           }
         });
-        scriptContext.emit(schemaInitialEvt);
-        const transformedSchema = isComponentSchema(schemaInitialEvt.detail.schema) ? {
-          ...schemaInitialEvt.detail.schema,
+
+        const eventSchema = schemaInitialEvt.detail.data?.schema;
+        const transformedSchema = isComponentSchema(eventSchema) ? {
+          ...eventSchema,
         } : schema;
         const element = createComponentFromSchema(transformedSchema, {
           localProps: {
@@ -97,7 +93,7 @@ function SliderLoader() {
         initializeDocument(schema);
         setSliderElement(element as ReactElement);
         loadingIndication.end();
-        scriptContext.emit(new CustomEvent(EventNames.OnLoaded));
+        scriptContext.emit(EventNames.OnLoaded);
       } catch(err) {
         setSliderElement(null);
         loadingIndication.end();

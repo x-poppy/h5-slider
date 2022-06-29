@@ -13,7 +13,7 @@ export const EventNames = {
 interface ScriptContextAPI {
   on(event: string, callback: EventListener): () => void;
   once(event: string, callback: EventListener): void;
-  emit(event: Event): void;
+  emit(eventName: string, payload?: Record<string, any>): CustomEvent;
   [x: string]: any
 }
 
@@ -21,7 +21,7 @@ const ScriptContext = React.createContext<ScriptContextAPI>({
   on: noop,
   once: noop,
   off: noop,
-  emit: noop,
+  emit: noop as any,
 });
 
 interface ScriptContextProviderProps {
@@ -36,8 +36,6 @@ export function ScriptContextProvider(props: ScriptContextProviderProps) {
     eventTargetExtends.on = (eventName: string, callback: EventListener) => {
       const innerCallback = (evt: Event) => {
         try {
-          // eslint-disable-next-line no-debugger
-          debugger;
           callback(evt);
         } catch(err) {
           // eslint-disable-next-line no-debugger
@@ -63,12 +61,19 @@ export function ScriptContextProvider(props: ScriptContextProviderProps) {
     eventTargetExtends.off = (eventName: string, callback: EventListener) => {
       eventTarget.removeEventListener(eventName, callback);
     }
-    eventTargetExtends.emit = (event: Event) => {
+    eventTargetExtends.emit = (eventName: string, payload?: Record<string, any>) => {
+      const event = new CustomEvent(eventName, {
+        detail: {
+          payload,
+          timestamp: new Date().toISOString(),
+        },
+      });
       try {
         eventTarget.dispatchEvent(event);
       } catch (err) {
         throwError(err as any);
       }
+      return event;
     }
     return eventTargetExtends;
   }, [throwError]);
