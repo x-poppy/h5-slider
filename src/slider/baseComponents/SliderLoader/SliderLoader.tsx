@@ -62,7 +62,7 @@ function SliderLoader() {
         // this may modify in the scripts.
         const storeDataLoadedEvt  = scriptContext.emit(EventNames.OnStoreDataLoaded, storeData);
         const transformedStoreData = {
-          ...(storeDataLoadedEvt.detail.data ?? {})
+          ...(storeDataLoadedEvt.detail.payload ?? {})
         };
 
         let initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 0;
@@ -81,7 +81,7 @@ function SliderLoader() {
           }
         });
 
-        const eventSchema = schemaInitialEvt.detail.data?.schema;
+        const eventSchema = schemaInitialEvt.detail.payload?.schema;
         const transformedSchema = isComponentSchema(eventSchema) ? {
           ...eventSchema,
         } : schema;

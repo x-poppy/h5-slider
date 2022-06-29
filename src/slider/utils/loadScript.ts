@@ -5,23 +5,6 @@ import { request } from "./request";
 import { match } from "./string";
 import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch, getURL } from "./url";
 
-const ScriptParamsNames = Object.keys(window).filter(key=>{
-  const win: Record<string, any> = window as any;
-  if (win[key] === null) {
-    return false;
-  }
-  if (typeof win[key] === 'number') {
-    return false;
-  }
-  if (typeof win[key] === 'string') {
-    return false;
-  }
-
-  return key !== 'window';
-});
-const ScriptParamsNamesStr = ScriptParamsNames.join(",");
-const ScriptParamsNamesVal = ScriptParamsNames.map(() => undefined + '').join(",");
-
 interface LoadScriptOpts {
   httpClient: Record<string, any>
   scriptContext: Record<string, any>
@@ -92,7 +75,7 @@ export async function loadScript(schema: SliderSchema, opts: LoadScriptOpts) {
 
   const responseText = await response.text();
   const scriptElement = document.createElement("script");
-  const sliderScriptContext = {
+  const sliderAPI = {
     ...opts.scriptContext,
     query: {
       ...localStorageQueryData,
@@ -103,42 +86,18 @@ export async function loadScript(schema: SliderSchema, opts: LoadScriptOpts) {
     loadingIndication: opts.loadingIndication
   };
 
-  (window as any).sliderScriptContext = sliderScriptContext;
-
-  const globalVariables: string[] = [];
-  if (scriptInfo.globalVariables) {
-    if (typeof scriptInfo.globalVariables === 'string') {
-      globalVariables.push(scriptInfo.globalVariables);
-    } else if (Array.isArray(scriptInfo.globalVariables)) {
-      globalVariables.push(...scriptInfo.globalVariables);
-    }
-
-    globalVariables.filter(globalVariable => {
-      if (typeof globalVariable !== 'string') {
-        return false;
-      }
-      return Object.prototype.hasOwnProperty.call(window, globalVariable);
-    }).forEach(globalScope => {
-      const globalVal = (window as any)[globalScope];
-      if (typeof globalVal === 'function') {
-        (sliderScriptContext as any)[globalScope] = globalVal.bind(window);
-      } else {
-        (sliderScriptContext as any)[globalScope] = globalVal;
-      }
-    })
-  }
-
+  (window as any).slider = sliderAPI;
   const scriptContent = `
-  (function(window, slider, ${ScriptParamsNamesStr}) {
+  (function() {
     try {
       ${responseText}
     } catch(err) {
-      slider.throwError(err);
+      window.slider.throwError(err);
     }
-  }).apply(null, [{slider: window.sliderScriptContext}, window.sliderScriptContext, ${ScriptParamsNamesVal}]);
+  })();
   `;
   scriptElement.setAttribute("slider-script", "");
   scriptElement.textContent = scriptContent;
   document.body.appendChild(scriptElement);
-  delete (window as any).sliderScriptContext;
+  // delete (window as any).slider;
 }
