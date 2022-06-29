@@ -38,8 +38,7 @@ export function ScriptContextProvider(props: ScriptContextProviderProps) {
         try {
           callback(evt);
         } catch(err) {
-          // eslint-disable-next-line no-debugger
-          debugger;
+          console.error(err);
         }
       };
       eventTarget.addEventListener(eventName, innerCallback);

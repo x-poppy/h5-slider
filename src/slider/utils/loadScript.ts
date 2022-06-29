@@ -26,6 +26,7 @@ interface LoadScriptOpts {
   httpClient: Record<string, any>
   scriptContext: Record<string, any>
   throwError: (error: any) => void
+  loadingIndication: Record<string, any>
   variableScopes: ReturnType<typeof useVariableScopes>
 }
 
@@ -99,6 +100,7 @@ export async function loadScript(schema: SliderSchema, opts: LoadScriptOpts) {
     },
     throwError: opts.throwError,
     httpClient: opts.httpClient,
+    loadingIndication: opts.loadingIndication
   };
 
   (window as any).sliderScriptContext = sliderScriptContext;

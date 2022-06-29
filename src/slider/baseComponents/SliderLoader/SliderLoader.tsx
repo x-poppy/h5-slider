@@ -53,6 +53,7 @@ function SliderLoader() {
             scriptContext,
             variableScopes,
             throwError,
+            loadingIndication,
           }),
           loadAllComponents(),
         ])
@@ -86,14 +87,18 @@ function SliderLoader() {
         } : schema;
         const element = createComponentFromSchema(transformedSchema, {
           localProps: {
-            initialIndex: initialIndex,
+            initialIndex,
             storeData: transformedStoreData
           }
         });
         initializeDocument(schema);
         setSliderElement(element as ReactElement);
         loadingIndication.end();
-        scriptContext.emit(EventNames.OnLoaded);
+        scriptContext.emit(EventNames.OnLoaded, {
+          schema: transformedSchema,
+          storeData: transformedStoreData,
+          initialIndex,
+        });
       } catch(err) {
         setSliderElement(null);
         loadingIndication.end();
