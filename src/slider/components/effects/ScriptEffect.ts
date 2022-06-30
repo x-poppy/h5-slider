@@ -49,6 +49,7 @@ async function ScriptEffect(props: ScriptEffectProps) {
       functionName: props.functionName,
       functionPrams: functionPrams,
       context: props.context,
+      event: props.event,
       callback: callbackHandler,
     });
   })
