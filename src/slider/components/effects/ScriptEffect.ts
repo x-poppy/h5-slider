@@ -37,7 +37,7 @@ async function ScriptEffect(props: ScriptEffectProps) {
     scriptContext.emit(EventNames.OnCallFunction, {
       functionName: props.functionName,
       functionPrams: functionPrams,
-      contenxt: scriptContext,
+      context: props.context,
       callback: callbackHandler,
     });
   })
