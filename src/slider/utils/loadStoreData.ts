@@ -51,7 +51,9 @@ export async function loadStoreData(
 
   let url = getRandomValueFromArray(storeInfo.url);
   url = getRandomValueFromArray(url);
+
   url = opts.variableScopes.getExpressValue(url, {
+    ...schema.definitions,
     query: {
       ...localStorageQueryData,
       ...queryStringQueryData,
