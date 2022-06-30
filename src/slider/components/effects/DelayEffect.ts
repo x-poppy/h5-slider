@@ -5,7 +5,10 @@ interface DelayEffectProps extends SliderEffectProps {
 }
 
 async function DelayEffect(props: DelayEffectProps) {
-  await new Promise(res => setTimeout(res, props.delay ?? 1000));
+  if (props.delay === undefined) {
+    return;
+  }
+  await new Promise(res => setTimeout(res, ~~(props.delay!)));
 }
 
 export default DelayEffect;

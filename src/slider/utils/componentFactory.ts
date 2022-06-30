@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { ComponentSchema } from "../types/Schema";
-import { isComponentSchema, isDebuggerValue, isPlainObject, isPlainValue, isReactOrEffectElement } from "./typeDetect";
+import { isComponentSchema, isDebuggerValue, isEffectElement, isPlainObject, isPlainValue, isReactOrEffectElement } from "./typeDetect";
 import { getRandomString } from "./random";
 import { getReferenceExpressValue, isReferenceExpress } from "./express";
 
@@ -162,6 +162,10 @@ export function createComponentFromSchema(
   const type = schema.type;
   if (isReferenceExpress(type)) {
     const refComponentSchema = getReferenceExpressValue(type, refScopes);
+    if (isEffectElement(refComponentSchema)) {
+      return refComponentSchema;
+    }
+    // here maybe a effect instance
     if (!isComponentSchema(refComponentSchema)) {
       throw Error(`Component(${type}) Reference Error`);
     }
