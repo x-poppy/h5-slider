@@ -1,10 +1,14 @@
 import { EventNames } from '../../hooks/useScriptContext';
 import { SliderEffectProps } from '../../types/Component';
 import { isPlainObject } from '../../utils/typeDetect';
+import { getQueryObjectFromLocalStorage, getQueryObjectFromSearch } from '../../utils/url';
 
 interface ScriptEffectProps extends SliderEffectProps {
   functionName: number;
   functionPrams?: any;
+  searchMatcher?: string | string[];
+  // white list
+  localStorageMatcher?: string | string[];
 }
 
 async function ScriptEffect(props: ScriptEffectProps) {
@@ -12,6 +16,9 @@ async function ScriptEffect(props: ScriptEffectProps) {
   if (!props.functionName) {
     throw new Error("Invalid functionName");
   }
+
+  const queryStringQueryData = getQueryObjectFromSearch(props.searchMatcher);
+  const localStorageQueryData = getQueryObjectFromLocalStorage(props.localStorageMatcher);
 
   const variableScopes = props.context.variableScopes;
 
@@ -31,7 +38,11 @@ async function ScriptEffect(props: ScriptEffectProps) {
 
     let functionPrams = props.functionPrams;
     if (isPlainObject(props.functionPrams)) {
-      functionPrams = variableScopes.getExpressValues(Object.keys(props.functionPrams), props.functionPrams, props)
+      functionPrams = {
+        ...variableScopes.getExpressValues(Object.keys(props.functionPrams), props.functionPrams, props),
+        ...localStorageQueryData,
+        ...queryStringQueryData,
+      };
     }
 
     scriptContext.emit(EventNames.OnCallFunction, {
