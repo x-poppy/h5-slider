@@ -1,5 +1,6 @@
 import { EventNames } from '../../hooks/useScriptContext';
 import { SliderEffectProps } from '../../types/Component';
+import { isPlainObject } from '../../utils/typeDetect';
 
 interface ScriptEffectProps extends SliderEffectProps {
   functionName: number;
@@ -11,6 +12,8 @@ async function ScriptEffect(props: ScriptEffectProps) {
   if (!props.functionName) {
     throw new Error("Invalid functionName");
   }
+
+  const variableScopes = props.context.variableScopes;
 
   await new Promise((resolve, reject) => {
     const callbackHandler = (err: Error, data: any) => {
@@ -26,9 +29,14 @@ async function ScriptEffect(props: ScriptEffectProps) {
       resolve(data);
     }
 
+    let functionPrams = props.functionPrams;
+    if (isPlainObject(props.functionPrams)) {
+      functionPrams = variableScopes.getExpressValues(Object.keys(props.functionPrams), props.functionPrams, props)
+    }
+
     scriptContext.emit(EventNames.OnCallFunction, {
       functionName: props.functionName,
-      functionPrams: props.functionPrams,
+      functionPrams: functionPrams,
       callback: callbackHandler,
     });
   })

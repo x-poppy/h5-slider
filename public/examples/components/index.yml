@@ -11,9 +11,10 @@ security:
   knownHosts:
     - http://www.bing.com
   userAgentMatcher:
-store:
-  url: 'xxxx'
-  mockData: {name: 'xxxxxxx'}  
+  skipValidation: true
+# store:
+#   url: 'xxxx'
+#   mockData: {name: 'xxxxxxx'}  
 definitions:
   Components:
     # -------------------------------------------
