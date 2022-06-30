@@ -5,7 +5,8 @@ const referenceExpressReg = /\${[^}{]*?}/g;
 
 export function isReferenceVariable(val: any) {
   if (typeof val === 'string') {
-    if (val.startsWith('${') && val.endsWith('}')) {
+    // ${A}${B}
+    if (val.startsWith('${') && (val.indexOf('}') === val.length -1)) {
       return true;
     }
   }
