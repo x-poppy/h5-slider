@@ -40,15 +40,28 @@ function SliderLoader() {
         schemaUrl = decodeURIComponent(schemaUrl as unknown as string);
         // load schema
         const schema = await loadSchema(schemaUrl);
-        validateScurity(schema);
+        // transform schema
+        const schemaInitialEvt = scriptContext.emit(EventNames.OnSchemaInitial, {
+          schema,
+          selector: {
+            find,
+            findByType,
+            findByProperty,
+          }
+        });
+        const eventSchema = schemaInitialEvt.detail.payload?.schema;
+        const transformedSchema = isComponentSchema(eventSchema) ? {
+          ...eventSchema,
+        } : schema;
+        validateScurity(transformedSchema);
 
         const [storeData] = await Promise.all([
-          loadStoreData(schema, {
+          loadStoreData(transformedSchema, {
             httpClient,
             initialConfig,
             variableScopes,
           }),
-          loadScript(schema, {
+          loadScript(transformedSchema, {
             httpClient,
             scriptContext,
             variableScopes,
@@ -66,32 +79,18 @@ function SliderLoader() {
         };
 
         let initialIndex = transformedStoreData[StoreKeyNames.ActiveIndex] ?? 0;
-        if (process.env.NODE_ENV !== 'production' || schema.security?.allowDebugActiveIndex) {
+        if (process.env.NODE_ENV !== 'production' || transformedSchema.security?.allowDebugActiveIndex) {
           initialIndex = ~~(initialConfig.activeIndex ?? 0)
         }
 
         transformedStoreData[StoreKeyNames.StartTimeStamp] ??= Date.now();
-        // transform schema
-        const schemaInitialEvt = scriptContext.emit(EventNames.OnSchemaInitial, {
-          schema,
-          selector: {
-            find,
-            findByType,
-            findByProperty,
-          }
-        });
-
-        const eventSchema = schemaInitialEvt.detail.payload?.schema;
-        const transformedSchema = isComponentSchema(eventSchema) ? {
-          ...eventSchema,
-        } : schema;
         const element = createComponentFromSchema(transformedSchema, {
           localProps: {
             initialIndex,
             storeData: transformedStoreData
           }
         });
-        initializeDocument(schema);
+        initializeDocument(transformedSchema);
         setSliderElement(element as ReactElement);
         loadingIndication.end();
         scriptContext.emit(EventNames.OnLoaded, {
