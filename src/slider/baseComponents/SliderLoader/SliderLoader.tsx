@@ -40,6 +40,23 @@ function SliderLoader() {
         schemaUrl = decodeURIComponent(schemaUrl as unknown as string);
         // load schema
         const schema = await loadSchema(schemaUrl);
+
+        const [storeData] = await Promise.all([
+          loadStoreData(schema, {
+            httpClient,
+            initialConfig,
+            variableScopes,
+          }),
+          loadScript(schema, {
+            httpClient,
+            scriptContext,
+            variableScopes,
+            throwError,
+            loadingIndication,
+          }),
+          loadAllComponents(),
+        ])
+
         // transform schema
         const schemaInitialEvt = scriptContext.emit(EventNames.OnSchemaInitial, {
           schema,
@@ -54,22 +71,6 @@ function SliderLoader() {
           ...eventSchema,
         } : schema;
         validateScurity(transformedSchema);
-
-        const [storeData] = await Promise.all([
-          loadStoreData(transformedSchema, {
-            httpClient,
-            initialConfig,
-            variableScopes,
-          }),
-          loadScript(transformedSchema, {
-            httpClient,
-            scriptContext,
-            variableScopes,
-            throwError,
-            loadingIndication,
-          }),
-          loadAllComponents(),
-        ])
 
         // load script
         // this may modify in the scripts.
