@@ -36,7 +36,7 @@ async function NavigationEffect(props: NavigationEffectProps) {
   //   ...props.query,
   // })
 
-  const mock = (props.mock ?? false) && !!context.initialConfig.mock;
+  const mock = (props.mock ?? false) || !!context.initialConfig.mock;
   await navigateTo(url, {
     i18nMessageBundle: context.i18nMessageBundle,
     knownHosts: props.$$schema.security?.knownHosts,
